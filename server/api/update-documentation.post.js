@@ -75,8 +75,16 @@ export default defineEventHandler(async (event) => {
 
     // Исправляем форматирование private_key
     let privateKey = credentials.private_key;
-    if (privateKey.includes("\\n")) {
+    
+    // Убираем лишние пробелы в начале и конце
+    privateKey = privateKey.trim();
+    
+    // Обрабатываем различные форматы экранирования
+    if (privateKey.includes("\\n") && !privateKey.includes("\n")) {
       privateKey = privateKey.replace(/\\n/g, "\n");
+    }
+    if (privateKey.includes("\\\\n")) {
+      privateKey = privateKey.replace(/\\\\n/g, "\n");
     }
 
     // Настраиваем аутентификацию
@@ -86,7 +94,22 @@ export default defineEventHandler(async (event) => {
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 
-    await auth.getAccessToken();
+    try {
+      await auth.getAccessToken();
+    } catch (authError) {
+      if (authError.message && authError.message.includes("invalid_grant")) {
+        throw new Error(
+          "Ошибка аутентификации Google: Invalid JWT Signature. " +
+          "Возможные причины:\n" +
+          "1. Приватный ключ поврежден или неверен\n" +
+          "2. Ключ сервисного аккаунта был пересоздан в Google Cloud Console\n" +
+          "3. Сервисный аккаунт был удален или отключен\n\n" +
+          "Решение: Скачайте новый JSON файл ключа из Google Cloud Console " +
+          "(IAM & Admin > Service Accounts > ваш аккаунт > Keys) и обновите google-sheets-credentials.json"
+        );
+      }
+      throw authError;
+    }
 
     const sheets = google.sheets({ version: "v4", auth });
 
