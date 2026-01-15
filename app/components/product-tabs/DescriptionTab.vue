@@ -1,16 +1,17 @@
 <template>
   <div class="tab-panel">
     <div v-if="!hasDescription" class="description-empty">
-      <button v-if="isAdmin" class="edit-button" @click="openEditor">{{ t('description.edit') }}</button>
+      <button v-if="isAdmin" class="edit-button" @click="openEditor">
+        {{ t("description.edit") }}
+      </button>
     </div>
     <div v-else>
       <div class="description-header">
-        <button v-if="isAdmin" class="edit-button" @click="openEditor">{{ t('description.edit') }}</button>
+        <button v-if="isAdmin" class="edit-button" @click="openEditor">
+          {{ t("description.edit") }}
+        </button>
       </div>
-      <div
-        class="description-content"
-        v-html="getCurrentDescription()"
-      ></div>
+      <div class="description-content" v-html="getCurrentDescription()"></div>
     </div>
 
     <!-- Модальное окно редактора -->
@@ -19,15 +20,37 @@
         <div v-if="isEditorOpen" class="editor-overlay" @click="closeEditor">
           <div class="editor-modal" @click.stop>
             <div class="editor-header">
-              <h3>{{ t('description.editorTitle') }}</h3>
+              <h3>{{ t("description.editorTitle") }}</h3>
               <div class="header-actions">
-                <select v-model="selectedLanguage" @change="onLanguageChange" class="language-selector">
+                <select
+                  v-model="selectedLanguage"
+                  @change="onLanguageChange"
+                  class="language-selector"
+                >
                   <option value="ru">🇷🇺 Русский</option>
                   <option value="en">🇬🇧 English</option>
                   <option value="kk">🇰🇿 Қазақша</option>
                 </select>
-                <button class="table-button" @click="insertTable" :title="t('description.table')">
-                  📊 {{ t('description.table') }}
+                <button
+                  v-if="
+                    selectedLanguage !== 'ru' &&
+                    descriptions.ru &&
+                    descriptions.ru.trim()
+                  "
+                  class="translate-button"
+                  @click="translateDescription"
+                  :disabled="isTranslating"
+                  :title="t('description.translate')"
+                >
+                  {{ isTranslating ? "⏳" : "🌐" }}
+                  {{ t("description.translate") }}
+                </button>
+                <button
+                  class="table-button"
+                  @click="insertTable"
+                  :title="t('description.table')"
+                >
+                  📊 {{ t("description.table") }}
                 </button>
                 <button class="close-button" @click="closeEditor">×</button>
               </div>
@@ -36,8 +59,12 @@
               <div ref="editorContainer" class="quill-editor"></div>
             </div>
             <div class="editor-actions">
-              <button class="btn-cancel" @click="closeEditor">{{ t('description.cancel') }}</button>
-              <button class="btn-save" @click="saveContent">{{ t('description.save') }}</button>
+              <button class="btn-cancel" @click="closeEditor">
+                {{ t("description.cancel") }}
+              </button>
+              <button class="btn-save" @click="saveContent">
+                {{ t("description.save") }}
+              </button>
             </div>
           </div>
         </div>
@@ -82,25 +109,26 @@ const isEditorOpen = ref(false);
 const editorContainer = ref(null);
 const quillEditor = ref(null);
 const savedHtml = ref("");
-const selectedLanguage = ref('ru');
+const selectedLanguage = ref("ru");
 const descriptions = ref({
-  ru: '',
-  en: '',
-  kk: ''
+  ru: "",
+  en: "",
+  kk: "",
 });
-const previousLanguage = ref('ru');
+const previousLanguage = ref("ru");
+const isTranslating = ref(false);
 
 // Проверка, является ли пользователь админом
 const isAdmin = computed(() => {
   if (process.client) {
-    return localStorage.getItem('isAdmin') === 'true';
+    return localStorage.getItem("isAdmin") === "true";
   }
   return false;
 });
 
 const hasDescription = computed(() => {
   return (
-    savedHtml.value || 
+    savedHtml.value ||
     (props.description && props.description.trim() !== "") ||
     (props.descriptionRU && props.descriptionRU.trim() !== "") ||
     (props.descriptionEN && props.descriptionEN.trim() !== "") ||
@@ -114,41 +142,44 @@ const getCurrentDescription = () => {
   if (savedHtml.value) {
     return savedHtml.value;
   }
-  
+
   // Иначе используем описание в зависимости от текущего языка интерфейса
   const currentLang = locale.value;
-  if (currentLang === 'en' && props.descriptionEN) {
+  if (currentLang === "en" && props.descriptionEN) {
     return props.descriptionEN;
   }
-  if (currentLang === 'kk' && props.descriptionKK) {
+  if (currentLang === "kk" && props.descriptionKK) {
     return props.descriptionKK;
   }
   // По умолчанию русское
-  return props.descriptionRU || props.description || '';
+  return props.descriptionRU || props.description || "";
 };
 
 // Функция для обновления описаний из пропсов
 const updateDescriptionsFromProps = () => {
-  descriptions.value.ru = props.descriptionRU || '';
-  descriptions.value.en = props.descriptionEN || '';
-  descriptions.value.kk = props.descriptionKK || '';
-  
+  descriptions.value.ru = props.descriptionRU || "";
+  descriptions.value.en = props.descriptionEN || "";
+  descriptions.value.kk = props.descriptionKK || "";
+
   // Логируем для отладки
-  console.log('updateDescriptionsFromProps:', {
+  console.log("updateDescriptionsFromProps:", {
     ru: descriptions.value.ru.substring(0, 50),
     en: descriptions.value.en.substring(0, 50),
     kk: descriptions.value.kk.substring(0, 50),
-    propsEN: props.descriptionEN?.substring(0, 50)
+    propsEN: props.descriptionEN?.substring(0, 50),
   });
-  
+
   // Если есть общее описание, используем его для текущего языка, если для него нет отдельного
   if (props.description) {
     const currentLang = locale.value;
-    if (!descriptions.value[currentLang] || descriptions.value[currentLang].trim() === '') {
+    if (
+      !descriptions.value[currentLang] ||
+      descriptions.value[currentLang].trim() === ""
+    ) {
       descriptions.value[currentLang] = props.description;
     }
   }
-  savedHtml.value = descriptions.value[locale.value] || '';
+  savedHtml.value = descriptions.value[locale.value] || "";
 };
 
 // Инициализация описаний при монтировании
@@ -157,19 +188,31 @@ onMounted(() => {
 });
 
 // Отслеживание изменений описаний в пропсах
-watch(() => [props.descriptionRU, props.descriptionEN, props.descriptionKK, props.description], () => {
-  updateDescriptionsFromProps();
-}, { immediate: true });
+watch(
+  () => [
+    props.descriptionRU,
+    props.descriptionEN,
+    props.descriptionKK,
+    props.description,
+  ],
+  () => {
+    updateDescriptionsFromProps();
+  },
+  { immediate: true }
+);
 
 // Отслеживание изменения языка интерфейса для обновления отображаемого описания
-watch(() => locale.value, () => {
-  // Обновляем savedHtml при смене языка интерфейса
-  savedHtml.value = descriptions.value[locale.value] || '';
-});
+watch(
+  () => locale.value,
+  () => {
+    // Обновляем savedHtml при смене языка интерфейса
+    savedHtml.value = descriptions.value[locale.value] || "";
+  }
+);
 
 const insertTable = () => {
   if (!quillEditor.value) return;
-  
+
   const tableHTML = `
     <table>
       <thead>
@@ -190,7 +233,7 @@ const insertTable = () => {
       </tbody>
     </table>
   `;
-  
+
   const range = quillEditor.value.getSelection(true);
   if (range) {
     quillEditor.value.clipboard.dangerouslyPasteHTML(range.index, tableHTML);
@@ -209,7 +252,7 @@ const openEditor = async () => {
   // Устанавливаем выбранный язык на текущий язык интерфейса
   selectedLanguage.value = locale.value;
   previousLanguage.value = locale.value;
-  
+
   isEditorOpen.value = true;
   await nextTick();
 
@@ -217,12 +260,15 @@ const openEditor = async () => {
     // Динамический импорт Quill только на клиенте
     const Quill = (await import("quill")).default;
     await import("quill/dist/quill.snow.css");
-    
+
     // Импортируем модуль для таблиц
     const QuillBetterTable = (await import("quill-better-table")).default;
-    Quill.register({
-      'modules/better-table': QuillBetterTable
-    }, true);
+    Quill.register(
+      {
+        "modules/better-table": QuillBetterTable,
+      },
+      true
+    );
 
     quillEditor.value = new Quill(editorContainer.value, {
       theme: "snow",
@@ -242,14 +288,14 @@ const openEditor = async () => {
           operationMenu: {
             items: {
               unmergeCells: {
-                text: 'Объединить ячейки'
-              }
-            }
-          }
+                text: "Объединить ячейки",
+              },
+            },
+          },
         },
         keyboard: {
-          bindings: QuillBetterTable.keyboardBindings
-        }
+          bindings: QuillBetterTable.keyboardBindings,
+        },
       },
       placeholder: "Введите описание товара...",
       readOnly: false,
@@ -264,11 +310,15 @@ const openEditor = async () => {
     });
 
     // Отключаем лишние события для улучшения производительности
-    quillEditor.value.root.addEventListener("input", (e) => {
-      e.stopPropagation();
-    }, { passive: true });
+    quillEditor.value.root.addEventListener(
+      "input",
+      (e) => {
+        e.stopPropagation();
+      },
+      { passive: true }
+    );
   }
-  
+
   // Загружаем контент для выбранного языка (после создания редактора или если он уже существует)
   await nextTick();
   setTimeout(() => {
@@ -280,41 +330,43 @@ const openEditor = async () => {
 
 const loadContentForLanguage = (lang) => {
   if (!quillEditor.value) return;
-  
+
   // Берем контент напрямую из пропсов, если в descriptions его нет
-  let content = descriptions.value[lang] || '';
-  
+  let content = descriptions.value[lang] || "";
+
   // Если контент пустой, пытаемся взять из пропсов напрямую
-  if (!content || content.trim() === '') {
-    if (lang === 'ru') {
-      content = props.descriptionRU || '';
-    } else if (lang === 'en') {
-      content = props.descriptionEN || '';
-    } else if (lang === 'kk') {
-      content = props.descriptionKK || '';
+  if (!content || content.trim() === "") {
+    if (lang === "ru") {
+      content = props.descriptionRU || "";
+    } else if (lang === "en") {
+      content = props.descriptionEN || "";
+    } else if (lang === "kk") {
+      content = props.descriptionKK || "";
     }
     // Обновляем descriptions для будущего использования
     if (content) {
       descriptions.value[lang] = content;
     }
   }
-  
-  if (!content || content.trim() === '') {
+
+  if (!content || content.trim() === "") {
     console.log(`loadContentForLanguage(${lang}): контент пустой`);
     return;
   }
-  
-  console.log(`loadContentForLanguage(${lang}): длина контента = ${content.length} символов`);
-  
+
+  console.log(
+    `loadContentForLanguage(${lang}): длина контента = ${content.length} символов`
+  );
+
   try {
     // Используем clipboard.dangerouslyPasteHTML для правильной загрузки HTML в Quill
     // Сначала очищаем редактор
-    quillEditor.value.setText('');
-    
+    quillEditor.value.setText("");
+
     // Затем вставляем HTML контент
     const delta = quillEditor.value.clipboard.convert({ html: content });
-    quillEditor.value.setContents(delta, 'silent');
-    
+    quillEditor.value.setContents(delta, "silent");
+
     console.log(`loadContentForLanguage(${lang}): контент успешно загружен`);
   } catch (error) {
     console.error(`Ошибка при загрузке контента для языка ${lang}:`, error);
@@ -329,18 +381,82 @@ const loadContentForLanguage = (lang) => {
 
 const onLanguageChange = () => {
   if (!quillEditor.value) return;
-  
+
   // Сохраняем текущий контент редактора для предыдущего языка
   const currentContent = quillEditor.value.root.innerHTML;
   descriptions.value[previousLanguage.value] = currentContent;
-  
+
   // Обновляем предыдущий язык на новый выбранный
   previousLanguage.value = selectedLanguage.value;
-  
+
   // Загружаем контент для нового языка из descriptions (который может быть обновлен из пропсов)
   loadContentForLanguage(selectedLanguage.value);
 };
 
+// Функция перевода описания
+const translateDescription = async () => {
+  if (
+    !quillEditor.value ||
+    !descriptions.value.ru ||
+    !descriptions.value.ru.trim()
+  ) {
+    alert("Сначала создайте описание на русском языке");
+    return;
+  }
+
+  if (selectedLanguage.value === "ru") {
+    alert("Выберите другой язык для перевода");
+    return;
+  }
+
+  // Проверяем, есть ли уже перевод
+  if (
+    descriptions.value[selectedLanguage.value] &&
+    descriptions.value[selectedLanguage.value].trim()
+  ) {
+    const confirmOverwrite = confirm(
+      `Уже есть перевод на ${
+        selectedLanguage.value === "en" ? "английский" : "казахский"
+      }. Перевести заново?`
+    );
+    if (!confirmOverwrite) {
+      return;
+    }
+  }
+
+  isTranslating.value = true;
+
+  try {
+    const response = await $fetch("/api/translate", {
+      method: "POST",
+      body: {
+        text: descriptions.value.ru,
+        fromLang: "ru",
+        toLang: selectedLanguage.value,
+      },
+    });
+
+    if (response.success && response.translatedText) {
+      // Загружаем переведенный текст в редактор
+      descriptions.value[selectedLanguage.value] = response.translatedText;
+      await loadContentForLanguage(selectedLanguage.value);
+      alert(
+        "✅ Перевод выполнен! Вы можете отредактировать текст перед сохранением."
+      );
+    } else {
+      throw new Error("Перевод не выполнен");
+    }
+  } catch (error) {
+    console.error("Ошибка при переводе:", error);
+    alert(
+      `❌ Ошибка при переводе: ${
+        error.data?.message || error.message || "Неизвестная ошибка"
+      }`
+    );
+  } finally {
+    isTranslating.value = false;
+  }
+};
 
 const saveContent = async () => {
   if (!quillEditor.value) return;
@@ -364,7 +480,7 @@ const saveContent = async () => {
       });
 
       if (response.success) {
-        alert(`✅ ${t('description.saved')}`);
+        alert(`✅ ${t("description.saved")}`);
         // Обновляем описания из пропсов после сохранения (перед перезагрузкой)
         // Но лучше перезагрузить страницу, чтобы получить актуальные данные
         window.location.reload();
@@ -372,7 +488,7 @@ const saveContent = async () => {
     } catch (error) {
       console.error("Ошибка при сохранении:", error);
       alert(
-        `❌ ${t('description.error')} ${error.data?.message || error.message}`
+        `❌ ${t("description.error")} ${error.data?.message || error.message}`
       );
     }
   } else {
@@ -383,7 +499,7 @@ const saveContent = async () => {
     console.log("=".repeat(60));
     console.log(jsonOutput);
     console.log("=".repeat(60));
-    alert(t('description.savedLocal'));
+    alert(t("description.savedLocal"));
   }
 
   closeEditor();
@@ -619,7 +735,7 @@ const closeEditor = () => {
   cursor: pointer;
   transition: all 0.2s ease;
 
-  &:hover {
+  /* &:hover {
     border-color: #1e88e5;
   }
 
@@ -628,6 +744,7 @@ const closeEditor = () => {
     border-color: #1e88e5;
     box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
   }
+} */
 }
 
 .table-button {
@@ -645,6 +762,32 @@ const closeEditor = () => {
 .table-button:hover {
   background: #45a049;
   transform: translateY(-1px);
+}
+
+.translate-button {
+  padding: 8px 16px;
+  background: #2196f3;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.translate-button:hover:not(:disabled) {
+  background: #1976d2;
+  transform: translateY(-1px);
+}
+
+.translate-button:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .editor-header h3 {

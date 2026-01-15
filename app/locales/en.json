@@ -254,6 +254,7 @@
     "cancel": "Cancel",
     "placeholder": "Enter product description...",
     "table": "Table",
+    "translate": "Translate",
     "saved": "Description successfully saved to Google Sheets and catalog updated!",
     "error": "Error saving:",
     "savedLocal": "Description saved locally. Check console for copying."
