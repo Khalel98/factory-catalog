@@ -19,16 +19,19 @@
           :slides-per-view="1"
           :space-between="10"
           :navigation="true"
+          :pagination="{ clickable: true, dynamicBullets: true }"
+          :loop="images.length > 1"
           :thumbs="{ swiper: thumbsSwiper }"
           class="main-swiper"
         >
           <SwiperSlide v-for="(image, index) in images" :key="index">
-            <div class="slide-image-wrapper">
+            <div class="slide-image-wrapper" @click="openFullscreen(index)">
               <img
                 :src="image"
                 :alt="`${productName} - изображение ${index + 1}`"
                 @error="handleImageError($event)"
                 loading="lazy"
+                style="cursor: pointer;"
               />
             </div>
           </SwiperSlide>
@@ -82,19 +85,50 @@
       @close="closeEditModal"
       @saved="handleImagesSaved"
     />
+    <!-- Fullscreen Lightbox -->
+    <div v-if="isFullscreenOpen" class="fullscreen-overlay" @click.self="closeFullscreen">
+      <button @click="closeFullscreen" class="fullscreen-close" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <Swiper
+        :modules="modules"
+        :slides-per-view="1"
+        :space-between="0"
+        :navigation="true"
+        :pagination="{ clickable: true, dynamicBullets: true }"
+        :loop="images.length > 1"
+        :initial-slide="fullscreenInitialSlide"
+        class="fullscreen-swiper"
+        @swiper="setFullscreenSwiper"
+      >
+        <SwiperSlide v-for="(image, index) in images" :key="index">
+          <div class="fullscreen-slide">
+            <img
+              :src="image"
+              :alt="`${productName} - изображение ${index + 1}`"
+              @error="handleImageError($event)"
+            />
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
   </ClientOnly>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onUnmounted, watch } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Thumbs, FreeMode } from "swiper/modules";
+import { Navigation, Thumbs, FreeMode, Pagination } from "swiper/modules";
 import { useI18n } from "@/composables/useI18n";
 import ImageGalleryModal from "./ImageGalleryModal.vue";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "swiper/css/free-mode";
+import "swiper/css/pagination";
 
 const props = defineProps({
   images: {
@@ -119,9 +153,12 @@ const props = defineProps({
 const emit = defineEmits(['images-updated']);
 
 const { t } = useI18n();
-const modules = [Navigation, Thumbs, FreeMode];
+const modules = [Navigation, Thumbs, FreeMode, Pagination];
 const thumbsSwiper = ref(null);
+const fullscreenSwiper = ref(null);
 const isEditModalOpen = ref(false);
+const isFullscreenOpen = ref(false);
+const fullscreenInitialSlide = ref(0);
 
 // Проверка, является ли пользователь админом
 const isAdmin = computed(() => {
@@ -134,6 +171,43 @@ const isAdmin = computed(() => {
 const setThumbsSwiper = (swiper) => {
   thumbsSwiper.value = swiper;
 };
+
+const setFullscreenSwiper = (swiper) => {
+  fullscreenSwiper.value = swiper;
+};
+
+const openFullscreen = (index) => {
+  fullscreenInitialSlide.value = index;
+  isFullscreenOpen.value = true;
+  document.body.style.overflow = 'hidden';
+};
+
+const closeFullscreen = () => {
+  isFullscreenOpen.value = false;
+  document.body.style.overflow = '';
+};
+
+// Обработка клавиши Escape
+const handleEscape = (event) => {
+  if (event.key === 'Escape' && isFullscreenOpen.value) {
+    closeFullscreen();
+  }
+};
+
+// Добавляем слушатель при открытии полноэкранного режима
+watch(isFullscreenOpen, (isOpen) => {
+  if (isOpen) {
+    document.addEventListener('keydown', handleEscape);
+  } else {
+    document.removeEventListener('keydown', handleEscape);
+  }
+});
+
+// Очистка при размонтировании
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleEscape);
+  document.body.style.overflow = '';
+});
 
 const handleImageError = (event) => {
   // Заменяем на placeholder, если изображение не загрузилось
@@ -330,6 +404,38 @@ const handleImagesSaved = (newImages) => {
   background: rgba(255, 255, 255, 0.9);
 }
 
+/* Стилизация пагинации */
+:deep(.swiper-pagination) {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  z-index: 10;
+}
+
+:deep(.swiper-pagination-bullet) {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 2px solid #1e88e5;
+  opacity: 1;
+  margin: 0 6px;
+  transition: all 0.3s ease;
+}
+
+:deep(.swiper-pagination-bullet-active) {
+  background: #1e88e5;
+  border: 2px solid #1e88e5;
+  width: 32px;
+  height: 12px;
+  border-radius: 6px;
+}
+
+:deep(.swiper-pagination-bullet:hover) {
+  background: rgba(255, 255, 255, 0.9);
+}
+
 :deep(.swiper-slide-thumb-active .thumb-image-wrapper) {
   border-color: #3b82f6;
 }
@@ -385,6 +491,142 @@ const handleImagesSaved = (newImages) => {
 @media (max-width: 768px) {
   :deep(.thumbs-swiper .swiper-slide) {
     width: 80px !important;
+  }
+}
+
+/* Fullscreen Lightbox Styles */
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.fullscreen-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+  }
+}
+
+.fullscreen-swiper {
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.fullscreen-slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+}
+
+/* Fullscreen navigation buttons */
+.fullscreen-overlay :deep(.swiper-button-next),
+.fullscreen-overlay :deep(.swiper-button-prev) {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+  }
+
+  &:after {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+  }
+}
+
+.fullscreen-overlay :deep(.swiper-button-prev) {
+  left: 20px;
+}
+
+.fullscreen-overlay :deep(.swiper-button-next) {
+  right: 20px;
+}
+
+/* Fullscreen pagination */
+.fullscreen-overlay :deep(.swiper-pagination) {
+  bottom: 30px;
+}
+
+.fullscreen-overlay :deep(.swiper-pagination-bullet) {
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.fullscreen-overlay :deep(.swiper-pagination-bullet-active) {
+  background: white;
+  border-color: white;
+}
+
+@media (max-width: 768px) {
+  .fullscreen-close {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .fullscreen-slide {
+    padding: 20px;
+  }
+
+  .fullscreen-overlay :deep(.swiper-button-next),
+  .fullscreen-overlay :deep(.swiper-button-prev) {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fullscreen-overlay :deep(.swiper-button-prev) {
+    left: 10px;
+  }
+
+  .fullscreen-overlay :deep(.swiper-button-next) {
+    right: 10px;
   }
 }
 </style>
