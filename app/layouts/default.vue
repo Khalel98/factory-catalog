@@ -92,8 +92,64 @@
                 </li>
               </ul>
             </li>
-            <li>
-              <NuxtLink to="/about" @click="closeMobileMenu">{{ t('nav.about') }}</NuxtLink>
+            <li class="has-submenu" :class="{ 'is-active': isAboutActive }">
+              <div class="submenu-toggle-wrapper">
+                <NuxtLink 
+                  to="/about" 
+                  class="submenu-toggle"
+                  :class="{ 'router-link-active': isAboutActive }"
+                >
+                  {{ t('nav.about') }}
+                </NuxtLink>
+                <button 
+                  v-if="isMobile"
+                  class="submenu-arrow-btn"
+                  @click="toggleSubmenu($event)"
+                  aria-label="Toggle submenu"
+                >
+                  <svg 
+                    class="submenu-arrow" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="16" 
+                    height="16" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <svg 
+                  v-else
+                  class="submenu-arrow" 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <ul class="submenu">
+                <li>
+                  <NuxtLink to="/about" @click="closeMobileMenu">
+                    {{ t('nav.about') }}
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/about/questionnaire" @click="closeMobileMenu">
+                    {{ t('nav.questionnaire') }}
+                  </NuxtLink>
+                </li>
+              </ul>
             </li>
             <li>
               <NuxtLink to="/contacts" @click="closeMobileMenu"
@@ -185,6 +241,10 @@ const isMobile = ref(false);
 
 const isInformationActive = computed(() => {
   return route.path.startsWith('/information');
+});
+
+const isAboutActive = computed(() => {
+  return route.path.startsWith('/about');
 });
 
 const toggleMobileMenu = () => {

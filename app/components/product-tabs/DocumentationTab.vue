@@ -207,11 +207,10 @@ const isEditing = ref(false);
 const isSaving = ref(false);
 const editingData = ref({ blocks: [] });
 const isAdmin = computed(() => {
-  if (typeof window === 'undefined') return true; // На сервере всегда true для SSR
-  const route = useRoute();
-  // Разрешаем редактирование для всех (можно изменить логику позже)
-  return true; // Временно разрешаем всем редактировать
-  // return route.path.includes('/admin') || route.query.admin === 'true' || localStorage.getItem('isAdmin') === 'true';
+  if (process.client) {
+    return localStorage.getItem('isAdmin') === 'true';
+  }
+  return false;
 });
 
 const getBlockTitle = (block) => {

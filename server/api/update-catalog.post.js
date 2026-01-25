@@ -111,7 +111,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Читаем колонки для локализации
-    const categoriesRange = `${categoriesSheet.properties.title}!A:D`;
+    const categoriesRange = `${categoriesSheet.properties.title}!A:Z`;
     const categoriesData = await sheets.spreadsheets.values.get({
       spreadsheetId,
       range: categoriesRange,
@@ -121,20 +121,29 @@ export default defineEventHandler(async (event) => {
     const headers = rows[0] || [];
     
     // Определяем индексы колонок
+    // Сначала ищем точные совпадения (nameru, nameen, namekk), потом fallback на name
     const idIndex = headers.findIndex((h) => h?.toLowerCase() === "id" || h === "");
-    const nameRUIndex = headers.findIndex((h) => 
-      h?.toLowerCase() === "name" || 
-      h?.toLowerCase() === "nameru" || 
-      h?.toLowerCase() === "name_ru"
-    );
-    const nameENIndex = headers.findIndex((h) => 
-      h?.toLowerCase() === "nameen" || 
-      h?.toLowerCase() === "name_en"
-    );
-    const nameKKIndex = headers.findIndex((h) => 
-      h?.toLowerCase() === "namekk" || 
-      h?.toLowerCase() === "name_kk"
-    );
+    
+    // Ищем NameRU - сначала точное совпадение, потом fallback на Name
+    let nameRUIndex = headers.findIndex((h) => {
+      const lower = h?.toLowerCase();
+      return lower === "nameru" || lower === "name_ru";
+    });
+    if (nameRUIndex === -1) {
+      nameRUIndex = headers.findIndex((h) => h?.toLowerCase() === "name");
+    }
+    
+    // Ищем NameEN
+    const nameENIndex = headers.findIndex((h) => {
+      const lower = h?.toLowerCase();
+      return lower === "nameen" || lower === "name_en";
+    });
+    
+    // Ищем NameKK
+    const nameKKIndex = headers.findIndex((h) => {
+      const lower = h?.toLowerCase();
+      return lower === "namekk" || lower === "name_kk";
+    });
     
     // Пропускаем заголовок
     for (let i = 1; i < rows.length; i++) {
@@ -166,6 +175,7 @@ export default defineEventHandler(async (event) => {
         continue;
       }
 
+      // Читаем все колонки до Z (можно расширить до AA, AB и т.д. если нужно)
       const productsRange = `${categorySheet.properties.title}!A:Z`;
       const productsData = await sheets.spreadsheets.values.get({
         spreadsheetId,
@@ -180,6 +190,10 @@ export default defineEventHandler(async (event) => {
 
       const products = [];
       const headers = productRows[0] || [];
+      
+      // ==========================================
+      // ОБЯЗАТЕЛЬНЫЕ ПОЛЯ
+      // ==========================================
       const idIndex = headers.findIndex((h) => h?.toLowerCase() === "id");
       const nameIndex = headers.findIndex((h) => h?.toLowerCase() === "name");
       const priceIndex = headers.findIndex(
@@ -188,6 +202,13 @@ export default defineEventHandler(async (event) => {
       const imagesIndex = headers.findIndex(
         (h) => h?.toLowerCase() === "images"
       );
+      
+      // ==========================================
+      // ЛОКАЛИЗОВАННЫЕ ПОЛЯ: GeneralInfo
+      // Поддерживаемые названия колонок:
+      // - GeneralInfoRU, GeneralInfoEN, GeneralInfoKK
+      // - GeneralInfo, General_Info, GeneralInfoRU, GeneralInfoEN, GeneralInfoKK
+      // ==========================================
       
       // Локализованные поля GeneralInfo
       const generalInfoRUIndex = headers.findIndex(
@@ -208,45 +229,138 @@ export default defineEventHandler(async (event) => {
           h?.toLowerCase() === "general_info_kk"
       );
       
-      // Локализованные поля DescriptionHTML
-      const descriptionRUIndex = headers.findIndex(
-        (h) =>
-          h?.toLowerCase() === "descriptionhtml" ||
-          h?.toLowerCase() === "description_html" ||
-          h?.toLowerCase() === "descriptionhtmlru" ||
-          h?.toLowerCase() === "description_html_ru"
+      // ==========================================
+      // ЛОКАЛИЗОВАННЫЕ ПОЛЯ: DescriptionHTML
+      // Поддерживаемые названия колонок:
+      // - DescriptionHTMLRU, DescriptionHTMLEN, DescriptionHTMLKK (приоритет)
+      // - DescriptionHTML, Description_HTML (fallback для RU)
+      // ==========================================
+      let descriptionRUIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return lower === "descriptionhtmlru" || lower === "description_html_ru";
+        }
       );
+      // Если не нашли специфичную, ищем общую
+      if (descriptionRUIndex === -1) {
+        descriptionRUIndex = headers.findIndex(
+          (h) => {
+            const lower = h?.toLowerCase() || "";
+            return lower === "descriptionhtml" || lower === "description_html";
+          }
+        );
+      }
+      
       const descriptionENIndex = headers.findIndex(
-        (h) =>
-          h?.toLowerCase() === "descriptionhtmlen" ||
-          h?.toLowerCase() === "description_html_en"
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return lower === "descriptionhtmlen" || lower === "description_html_en";
+        }
       );
       const descriptionKKIndex = headers.findIndex(
-        (h) =>
-          h?.toLowerCase() === "descriptionhtmlkk" ||
-          h?.toLowerCase() === "description_html_kk"
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return lower === "descriptionhtmlkk" || lower === "description_html_kk";
+        }
       );
       
-      // Колонка documentation (JSON)
+      // ==========================================
+      // ЛОКАЛИЗОВАННЫЕ ПОЛЯ: KitHTML
+      // Поддерживаемые названия колонок:
+      // - KitRU, KitEN, KitKK (приоритет)
+      // - KitHTMLRU, KitHTMLEN, KitHTMLKK
+      // - KitHTML, Kit_HTML (fallback для RU)
+      // ==========================================
+      const kitRUIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "kitru" ||
+            lower === "kithtmlru" ||
+            lower === "kit_html_ru" ||
+            lower === "kithtml" ||
+            lower === "kit_html"
+          );
+        }
+      );
+      const kitENIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return lower === "kiten" || lower === "kithtmlen" || lower === "kit_html_en";
+        }
+      );
+      const kitKKIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return lower === "kitkk" || lower === "kithtmlkk" || lower === "kit_html_kk";
+        }
+      );
+      
+      // ==========================================
+      // JSON ПОЛЯ
+      // ==========================================
+      // documentation (JSON) - структура с блоками документов
       const documentationIndex = headers.findIndex(
         (h) => h?.toLowerCase() === "documentation"
+      );
+      
+      // videos (JSON) - структура с заголовком и списком видео
+      const videosIndex = headers.findIndex(
+        (h) => h?.toLowerCase() === "videos"
+      );
+      
+      // ==========================================
+      // ДОПОЛНИТЕЛЬНЫЕ ПОЛЯ
+      // ==========================================
+      // priceComplectation (текст/HTML) - информация о ценах и комплектации
+      const priceComplectationIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "pricecomplectation" ||
+            lower === "price_complectation" ||
+            lower === "pricecomplectationinfo" ||
+            lower === "price_complectation_info"
+          );
+        }
       );
 
       for (let i = 1; i < productRows.length; i++) {
         const row = productRows[i];
         if (!row[idIndex]) continue; // Пропускаем пустые строки
 
+        // ==========================================
+        // СОЗДАНИЕ ОБЪЕКТА ПРОДУКТА СО ВСЕМИ ПОЛЯМИ
+        // Все поля из Google Sheets синхронизируются здесь
+        // ==========================================
         const product = {
+          // Обязательные поля
           id: row[idIndex]?.trim() || "",
           name: row[nameIndex]?.trim() || "",
           price: row[priceIndex]?.trim() || "",
           images: [],
+          
+          // Локализованные поля: GeneralInfo
           generalInfoRU: [],
           generalInfoEN: [],
           generalInfoKK: [],
+          
+          // Локализованные поля: DescriptionHTML
           descriptionRU: "",
           descriptionEN: "",
           descriptionKK: "",
+          
+          // Локализованные поля: KitHTML
+          kitRU: "",
+          kitEN: "",
+          kitKK: "",
+          
+          // JSON поля
+          documentation: null,
+          videos: null,
+          
+          // Дополнительные поля
+          priceComplectationInfo: "",
         };
 
         // Парсим images (JSON массив)
@@ -301,6 +415,19 @@ export default defineEventHandler(async (event) => {
           product.descriptionKK = product.descriptionRU;
         }
 
+        // Kit для каждого языка
+        product.kitRU = row[kitRUIndex]?.trim() || "";
+        product.kitEN = row[kitENIndex]?.trim() || "";
+        product.kitKK = row[kitKKIndex]?.trim() || "";
+        
+        // Если нет локализованных полей kit, используем русские для всех
+        if (!product.kitEN && product.kitRU) {
+          product.kitEN = product.kitRU;
+        }
+        if (!product.kitKK && product.kitRU) {
+          product.kitKK = product.kitRU;
+        }
+
         // Парсим documentation (JSON)
         if (documentationIndex !== -1 && row[documentationIndex]) {
           try {
@@ -309,6 +436,21 @@ export default defineEventHandler(async (event) => {
             console.warn(`Ошибка парсинга documentation для продукта ${product.id}:`, e);
             product.documentation = null;
           }
+        }
+
+        // Парсим videos (JSON)
+        if (videosIndex !== -1 && row[videosIndex]) {
+          try {
+            product.videos = JSON.parse(row[videosIndex]);
+          } catch (e) {
+            console.warn(`Ошибка парсинга videos для продукта ${product.id}:`, e);
+            product.videos = null;
+          }
+        }
+
+        // PriceComplectation (текст/HTML)
+        if (priceComplectationIndex !== -1 && row[priceComplectationIndex]) {
+          product.priceComplectationInfo = row[priceComplectationIndex]?.trim() || "";
         }
 
         if (product.id && product.name) {

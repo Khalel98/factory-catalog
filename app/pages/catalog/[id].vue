@@ -74,8 +74,20 @@
                     :product-id="product?.id || ''"
                     :category-id="productCategory || ''"
                   />
-                  <VideoTab v-if="activeTab === 'video'" />
-                  <KitTab v-if="activeTab === 'kit'" />
+                  <VideoTab 
+                    v-if="activeTab === 'video'"
+                    :product-id="product?.id || ''"
+                    :category-id="productCategory || ''"
+                  />
+                  <KitTab 
+                    v-if="activeTab === 'kit'"
+                    :kit="getKit()"
+                    :kit-r-u="product?.kitRU || ''"
+                    :kit-e-n="product?.kitEN || ''"
+                    :kit-k-k="product?.kitKK || ''"
+                    :product-id="product?.id || ''"
+                    :category-id="productCategory || ''"
+                  />
                   <PriceComplectationTab 
                     v-if="activeTab === 'price-complectation'"
                     :content="product?.priceComplectationInfo || ''"
@@ -176,6 +188,20 @@ const getDescription = () => {
   }
   // По умолчанию русское
   return product.value.descriptionRU || '';
+};
+
+// Функция для получения локализованного kit
+const getKit = () => {
+  if (!product.value) return '';
+  const currentLang = locale.value;
+  if (currentLang === 'en' && product.value.kitEN) {
+    return product.value.kitEN;
+  }
+  if (currentLang === 'kk' && product.value.kitKK) {
+    return product.value.kitKK;
+  }
+  // По умолчанию русское
+  return product.value.kitRU || '';
 };
 
 const breadcrumbItems = computed(() => {
