@@ -338,6 +338,25 @@ table {
       object-fit: contain;
     }
   }
+
+  .top-phone {
+    color: $white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: $primary;
+      text-decoration: underline;
+    }
+  }
+
+  .cta-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
 }
 
 .nav-bar {
@@ -813,6 +832,17 @@ table {
 .contact-card {
   display: grid;
   gap: 6px;
+  
+  a {
+    color: $footer-link;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: $white;
+      text-decoration: underline;
+    }
+  }
 }
 
 // Каталог

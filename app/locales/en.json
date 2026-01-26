@@ -11,6 +11,9 @@
     "contacts": "Contacts",
     "updateCatalog": "Update Catalog"
   },
+  "header": {
+    "callback": "Callback"
+  },
   "footer": {
     "title": "Gazservice-7",
     "description": "Official distributor and reliable supplier",
@@ -21,8 +24,10 @@
     "social": "Social Media",
     "youtube": "YouTube channel",
     "telegram": "Telegram",
-    "address": "Mangystau region, Aktau city, microdistrict 5a, building 9, 7",
-    "phone": "+77292203060",
+    "address": "Republic of Kazakhstan, Mangystau region, 130000, Aktau city, 5 A, building 9, office 7, BC «Caspian Grand»",
+    "phone": "8 (7292) 20-30-60",
+    "phoneLink": "+77292203060",
+    "email": "info@gazservice7.kz",
     "workingHours": "Mon–Fri: 09:00–17:00"
   },
   "home": {
@@ -98,18 +103,30 @@
     "title": "Contacts",
     "subtitle": "Contact us for any questions: equipment selection, commercial offers, service and technical support.",
     "sales": "Sales Department",
-    "techSupport": "Technical Support",
+    "phone": "8 (7292) 20-30-60",
+    "phoneLink": "+77292203060",
+    "email": "info@gazservice7.kz",
     "schedule": "Working Hours",
     "scheduleText": "Mon–Fri: 09:00–17:00",
     "lunch": "Lunch: 12:00–13:00",
     "shipment": "New product shipment: Mon–Fri 09:00–17:00",
     "address": "Address",
-    "addressText": "Minsk, Zhilunovicha St. 2V, 2nd floor",
+    "addressText": "Republic of Kazakhstan, Mangystau region, 130000, Aktau city, 5 A, building 9, office 7, BC «Caspian Grand»",
     "addressDesc": "Office-warehouse, convenient access and pickup.",
     "contactUs": "Contact Us",
     "contactDesc": "Leave your contacts — we will call back and answer your questions.",
     "orderCall": "Order Call",
-    "writeTelegram": "Write to Telegram"
+    "writeTelegram": "Write to Telegram",
+    "formFullName": "Full Name",
+    "formFullNamePlaceholder": "Enter your full name",
+    "formPhone": "Phone Number",
+    "formPhonePlaceholder": "+7 (XXX) XXX-XX-XX",
+    "formEmail": "Email",
+    "formEmailPlaceholder": "example@email.com",
+    "formSubmit": "Submit",
+    "formSending": "Sending...",
+    "formSuccess": "Request successfully sent! We will contact you soon.",
+    "formError": "An error occurred while sending the request. Please try again later."
   },
   "about": {
     "title": "About Company",
@@ -263,6 +280,7 @@
     "privacy": "I agree to the processing of personal data",
     "cancel": "Cancel",
     "submit": "Submit Request",
+    "sending": "Sending...",
     "close": "Close",
     "required": "*"
   },

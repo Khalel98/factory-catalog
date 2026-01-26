@@ -148,12 +148,16 @@
             </label>
           </div>
 
+          <div v-if="errorMessage" class="error-message full-width">
+            {{ errorMessage }}
+          </div>
           <div class="form-actions full-width">
-            <button type="button" class="btn-secondary" @click="closeModal">
+            <button type="button" class="btn-secondary" @click="closeModal" :disabled="isLoading">
               {{ t('order.cancel') }}
             </button>
-            <button type="submit" class="btn-primary">
-              {{ t('order.submit') }}
+            <button type="submit" class="btn-primary" :disabled="isLoading">
+              <span v-if="isLoading">{{ t('order.sending') }}</span>
+              <span v-else>{{ t('order.submit') }}</span>
             </button>
           </div>
         </form>
@@ -166,6 +170,9 @@
 import { ref, watch } from 'vue';
 
 const { t } = useI18n();
+
+const isLoading = ref(false);
+const errorMessage = ref('');
 
 const props = defineProps({
   isOpen: {
@@ -215,18 +222,71 @@ const resetForm = () => {
   isLegalEntity.value = false;
 };
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
+  // Конвертируем файл в base64, если он есть
+  let requisitesFile = null;
+  if (formData.value.requisites) {
+    try {
+      requisitesFile = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const base64 = reader.result.split(',')[1]; // Убираем префикс data:type;base64,
+          resolve({
+            fileName: formData.value.requisites.name,
+            fileData: base64,
+            fileType: formData.value.requisites.type
+          });
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(formData.value.requisites);
+      });
+    } catch (error) {
+      console.error('Ошибка конвертации файла:', error);
+      errorMessage.value = 'Ошибка при обработке файла. Пожалуйста, попробуйте еще раз.';
+      isLoading.value = false;
+      return;
+    }
+  }
+  
   const submitData = {
     productName: props.productName,
     isLegalEntity: isLegalEntity.value,
-    ...formData.value
+    companyName: formData.value.companyName,
+    contactPerson: formData.value.contactPerson,
+    fullName: formData.value.fullName,
+    phone: formData.value.phone,
+    email: formData.value.email,
+    message: formData.value.message,
+    requisites: requisitesFile
   };
   
-  emit('submit', submitData);
-  console.log('Заявка отправлена:', submitData);
-  // Здесь можно добавить отправку на сервер
+  isLoading.value = true;
+  errorMessage.value = '';
   
-  closeModal();
+  try {
+    // Отправляем данные на сервер
+    const response = await $fetch('/api/send-email', {
+      method: 'POST',
+      body: submitData
+    });
+    
+    if (response.success) {
+      emit('submit', submitData);
+      console.log('Заявка отправлена:', submitData);
+      closeModal();
+      
+      // Показываем уведомление об успехе
+      alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+    } else {
+      throw new Error(response.message || 'Ошибка при отправке заявки');
+    }
+  } catch (error) {
+    console.error('Ошибка отправки заявки:', error);
+    errorMessage.value = error.message || 'Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже.';
+    alert(errorMessage.value);
+  } finally {
+    isLoading.value = false;
+  }
 };
 
 // Закрытие по Escape
@@ -518,10 +578,26 @@ input:checked + .slider:before {
   color: #ffffff;
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not(:disabled) {
   background: #1565c0;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #fcc;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
 }
 
 @media (min-width: 768px) {

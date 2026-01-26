@@ -8,8 +8,8 @@
           </NuxtLink>
           <span>Мангистауская область, г.Актау, мкр.5а, зд.9, 7</span>
           <div class="cta-block">
-            <span class="muted">+77292203060</span>
-            <button class="btn ghost">Обратный звонок</button>
+            <a :href="`tel:${t('footer.phoneLink')}`" class="top-phone">{{ t('footer.phone') }}</a>
+            <NuxtLink to="/contacts" class="btn ghost">{{ t('header.callback') }}</NuxtLink>
           </div>
         </div>
       </div>
@@ -155,7 +155,7 @@
                 >{{ t('nav.contacts') }}</NuxtLink
               >
             </li>
-            <li>
+            <li v-if="isAdmin">
               <NuxtLink to="/admin/update-catalog" @click="closeMobileMenu"
                 >{{ t('nav.updateCatalog') }}</NuxtLink
               >
@@ -213,7 +213,8 @@
           <h4>{{ t('footer.contacts') }}</h4>
           <div class="contact-card">
             <span>{{ t('footer.address') }}</span>
-            <span>{{ t('footer.phone') }}</span>
+            <a :href="`tel:${t('footer.phoneLink')}`">{{ t('footer.phone') }}</a>
+            <a :href="`mailto:${t('footer.email')}`">{{ t('footer.email') }}</a>
             <span class="muted">{{ t('footer.workingHours') }}</span>
           </div>
         </div>
@@ -238,6 +239,13 @@ const isInformationActive = computed(() => {
 
 const isAboutActive = computed(() => {
   return route.path.startsWith('/about');
+});
+
+const isAdmin = computed(() => {
+  if (process.client) {
+    return localStorage.getItem('isAdmin') === 'true';
+  }
+  return false;
 });
 
 const toggleMobileMenu = () => {
