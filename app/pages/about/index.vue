@@ -1,5 +1,5 @@
 <template>
-  <div class="about-page">
+  <div class="about-page spacing">
     <!-- Hero Section -->
     <section class="section hero-section">
       <div class="card hero-card">

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="spacing">
     <section class="section">
       <div class="card">
         <h1>{{ t('services.title') }}</h1>

@@ -1,5 +1,5 @@
 <template>
-  <div class="catalog-page">
+  <div class="catalog-page spacing">
     <!-- <div class="catalog-header">
       <h1>Каталог товаров</h1>
       <p class="muted">

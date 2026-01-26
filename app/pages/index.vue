@@ -1,5 +1,47 @@
 <template>
   <div class="home-page">
+    <!-- Gazservice-7 Hero Section -->
+    <section class="gazservice-hero" :style="{ backgroundImage: `url(${mainBgImage})` }">
+      <div class="gazservice-hero-content">
+        <h1 class="gazservice-title">{{ t('home.heroTitle') }}</h1>
+        <h2 class="gazservice-subtitle">{{ t('home.heroSubtitle') }}</h2>
+        <p class="gazservice-description">{{ t('home.heroDescription') }}</p>
+        <div class="gazservice-cta">
+          <NuxtLink to="/about#advantages" class="btn gazservice-btn">{{ t('home.advantagesBtn') }}</NuxtLink>
+          <NuxtLink to="/contacts" class="btn gazservice-btn">{{ t('home.contactUsBtn') }}</NuxtLink>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Info Section -->
+    <section class="company-info section">
+      <div class="company-info-container">
+        <div class="company-images">
+          <div class="company-image-wrapper">
+            <img 
+              :src="equipmentImage" 
+              alt="Промышленное оборудование" 
+              class="company-image"
+            />
+          </div>
+          <div class="company-image-wrapper">
+            <img 
+              :src="productionImage" 
+              alt="Производство" 
+              class="company-image"
+            />
+          </div>
+        </div>
+        <div class="company-text">
+          <h2 class="company-title">{{ t('home.companyTitle') }}</h2>
+          <h3 class="company-subtitle">{{ t('home.companySubtitle') }}</h3>
+          <p class="company-description">{{ t('home.companyDescription1') }}</p>
+          <p class="company-description">{{ t('home.companyDescription2') }}</p>
+          <NuxtLink to="/about" class="btn company-btn">{{ t('home.moreDetailsBtn') }}</NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <!-- Hero Section -->
     <section class="hero section">
       <div class="hero-main card">
@@ -265,6 +307,12 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useI18n } from '@/composables/useI18n';
+import equipmentImage from '@/assets/company/equipment.jpg';
+import productionImage from '@/assets/company/production.jpg';
+import mainBgImage from '@/assets/company/main-bg.jpg';
+
 const { t } = useI18n();
 
 const categories = [
@@ -328,10 +376,247 @@ const benefits = computed(() => [
     desc: t('home.certifiedDesc'),
   },
 ]);
+
 </script>
 
 <style lang="scss" scoped>
 .home-page {
+  // Gazservice-7 Hero Section
+  .gazservice-hero {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(45, 45, 45, 0.9) 50%, rgba(26, 26, 26, 0.9) 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    padding: 80px 20px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.55) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .gazservice-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      margin: 0 auto;
+    }
+
+    .gazservice-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .gazservice-subtitle {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .gazservice-description {
+      font-size: 18px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 40px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gazservice-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .gazservice-btn {
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #1e88e5, #1565c0);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(30, 136, 229, 0.4);
+        background: linear-gradient(135deg, #2196f3, #1976d2);
+      }
+    }
+  }
+
+  // Company Info Section
+  .company-info {
+    background: white;
+    padding: 80px 20px;
+
+    .company-info-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .company-images {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .company-image-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    .company-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      min-height: 250px;
+      background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    }
+
+    .company-text {
+      padding: 20px 0;
+    }
+
+    .company-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: #1f2933;
+      margin-bottom: 12px;
+    }
+
+    .company-subtitle {
+      font-size: 24px;
+      font-weight: 600;
+      color: #52606d;
+      margin-bottom: 24px;
+    }
+
+    .company-description {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #1f2933;
+      margin-bottom: 20px;
+    }
+
+    .company-btn {
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #1e88e5, #1565c0);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 16px;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(30, 136, 229, 0.4);
+        background: linear-gradient(135deg, #2196f3, #1976d2);
+      }
+    }
+  }
+
+  @media (max-width: 968px) {
+    .company-info {
+      .company-info-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .company-images {
+        order: 2;
+      }
+
+      .company-text {
+        order: 1;
+      }
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .gazservice-hero {
+      min-height: 500px;
+      padding: 60px 20px;
+
+      .gazservice-title {
+        font-size: 36px;
+      }
+
+      .gazservice-subtitle {
+        font-size: 28px;
+      }
+
+      .gazservice-description {
+        font-size: 16px;
+      }
+
+      .gazservice-cta {
+        flex-direction: column;
+        align-items: stretch;
+
+        .gazservice-btn {
+          width: 100%;
+        }
+      }
+    }
+
+    .company-info {
+      padding: 60px 20px;
+
+      .company-title {
+        font-size: 28px;
+      }
+
+      .company-subtitle {
+        font-size: 20px;
+      }
+    }
+  }
 
   .hero {
     .hero-main {
@@ -616,7 +901,6 @@ const benefits = computed(() => [
 
 @media (max-width: 767.98px) {
   .home-page {
-    padding-top: 24px;
 
     .hero {
       .stats-grid {

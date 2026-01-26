@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-page">
+  <div class="admin-page spacing">
     <div class="card">
       <h1>{{ t('admin.title') }}</h1>
       <p class="muted">

@@ -1,5 +1,5 @@
 <template>
-  <div class="questionnaire-page">
+  <div class="questionnaire-page spacing">
     <div class="google-form-container">
       <iframe
         :src="formUrl"
@@ -15,6 +15,9 @@
     </div>
   </div>
 </template>
+
+
+
 
 <script setup>
 import { ref, onMounted } from 'vue';

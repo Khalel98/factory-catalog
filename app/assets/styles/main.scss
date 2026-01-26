@@ -192,6 +192,7 @@ body {
   background: $bg;
   color: $text;
   line-height: 1.6;
+  overflow-x: hidden;
 
   &.menu-open {
     overflow: hidden;
@@ -268,6 +269,11 @@ table {
   }
 }
 
+
+  .spacing{
+    padding: 48px 0;
+  }
+
 // Утилиты
 .container,
 ._container {
@@ -323,6 +329,14 @@ table {
   .logo {
     color: $white;
     font-size: 20px;
+    display: flex;
+    align-items: center;
+    
+    .logo-img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
   }
 }
 
@@ -343,6 +357,17 @@ table {
   color: $primary;
   text-decoration: none;
   flex-shrink: 0;
+  align-items: center;
+  
+  .nav-logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  @media (max-width: $md3) {
+    display: flex;
+  }
 }
 
 .main-nav {
@@ -380,6 +405,14 @@ table {
   font-size: 22px;
   letter-spacing: 0.4px;
   color: $primary;
+  display: flex;
+  align-items: center;
+  
+  .logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
 }
 
 // Мобильное меню
@@ -631,11 +664,6 @@ table {
   }
 }
 
-// Основной контент
-main {
-  padding-top: 48px !important;
-  padding-bottom: 48px !important;
-}
 
 .section {
   margin-bottom: 48px;
@@ -726,6 +754,17 @@ main {
 
   h4 {
     margin: 0 0 10px;
+  }
+
+  .footer-logo {
+    display: inline-block;
+    margin-bottom: 16px;
+    
+    .footer-logo-img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+    }
   }
 }
 
@@ -960,10 +999,6 @@ main {
 }
 
 @media (max-width: $md3) {
-  main {
-    padding-top: 32px !important;
-    padding-bottom: 40px;
-  }
 
   .nav-bar {
     flex-wrap: nowrap;
@@ -994,6 +1029,10 @@ main {
   .nav-actions {
     display: none;
   }
+
+
+
+
 
   .mobile-menu-toggle {
     display: flex;

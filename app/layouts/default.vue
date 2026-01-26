@@ -3,17 +3,21 @@
     <header class="site-header">
       <div class="top-bar">
         <div class="container">
-          <NuxtLink to="/" class="logo">ФАРМЭК</NuxtLink>
-          <span>г. Минск, ул. Жилуновича 2В — офис-склад</span>
+          <NuxtLink to="/" class="logo">
+            <img :src="logoImage" alt="Газсервис-7" class="logo-img" />
+          </NuxtLink>
+          <span>Мангистауская область, г.Актау, мкр.5а, зд.9, 7</span>
           <div class="cta-block">
-            <span class="muted">Отдел продаж: +375 (17) 252-22-11</span>
+            <span class="muted">+77292203060</span>
             <button class="btn ghost">Обратный звонок</button>
           </div>
         </div>
       </div>
 
       <div class="container nav-bar">
-        <NuxtLink to="/" class="nav-logo">ФАРМЭК</NuxtLink>
+        <NuxtLink to="/" class="nav-logo">
+          <img :src="logoImage" alt="Газсервис-7" class="nav-logo-img" />
+        </NuxtLink>
         <nav
           class="main-nav"
           :class="{ 'mobile-open': isMobileMenuOpen }"
@@ -78,11 +82,6 @@
                 <li>
                   <NuxtLink to="/information/videos" @click="closeMobileMenu">
                     {{ t('nav.videos') }}
-                  </NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/information/catalogs" @click="closeMobileMenu">
-                    {{ t('nav.catalogs') }}
                   </NuxtLink>
                 </li>
                 <li>
@@ -191,7 +190,9 @@
     <footer class="footer">
       <div class="container footer-columns">
         <div>
-          <h4>{{ t('footer.title') }}</h4>
+          <NuxtLink to="/" class="footer-logo">
+            <img :src="logoImage" alt="Газсервис-7" class="footer-logo-img" />
+          </NuxtLink>
           <p class="muted">
             {{ t('footer.description') }}
           </p>
@@ -211,18 +212,9 @@
         <div>
           <h4>{{ t('footer.contacts') }}</h4>
           <div class="contact-card">
-            <span>sales@pharmec.by</span>
-            <span>+375 (17) 252-22-11 ({{ t('footer.sales') }})</span>
+            <span>{{ t('footer.address') }}</span>
+            <span>{{ t('footer.phone') }}</span>
             <span class="muted">{{ t('footer.workingHours') }}</span>
-          </div>
-        </div>
-        <div>
-          <h4>{{ t('footer.social') }}</h4>
-          <div class="list">
-            <a href="https://www.youtube.com" target="_blank" rel="noopener"
-              >{{ t('footer.youtube') }}</a
-            >
-            <a href="https://t.me" target="_blank" rel="noopener">{{ t('footer.telegram') }}</a>
           </div>
         </div>
       </div>
@@ -231,7 +223,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
+import logoImage from '@/assets/company/logo.svg';
 
 const { t } = useI18n();
 const route = useRoute();
