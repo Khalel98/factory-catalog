@@ -15,13 +15,16 @@
 
     <div class="container nav-bar">
       <NuxtLink to="/" class="nav-logo">
-        <img :src="logoImage" alt="Газсервис-7" class="nav-logo-img" />
+        <img :src="logoIcon" alt="Газсервис-7" class="nav-logo-img" :style="{ fill: 'red' }"/>
       </NuxtLink>
       <nav
         class="main-nav"
         :class="{ 'mobile-open': isMobileMenuOpen }"
         aria-label="Основная навигация"
       >
+        <div class="mobile-lang" :aria-label="t('header.selectLanguage')">
+          <LanguageSwitcher />
+        </div>
         <ul>
           <li>
             <NuxtLink to="/" @click="closeMobileMenu">{{ t('nav.home') }}</NuxtLink>
@@ -181,6 +184,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import logoImage from '@/assets/company/logo.svg';
+import logoIcon from '@/assets/company/logo-icon.svg';
 
 const { t } = useI18n();
 const route = useRoute();

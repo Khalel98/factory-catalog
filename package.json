@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "googleapis": "^170.0.0",
+    "nodemailer": "^7.0.12",
     "nuxt": "^4.2.2",
     "ofetch": "^1.5.1",
     "quill": "^2.0.3",

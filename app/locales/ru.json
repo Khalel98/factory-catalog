@@ -12,7 +12,8 @@
     "updateCatalog": "Обновить каталог"
   },
   "header": {
-    "callback": "Обратный звонок"
+    "callback": "Обратный звонок",
+    "selectLanguage": "Выбор языка"
   },
   "footer": {
     "title": "Газсервис-7",

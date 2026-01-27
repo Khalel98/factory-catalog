@@ -12,7 +12,8 @@
     "updateCatalog": "Update Catalog"
   },
   "header": {
-    "callback": "Callback"
+    "callback": "Callback",
+    "selectLanguage": "Select language"
   },
   "footer": {
     "title": "Gazservice-7",

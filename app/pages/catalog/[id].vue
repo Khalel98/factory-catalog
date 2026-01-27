@@ -290,6 +290,7 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 0; /* сжатие в grid на узких экранах */
 }
 
 .product-detail-page {
@@ -301,6 +302,7 @@ onMounted(async () => {
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
+  min-width: 0; /* не даёт гриду растягивать страницу на узких экранах */
 }
 
 .product-tabs-section {
@@ -311,6 +313,8 @@ onMounted(async () => {
 
 .product-gallery-section {
   position: static;
+  min-width: 0; /* позволяет сжиматься в grid на узких экранах */
+  overflow: hidden;
 }
 
 .product-info-section {
@@ -456,6 +460,7 @@ onMounted(async () => {
 
   .product-gallery-section {
     position: static;
+    min-width: 0;
   }
 
   .product-tabs-section {

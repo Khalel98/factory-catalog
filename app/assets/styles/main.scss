@@ -294,7 +294,7 @@ table {
   
   .nav-bar.container {
     @media (max-width: $md3) {
-      padding-right: 0;
+      padding: 18px;  
     }
   }
 }
@@ -324,6 +324,10 @@ table {
     align-items: center;
     gap: 12px;
     flex-wrap: wrap;
+
+    @media (max-width: $md2) {
+      justify-content: center;
+    }
   }
 
   .logo {
@@ -364,7 +368,7 @@ table {
   align-items: center;
   justify-content: center;
   gap: 24px;
-  padding: 18px 0;
+  padding: 18px;
   position: relative;
 }
 
@@ -383,6 +387,7 @@ table {
     width: auto;
     object-fit: contain;
   }
+
   
   @media (max-width: $md3) {
     display: flex;
@@ -394,6 +399,10 @@ table {
   // display: flex;
   // align-items: center;
   // justify-content: center;
+}
+
+.main-nav .mobile-lang {
+  display: none;
 }
 
 .nav-actions {
@@ -514,6 +523,7 @@ table {
     display: flex;
     align-items: center;
     gap: 6px;
+    white-space: nowrap;
 
     &.router-link-active {
       background: $primary-light;
@@ -549,6 +559,7 @@ table {
   }
 
   .submenu-toggle {
+    white-space: nowrap;
     flex: 1;
   }
 
@@ -1034,19 +1045,15 @@ table {
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
-    padding: 14px 0;
+    padding: 14px;
     position: relative;
     gap: 16px;
     overflow: visible;
-    
-    &.container {
-      padding-right: 0;
-    }
   }
 
-  .nav-logo {
-    display: none;
-  }
+  // .nav-logo {
+  //   display: none;
+  // }
 
   .main-nav {
     display: none;
@@ -1078,6 +1085,8 @@ table {
   }
 
   .top-bar {
+    display: none;
+
     .container {
       justify-content: center;
       flex-direction: column;
@@ -1127,6 +1136,15 @@ table {
 
     &.mobile-open {
       transform: translateX(0);
+    }
+
+    .mobile-lang {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid $border;
     }
 
     ul {
@@ -1257,12 +1275,8 @@ table {
   }
 
   .nav-bar {
-    padding: 12px 0;
+    padding: 12px;
     gap: 12px;
-    
-    &.container {
-      padding-right: 0;
-    }
   }
 
   .nav-logo {

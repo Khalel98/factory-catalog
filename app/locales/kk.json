@@ -12,7 +12,8 @@
     "updateCatalog": "Каталогты жаңарту"
   },
   "header": {
-    "callback": "Қайта қоңырау"
+    "callback": "Қайта қоңырау",
+    "selectLanguage": "Тілді таңдау"
   },
   "footer": {
     "title": "Газсервис-7",

@@ -232,15 +232,20 @@ const handleImagesSaved = (newImages) => {
 
 <style lang="scss" scoped>
 .product-gallery {
-  width: 400px;
+  width: 100%;
   max-width: 400px;
+  min-width: 0; /* позволяет сжиматься внутри grid/flex */
   margin: 0 auto;
   position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .gallery-main {
   margin-bottom: 16px;
   position: relative;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .edit-gallery-btn {
@@ -269,16 +274,19 @@ const handleImagesSaved = (newImages) => {
 }
 
 .product-gallery-empty {
-  width: 400px;
+  width: 100%;
   max-width: 400px;
+  min-width: 0;
   margin: 0 auto;
-  min-height: 400px;
+  min-height: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f5f5f5;
   border-radius: 12px;
   border: 2px dashed #d1d5db;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .btn-add-images {
@@ -304,6 +312,8 @@ const handleImagesSaved = (newImages) => {
 
 .main-swiper {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
@@ -327,6 +337,8 @@ const handleImagesSaved = (newImages) => {
 
 .gallery-thumbs {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .thumbs-swiper {
@@ -441,9 +453,12 @@ const handleImagesSaved = (newImages) => {
 }
 
 .product-gallery-loading {
-  width: 400px;
+  width: 100%;
   max-width: 400px;
+  min-width: 0;
   margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .loading-placeholder {
@@ -491,6 +506,38 @@ const handleImagesSaved = (newImages) => {
 @media (max-width: 768px) {
   :deep(.thumbs-swiper .swiper-slide) {
     width: 80px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-gallery,
+  .product-gallery-empty,
+  .product-gallery-loading {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .product-gallery-empty {
+    min-height: 260px;
+  }
+
+  .loading-placeholder {
+    height: 280px;
+  }
+
+  /* Миниатюры: меньше слайды, чтобы влезали на узком экране */
+  :deep(.thumbs-swiper .swiper-slide) {
+    width: 60px !important;
+  }
+
+  .thumbs-swiper {
+    height: 52px;
+  }
+
+  /* Swiper-контейнеры не должны растягивать сетку */
+  .main-swiper :deep(.swiper-wrapper),
+  .main-swiper :deep(.swiper-slide) {
+    min-width: 0;
   }
 }
 
@@ -556,20 +603,20 @@ const handleImagesSaved = (newImages) => {
   }
 }
 
-/* Fullscreen navigation buttons */
+/* Fullscreen navigation buttons — синие для контраста на светлом фоне */
 .fullscreen-overlay :deep(.swiper-button-next),
 .fullscreen-overlay :deep(.swiper-button-prev) {
   width: 48px;
   height: 48px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(30, 136, 229, 0.9);
+  border: 2px solid #1e88e5;
   border-radius: 50%;
   color: white;
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: #1565c0;
+    border-color: #1565c0;
     transform: scale(1.1);
   }
 
