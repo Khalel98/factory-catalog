@@ -16,21 +16,12 @@
     <!-- Company Info Section -->
     <section class="company-info section">
       <div class="company-info-container">
-        <div class="company-images">
-          <div class="company-image-wrapper">
-            <img 
-              :src="equipmentImage" 
-              alt="Промышленное оборудование" 
-              class="company-image"
-            />
-          </div>
-          <div class="company-image-wrapper">
-            <img 
-              :src="productionImage" 
-              alt="Производство" 
-              class="company-image"
-            />
-          </div>
+        <div class="company-image-wrapper">
+          <img 
+            :src="productionImage" 
+            alt="Производство" 
+            class="company-image"
+          />
         </div>
         <div class="company-text">
           <h2 class="company-title">{{ t('home.companyTitle') }}</h2>
@@ -269,47 +260,12 @@
         </div>
       </div>
     </section>
-
-    <!-- Benefits Section -->
-    <section class="section benefits-section">
-      <h2 class="section-title">{{ t('home.whyChoose') }}</h2>
-      <div class="grid benefits-grid">
-        <div v-for="(item, index) in benefits" :key="item.title" class="card benefit-card">
-          <div class="benefit-icon" :style="{ '--delay': index * 0.1 + 's' }">
-            <svg v-if="index === 0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-              <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
-            <svg v-else-if="index === 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-            <svg v-else-if="index === 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-            <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12l2 2 4-4"></path>
-              <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
-              <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
-              <path d="M12 21c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
-              <path d="M12 3c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
-            </svg>
-          </div>
-          <h3>{{ item.title }}</h3>
-          <p class="muted">{{ item.desc }}</p>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useI18n } from '@/composables/useI18n';
-import equipmentImage from '@/assets/company/equipment.jpg';
 import productionImage from '@/assets/company/production.jpg';
 import mainBgImage from '@/assets/company/main-bg.jpg';
 
@@ -357,25 +313,6 @@ const categories = [
     desc: "Приборы, снятые с производства, с поддержкой и сервисом.",
   },
 ];
-
-const benefits = computed(() => [
-  {
-    title: t('home.ownDevelopment'),
-    desc: t('home.ownDesc'),
-  },
-  {
-    title: t('home.fullCycle'),
-    desc: t('home.fullCycleDesc'),
-  },
-  {
-    title: t('home.experience30'),
-    desc: t('home.experienceDesc'),
-  },
-  {
-    title: t('home.certified'),
-    desc: t('home.certifiedDesc'),
-  },
-]);
 
 </script>
 
@@ -475,34 +412,28 @@ const benefits = computed(() => [
 
   // Company Info Section
   .company-info {
-    background: white;
-    padding: 80px 20px;
+    background: transparent;
+    padding: 60px 20px;
 
     .company-info-container {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
       align-items: center;
-    }
-
-    .company-images {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
     }
 
     .company-image-wrapper {
       position: relative;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
 
       &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        transform: translateY(-6px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
       }
     }
 
@@ -511,38 +442,39 @@ const benefits = computed(() => [
       height: auto;
       display: block;
       object-fit: cover;
-      min-height: 250px;
-      background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+      min-height: 300px;
     }
 
     .company-text {
-      padding: 20px 0;
+      padding: 0;
     }
 
     .company-title {
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 700;
       color: #1f2933;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      line-height: 1.3;
     }
 
     .company-subtitle {
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 600;
       color: #52606d;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      line-height: 1.4;
     }
 
     .company-description {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #1f2933;
-      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #52606d;
+      margin-bottom: 16px;
     }
 
     .company-btn {
-      padding: 14px 32px;
-      font-size: 16px;
+      padding: 12px 28px;
+      font-size: 14px;
       font-weight: 600;
       background: linear-gradient(135deg, #1e88e5, #1565c0);
       color: white;
@@ -551,7 +483,7 @@ const benefits = computed(() => [
       transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
-      margin-top: 16px;
+      margin-top: 12px;
 
       &:hover {
         transform: translateY(-2px);
@@ -565,10 +497,10 @@ const benefits = computed(() => [
     .company-info {
       .company-info-container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 35px;
       }
 
-      .company-images {
+      .company-image-wrapper {
         order: 2;
       }
 
@@ -606,14 +538,27 @@ const benefits = computed(() => [
     }
 
     .company-info {
-      padding: 60px 20px;
+      padding: 40px 20px;
+
+      .company-info-container {
+        gap: 30px;
+      }
 
       .company-title {
-        font-size: 28px;
+        font-size: 24px;
       }
 
       .company-subtitle {
-        font-size: 20px;
+        font-size: 16px;
+      }
+
+      .company-description {
+        font-size: 13px;
+      }
+
+      .company-btn {
+        padding: 10px 24px;
+        font-size: 13px;
       }
     }
   }
@@ -818,74 +763,6 @@ const benefits = computed(() => [
     }
   }
 
-  .benefits-section {
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 32px;
-      font-weight: 700;
-      background: linear-gradient(135deg, #1f2933, #52606d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .benefits-grid {
-      gap: 24px;
-    }
-
-    .benefit-card {
-      text-align: center;
-      padding: 32px 24px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #1e88e5, #1565c0);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-      }
-
-      &:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 16px 48px rgba(30, 136, 229, 0.2);
-
-        &::before {
-          transform: scaleX(1);
-        }
-
-        .benefit-icon {
-          transform: scale(1.1) rotate(5deg);
-        }
-      }
-    }
-
-    .benefit-icon {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, rgba(30, 136, 229, 0.1), rgba(30, 136, 229, 0.05));
-      border-radius: 18px;
-      color: #1e88e5;
-      transition: all 0.3s ease;
-      animation: fadeInUp 0.6s ease var(--delay, 0s) both;
-
-      svg {
-        width: 36px;
-        height: 36px;
-      }
-    }
-  }
 }
 
 @keyframes fadeInUp {
@@ -925,16 +802,6 @@ const benefits = computed(() => [
       }
     }
 
-    .benefits-section {
-      .section-title {
-        font-size: 24px;
-        margin-bottom: 24px;
-      }
-
-      .benefit-card {
-        padding: 24px 18px;
-      }
-    }
   }
 }
 </style>

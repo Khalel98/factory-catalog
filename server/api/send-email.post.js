@@ -1,17 +1,23 @@
 import nodemailer from 'nodemailer';
+import { readFile } from 'fs/promises';
+import { join } from 'path';
 
 export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
     
-    // Получаем настройки из переменных окружения
-    const gmailUser = process.env.GMAIL_USER || '';
-    const gmailAppPassword = process.env.GMAIL_APP_PASSWORD || '';
-    const recipientEmail = 'khalel.demeuov@gmail.com';
+    // Получаем настройки из google-sheets-credentials.json
+    const credentialsPath = join(process.cwd(), 'google-sheets-credentials.json');
+    const credentialsData = await readFile(credentialsPath, 'utf-8');
+    const config = JSON.parse(credentialsData);
+    
+    const gmailUser = config.gmail_user || '';
+    const gmailAppPassword = config.gmail_app_password || '';
+    const recipientEmail = config.recipient_email || 'khalel.demeuov@gmail.com';
     
     // Проверяем наличие необходимых переменных
     if (!gmailUser || !gmailAppPassword) {
-      throw new Error('Gmail credentials not configured. Please set GMAIL_USER and GMAIL_APP_PASSWORD in .env file');
+      throw new Error('Gmail credentials not configured. Please set gmail_user and gmail_app_password in google-sheets-credentials.json file');
     }
     
     // Создаем транспорт для отправки email

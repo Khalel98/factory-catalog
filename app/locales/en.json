@@ -28,13 +28,13 @@
     "address": "Republic of Kazakhstan, Mangystau region, 130000, Aktau city, 5 A, building 9, office 7, BC «Caspian Grand»",
     "phone": "8 (7292) 20-30-60",
     "phoneLink": "+77292203060",
-    "email": "info@gazservice7.kz",
+    "email": "Gazservice-7@mail.ru",
     "workingHours": "Mon–Fri: 09:00–17:00"
   },
   "home": {
     "heroTitle": "Gazservice-7",
     "heroSubtitle": "Your reliable partner",
-    "heroDescription": "LLP «Gazservice-7» is an official distributor and reliable supplier in the Republic of Kazakhstan of modern gas analytical products manufactured by NPP «PHARMEC». Since 2003, we have been successfully working in key industries: oil and gas, mining, energy and other areas.",
+    "heroDescription": "LLP «Gazservice-7» is an official distributor and reliable supplier in the Republic of Kazakhstan of modern gas analytical products manufactured by NPP «PHARMEC».",
     "advantagesBtn": "ADVANTAGES",
     "contactUsBtn": "CONTACT US",
     "companyTitle": "LLP «Gazservice-7»",
@@ -67,16 +67,7 @@
     "news": "News and Updates",
     "newsDesc": "New FP23, FP34 lines and FT04 gas leak indicators are now available for order and delivery.",
     "catalogCategories": "Catalog Categories",
-    "catalogDesc": "Equipment for monitoring gas contamination and safety.",
-    "whyChoose": "Why Choose Us",
-    "ownDevelopment": "Own Development and Production",
-    "ownDesc": "All devices are manufactured in compliance with metrological requirements.",
-    "fullCycle": "Full Service Cycle",
-    "fullCycleDesc": "Calibration and technical support 24/7.",
-    "experience30": "30+ Years Experience",
-    "experienceDesc": "Tens of thousands of deliveries, solutions for industry and utilities.",
-    "certified": "Certified Equipment",
-    "certifiedDesc": "Documentation confirming compliance with standards."
+    "catalogDesc": "Equipment for monitoring gas contamination and safety."
   },
   "catalog": {
     "title": "Product Catalog",
@@ -106,7 +97,7 @@
     "sales": "Sales Department",
     "phone": "8 (7292) 20-30-60",
     "phoneLink": "+77292203060",
-    "email": "info@gazservice7.kz",
+    "email": "Gazservice-7@mail.ru",
     "schedule": "Working Hours",
     "scheduleText": "Mon–Fri: 09:00–17:00",
     "lunch": "Lunch: 12:00–13:00",
