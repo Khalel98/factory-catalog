@@ -6,8 +6,7 @@
       :aria-label="'Select language'"
     >
       <option value="ru">RU</option>
-      <option value="en">EN</option>
-      <option value="kk">KK</option>
+      <option value="kk">KZ</option>
     </select>
   </div>
 </template>
@@ -28,7 +27,7 @@ const currentLocale = computed({
 onMounted(() => {
   try {
     const savedLocale = localStorage.getItem('locale');
-    if (savedLocale && (savedLocale === 'ru' || savedLocale === 'en' || savedLocale === 'kk')) {
+    if (savedLocale && (savedLocale === 'ru' || savedLocale === 'kk')) {
       if (savedLocale !== locale.value) {
         setLocale(savedLocale);
       }

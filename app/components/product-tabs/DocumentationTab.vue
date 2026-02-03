@@ -83,11 +83,6 @@
                 class="input"
               />
               <input
-                v-model="block.title.en"
-                placeholder="English"
-                class="input"
-              />
-              <input
                 v-model="block.title.kk"
                 placeholder="Қазақша"
                 class="input"
@@ -115,11 +110,6 @@
                 <input
                   v-model="doc.name.ru"
                   placeholder="Русский"
-                  class="input"
-                />
-                <input
-                  v-model="doc.name.en"
-                  placeholder="English"
                   class="input"
                 />
                 <input
@@ -215,12 +205,12 @@ const isAdmin = computed(() => {
 
 const getBlockTitle = (block) => {
   if (!block || !block.title) return 'Без названия';
-  return block.title[locale.value] || block.title.ru || block.title.en || block.title.kk || 'Без названия';
+  return block.title[locale.value] || block.title.ru || block.title.kk || 'Без названия';
 };
 
 const getDocumentName = (doc) => {
   if (!doc || !doc.name) return 'Документ';
-  return doc.name[locale.value] || doc.name.ru || doc.name.en || doc.name.kk || 'Документ';
+  return doc.name[locale.value] || doc.name.ru || doc.name.kk || 'Документ';
 };
 
 const startEditing = () => {
@@ -244,7 +234,7 @@ const cancelEditing = () => {
 
 const addBlock = () => {
   editingData.value.blocks.push({
-    title: { ru: '', en: '', kk: '' },
+    title: { ru: '', kk: '' },
     documents: [],
   });
 };
@@ -255,7 +245,7 @@ const removeBlock = (blockIndex) => {
 
 const addDocument = (blockIndex) => {
   editingData.value.blocks[blockIndex].documents.push({
-    name: { ru: '', en: '', kk: '' },
+    name: { ru: '', kk: '' },
     url: '',
     path: '',
     fileName: '',
@@ -304,7 +294,7 @@ const saveDocumentation = async () => {
     for (const block of editingData.value.blocks) {
       if (!block) continue;
       
-      if (!block.title || (!block.title.ru && !block.title.en && !block.title.kk)) {
+      if (!block.title || (!block.title.ru && !block.title.kk)) {
         alert('Пожалуйста, заполните название блока хотя бы на одном языке');
         isSaving.value = false;
         return;
@@ -317,7 +307,7 @@ const saveDocumentation = async () => {
       for (const doc of block.documents) {
         if (!doc) continue;
         
-        if (!doc.name || (!doc.name.ru && !doc.name.en && !doc.name.kk)) {
+        if (!doc.name || (!doc.name.ru && !doc.name.kk)) {
           alert('Пожалуйста, заполните название документа хотя бы на одном языке');
           isSaving.value = false;
           return;
@@ -424,10 +414,10 @@ const saveDocumentation = async () => {
         if (!block) return false;
         // Удаляем пустые документы из блока
         block.documents = block.documents.filter(doc => 
-          doc && (doc.name.ru || doc.name.en || doc.name.kk) && (doc.url || doc.fileData)
+          doc && (doc.name.ru || doc.name.kk) && (doc.url || doc.fileData)
         );
         // Оставляем блок, если у него есть название и хотя бы один документ
-        return (block.title.ru || block.title.en || block.title.kk) && block.documents.length > 0;
+        return (block.title.ru || block.title.kk) && block.documents.length > 0;
       });
 
     const response = await $fetch('/api/update-documentation', {

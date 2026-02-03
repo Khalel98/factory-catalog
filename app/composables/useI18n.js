@@ -1,10 +1,8 @@
 import ru from '@/locales/ru.json';
-import en from '@/locales/en.json';
 import kk from '@/locales/kk.json';
 
 const translations = {
   ru,
-  en,
   kk
 };
 
@@ -52,6 +50,6 @@ export const useI18n = () => {
     t,
     locale: currentLocale,
     setLocale,
-    availableLocales: ['ru', 'en', 'kk']
+    availableLocales: ['ru', 'kk']
   };
 };

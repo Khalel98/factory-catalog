@@ -15,7 +15,7 @@ import { join } from "path";
 export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
-    const { text, fromLang = 'ru', toLang = 'en' } = body;
+    const { text, fromLang = 'ru', toLang = 'kk' } = body;
 
     if (!text || !text.trim()) {
       throw createError({
@@ -27,14 +27,13 @@ export default defineEventHandler(async (event) => {
     // Поддерживаемые языки
     const supportedLangs = {
       ru: 'ru',
-      en: 'en',
       kk: 'kk', // Казахский
     };
 
     if (!supportedLangs[fromLang] || !supportedLangs[toLang]) {
       throw createError({
         statusCode: 400,
-        statusMessage: `Неподдерживаемый язык. Поддерживаются: ru, en, kk`,
+        statusMessage: `Неподдерживаемый язык. Поддерживаются: ru, kk`,
       });
     }
 
@@ -87,7 +86,6 @@ export default defineEventHandler(async (event) => {
     // Маппинг языков для Google Translate API
     const langMap = {
       ru: 'ru',
-      en: 'en',
       kk: 'kk', // Google Translate поддерживает казахский
     };
 

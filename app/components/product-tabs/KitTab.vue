@@ -38,7 +38,6 @@
                   class="language-selector"
                 >
                   <option value="ru">🇷🇺 Русский</option>
-                  <option value="en">🇬🇧 English</option>
                   <option value="kk">🇰🇿 Қазақша</option>
                 </select>
                 <button
@@ -94,7 +93,6 @@
                   class="language-selector"
                 >
                   <option value="ru">🇷🇺 Русский</option>
-                  <option value="en">🇬🇧 English</option>
                   <option value="kk">🇰🇿 Қазақша</option>
                 </select>
                 <button
@@ -151,10 +149,6 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  kitEN: {
-    type: String,
-    default: "",
-  },
   kitKK: {
     type: String,
     default: "",
@@ -176,7 +170,6 @@ const savedHtml = ref("");
 const selectedLanguage = ref("ru");
 const kits = ref({
   ru: "",
-  en: "",
   kk: "",
 });
 const previousLanguage = ref("ru");
@@ -199,7 +192,6 @@ const hasKit = computed(() => {
     savedHtml.value ||
     (props.kit && props.kit.trim() !== "") ||
     (props.kitRU && props.kitRU.trim() !== "") ||
-    (props.kitEN && props.kitEN.trim() !== "") ||
     (props.kitKK && props.kitKK.trim() !== "")
   );
 });
@@ -213,9 +205,6 @@ const getCurrentKit = () => {
 
   // Иначе используем комплект поставки в зависимости от текущего языка интерфейса
   const currentLang = locale.value;
-  if (currentLang === "en" && props.kitEN) {
-    return props.kitEN;
-  }
   if (currentLang === "kk" && props.kitKK) {
     return props.kitKK;
   }
@@ -226,15 +215,12 @@ const getCurrentKit = () => {
 // Функция для обновления описаний из пропсов
 const updateKitsFromProps = () => {
   kits.value.ru = props.kitRU || "";
-  kits.value.en = props.kitEN || "";
   kits.value.kk = props.kitKK || "";
 
   // Логируем для отладки
   console.log("updateKitsFromProps:", {
     ru: kits.value.ru.substring(0, 50),
-    en: kits.value.en.substring(0, 50),
     kk: kits.value.kk.substring(0, 50),
-    propsEN: props.kitEN?.substring(0, 50),
   });
 
   // Если есть общее комплект поставки, используем его для текущего языка, если для него нет отдельного
@@ -259,7 +245,6 @@ onMounted(() => {
 watch(
   () => [
     props.kitRU,
-    props.kitEN,
     props.kitKK,
     props.kit,
   ],
@@ -320,8 +305,6 @@ const openHtmlDialog = () => {
   if (!existingHtml || existingHtml.trim() === "") {
     if (htmlDialogLanguage.value === "ru") {
       existingHtml = props.kitRU || "";
-    } else if (htmlDialogLanguage.value === "en") {
-      existingHtml = props.kitEN || "";
     } else if (htmlDialogLanguage.value === "kk") {
       existingHtml = props.kitKK || "";
     }
@@ -535,8 +518,6 @@ const loadContentForLanguage = (lang) => {
   if (!content || content.trim() === "") {
     if (lang === "ru") {
       content = props.kitRU || "";
-    } else if (lang === "en") {
-      content = props.kitEN || "";
     } else if (lang === "kk") {
       content = props.kitKK || "";
     }
@@ -613,7 +594,7 @@ const translateKit = async () => {
   ) {
     const confirmOverwrite = confirm(
       `Уже есть перевод на ${
-        selectedLanguage.value === "en" ? "английский" : "казахский"
+        "казахский"
       }. Перевести заново?`
     );
     if (!confirmOverwrite) {

@@ -133,12 +133,6 @@ export default defineEventHandler(async (event) => {
       nameRUIndex = headers.findIndex((h) => h?.toLowerCase() === "name");
     }
     
-    // Ищем NameEN
-    const nameENIndex = headers.findIndex((h) => {
-      const lower = h?.toLowerCase();
-      return lower === "nameen" || lower === "name_en";
-    });
-    
     // Ищем NameKK
     const nameKKIndex = headers.findIndex((h) => {
       const lower = h?.toLowerCase();
@@ -150,14 +144,12 @@ export default defineEventHandler(async (event) => {
       const row = rows[i];
       const id = row[idIndex]?.trim();
       const nameRU = row[nameRUIndex]?.trim() || row[1]?.trim();
-      const nameEN = row[nameENIndex]?.trim() || "";
       const nameKK = row[nameKKIndex]?.trim() || "";
       
       if (id && nameRU) {
         result.categories.push({
           id: id,
           nameRU: nameRU,
-          nameEN: nameEN || nameRU, // Если нет перевода, используем русское
           nameKK: nameKK || nameRU, // Если нет перевода, используем русское
         });
       }
@@ -218,11 +210,6 @@ export default defineEventHandler(async (event) => {
           h?.toLowerCase() === "generalinforu" ||
           h?.toLowerCase() === "general_info_ru"
       );
-      const generalInfoENIndex = headers.findIndex(
-        (h) =>
-          h?.toLowerCase() === "generalinfoen" ||
-          h?.toLowerCase() === "general_info_en"
-      );
       const generalInfoKKIndex = headers.findIndex(
         (h) =>
           h?.toLowerCase() === "generalinfokk" ||
@@ -251,12 +238,6 @@ export default defineEventHandler(async (event) => {
         );
       }
       
-      const descriptionENIndex = headers.findIndex(
-        (h) => {
-          const lower = h?.toLowerCase() || "";
-          return lower === "descriptionhtmlen" || lower === "description_html_en";
-        }
-      );
       const descriptionKKIndex = headers.findIndex(
         (h) => {
           const lower = h?.toLowerCase() || "";
@@ -281,12 +262,6 @@ export default defineEventHandler(async (event) => {
             lower === "kithtml" ||
             lower === "kit_html"
           );
-        }
-      );
-      const kitENIndex = headers.findIndex(
-        (h) => {
-          const lower = h?.toLowerCase() || "";
-          return lower === "kiten" || lower === "kithtmlen" || lower === "kit_html_en";
         }
       );
       const kitKKIndex = headers.findIndex(
@@ -342,17 +317,14 @@ export default defineEventHandler(async (event) => {
           
           // Локализованные поля: GeneralInfo
           generalInfoRU: [],
-          generalInfoEN: [],
           generalInfoKK: [],
           
           // Локализованные поля: DescriptionHTML
           descriptionRU: "",
-          descriptionEN: "",
           descriptionKK: "",
           
           // Локализованные поля: KitHTML
           kitRU: "",
-          kitEN: "",
           kitKK: "",
           
           // JSON поля
@@ -391,39 +363,27 @@ export default defineEventHandler(async (event) => {
         };
 
         product.generalInfoRU = parseGeneralInfo(generalInfoRUIndex);
-        product.generalInfoEN = parseGeneralInfo(generalInfoENIndex);
         product.generalInfoKK = parseGeneralInfo(generalInfoKKIndex);
         
         // Если нет локализованных полей, используем русские для всех
-        if (product.generalInfoEN.length === 0) {
-          product.generalInfoEN = product.generalInfoRU;
-        }
         if (product.generalInfoKK.length === 0) {
           product.generalInfoKK = product.generalInfoRU;
         }
 
         // Описания для каждого языка
         product.descriptionRU = row[descriptionRUIndex]?.trim() || "";
-        product.descriptionEN = row[descriptionENIndex]?.trim() || "";
         product.descriptionKK = row[descriptionKKIndex]?.trim() || "";
         
         // Если нет локализованных полей, используем русские для всех
-        if (!product.descriptionEN) {
-          product.descriptionEN = product.descriptionRU;
-        }
         if (!product.descriptionKK) {
           product.descriptionKK = product.descriptionRU;
         }
 
         // Kit для каждого языка
         product.kitRU = row[kitRUIndex]?.trim() || "";
-        product.kitEN = row[kitENIndex]?.trim() || "";
         product.kitKK = row[kitKKIndex]?.trim() || "";
         
         // Если нет локализованных полей kit, используем русские для всех
-        if (!product.kitEN && product.kitRU) {
-          product.kitEN = product.kitRU;
-        }
         if (!product.kitKK && product.kitRU) {
           product.kitKK = product.kitRU;
         }

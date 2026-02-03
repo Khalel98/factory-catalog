@@ -123,16 +123,7 @@ export default defineEventHandler(async (event) => {
     let kitIndex = -1;
     let columnName = '';
     
-    if (language === 'en') {
-      kitIndex = headers.findIndex(
-        (h) =>
-          h?.toLowerCase() === "kiten" ||
-          h?.toLowerCase() === "kit_en" ||
-          h?.toLowerCase() === "kithtmlen" ||
-          h?.toLowerCase() === "kit_html_en"
-      );
-      columnName = 'KitEN';
-    } else if (language === 'kk') {
+    if (language === 'kk') {
       kitIndex = headers.findIndex(
         (h) =>
           h?.toLowerCase() === "kitkk" ||
@@ -276,18 +267,27 @@ export default defineEventHandler(async (event) => {
           h?.toLowerCase() === "generalinforu" ||
           h?.toLowerCase() === "general_info_ru"
       );
-      const generalInfoENIdx = headers.findIndex(
-        (h) =>
-          h?.toLowerCase() === "generalinfoen" ||
-          h?.toLowerCase() === "general_info_en"
-      );
       const generalInfoKKIdx = headers.findIndex(
         (h) =>
           h?.toLowerCase() === "generalinfokk" ||
           h?.toLowerCase() === "general_info_kk"
       );
       
-      // Локализованные поля Kit (KitRU, KitEN, KitKK)
+      // Локализованные поля DescriptionHTML
+      const descRUIdx = headers.findIndex(
+        (h) =>
+          h?.toLowerCase() === "descriptionhtml" ||
+          h?.toLowerCase() === "description_html" ||
+          h?.toLowerCase() === "descriptionhtmlru" ||
+          h?.toLowerCase() === "description_html_ru"
+      );
+      const descKKIdx = headers.findIndex(
+        (h) =>
+          h?.toLowerCase() === "descriptionhtmlkk" ||
+          h?.toLowerCase() === "description_html_kk"
+      );
+      
+      // Локализованные поля Kit (KitRU, KitKK)
       const kitRUIdx = headers.findIndex(
         (h) =>
           h?.toLowerCase() === "kit" ||
@@ -298,19 +298,32 @@ export default defineEventHandler(async (event) => {
           h?.toLowerCase() === "kithtmlru" ||
           h?.toLowerCase() === "kit_html_ru"
       );
-      const kitENIdx = headers.findIndex(
-        (h) =>
-          h?.toLowerCase() === "kiten" ||
-          h?.toLowerCase() === "kit_en" ||
-          h?.toLowerCase() === "kithtmlen" ||
-          h?.toLowerCase() === "kit_html_en"
-      );
       const kitKKIdx = headers.findIndex(
         (h) =>
           h?.toLowerCase() === "kitkk" ||
           h?.toLowerCase() === "kit_kk" ||
           h?.toLowerCase() === "kithtmlkk" ||
           h?.toLowerCase() === "kit_html_kk"
+      );
+      
+      // JSON поля
+      // videos (JSON) - структура с заголовком и списком видео
+      const videosIndex = headers.findIndex(
+        (h) => h?.toLowerCase() === "videos"
+      );
+      
+      // Дополнительные поля
+      // priceComplectation (текст/HTML) - информация о ценах и комплектации
+      const priceComplectationIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "pricecomplectation" ||
+            lower === "price_complectation" ||
+            lower === "pricecomplectationinfo" ||
+            lower === "price_complectation_info"
+          );
+        }
       );
 
       for (let i = 1; i < productRows.length; i++) {
@@ -323,12 +336,14 @@ export default defineEventHandler(async (event) => {
           price: row[priceIdx]?.trim() || "",
           images: [],
           generalInfoRU: [],
-          generalInfoEN: [],
           generalInfoKK: [],
+          descriptionRU: "",
+          descriptionKK: "",
           kitRU: "",
-          kitEN: "",
           kitKK: "",
           documentation: null,
+          videos: null,
+          priceComplectationInfo: "",
         };
 
         if (row[imagesIdx]) {
@@ -356,23 +371,23 @@ export default defineEventHandler(async (event) => {
         };
 
         product.generalInfoRU = parseGeneralInfo(generalInfoRUIdx);
-        product.generalInfoEN = parseGeneralInfo(generalInfoENIdx);
         product.generalInfoKK = parseGeneralInfo(generalInfoKKIdx);
         
-        if (product.generalInfoEN.length === 0) {
-          product.generalInfoEN = product.generalInfoRU;
-        }
         if (product.generalInfoKK.length === 0) {
           product.generalInfoKK = product.generalInfoRU;
         }
 
+        // Описания для каждого языка
+        product.descriptionRU = row[descRUIdx]?.trim() || "";
+        product.descriptionKK = row[descKKIdx]?.trim() || "";
+        
+        if (!product.descriptionKK) {
+          product.descriptionKK = product.descriptionRU;
+        }
+
         product.kitRU = row[kitRUIdx]?.trim() || "";
-        product.kitEN = row[kitENIdx]?.trim() || "";
         product.kitKK = row[kitKKIdx]?.trim() || "";
         
-        if (!product.kitEN) {
-          product.kitEN = product.kitRU;
-        }
         if (!product.kitKK) {
           product.kitKK = product.kitRU;
         }
@@ -385,6 +400,21 @@ export default defineEventHandler(async (event) => {
             console.warn(`Ошибка парсинга documentation для продукта ${product.id}:`, e);
             product.documentation = null;
           }
+        }
+
+        // Парсим videos (JSON)
+        if (videosIndex !== -1 && row[videosIndex]) {
+          try {
+            product.videos = JSON.parse(row[videosIndex]);
+          } catch (e) {
+            console.warn(`Ошибка парсинга videos для продукта ${product.id}:`, e);
+            product.videos = null;
+          }
+        }
+
+        // PriceComplectation (текст/HTML)
+        if (priceComplectationIndex !== -1 && row[priceComplectationIndex]) {
+          product.priceComplectationInfo = row[priceComplectationIndex]?.trim() || "";
         }
 
         if (product.id && product.name) {

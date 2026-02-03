@@ -39,16 +39,11 @@
         <h3 style="margin: 0 0 16px;">Редактирование видео</h3>
         
         <div class="title-section">
-          <h4>Название раздела (на трех языках):</h4>
+          <h4>Название раздела (на двух языках):</h4>
           <div class="lang-inputs">
             <input
               v-model="editingData.title.ru"
               placeholder="Русский"
-              class="input"
-            />
-            <input
-              v-model="editingData.title.en"
-              placeholder="English"
               class="input"
             />
             <input
@@ -140,7 +135,7 @@ const route = useRoute();
 const videos = ref(null);
 const isEditing = ref(false);
 const isSaving = ref(false);
-const editingData = ref({ title: { ru: '', en: '', kk: '' }, videos: [] });
+const editingData = ref({ title: { ru: '', kk: '' }, videos: [] });
 const isAdmin = computed(() => {
   if (process.client) {
     return localStorage.getItem('isAdmin') === 'true';
@@ -150,7 +145,7 @@ const isAdmin = computed(() => {
 
 const getTitle = () => {
   if (!videos.value || !videos.value.title) return '';
-  return videos.value.title[locale.value] || videos.value.title.ru || videos.value.title.en || videos.value.title.kk || '';
+  return videos.value.title[locale.value] || videos.value.title.ru || videos.value.title.kk || '';
 };
 
 
@@ -253,7 +248,7 @@ const saveVideos = async () => {
     
     // Убеждаемся, что title существует
     if (!videosToSave.title) {
-      videosToSave.title = { ru: '', en: '', kk: '' };
+      videosToSave.title = { ru: '', kk: '' };
     }
 
     const response = await $fetch('/api/update-videos', {

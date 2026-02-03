@@ -138,9 +138,6 @@ const selectedCategory = computed(() => {
 const getCategoryName = (category) => {
   if (!category) return '';
   const currentLang = locale.value;
-  if (currentLang === 'en' && category.nameEN) {
-    return category.nameEN;
-  }
   if (currentLang === 'kk' && category.nameKK) {
     return category.nameKK;
   }
@@ -152,9 +149,6 @@ const getCategoryName = (category) => {
 const getProductGeneralInfo = (product) => {
   if (!product) return [];
   const currentLang = locale.value;
-  if (currentLang === 'en' && product.generalInfoEN?.length > 0) {
-    return product.generalInfoEN;
-  }
   if (currentLang === 'kk' && product.generalInfoKK?.length > 0) {
     return product.generalInfoKK;
   }

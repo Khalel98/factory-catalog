@@ -123,14 +123,7 @@ export default defineEventHandler(async (event) => {
     let descriptionIndex = -1;
     let columnName = '';
     
-    if (language === 'en') {
-      descriptionIndex = headers.findIndex(
-        (h) =>
-          h?.toLowerCase() === "descriptionhtmlen" ||
-          h?.toLowerCase() === "description_html_en"
-      );
-      columnName = 'DescriptionHTMLEN';
-    } else if (language === 'kk') {
+    if (language === 'kk') {
       descriptionIndex = headers.findIndex(
         (h) =>
           h?.toLowerCase() === "descriptionhtmlkk" ||
@@ -268,11 +261,6 @@ export default defineEventHandler(async (event) => {
           h?.toLowerCase() === "generalinforu" ||
           h?.toLowerCase() === "general_info_ru"
       );
-      const generalInfoENIdx = headers.findIndex(
-        (h) =>
-          h?.toLowerCase() === "generalinfoen" ||
-          h?.toLowerCase() === "general_info_en"
-      );
       const generalInfoKKIdx = headers.findIndex(
         (h) =>
           h?.toLowerCase() === "generalinfokk" ||
@@ -287,15 +275,50 @@ export default defineEventHandler(async (event) => {
           h?.toLowerCase() === "descriptionhtmlru" ||
           h?.toLowerCase() === "description_html_ru"
       );
-      const descENIdx = headers.findIndex(
-        (h) =>
-          h?.toLowerCase() === "descriptionhtmlen" ||
-          h?.toLowerCase() === "description_html_en"
-      );
       const descKKIdx = headers.findIndex(
         (h) =>
           h?.toLowerCase() === "descriptionhtmlkk" ||
           h?.toLowerCase() === "description_html_kk"
+      );
+      
+      // Локализованные поля KitHTML
+      const kitRUIdx = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "kitru" ||
+            lower === "kithtmlru" ||
+            lower === "kit_html_ru" ||
+            lower === "kithtml" ||
+            lower === "kit_html"
+          );
+        }
+      );
+      const kitKKIdx = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return lower === "kitkk" || lower === "kithtmlkk" || lower === "kit_html_kk";
+        }
+      );
+      
+      // JSON поля
+      // videos (JSON) - структура с заголовком и списком видео
+      const videosIndex = headers.findIndex(
+        (h) => h?.toLowerCase() === "videos"
+      );
+      
+      // Дополнительные поля
+      // priceComplectation (текст/HTML) - информация о ценах и комплектации
+      const priceComplectationIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "pricecomplectation" ||
+            lower === "price_complectation" ||
+            lower === "pricecomplectationinfo" ||
+            lower === "price_complectation_info"
+          );
+        }
       );
 
       for (let i = 1; i < productRows.length; i++) {
@@ -308,12 +331,14 @@ export default defineEventHandler(async (event) => {
           price: row[priceIdx]?.trim() || "",
           images: [],
           generalInfoRU: [],
-          generalInfoEN: [],
           generalInfoKK: [],
           descriptionRU: "",
-          descriptionEN: "",
           descriptionKK: "",
+          kitRU: "",
+          kitKK: "",
           documentation: null,
+          videos: null,
+          priceComplectationInfo: "",
         };
 
         if (row[imagesIdx]) {
@@ -341,25 +366,26 @@ export default defineEventHandler(async (event) => {
         };
 
         product.generalInfoRU = parseGeneralInfo(generalInfoRUIdx);
-        product.generalInfoEN = parseGeneralInfo(generalInfoENIdx);
         product.generalInfoKK = parseGeneralInfo(generalInfoKKIdx);
         
-        if (product.generalInfoEN.length === 0) {
-          product.generalInfoEN = product.generalInfoRU;
-        }
         if (product.generalInfoKK.length === 0) {
           product.generalInfoKK = product.generalInfoRU;
         }
 
         product.descriptionRU = row[descRUIdx]?.trim() || "";
-        product.descriptionEN = row[descENIdx]?.trim() || "";
         product.descriptionKK = row[descKKIdx]?.trim() || "";
         
-        if (!product.descriptionEN) {
-          product.descriptionEN = product.descriptionRU;
-        }
         if (!product.descriptionKK) {
           product.descriptionKK = product.descriptionRU;
+        }
+
+        // Kit для каждого языка
+        product.kitRU = row[kitRUIdx]?.trim() || "";
+        product.kitKK = row[kitKKIdx]?.trim() || "";
+        
+        // Если нет локализованных полей kit, используем русские для всех
+        if (!product.kitKK && product.kitRU) {
+          product.kitKK = product.kitRU;
         }
 
         // Парсим documentation (JSON)
@@ -370,6 +396,21 @@ export default defineEventHandler(async (event) => {
             console.warn(`Ошибка парсинга documentation для продукта ${product.id}:`, e);
             product.documentation = null;
           }
+        }
+
+        // Парсим videos (JSON)
+        if (videosIndex !== -1 && row[videosIndex]) {
+          try {
+            product.videos = JSON.parse(row[videosIndex]);
+          } catch (e) {
+            console.warn(`Ошибка парсинга videos для продукта ${product.id}:`, e);
+            product.videos = null;
+          }
+        }
+
+        // PriceComplectation (текст/HTML)
+        if (priceComplectationIndex !== -1 && row[priceComplectationIndex]) {
+          product.priceComplectationInfo = row[priceComplectationIndex]?.trim() || "";
         }
 
         if (product.id && product.name) {

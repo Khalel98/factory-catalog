@@ -28,7 +28,6 @@
                   class="language-selector"
                 >
                   <option value="ru">🇷🇺 Русский</option>
-                  <option value="en">🇬🇧 English</option>
                   <option value="kk">🇰🇿 Қазақша</option>
                 </select>
                 <button
@@ -87,10 +86,6 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  descriptionEN: {
-    type: String,
-    default: "",
-  },
   descriptionKK: {
     type: String,
     default: "",
@@ -112,7 +107,6 @@ const savedHtml = ref("");
 const selectedLanguage = ref("ru");
 const descriptions = ref({
   ru: "",
-  en: "",
   kk: "",
 });
 const previousLanguage = ref("ru");
@@ -131,7 +125,6 @@ const hasDescription = computed(() => {
     savedHtml.value ||
     (props.description && props.description.trim() !== "") ||
     (props.descriptionRU && props.descriptionRU.trim() !== "") ||
-    (props.descriptionEN && props.descriptionEN.trim() !== "") ||
     (props.descriptionKK && props.descriptionKK.trim() !== "")
   );
 });
@@ -145,9 +138,6 @@ const getCurrentDescription = () => {
 
   // Иначе используем описание в зависимости от текущего языка интерфейса
   const currentLang = locale.value;
-  if (currentLang === "en" && props.descriptionEN) {
-    return props.descriptionEN;
-  }
   if (currentLang === "kk" && props.descriptionKK) {
     return props.descriptionKK;
   }
@@ -158,15 +148,12 @@ const getCurrentDescription = () => {
 // Функция для обновления описаний из пропсов
 const updateDescriptionsFromProps = () => {
   descriptions.value.ru = props.descriptionRU || "";
-  descriptions.value.en = props.descriptionEN || "";
   descriptions.value.kk = props.descriptionKK || "";
 
   // Логируем для отладки
   console.log("updateDescriptionsFromProps:", {
     ru: descriptions.value.ru.substring(0, 50),
-    en: descriptions.value.en.substring(0, 50),
     kk: descriptions.value.kk.substring(0, 50),
-    propsEN: props.descriptionEN?.substring(0, 50),
   });
 
   // Если есть общее описание, используем его для текущего языка, если для него нет отдельного
@@ -191,7 +178,6 @@ onMounted(() => {
 watch(
   () => [
     props.descriptionRU,
-    props.descriptionEN,
     props.descriptionKK,
     props.description,
   ],
@@ -301,81 +287,42 @@ const openEditor = async () => {
       readOnly: false,
     });
 
-    // Оптимизация производительности - дебаунс для обновлений
-    let textChangeTimer = null;
-    quillEditor.value.on("text-change", () => {
-      if (textChangeTimer) {
-        clearTimeout(textChangeTimer);
-      }
-    });
-
-    // Отключаем лишние события для улучшения производительности
-    quillEditor.value.root.addEventListener(
-      "input",
-      (e) => {
-        e.stopPropagation();
-      },
-      { passive: true }
-    );
+    // СРАЗУ после создания загружаем контент
+    await nextTick();
+    loadContentForLanguage(selectedLanguage.value);
+  } else if (quillEditor.value) {
+    // Если редактор уже существует, просто загружаем контент
+    await nextTick();
+    loadContentForLanguage(selectedLanguage.value);
   }
-
-  // Загружаем контент для выбранного языка (после создания редактора или если он уже существует)
-  await nextTick();
-  setTimeout(() => {
-    if (quillEditor.value) {
-      loadContentForLanguage(selectedLanguage.value);
-    }
-  }, 150);
 };
 
 const loadContentForLanguage = (lang) => {
   if (!quillEditor.value) return;
 
-  // Берем контент напрямую из пропсов, если в descriptions его нет
   let content = descriptions.value[lang] || "";
 
-  // Если контент пустой, пытаемся взять из пропсов напрямую
   if (!content || content.trim() === "") {
     if (lang === "ru") {
       content = props.descriptionRU || "";
-    } else if (lang === "en") {
-      content = props.descriptionEN || "";
     } else if (lang === "kk") {
       content = props.descriptionKK || "";
     }
-    // Обновляем descriptions для будущего использования
     if (content) {
       descriptions.value[lang] = content;
     }
   }
 
   if (!content || content.trim() === "") {
-    console.log(`loadContentForLanguage(${lang}): контент пустой`);
     return;
   }
 
-  console.log(
-    `loadContentForLanguage(${lang}): длина контента = ${content.length} символов`
-  );
-
   try {
-    // Используем clipboard.dangerouslyPasteHTML для правильной загрузки HTML в Quill
-    // Сначала очищаем редактор
+    // Самый надёжный способ - используем innerHTML напрямую
     quillEditor.value.setText("");
-
-    // Затем вставляем HTML контент
-    const delta = quillEditor.value.clipboard.convert({ html: content });
-    quillEditor.value.setContents(delta, "silent");
-
-    console.log(`loadContentForLanguage(${lang}): контент успешно загружен`);
+    quillEditor.value.root.innerHTML = content;
   } catch (error) {
     console.error(`Ошибка при загрузке контента для языка ${lang}:`, error);
-    // Fallback: используем innerHTML напрямую
-    try {
-      quillEditor.value.root.innerHTML = content;
-    } catch (e) {
-      console.error(`Ошибка при использовании innerHTML:`, e);
-    }
   }
 };
 
@@ -416,7 +363,7 @@ const translateDescription = async () => {
   ) {
     const confirmOverwrite = confirm(
       `Уже есть перевод на ${
-        selectedLanguage.value === "en" ? "английский" : "казахский"
+        "казахский"
       }. Перевести заново?`
     );
     if (!confirmOverwrite) {
@@ -526,9 +473,7 @@ const closeEditor = () => {
     descriptions.value[selectedLanguage.value] = currentContent;
   }
   isEditorOpen.value = false;
-  if (quillEditor.value) {
-    quillEditor.value = null;
-  }
+  // НЕ обнуляем quillEditor - оставляем его для следующего использования
 };
 </script>
 

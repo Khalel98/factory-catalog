@@ -26,9 +26,6 @@ const selectedCategoryId = ref(null);
 // Функция для получения локализованного названия категории
 const getCategoryName = (category) => {
   const currentLang = locale.value;
-  if (currentLang === 'en' && category.nameEN) {
-    return category.nameEN;
-  }
   if (currentLang === 'kk' && category.nameKK) {
     return category.nameKK;
   }

@@ -5,7 +5,7 @@ export default defineNuxtPlugin(() => {
   if (process.client) {
     try {
       const savedLocale = localStorage.getItem('locale');
-      if (savedLocale && (savedLocale === 'ru' || savedLocale === 'en' || savedLocale === 'kk')) {
+      if (savedLocale && (savedLocale === 'ru' || savedLocale === 'kk')) {
         if (savedLocale !== i18n.locale.value) {
           i18n.setLocale(savedLocale);
         }

@@ -64,7 +64,6 @@
                     v-if="activeTab === 'description'"
                     :description="getDescription()"
                     :description-r-u="product?.descriptionRU || ''"
-                    :description-e-n="product?.descriptionEN || ''"
                     :description-k-k="product?.descriptionKK || ''"
                     :product-id="product?.id || ''"
                     :category-id="productCategory || ''"
@@ -83,7 +82,6 @@
                     v-if="activeTab === 'kit'"
                     :kit="getKit()"
                     :kit-r-u="product?.kitRU || ''"
-                    :kit-e-n="product?.kitEN || ''"
                     :kit-k-k="product?.kitKK || ''"
                     :product-id="product?.id || ''"
                     :category-id="productCategory || ''"
@@ -152,9 +150,6 @@ const loadCategories = async () => {
 const getCategoryName = (category) => {
   if (!category) return t('catalog.categories');
   const currentLang = locale.value;
-  if (currentLang === 'en' && category.nameEN) {
-    return category.nameEN;
-  }
   if (currentLang === 'kk' && category.nameKK) {
     return category.nameKK;
   }
@@ -166,9 +161,6 @@ const getCategoryName = (category) => {
 const getGeneralInfo = () => {
   if (!product.value) return [];
   const currentLang = locale.value;
-  if (currentLang === 'en' && product.value.generalInfoEN?.length > 0) {
-    return product.value.generalInfoEN;
-  }
   if (currentLang === 'kk' && product.value.generalInfoKK?.length > 0) {
     return product.value.generalInfoKK;
   }
@@ -180,9 +172,6 @@ const getGeneralInfo = () => {
 const getDescription = () => {
   if (!product.value) return '';
   const currentLang = locale.value;
-  if (currentLang === 'en' && product.value.descriptionEN) {
-    return product.value.descriptionEN;
-  }
   if (currentLang === 'kk' && product.value.descriptionKK) {
     return product.value.descriptionKK;
   }
@@ -194,9 +183,6 @@ const getDescription = () => {
 const getKit = () => {
   if (!product.value) return '';
   const currentLang = locale.value;
-  if (currentLang === 'en' && product.value.kitEN) {
-    return product.value.kitEN;
-  }
   if (currentLang === 'kk' && product.value.kitKK) {
     return product.value.kitKK;
   }
