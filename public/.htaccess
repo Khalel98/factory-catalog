@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Пропускаем существующие файлы и папки
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Для статических файлов (js, css, изображения и т.д.)
+  RewriteCond %{REQUEST_URI} \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|json|pdf|zip)$ [NC]
+  RewriteRule ^ - [L]
+
+  # Всё остальное → index.html (SPA fallback)
+  RewriteRule ^ index.html [L]
+</IfModule>

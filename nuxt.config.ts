@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
 // Читаем конфигурацию из google-sheets-credentials.json
@@ -16,6 +16,48 @@ try {
   console.warn('Не удалось прочитать google-sheets-credentials.json, используется значение по умолчанию');
 }
 
+// Генерируем маршруты для всех товаров из JSON файлов
+function generateProductRoutes() {
+  const routes: string[] = [];
+  try {
+    const publicDataDir = join(process.cwd(), 'public/data');
+    const categoriesPath = join(publicDataDir, 'categories.json');
+    
+    if (!existsSync(categoriesPath)) {
+      console.warn('Файл categories.json не найден, пропускаем генерацию маршрутов');
+      return routes;
+    }
+
+    const categoriesData = readFileSync(categoriesPath, 'utf-8');
+    const categories = JSON.parse(categoriesData);
+
+    for (const category of categories) {
+      const categoryFilePath = join(publicDataDir, `${category.id}.json`);
+      
+      if (!existsSync(categoryFilePath)) {
+        continue;
+      }
+      
+      try {
+        const productsData = readFileSync(categoryFilePath, 'utf-8');
+        const products = JSON.parse(productsData);
+
+        for (const product of products) {
+          if (product.id) {
+            routes.push(`/catalog/${product.id}`);
+          }
+        }
+      } catch (error) {
+        console.warn(`Не удалось загрузить товары для категории ${category.id}:`, error);
+      }
+    }
+  } catch (error) {
+    console.warn('Ошибка при генерации маршрутов для товаров:', error);
+  }
+  
+  return routes;
+}
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -26,6 +68,16 @@ export default defineNuxtConfig({
       // URL Google Forms опросника
       // Для встраивания используется ?embedded=true вместо ?usp=publish-editor
       googleFormUrl: process.env.GOOGLE_FORM_URL || googleFormUrl
+    }
+  },
+  nitro: {
+    prerender: {
+      // Автоматически обходить все ссылки на страницах для генерации
+      crawlLinks: true,
+      // Генерировать все маршруты товаров из JSON файлов
+      routes: generateProductRoutes(),
+      // Игнорировать ошибки при генерации (если товар не найден)
+      failOnError: false
     }
   }
 })
