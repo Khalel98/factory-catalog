@@ -328,6 +328,8 @@ onMounted(async () => {
   grid-column: 1 / -1;
   margin-top: 48px;
   width: 100%;
+  min-width: 0; /* не даёт широким таблицам в табах растягивать страницу */
+  overflow-x: hidden;
 }
 
 .product-gallery-section {
@@ -464,11 +466,16 @@ onMounted(async () => {
 .tabs-content {
   min-height: 200px;
   width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .tabs-content > * {
   display: block;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 @media (max-width: 991.98px) {

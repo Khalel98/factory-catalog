@@ -22,7 +22,9 @@
           </button>
         </div>
       </div>
-      <div class="content" v-html="getCurrentContent()"></div>
+      <div class="content-scroll-wrapper">
+        <div class="content" v-html="getCurrentContent()"></div>
+      </div>
     </div>
 
     <!-- Модальное окно редактора -->
@@ -845,6 +847,10 @@ const closeEditor = async () => {
   font-size: 1rem;
   line-height: 1.8;
   color: #52606d;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .content-header {
@@ -906,6 +912,16 @@ const closeEditor = async () => {
 .edit-button:hover {
   background: #1565c0;
   transform: translateY(-1px);
+}
+
+.content-scroll-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 }
 
 .content {
@@ -1366,6 +1382,31 @@ const closeEditor = async () => {
 }
 
 @media (max-width: 768px) {
+  .html-content-editor {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .content-scroll-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .content {
+    display: inline-block;
+    min-width: 100%;
+  }
+
+  .content :deep(table) {
+    min-width: max-content;
+    width: max-content;
+    table-layout: auto;
+  }
+
   .editor-modal {
     max-width: 100%;
     max-height: 95vh;
@@ -1374,6 +1415,18 @@ const closeEditor = async () => {
   .editor-wrapper {
     padding: 16px;
     min-height: 300px;
+    overflow-x: auto;
+    min-width: 0;
+  }
+
+  .ckeditor-container {
+    min-width: 0;
+    overflow-x: auto;
+  }
+
+  .ckeditor-container :deep(.ck-editor__editable),
+  .ckeditor-container :deep(.ck-content) {
+    overflow-x: auto;
   }
 
   .html-dialog {
