@@ -116,38 +116,40 @@ const errorMessage = ref('');
 const successMessage = ref('');
 
 const handleSubmit = async () => {
+  const config = useRuntimeConfig().public;
+  const apiKey = config.staticFormsApiKey;
+  if (!apiKey) {
+    errorMessage.value = t('contacts.formError') || 'Форма не настроена (отсутствует API ключ StaticForms).';
+    return;
+  }
+
   isLoading.value = true;
   errorMessage.value = '';
   successMessage.value = '';
-  
+
   try {
-    // Отправляем данные на сервер
-    const response = await $fetch('/api/send-email', {
+    const response = await $fetch('https://api.staticforms.dev/submit', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: {
-        isLegalEntity: false,
-        fullName: formData.value.fullName,
-        phone: formData.value.phone,
-        email: formData.value.email,
-        message: '',
-        productName: ''
+        apiKey,
+        subject: 'Обратная связь с сайта',
+        'ФИО': formData.value.fullName,
+        'Телефон': formData.value.phone,
+        'Email': formData.value.email
       }
     });
-    
-    if (response.success) {
+
+    if (response?.success !== false) {
       successMessage.value = t('contacts.formSuccess') || 'Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.';
-      // Очищаем форму
-      formData.value = {
-        fullName: '',
-        phone: '',
-        email: ''
-      };
+      formData.value = { fullName: '', phone: '', email: '' };
     } else {
-      throw new Error(response.message || 'Ошибка при отправке заявки');
+      throw new Error(response?.message || 'Ошибка при отправке заявки');
     }
   } catch (error) {
     console.error('Ошибка отправки заявки:', error);
-    errorMessage.value = error.message || t('contacts.formError') || 'Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже.';
+    const msg = error?.data?.message || error?.message || t('contacts.formError') || 'Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже.';
+    errorMessage.value = msg;
   } finally {
     isLoading.value = false;
   }

@@ -511,7 +511,7 @@
     "email": "Почта",
     "emailPlaceholder": "example@email.com",
     "requisites": "Прикрепить реквизиты",
-    "requisitesHint": "Поддерживаемые форматы: PDF, DOC, DOCX, JPG, PNG",
+    "requisitesHint": "",
     "message": "Сообщение",
     "messagePlaceholder": "Дополнительная информация (необязательно)",
     "privacy": "Я согласен(а) на обработку персональных данных",

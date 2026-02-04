@@ -106,20 +106,15 @@
             />
           </div>
 
-          <div v-if="isLegalEntity" class="form-group">
-            <label for="requisites" class="form-label">
-              {{ t('order.requisites') }}
-            </label>
-            <input
+          <div v-if="isLegalEntity" class="form-group full-width">
+            <label for="requisites" class="form-label">{{ t('order.requisites') }}</label>
+            <textarea
               id="requisites"
-              type="file"
-              class="form-input"
-              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-              @change="handleFileChange"
-            />
-            <small class="form-hint">
-              {{ t('order.requisitesHint') }}
-            </small>
+              v-model="formData.requisites"
+              class="form-textarea"
+              rows="4"
+              :placeholder="t('order.requisitesHint')"
+            ></textarea>
           </div>
 
           <div class="form-group full-width">
@@ -194,14 +189,10 @@ const formData = ref({
   fullName: '',
   phone: '',
   email: '',
-  requisites: null,
+  requisites: '',
   message: '',
   agreeToPrivacy: false
 });
-
-const handleFileChange = (event) => {
-  formData.value.requisites = event.target.files[0];
-};
 
 const closeModal = () => {
   emit('close');
@@ -215,7 +206,7 @@ const resetForm = () => {
     fullName: '',
     phone: '',
     email: '',
-    requisites: null,
+    requisites: '',
     message: '',
     agreeToPrivacy: false
   };
@@ -223,31 +214,15 @@ const resetForm = () => {
 };
 
 const handleSubmit = async () => {
-  // Конвертируем файл в base64, если он есть
-  let requisitesFile = null;
-  if (formData.value.requisites) {
-    try {
-      requisitesFile = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const base64 = reader.result.split(',')[1]; // Убираем префикс data:type;base64,
-          resolve({
-            fileName: formData.value.requisites.name,
-            fileData: base64,
-            fileType: formData.value.requisites.type
-          });
-        };
-        reader.onerror = reject;
-        reader.readAsDataURL(formData.value.requisites);
-      });
-    } catch (error) {
-      console.error('Ошибка конвертации файла:', error);
-      errorMessage.value = 'Ошибка при обработке файла. Пожалуйста, попробуйте еще раз.';
-      isLoading.value = false;
-      return;
-    }
+  const config = useRuntimeConfig().public;
+  const apiKey = config.staticFormsApiKey;
+  if (!apiKey) {
+    errorMessage.value = 'Форма не настроена (отсутствует API ключ StaticForms).';
+    alert(errorMessage.value);
+    return;
   }
-  
+
+  // Данные для emit (англ. ключи)
   const submitData = {
     productName: props.productName,
     isLegalEntity: isLegalEntity.value,
@@ -256,34 +231,47 @@ const handleSubmit = async () => {
     fullName: formData.value.fullName,
     phone: formData.value.phone,
     email: formData.value.email,
-    message: formData.value.message,
-    requisites: requisitesFile
+    requisites: formData.value.requisites,
+    message: formData.value.message
   };
-  
+
+  // Payload для StaticForms: русские подписи полей в письме
+  const staticFormsPayload = {
+    apiKey,
+    subject: props.productName ? `Новая заявка: ${props.productName}` : 'Новая заявка с сайта',
+    'Товар': props.productName || '—',
+    'Тип заявителя': isLegalEntity.value ? 'Юридическое лицо' : 'Физическое лицо',
+    'Компания': formData.value.companyName || '—',
+    'Контактное лицо': formData.value.contactPerson || '—',
+    'ФИО': formData.value.fullName || '—',
+    'Телефон': formData.value.phone,
+    'Email': formData.value.email,
+    'Реквизиты': formData.value.requisites || '—',
+    'Сообщение': formData.value.message || '—'
+  };
+
   isLoading.value = true;
   errorMessage.value = '';
-  
+
   try {
-    // Отправляем данные на сервер
-    const response = await $fetch('/api/send-email', {
+    const response = await $fetch('https://api.staticforms.dev/submit', {
       method: 'POST',
-      body: submitData
+      headers: { 'Content-Type': 'application/json' },
+      body: staticFormsPayload
     });
-    
-    if (response.success) {
+
+    if (response?.success !== false) {
       emit('submit', submitData);
-      console.log('Заявка отправлена:', submitData);
       closeModal();
-      
-      // Показываем уведомление об успехе
       alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
     } else {
-      throw new Error(response.message || 'Ошибка при отправке заявки');
+      throw new Error(response?.message || 'Ошибка при отправке заявки');
     }
   } catch (error) {
     console.error('Ошибка отправки заявки:', error);
-    errorMessage.value = error.message || 'Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже.';
-    alert(errorMessage.value);
+    const msg = error?.data?.message || error?.message || 'Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже.';
+    errorMessage.value = msg;
+    alert(msg);
   } finally {
     isLoading.value = false;
   }

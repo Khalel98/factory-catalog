@@ -511,7 +511,7 @@
     "email": "Пошта",
     "emailPlaceholder": "example@email.com",
     "requisites": "Реквизиттерді тіркеу",
-    "requisitesHint": "Қолдау көрсетілетін форматтар: PDF, DOC, DOCX, JPG, PNG",
+    "requisitesHint": "",
     "message": "Хабарлама",
     "messagePlaceholder": "Қосымша ақпарат (міндетті емес)",
     "privacy": "Мен жеке деректерді өңдеуге келісемін",
