@@ -88,9 +88,20 @@
                   />
                   <PriceComplectationTab 
                     v-if="activeTab === 'price-complectation'"
-                    :content="product?.priceComplectationInfo || ''"
+                    :content="getPriceComplectation()"
+                    :content-r-u="product?.priceComplectationRU || ''"
+                    :content-k-k="product?.priceComplectationKK || ''"
+                    :product-id="product?.id || ''"
+                    :category-id="productCategory || ''"
                   />
-                  <SpecificationsTab v-if="activeTab === 'specifications'" />
+                  <SpecificationsTab 
+                    v-if="activeTab === 'specifications'"
+                    :content="getSpecifications()"
+                    :specifications-r-u="product?.specificationsRU || ''"
+                    :specifications-k-k="product?.specificationsKK || ''"
+                    :product-id="product?.id || ''"
+                    :category-id="productCategory || ''"
+                  />
                   <CompatibilityTab v-if="activeTab === 'compatibility'" />
                 </div>
               </div>
@@ -188,6 +199,28 @@ const getKit = () => {
   }
   // По умолчанию русское
   return product.value.kitRU || '';
+};
+
+// Функция для получения локализованного priceComplectation
+const getPriceComplectation = () => {
+  if (!product.value) return '';
+  const currentLang = locale.value;
+  if (currentLang === 'kk' && product.value.priceComplectationKK) {
+    return product.value.priceComplectationKK;
+  }
+  // По умолчанию русское
+  return product.value.priceComplectationRU || product.value.priceComplectationInfo || '';
+};
+
+// Функция для получения локализованных specifications
+const getSpecifications = () => {
+  if (!product.value) return '';
+  const currentLang = locale.value;
+  if (currentLang === 'kk' && product.value.specificationsKK) {
+    return product.value.specificationsKK;
+  }
+  // По умолчанию русское
+  return product.value.specificationsRU || product.value.specificationsInfo || '';
 };
 
 const breadcrumbItems = computed(() => {

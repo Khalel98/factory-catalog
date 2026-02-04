@@ -10,6 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
+    "@ckeditor/ckeditor5-vue": "^7.3.0",
     "@headlessui/vue": "^1.7.23",
     "googleapis": "^170.0.0",
     "nodemailer": "^7.0.12",

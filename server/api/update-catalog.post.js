@@ -288,14 +288,49 @@ export default defineEventHandler(async (event) => {
       // ДОПОЛНИТЕЛЬНЫЕ ПОЛЯ
       // ==========================================
       // priceComplectation (текст/HTML) - информация о ценах и комплектации
-      const priceComplectationIndex = headers.findIndex(
+      const priceComplectationRUIndex = headers.findIndex(
         (h) => {
           const lower = h?.toLowerCase() || "";
           return (
+            lower === "pricecomplectationru" ||
+            lower === "price_complectation_ru" ||
+            lower === "pricecomplectation_ru" ||
             lower === "pricecomplectation" ||
-            lower === "price_complectation" ||
-            lower === "pricecomplectationinfo" ||
-            lower === "price_complectation_info"
+            lower === "price_complectation"
+          );
+        }
+      );
+      const priceComplectationKKIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "pricecomplectationkk" ||
+            lower === "price_complectation_kk" ||
+            lower === "pricecomplectation_kk"
+          );
+        }
+      );
+      
+      // specifications (текст/HTML) - технические характеристики
+      const specificationsRUIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "specificationsru" ||
+            lower === "specifications_ru" ||
+            lower === "specifications_ru" ||
+            lower === "specifications" ||
+            lower === "specification"
+          );
+        }
+      );
+      const specificationsKKIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "specificationskk" ||
+            lower === "specifications_kk" ||
+            lower === "specifications_kk"
           );
         }
       );
@@ -332,7 +367,12 @@ export default defineEventHandler(async (event) => {
           videos: null,
           
           // Дополнительные поля
+          priceComplectationRU: "",
+          priceComplectationKK: "",
           priceComplectationInfo: "",
+          specificationsRU: "",
+          specificationsKK: "",
+          specificationsInfo: "",
         };
 
         // Парсим images (JSON массив)
@@ -408,10 +448,27 @@ export default defineEventHandler(async (event) => {
           }
         }
 
-        // PriceComplectation (текст/HTML)
-        if (priceComplectationIndex !== -1 && row[priceComplectationIndex]) {
-          product.priceComplectationInfo = row[priceComplectationIndex]?.trim() || "";
+        // PriceComplectation (текст/HTML) - локализованные поля
+        if (priceComplectationRUIndex !== -1 && row[priceComplectationRUIndex]) {
+          product.priceComplectationRU = row[priceComplectationRUIndex]?.trim() || "";
         }
+        if (priceComplectationKKIndex !== -1 && row[priceComplectationKKIndex]) {
+          product.priceComplectationKK = row[priceComplectationKKIndex]?.trim() || "";
+        }
+        
+        // Используем RU по умолчанию для обратной совместимости
+        product.priceComplectationInfo = product.priceComplectationRU || product.priceComplectationKK || "";
+
+        // Specifications (текст/HTML) - локализованные поля
+        if (specificationsRUIndex !== -1 && row[specificationsRUIndex]) {
+          product.specificationsRU = row[specificationsRUIndex]?.trim() || "";
+        }
+        if (specificationsKKIndex !== -1 && row[specificationsKKIndex]) {
+          product.specificationsKK = row[specificationsKKIndex]?.trim() || "";
+        }
+        
+        // Используем RU по умолчанию для обратной совместимости
+        product.specificationsInfo = product.specificationsRU || product.specificationsKK || "";
 
         if (product.id && product.name) {
           products.push(product);
