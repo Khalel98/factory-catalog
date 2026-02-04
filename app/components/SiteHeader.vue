@@ -91,6 +91,11 @@
                   {{ t('nav.reviews') }}
                 </NuxtLink>
               </li>
+              <li>
+                <NuxtLink to="/information/documentation" @click="closeMobileMenu">
+                  {{ t('nav.documentation') }}
+                </NuxtLink>
+              </li>
             </ul>
           </li>
           <li class="has-submenu" :class="{ 'is-active': isAboutActive }">

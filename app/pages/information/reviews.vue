@@ -8,54 +8,64 @@
         </p>
       </div>
     </section>
-
     <section class="section">
-      <div class="reviews-list">
-        <div v-for="review in reviews" :key="review.id" class="card review-card">
-          <div class="review-header">
-            <div class="review-author">
-              <div class="author-avatar">
-                {{ review.author.charAt(0).toUpperCase() }}
-              </div>
-              <div class="author-info">
-                <strong>{{ review.author }}</strong>
-                <span class="muted">{{ review.company }}</span>
-              </div>
-            </div>
-            <div class="review-rating">
-              <div class="stars">
-                <span 
-                  v-for="i in 5" 
-                  :key="i"
-                  class="star"
-                  :class="{ 'filled': i <= review.rating }"
-                >
-                  ★
-                </span>
-              </div>
-              <span class="muted review-date">{{ review.date }}</span>
-            </div>
+      <div class="review-photos-grid">
+        <button
+          v-for="(img, index) in reviewImages"
+          :key="index"
+          type="button"
+          class="review-photo-item"
+          @click="openLightbox(index)"
+        >
+          <img :src="img" :alt="`Отзыв ${index + 1}`" loading="lazy" />
+        </button>
+      </div>
+    </section>
+
+    <!-- Fullscreen lightbox -->
+    <Teleport to="body">
+      <Transition name="lightbox">
+        <div
+          v-if="lightboxOpen"
+          class="lightbox-overlay"
+          @click.self="closeLightbox"
+        >
+          <button type="button" class="lightbox-close" aria-label="Закрыть" @click="closeLightbox">
+            ×
+          </button>
+          <button
+            v-if="reviewImages.length > 1"
+            type="button"
+            class="lightbox-prev"
+            aria-label="Предыдущее"
+            @click.stop="prevImage"
+          >
+            ‹
+          </button>
+          <div class="lightbox-content">
+            <img
+              v-if="reviewImages[lightboxIndex]"
+              :src="reviewImages[lightboxIndex]"
+              :alt="`Отзыв ${lightboxIndex + 1}`"
+              class="lightbox-img"
+              @click.stop
+            />
+            <span class="lightbox-counter">{{ lightboxIndex + 1 }} / {{ reviewImages.length }}</span>
           </div>
-          <div class="review-content">
-            <p>{{ review.text }}</p>
-          </div>
-          <div v-if="review.product" class="review-product">
-            <span class="muted">{{ t('information.product') }}: </span>
-            <strong>{{ review.product }}</strong>
-          </div>
+          <button
+            v-if="reviewImages.length > 1"
+            type="button"
+            class="lightbox-next"
+            aria-label="Следующее"
+            @click.stop="nextImage"
+          >
+            ›
+          </button>
         </div>
-      </div>
-    </section>
+      </Transition>
+    </Teleport>
 
-    <section v-if="reviews.length === 0" class="section">
-      <div class="card">
-        <p class="muted" style="text-align: center; padding: 40px 0;">
-          {{ t('information.noReviews') }}
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="section" >
       <div class="card highlight">
         <h3>{{ t('information.leaveReview') }}</h3>
         <p class="muted">
@@ -74,19 +84,64 @@ const { t } = useI18n();
 
 const reviews = ref([
   // Здесь можно добавить реальные отзывы
-  // {
-  //   id: 1,
-  //   author: 'Иван Петров',
-  //   company: 'ООО "Газпром"',
-  //   rating: 5,
-  //   date: '2024-01-15',
-  //   text: 'Отличное оборудование, работает без нареканий уже более года. Сервисная поддержка на высшем уровне.',
-  //   product: 'Газоанализатор ФП23'
-  // }
 ]);
+
+// Фото отзывов из app/assets/review-imgs (1.jpg … 39.jpg) по порядку
+const imageModules = import.meta.glob<{ default: string }>('~/assets/review-imgs/*.jpg', { eager: true, import: 'default' });
+const reviewImages = computed(() => {
+  return Object.entries(imageModules)
+    .sort(([a], [b]) => {
+      const numA = parseInt(a.replace(/^.*?(\d+)\.jpg$/i, '$1'), 10) || 0;
+      const numB = parseInt(b.replace(/^.*?(\d+)\.jpg$/i, '$1'), 10) || 0;
+      return numA - numB;
+    })
+    .map(([, url]) => (typeof url === 'string' ? url : String((url as { default?: string })?.default ?? '')));
+});
+
+const lightboxOpen = ref(false);
+const lightboxIndex = ref(0);
+
+function openLightbox(index: number) {
+  lightboxIndex.value = index;
+  lightboxOpen.value = true;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightboxOpen.value = false;
+  document.body.style.overflow = '';
+}
+
+function nextImage() {
+  const len = reviewImages.value.length;
+  if (len === 0) return;
+  lightboxIndex.value = (lightboxIndex.value + 1) % len;
+}
+
+function prevImage() {
+  const len = reviewImages.value.length;
+  if (len === 0) return;
+  lightboxIndex.value = (lightboxIndex.value - 1 + len) % len;
+}
+
+function onKeydown(e: KeyboardEvent) {
+  if (!lightboxOpen.value) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') nextImage();
+  if (e.key === 'ArrowLeft') prevImage();
+}
+
+onMounted(() => window.addEventListener('keydown', onKeydown));
+onUnmounted(() => {
+  window.removeEventListener('keydown', onKeydown);
+  document.body.style.overflow = '';
+});
 </script>
 
 <style lang="scss" scoped>
+.section{
+  margin-bottom: 25px;
+}
 .reviews-list {
   display: flex;
   flex-direction: column;
@@ -180,6 +235,45 @@ const reviews = ref([
   font-size: 14px;
 }
 
+/* Фото отзывов — 3 в ряд, прямоугольные 4:3, без обёртки и отступов */
+.review-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.review-photo-item {
+  aspect-ratio: 3 / 4;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  background: #f3f4f6;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(17, 24, 39, 0.18);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .review-photos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 767.98px) {
   .review-header {
     flex-direction: column;
@@ -189,5 +283,103 @@ const reviews = ref([
     align-items: flex-start;
     width: 100%;
   }
+}
+</style>
+
+<style lang="scss">
+/* Fullscreen lightbox — без scoped, т.к. контент в Teleport */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 64px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.lightbox-prev {
+  left: 16px;
+}
+
+.lightbox-next {
+  right: 16px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: calc(90vh - 32px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.lightbox-counter {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.lightbox-enter-active,
+.lightbox-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.lightbox-enter-from,
+.lightbox-leave-to {
+  opacity: 0;
 }
 </style>

@@ -61,6 +61,10 @@ function generateProductRoutes() {
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  experimental: {
+    // Отключает запрос /_nuxt/builds/meta/dev.json, который даёт 404 в dev/static
+    appManifest: false
+  },
   css: ['@/assets/styles/main.scss'],
   srcDir: 'app',
   runtimeConfig: {
