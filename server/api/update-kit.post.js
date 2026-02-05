@@ -219,7 +219,20 @@ export default defineEventHandler(async (event) => {
               const safeFileName = doc.fileName.replace(/[^a-zA-Z0-9._-]/g, '_');
               const fileExtension = safeFileName.split('.').pop() || '';
               const baseFileName = safeFileName.replace(/\.[^/.]+$/, '') || 'document';
-              const fileName = `${productId}_${timestamp}_${baseFileName}.${fileExtension}`;
+              
+              // Ограничиваем длину имени файла (максимум 100 символов для baseFileName)
+              const maxBaseFileNameLength = 100;
+              const truncatedBaseFileName = baseFileName.length > maxBaseFileNameLength 
+                ? baseFileName.substring(0, maxBaseFileNameLength) 
+                : baseFileName;
+              
+              // Ограничиваем длину productId в имени файла (максимум 50 символов)
+              const maxProductIdLength = 50;
+              const truncatedProductId = productId.length > maxProductIdLength 
+                ? productId.substring(0, maxProductIdLength) 
+                : productId;
+              
+              const fileName = `${truncatedProductId}_${timestamp}_${truncatedBaseFileName}.${fileExtension}`;
               const filePath = join(documentsDir, fileName);
               
               // Декодируем base64 и сохраняем файл

@@ -47,9 +47,20 @@
               />
 
               <div class="product-tabs-section">
+                <div v-if="isAdmin" class="admin-tabs-control">
+                  <label class="switch-label">
+                    <input
+                      type="checkbox"
+                      v-model="showAllTabs"
+                      class="switch-input"
+                    />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text">Показать все табы</span>
+                  </label>
+                </div>
                 <div class="tabs-header">
                   <button
-                    v-for="tab in tabs"
+                    v-for="tab in visibleTabs"
                     :key="tab.id"
                     :class="['tab-button', { active: activeTab === tab.id }]"
                     @click="activeTab = tab.id"
@@ -77,6 +88,7 @@
                     v-if="activeTab === 'video'"
                     :product-id="product?.id || ''"
                     :category-id="productCategory || ''"
+                    @videos-updated="handleVideosUpdated"
                   />
                   <KitTab 
                     v-if="activeTab === 'kit'"
@@ -134,8 +146,34 @@ const productCategory = ref(null);
 const categories = ref([]);
 const isOrderModalOpen = ref(false);
 const activeTab = ref("documentation");
+const showAllTabs = ref(false);
+const documentationData = ref(null);
+const videosData = ref(null);
+
+// Инициализация showAllTabs из localStorage
+if (process.client) {
+  const savedShowAllTabs = localStorage.getItem('showAllTabs');
+  if (savedShowAllTabs !== null) {
+    showAllTabs.value = savedShowAllTabs === 'true';
+  }
+}
+
+// Сохранение состояния свитча в localStorage
+watch(showAllTabs, (newValue) => {
+  if (process.client) {
+    localStorage.setItem('showAllTabs', newValue.toString());
+  }
+});
 
 const { t, locale } = useI18n();
+
+// Проверка, является ли пользователь админом
+const isAdmin = computed(() => {
+  if (process.client) {
+    return localStorage.getItem('isAdmin') === 'true';
+  }
+  return false;
+});
 
 const tabs = computed(() => [
   { id: "documentation", label: t('tabs.documentation') },
@@ -146,6 +184,62 @@ const tabs = computed(() => [
   { id: "video", label: t('tabs.video') },
   { id: "compatibility", label: t('tabs.compatibility') },
 ]);
+
+// Функция для проверки, заполнен ли таб
+const isTabFilled = (tabId) => {
+  if (!product.value) return false;
+
+  switch (tabId) {
+    case 'description':
+      const desc = getDescription();
+      return desc && desc.trim() !== '';
+    
+    case 'kit':
+      const kit = getKit();
+      return kit && kit.trim() !== '';
+    
+    case 'price-complectation':
+      const priceComp = getPriceComplectation();
+      return priceComp && priceComp.trim() !== '';
+    
+    case 'specifications':
+      const specs = getSpecifications();
+      return specs && specs.trim() !== '';
+    
+    case 'documentation':
+      if (documentationData.value) {
+        return documentationData.value.blocks && 
+               Array.isArray(documentationData.value.blocks) && 
+               documentationData.value.blocks.length > 0;
+      }
+      return false;
+    
+    case 'video':
+      if (videosData.value) {
+        return videosData.value.videos && 
+               Array.isArray(videosData.value.videos) && 
+               videosData.value.videos.length > 0;
+      }
+      return false;
+    
+    case 'compatibility':
+      return false; // Всегда пустой
+    
+    default:
+      return false;
+  }
+};
+
+// Фильтрация табов в зависимости от прав и настроек
+const visibleTabs = computed(() => {
+  if (isAdmin.value && showAllTabs.value) {
+    // Админ с включенным свитчем - показываем все табы
+    return tabs.value;
+  }
+  
+  // Для не-админа или админа с выключенным свитчем - показываем только заполненные
+  return tabs.value.filter(tab => isTabFilled(tab.id));
+});
 
 const loadCategories = async () => {
   try {
@@ -309,9 +403,92 @@ const handleImagesUpdated = (newImages) => {
   }
 };
 
+const handleVideosUpdated = async (newVideos) => {
+  // Обновляем видео в продукте и перезагружаем данные
+  if (product.value) {
+    product.value.videos = newVideos;
+  }
+  // Перезагружаем видео для обновления данных в родительском компоненте с обходом кеша
+  await loadVideos(true);
+};
+
+// Загрузка документации для проверки заполненности
+const loadDocumentation = async () => {
+  try {
+    if (!productCategory.value || !productId) return;
+    
+    const categoryData = await $fetch(`/data/${productCategory.value}.json`);
+    const foundProduct = categoryData.find((p) => p.id === productId);
+    
+    if (foundProduct && foundProduct.documentation) {
+      if (typeof foundProduct.documentation === 'string') {
+        try {
+          documentationData.value = JSON.parse(foundProduct.documentation);
+        } catch (e) {
+          documentationData.value = null;
+        }
+      } else {
+        documentationData.value = foundProduct.documentation;
+      }
+    } else {
+      documentationData.value = null;
+    }
+  } catch (error) {
+    console.error('Ошибка при загрузке документации:', error);
+    documentationData.value = null;
+  }
+};
+
+// Загрузка видео для проверки заполненности
+const loadVideos = async (forceReload = false) => {
+  try {
+    if (!productCategory.value || !productId) return;
+    
+    // Загружаем с обходом кеша при необходимости
+    const url = `/data/${productCategory.value}.json${forceReload ? '?t=' + Date.now() : ''}`;
+    const categoryData = await $fetch(url);
+    const foundProduct = categoryData.find((p) => p.id === productId);
+    
+    if (foundProduct && foundProduct.videos) {
+      if (typeof foundProduct.videos === 'string') {
+        try {
+          videosData.value = JSON.parse(foundProduct.videos);
+        } catch (e) {
+          videosData.value = null;
+        }
+      } else {
+        videosData.value = foundProduct.videos;
+      }
+    } else {
+      videosData.value = null;
+    }
+  } catch (error) {
+    console.error('Ошибка при загрузке видео:', error);
+    videosData.value = null;
+  }
+};
+
+// Обновление активного таба при изменении видимых табов
+watch(visibleTabs, (newTabs) => {
+  if (newTabs.length > 0 && !newTabs.find(tab => tab.id === activeTab.value)) {
+    // Если текущий активный таб не виден, переключаемся на первый видимый
+    activeTab.value = newTabs[0].id;
+  }
+}, { immediate: true });
+
+// Перезагрузка данных при изменении продукта или категории
+watch([() => product.value, () => productCategory.value], async () => {
+  if (product.value && productCategory.value) {
+    await loadDocumentation();
+    await loadVideos();
+  }
+});
+
 onMounted(async () => {
   await loadCategories();
   product.value = await findProductById(productId);
+  await loadDocumentation();
+  await loadVideos();
 });
 </script>
 
@@ -423,6 +600,68 @@ onMounted(async () => {
   font-weight: 700;
   margin: 0 0 16px 0;
   color: #1f2933;
+}
+
+.admin-tabs-control {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  background: #cbd5e1;
+  border-radius: 24px;
+  transition: background 0.3s ease;
+}
+
+.switch-slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.switch-input:checked + .switch-slider {
+  background: #1e88e5;
+}
+
+.switch-input:checked + .switch-slider::before {
+  transform: translateX(20px);
+}
+
+.switch-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #52606d;
 }
 
 .tabs-header {

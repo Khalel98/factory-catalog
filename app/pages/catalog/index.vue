@@ -42,7 +42,7 @@
                   <NuxtLink
                     :to="`/catalog/${product.id}${selectedCategoryId ? '?category=' + selectedCategoryId : ''}`"
                     class="btn primary"
-                    style="margin-top: 12px"
+                    style="margin-top: 8px; padding: 8px 12px; font-size: 14px;"
                     >{{ t('catalog.more') }}</NuxtLink
                   >
                 </div>
@@ -67,10 +67,10 @@
 
 .product-image-wrapper {
   width: 100%;
-  height: 200px;
+  height: 150px;
   overflow: hidden;
-  border-radius: 12px;
-  margin-bottom: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
   background: #f5f5f5;
 }
 
@@ -89,17 +89,17 @@
 .product-general-info {
   list-style: none;
   padding: 0;
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .product-general-info li {
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.8rem;
+  line-height: 1.4;
   color: #52606d;
-  padding-left: 16px;
+  padding-left: 14px;
   position: relative;
 }
 
@@ -108,7 +108,7 @@
   position: absolute;
   left: 0;
   color: #1e88e5;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1;
   font-weight: 700;
 }

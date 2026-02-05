@@ -5,12 +5,6 @@
     "nameKK": "Портативті газ анализаторлары"
   },
   {
-    "id": "portable-basic",
-    "nameRU": "Базовые модели",
-    "nameKK": "Базовые модели",
-    "parentId": "portable"
-  },
-  {
     "id": "accessories",
     "nameRU": "Аксессуары",
     "nameKK": "Аксессуары"
@@ -26,5 +20,27 @@
     "nameRU": "Фильтры",
     "nameKK": "Фильтры",
     "parentId": "accessories"
+  },
+  {
+    "id": "krepezhnye-komplekty-i-razemy",
+    "nameRU": "Крепежные комплекты и разъемы",
+    "nameKK": "Крепежные комплекты и разъемы",
+    "parentId": "accessories"
+  },
+  {
+    "id": "nasadki",
+    "nameRU": "Насадки для присоединения к газовой арматуре",
+    "nameKK": "Насадки для присоединения к газовой арматуре",
+    "parentId": "accessories"
+  },
+  {
+    "id": "prochie-izmeritelnye-sistemy",
+    "nameRU": "Прочие измерительные системы",
+    "nameKK": "Прочие измерительные системы"
+  },
+  {
+    "id": "signalizatory-zagazovannosti-bytovye",
+    "nameRU": "Сигнализаторы загазованности (бытовые)",
+    "nameKK": "Сигнализаторы загазованности (бытовые)"
   }
 ]

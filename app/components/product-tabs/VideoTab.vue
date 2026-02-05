@@ -129,6 +129,8 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(['videos-updated']);
+
 const { locale } = useI18n();
 const route = useRoute();
 
@@ -263,8 +265,10 @@ const saveVideos = async () => {
     if (response.success) {
       videos.value = response.videos;
       isEditing.value = false;
-      // Перезагружаем видео для обновления данных
-      await loadVideos();
+      // Перезагружаем видео для обновления данных с обходом кеша
+      await loadVideos(true);
+      // Уведомляем родительский компонент об обновлении
+      emit('videos-updated', response.videos);
       alert(response.message || 'Видео успешно сохранены в Google Sheets и обновлены в проекте!');
     } else {
       throw new Error(response.error || 'Ошибка при сохранении');
@@ -277,12 +281,13 @@ const saveVideos = async () => {
   }
 };
 
-const loadVideos = async () => {
+const loadVideos = async (forceReload = false) => {
   try {
     if (!props.categoryId || !props.productId) return;
     
-    // Загружаем видео из продукта
-    const categoryData = await $fetch(`/data/${props.categoryId}.json`);
+    // Загружаем видео из продукта с обходом кеша при необходимости
+    const url = `/data/${props.categoryId}.json${forceReload ? '?t=' + Date.now() : ''}`;
+    const categoryData = await $fetch(url);
     const product = categoryData.find((p) => p.id === props.productId);
     
     if (product && product.videos) {

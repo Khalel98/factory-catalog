@@ -24,19 +24,33 @@ export default defineEventHandler(async (event) => {
           videos = JSON.parse(videosData);
         } catch (e) {
           console.warn('Ошибка парсинга videos:', e);
-          videos = { blocks: [] };
+          videos = { title: { ru: '', kk: '' }, videos: [] };
         }
       } else {
         videos = videosData;
       }
     } else {
       // Если видео нет, создаем пустую структуру
-      videos = { blocks: [] };
+      videos = { title: { ru: '', kk: '' }, videos: [] };
     }
 
-    // Проверяем структуру видео
-    if (!videos.blocks || !Array.isArray(videos.blocks)) {
-      videos = { blocks: [] };
+    // Проверяем структуру видео - должна быть структура с полем videos (массив)
+    if (!videos.videos || !Array.isArray(videos.videos)) {
+      // Если структура неправильная, создаем правильную
+      if (videos.title && (videos.blocks || videos.videos)) {
+        // Сохраняем title, но исправляем videos
+        videos = {
+          title: videos.title || { ru: '', kk: '' },
+          videos: Array.isArray(videos.videos) ? videos.videos : (Array.isArray(videos.blocks) ? videos.blocks : [])
+        };
+      } else {
+        videos = { title: { ru: '', kk: '' }, videos: [] };
+      }
+    }
+    
+    // Убеждаемся, что title существует
+    if (!videos.title) {
+      videos.title = { ru: '', kk: '' };
     }
 
     // Получаем credentials из JSON файла

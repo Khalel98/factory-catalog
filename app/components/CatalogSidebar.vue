@@ -228,6 +228,8 @@ function selectCategory(id) {
   padding: 0;
   margin: 2px 0 0 12px;
   animation: slideDown 0.2s ease;
+  display: grid;
+  gap: 5px;
 }
 @keyframes slideDown {
   from {

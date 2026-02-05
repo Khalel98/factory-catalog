@@ -43,19 +43,19 @@
   width: 100%;
 }
 .catalog-content h2 {
-  margin: 0 0 24px;
-  font-size: 24px;
+  margin: 0 0 20px;
+  font-size: 20px;
   font-weight: 600;
 }
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 .product-card {
   background: #ffffff;
-  border-radius: 14px;
-  padding: 24px;
+  border-radius: 12px;
+  padding: 16px;
   box-shadow: 0 8px 28px rgba(17, 24, 39, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
@@ -68,22 +68,23 @@
   border-color: #1e88e5;
 }
 .product-card h3 {
-  margin: 0 0 12px;
-  font-size: 20px;
+  margin: 0 0 10px;
+  font-size: 16px;
   font-weight: 600;
   color: #1f2933;
+  line-height: 1.3;
 }
 .product-card .product-info {
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 12px;
   border-top: 1px solid #e5e7eb;
 }
 .product-card .product-price {
   display: block;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   color: #1e88e5;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .empty-state {
   text-align: center;
@@ -92,10 +93,10 @@
 }
 @media (max-width: 991.98px) {
   .products-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   .product-card {
-    padding: 18px;
+    padding: 14px;
   }
 }
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
@@ -970,14 +971,14 @@ table {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
 .product-card {
   background: $surface;
-  border-radius: $radius;
-  padding: 24px;
+  border-radius: 12px;
+  padding: 16px;
   box-shadow: $shadow;
   border: 1px solid $card-border;
   transition: all 0.3s ease;
@@ -991,24 +992,25 @@ table {
   }
 
   h3 {
-    margin: 0 0 12px;
-    font-size: 20px;
+    margin: 0 0 10px;
+    font-size: 16px;
     font-weight: 600;
     color: $text;
+    line-height: 1.3;
   }
 
   .product-info {
     margin-top: auto;
-    padding-top: 16px;
+    padding-top: 12px;
     border-top: 1px solid $border;
   }
 
   .product-price {
     display: block;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     color: $primary;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 }
 
@@ -1331,7 +1333,7 @@ table {
   }
 
   .product-card {
-    padding: 18px;
+    padding: 14px;
   }
 }
 
