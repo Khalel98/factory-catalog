@@ -1,6 +1,30 @@
 [
   {
     "id": "portable",
-    "nameRU": "Портативные газоанализаторы"
+    "nameRU": "Портативные газоанализаторы",
+    "nameKK": "Портативті газ анализаторлары"
+  },
+  {
+    "id": "portable-basic",
+    "nameRU": "Базовые модели",
+    "nameKK": "Базовые модели",
+    "parentId": "portable"
+  },
+  {
+    "id": "accessories",
+    "nameRU": "Аксессуары",
+    "nameKK": "Аксессуары"
+  },
+  {
+    "id": "shtangi-gazozabornye",
+    "nameRU": "Штанги газозаборные",
+    "nameKK": "Штанги газозаборные",
+    "parentId": "accessories"
+  },
+  {
+    "id": "filtry",
+    "nameRU": "Фильтры",
+    "nameKK": "Фильтры",
+    "parentId": "accessories"
   }
 ]

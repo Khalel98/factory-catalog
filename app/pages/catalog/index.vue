@@ -1,12 +1,5 @@
 <template>
   <div class="catalog-page spacing">
-    <!-- <div class="catalog-header">
-      <h1>Каталог товаров</h1>
-      <p class="muted">
-        Газоанализаторы, сигнализаторы, течеискатели, сенсоры и сервисное
-        оборудование для промышленных и бытовых объектов.
-      </p>
-    </div> -->
     <div class="catalog-layout">
       <CatalogSidebar @select="selectCategory" />
       <div class="catalog-content-wrapper">
@@ -163,6 +156,19 @@ const breadcrumbItems = computed(() => {
   ];
 
   if (selectedCategory.value) {
+    // Если это подкатегория, добавляем родительскую категорию
+    if (selectedCategory.value.parentId) {
+      const parentCategory = categories.value.find(
+        (cat) => cat.id === selectedCategory.value.parentId
+      );
+      if (parentCategory) {
+        items.push({
+          label: getCategoryName(parentCategory),
+          to: `/catalog?category=${parentCategory.id}`,
+        });
+      }
+    }
+    
     items.push({
       label: getCategoryName(selectedCategory.value),
       to: `/catalog?category=${selectedCategory.value.id}`,
@@ -191,10 +197,46 @@ const loadProducts = async (categoryId) => {
       return;
     }
     
-    // Имя файла генерируется автоматически: {id}.json
-    const fileName = `${categoryId}.json`;
-    const data = await $fetch(`/data/${fileName}`);
-    products.value = Array.isArray(data) ? data : [];
+    // Если это подкатегория, загружаем только её товары
+    if (category.parentId) {
+      const fileName = `${categoryId}.json`;
+      try {
+        const data = await $fetch(`/data/${fileName}`);
+        products.value = Array.isArray(data) ? data : [];
+      } catch (error) {
+        // Если файла нет, возвращаем пустой массив
+        products.value = [];
+      }
+      return;
+    }
+    
+    // Если это основная категория
+    // Проверяем, выбрана ли подкатегория, и относится ли она к этой категории
+    const selectedCategory = categories.value.find(cat => cat.id === selectedCategoryId.value);
+    
+    // Если выбрана подкатегория, которая относится к этой основной категории
+    if (selectedCategory && selectedCategory.parentId === categoryId) {
+      // Показываем только товары выбранной подкатегории
+      const fileName = `${selectedCategory.id}.json`;
+      try {
+        const data = await $fetch(`/data/${fileName}`);
+        products.value = Array.isArray(data) ? data : [];
+      } catch (error) {
+        products.value = [];
+      }
+      return;
+    }
+    
+    // Если основная категория выбрана, но подкатегория не выбрана (или выбрана подкатегория другой категории)
+    // Показываем только товары основной категории (без товаров подкатегорий)
+    const mainFileName = `${categoryId}.json`;
+    try {
+      const mainData = await $fetch(`/data/${mainFileName}`);
+      products.value = Array.isArray(mainData) ? mainData : [];
+    } catch (error) {
+      // Файл может не существовать, это нормально
+      products.value = [];
+    }
   } catch (error) {
     console.error("Error loading products:", error);
     products.value = [];

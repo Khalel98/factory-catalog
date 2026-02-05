@@ -853,6 +853,7 @@ const closeEditor = async () => {
   overflow-x: hidden;
 }
 
+
 .content-header {
   display: flex;
   justify-content: flex-end;

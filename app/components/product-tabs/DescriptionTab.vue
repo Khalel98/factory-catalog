@@ -1,15 +1,25 @@
 <template>
   <div class="tab-panel">
     <div v-if="!hasDescription" class="description-empty">
-      <button v-if="isAdmin" class="edit-button" @click="openEditor">
-        {{ t("description.edit") }}
-      </button>
+      <div v-if="isAdmin" class="empty-buttons">
+        <button class="insert-html-button" @click="openHtmlDialog">
+          &lt;/&gt; {{ t("description.insertHtml") }}
+        </button>
+        <button class="edit-button" @click="openEditor">
+          {{ t("description.edit") }}
+        </button>
+      </div>
     </div>
     <div v-else>
       <div class="description-header">
-        <button v-if="isAdmin" class="edit-button" @click="openEditor">
-          {{ t("description.edit") }}
-        </button>
+        <div class="header-buttons" v-if="isAdmin">
+          <button class="insert-html-button" @click="openHtmlDialog">
+            &lt;/&gt; {{ t("description.insertHtml") }}
+          </button>
+          <button class="edit-button" @click="openEditor">
+            {{ t("description.edit") }}
+          </button>
+        </div>
       </div>
       <div class="description-content" v-html="getCurrentDescription()"></div>
     </div>
@@ -69,6 +79,59 @@
         </div>
       </Teleport>
     </ClientOnly>
+
+    <!-- Модальное окно для вставки HTML -->
+    <ClientOnly>
+      <Teleport to="body">
+        <div v-if="isHtmlDialogOpen" class="html-dialog-overlay" @click="closeHtmlDialog">
+          <div class="html-dialog" @click.stop>
+            <div class="html-dialog-header">
+              <h3>{{ t("description.insertHtml") }}</h3>
+              <div class="header-actions">
+                <select
+                  v-model="htmlDialogLanguage"
+                  class="language-selector"
+                >
+                  <option value="ru">🇷🇺 Русский</option>
+                  <option value="kk">🇰🇿 Қазақша</option>
+                </select>
+                <button
+                  v-if="
+                    htmlDialogLanguage !== 'ru' &&
+                    htmlToInsert &&
+                    htmlToInsert.trim()
+                  "
+                  class="translate-button"
+                  @click="translateHtml"
+                  :disabled="isTranslatingHtml"
+                  :title="t('description.translate')"
+                >
+                  {{ isTranslatingHtml ? "⏳" : "🌐" }}
+                  {{ t("description.translate") }}
+                </button>
+                <button class="close-button" @click="closeHtmlDialog">×</button>
+              </div>
+            </div>
+            <div class="html-dialog-content">
+              <textarea
+                v-model="htmlToInsert"
+                class="html-textarea"
+                placeholder="Вставьте HTML код..."
+                rows="12"
+              ></textarea>
+            </div>
+            <div class="html-dialog-actions">
+              <button class="btn-cancel" @click="closeHtmlDialog">
+                {{ t("description.cancel") }}
+              </button>
+              <button class="btn-save" @click="insertHtmlToLanguage">
+                {{ t("description.save") }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 
@@ -111,6 +174,10 @@ const descriptions = ref({
 });
 const previousLanguage = ref("ru");
 const isTranslating = ref(false);
+const isHtmlDialogOpen = ref(false);
+const htmlToInsert = ref("");
+const htmlDialogLanguage = ref("ru");
+const isTranslatingHtml = ref(false);
 
 // Проверка, является ли пользователь админом
 const isAdmin = computed(() => {
@@ -452,11 +519,143 @@ const saveContent = async () => {
   closeEditor();
 };
 
+// Функции для работы с HTML диалогом
+const openHtmlDialog = () => {
+  htmlDialogLanguage.value = locale.value || "ru";
+  
+  // Загружаем существующий HTML для выбранного языка
+  let existingHtml = descriptions.value[htmlDialogLanguage.value] || "";
+  
+  // Если в descriptions нет, пытаемся взять из пропсов
+  if (!existingHtml || existingHtml.trim() === "") {
+    if (htmlDialogLanguage.value === "ru") {
+      existingHtml = props.descriptionRU || "";
+    } else if (htmlDialogLanguage.value === "kk") {
+      existingHtml = props.descriptionKK || "";
+    }
+    
+    // Если нашли в пропсах, обновляем descriptions
+    if (existingHtml && existingHtml.trim()) {
+      descriptions.value[htmlDialogLanguage.value] = existingHtml;
+    }
+  }
+  
+  htmlToInsert.value = existingHtml || "";
+  isHtmlDialogOpen.value = true;
+};
+
+const closeHtmlDialog = () => {
+  isHtmlDialogOpen.value = false;
+  htmlToInsert.value = "";
+  htmlDialogLanguage.value = "ru";
+  isTranslatingHtml.value = false;
+};
+
+const translateHtml = async () => {
+  if (!htmlToInsert.value || !htmlToInsert.value.trim()) {
+    alert("Сначала введите HTML код для перевода");
+    return;
+  }
+
+  if (htmlDialogLanguage.value === "ru") {
+    alert("Выберите другой язык для перевода");
+    return;
+  }
+
+  isTranslatingHtml.value = true;
+
+  try {
+    const response = await $fetch("/api/translate", {
+      method: "POST",
+      body: {
+        text: htmlToInsert.value,
+        fromLang: "ru",
+        toLang: htmlDialogLanguage.value,
+      },
+    });
+
+    if (response.success && response.translatedText) {
+      htmlToInsert.value = response.translatedText;
+      alert(
+        "✅ HTML переведен! Вы можете отредактировать код перед вставкой."
+      );
+    } else {
+      throw new Error("Перевод не выполнен");
+    }
+  } catch (error) {
+    console.error("Ошибка при переводе HTML:", error);
+    alert(
+      `❌ Ошибка при переводе: ${
+        error.data?.message || error.message || "Неизвестная ошибка"
+      }`
+    );
+  } finally {
+    isTranslatingHtml.value = false;
+  }
+};
+
+const insertHtmlToLanguage = async () => {
+  if (!htmlToInsert.value || !htmlToInsert.value.trim()) {
+    alert("Введите HTML код для вставки");
+    return;
+  }
+
+  const htmlContent = htmlToInsert.value.trim();
+
+  // Сохраняем напрямую в Google Sheets
+  try {
+    // Обновляем descriptions для выбранного языка
+    descriptions.value[htmlDialogLanguage.value] = htmlContent;
+
+    // Если есть productId и categoryId, сохраняем в Google Sheets
+    if (props.productId && props.categoryId) {
+      try {
+        const response = await $fetch("/api/update-product-description", {
+          method: "POST",
+          body: {
+            productId: props.productId,
+            categoryId: props.categoryId,
+            description: htmlContent,
+            language: htmlDialogLanguage.value,
+          },
+        });
+
+        if (response.success) {
+          alert(`✅ HTML успешно вставлен и сохранен в Google Sheets!`);
+          // Обновляем отображаемый контент
+          savedHtml.value = htmlContent;
+          // Перезагружаем страницу для получения актуальных данных
+          window.location.reload();
+        }
+      } catch (error) {
+        console.error("Ошибка при сохранении HTML:", error);
+        alert(
+          `❌ ${t("description.error")} ${error.data?.message || error.message}`
+        );
+      }
+    } else {
+      // Если нет productId/categoryId, сохраняем локально
+      descriptions.value[htmlDialogLanguage.value] = htmlContent;
+      savedHtml.value = htmlContent;
+      alert(t("description.savedLocal"));
+    }
+
+    closeHtmlDialog();
+  } catch (error) {
+    console.error("Ошибка при вставке HTML:", error);
+    alert("Ошибка при вставке HTML: " + (error.message || error));
+  }
+};
+
 // Закрытие по Escape
 onMounted(() => {
   const handleEscape = (e) => {
-    if (e.key === "Escape" && isEditorOpen.value) {
-      closeEditor();
+    if (e.key === "Escape") {
+      if (isHtmlDialogOpen.value) {
+        closeHtmlDialog();
+      } else if (isEditorOpen.value) {
+        closeEditor();
+      }
     }
   };
   document.addEventListener("keydown", handleEscape);
@@ -488,6 +687,44 @@ const closeEditor = () => {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 16px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.insert-html-button {
+  padding: 8px 16px;
+  background: #9c27b0;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.insert-html-button:hover {
+  background: #7b1fa2;
+  transform: translateY(-1px);
+}
+
+.empty-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-buttons .insert-html-button {
+  padding: 12px 24px;
+  font-size: 1rem;
 }
 
 .edit-button {
@@ -881,6 +1118,84 @@ const closeEditor = () => {
   transform: translateY(-1px);
 }
 
+.html-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+.html-dialog {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+.html-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.html-dialog-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2933;
+}
+
+.html-dialog-header .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.html-dialog-content {
+  padding: 24px;
+}
+
+.html-textarea {
+  width: 100%;
+  min-height: 300px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.html-textarea:focus {
+  outline: none;
+  border-color: #1e88e5;
+  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+}
+
+.html-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
 @media (max-width: 768px) {
   .editor-modal {
     max-width: 100%;
@@ -890,6 +1205,10 @@ const closeEditor = () => {
   .editor-wrapper {
     padding: 16px;
     min-height: 300px;
+  }
+
+  .html-dialog {
+    max-width: 100%;
   }
 }
 </style>

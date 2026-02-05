@@ -139,19 +139,33 @@ export default defineEventHandler(async (event) => {
       return lower === "namekk" || lower === "name_kk";
     });
     
+    // Ищем ParentID для поддержки подкатегорий
+    const parentIdIndex = headers.findIndex((h) => {
+      const lower = h?.toLowerCase();
+      return lower === "parentid" || lower === "parent_id" || lower === "parentcategory" || lower === "parent_category";
+    });
+    
     // Пропускаем заголовок
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
       const id = row[idIndex]?.trim();
       const nameRU = row[nameRUIndex]?.trim() || row[1]?.trim();
       const nameKK = row[nameKKIndex]?.trim() || "";
+      const parentId = parentIdIndex !== -1 ? (row[parentIdIndex]?.trim() || null) : null;
       
       if (id && nameRU) {
-        result.categories.push({
+        const category = {
           id: id,
           nameRU: nameRU,
           nameKK: nameKK || nameRU, // Если нет перевода, используем русское
-        });
+        };
+        
+        // Добавляем parentId только если он указан (не пустая строка)
+        if (parentId) {
+          category.parentId = parentId;
+        }
+        
+        result.categories.push(category);
       }
     }
 

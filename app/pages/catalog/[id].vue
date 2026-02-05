@@ -234,6 +234,17 @@ const breadcrumbItems = computed(() => {
   if (productCategory.value) {
     const cat = categories.value.find((c) => c.id === productCategory.value);
     if (cat) {
+      // Если это подкатегория, добавляем родительскую категорию
+      if (cat.parentId) {
+        const parentCat = categories.value.find((c) => c.id === cat.parentId);
+        if (parentCat) {
+          items.push({
+            label: getCategoryName(parentCat),
+            to: `/catalog?category=${parentCat.id}`,
+          });
+        }
+      }
+      
       items.push({
         label: getCategoryName(cat),
         to: `/catalog?category=${cat.id}`,
