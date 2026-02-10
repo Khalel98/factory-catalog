@@ -1,8 +1,60 @@
 [
   {
+    "id": "gazoanalizatory-stacionarnye",
+    "nameRU": "Стационарные газоанализаторы",
+    "nameKK": "Стационарные газоанализаторы"
+  },
+  {
     "id": "portable-devices",
     "nameRU": "Портативные газоанализаторы",
     "nameKK": "Портативті газ анализаторлары"
+  },
+  {
+    "id": "techeiskateli",
+    "nameRU": "Течеискатели и индикаторы утечки газа",
+    "nameKK": "Течеискатели и индикаторы утечки газа"
+  },
+  {
+    "id": "signalizatory-zagazovannosti-bytovye",
+    "nameRU": "Сигнализаторы загазованности (бытовые)",
+    "nameKK": "Сигнализаторы загазованности (бытовые)"
+  },
+  {
+    "id": "izmeriteli-davlenija-gaza",
+    "nameRU": "Измерители давления газа",
+    "nameKK": "Измерители давления газа"
+  },
+  {
+    "id": "trassoiskateli",
+    "nameRU": "Трассоискатели",
+    "nameKK": "Трассоискатели"
+  },
+  {
+    "id": "service-devices",
+    "nameRU": "Сервисное и дополнительное оборудование",
+    "nameKK": "Сервисное и дополнительное оборудование"
+  },
+  {
+    "id": "prochie-izmeritelnye-sistemy",
+    "nameRU": "Прочие измерительные системы",
+    "nameKK": "Прочие измерительные системы"
+  },
+  {
+    "id": "sensors",
+    "nameRU": "Газочувствительные элементы",
+    "nameKK": "Газочувствительные элементы"
+  },
+  {
+    "id": "gazovye-sensory",
+    "nameRU": "Газовые сенсоры",
+    "nameKK": "Газовые сенсоры",
+    "parentId": "sensors"
+  },
+  {
+    "id": "bloki-datchikov",
+    "nameRU": "Блоки датчиков",
+    "nameKK": "Блоки датчиков",
+    "parentId": "sensors"
   },
   {
     "id": "accessories",
@@ -32,52 +84,5 @@
     "nameRU": "Насадки для присоединения к газовой арматуре",
     "nameKK": "Насадки для присоединения к газовой арматуре",
     "parentId": "accessories"
-  },
-  {
-    "id": "prochie-izmeritelnye-sistemy",
-    "nameRU": "Прочие измерительные системы",
-    "nameKK": "Прочие измерительные системы"
-  },
-  {
-    "id": "signalizatory-zagazovannosti-bytovye",
-    "nameRU": "Сигнализаторы загазованности (бытовые)",
-    "nameKK": "Сигнализаторы загазованности (бытовые)"
-  },
-  {
-    "id": "sensors",
-    "nameRU": "Газочувствительные элементы",
-    "nameKK": "Газочувствительные элементы"
-  },
-  {
-    "id": "bloki-datchikov",
-    "nameRU": "Блоки датчиков",
-    "nameKK": "Блоки датчиков",
-    "parentId": "sensors"
-  },
-  {
-    "id": "gazovye-sensory",
-    "nameRU": "Газовые сенсоры",
-    "nameKK": "Газовые сенсоры",
-    "parentId": "sensors"
-  },
-  {
-    "id": "service-devices",
-    "nameRU": "Сервисное и дополнительное оборудование",
-    "nameKK": "Сервисное и дополнительное оборудование"
-  },
-  {
-    "id": "trassoiskateli",
-    "nameRU": "Трассоискатели",
-    "nameKK": "Трассоискатели"
-  },
-  {
-    "id": "izmeriteli-davlenija-gaza",
-    "nameRU": "Измерители давления газа",
-    "nameKK": "Измерители давления газа"
-  },
-  {
-    "id": "techeiskateli",
-    "nameRU": "Течеискатели и индикаторы утечки газа",
-    "nameKK": "Течеискатели и индикаторы утечки газа"
   }
 ]
