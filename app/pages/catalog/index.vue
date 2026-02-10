@@ -40,7 +40,7 @@
                     >{{ t('catalog.priceFrom', { price: product.price }) }}</span
                   >
                   <NuxtLink
-                    :to="`/catalog/${product.id}${selectedCategoryId ? '?category=' + selectedCategoryId : ''}`"
+                    :to="`/catalog/${selectedCategoryId}/${product.id}`"
                     class="btn primary"
                     style="margin-top: 8px; padding: 8px 12px; font-size: 14px;"
                     >{{ t('catalog.more') }}</NuxtLink
@@ -164,14 +164,14 @@ const breadcrumbItems = computed(() => {
       if (parentCategory) {
         items.push({
           label: getCategoryName(parentCategory),
-          to: `/catalog?category=${parentCategory.id}`,
+          to: `/catalog/${parentCategory.id}`,
         });
       }
     }
     
     items.push({
       label: getCategoryName(selectedCategory.value),
-      to: `/catalog?category=${selectedCategory.value.id}`,
+      to: `/catalog/${selectedCategory.value.id}`,
     });
   }
 
@@ -253,17 +253,19 @@ const route = useRoute();
 onMounted(async () => {
   await loadCategories();
   if (route.query.category) {
-    await selectCategory(route.query.category);
-  } else if (categories.value.length > 0) {
-    await selectCategory(categories.value[0].id);
+    await navigateTo(`/catalog/${route.query.category}`, { replace: true });
+    return;
+  }
+  if (categories.value.length > 0) {
+    await navigateTo(`/catalog/${categories.value[0].id}`, { replace: true });
   }
 });
 
 watch(
   () => route.query.category,
-  async (newCategoryId) => {
-    if (newCategoryId && categories.value.length > 0) {
-      await selectCategory(newCategoryId);
+  (newCategoryId) => {
+    if (newCategoryId) {
+      navigateTo(`/catalog/${newCategoryId}`, { replace: true });
     }
   }
 );

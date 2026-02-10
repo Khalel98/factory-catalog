@@ -33,7 +33,7 @@
             v-for="subcategory in getSubcategories(category.id)"
             :key="subcategory.id"
             :class="{ active: selectedCategoryId === subcategory.id }"
-            @click.stop="selectCategory(subcategory.id)"
+            @click.stop="selectSubcategory(category.id, subcategory.id)"
           >
             {{ getCategoryName(subcategory) }}
           </li>
@@ -81,26 +81,16 @@ const isExpanded = (categoryId) => {
 // Обработка клика по категории
 const handleCategoryClick = (category) => {
   const hasSubcategories = getSubcategories(category.id).length > 0;
-  
+
   if (hasSubcategories) {
-    // Если есть подкатегории - переключаем раскрытие
+    // Есть подкатегории — только раскрыть/свернуть, без перехода (там всё равно нет товаров)
     if (isExpanded(category.id)) {
-      // Если раскрыта - сворачиваем
       expandedCategories.value.delete(category.id);
-      // Если была выбрана эта категория или её подкатегория, снимаем выбор
-      const subcategoryIds = getSubcategories(category.id).map(sub => sub.id);
-      if (selectedCategoryId.value === category.id || subcategoryIds.includes(selectedCategoryId.value)) {
-        selectedCategoryId.value = null;
-        emit("select", null);
-        router.push({ path: "/catalog", query: {} });
-      }
     } else {
-      // Если свернута - раскрываем и выбираем категорию
       expandedCategories.value.add(category.id);
-      selectCategory(category.id);
     }
   } else {
-    // Если нет подкатегорий - просто выбираем категорию
+    // Нет подкатегорий — переходим на страницу категории
     selectCategory(category.id);
   }
 };
@@ -115,63 +105,72 @@ const loadCategories = async () => {
   }
 };
 
-onMounted(async () => {
-  await loadCategories();
-  // Проверяем query параметр category
-  if (route.query.category) {
-    const categoryId = route.query.category;
-    selectedCategoryId.value = categoryId;
-    
-    const category = categories.value.find(cat => cat.id === categoryId);
+function setSelectedFromRoute() {
+  const slug = route.params.slug;
+  const subslug = route.params.subslug;
+  const id = route.params.id;
+  if (subslug) {
+    selectedCategoryId.value = subslug;
+    const sub = categories.value.find((c) => c.id === subslug);
+    if (sub?.parentId) expandedCategories.value.add(sub.parentId);
+  } else if (slug && id) {
+    const isSub = categories.value.some((c) => c.id === id && c.parentId === slug);
+    selectedCategoryId.value = isSub ? id : slug;
+    if (isSub) expandedCategories.value.add(slug);
+    else {
+      const cat = categories.value.find((c) => c.id === slug);
+      if (cat?.parentId) expandedCategories.value.add(cat.parentId);
+      else if (cat && getSubcategories(cat.id).length > 0) expandedCategories.value.add(cat.id);
+    }
+  } else if (slug) {
+    selectedCategoryId.value = slug;
+    const category = categories.value.find((c) => c.id === slug);
     if (category) {
-      // Если выбрана подкатегория, раскрываем родительскую категорию
-      if (category.parentId) {
-        expandedCategories.value.add(category.parentId);
-      }
-      // Если выбрана основная категория с подкатегориями, раскрываем её
-      else if (getSubcategories(category.id).length > 0) {
-        expandedCategories.value.add(category.id);
-      }
+      if (category.parentId) expandedCategories.value.add(category.parentId);
+      else if (getSubcategories(category.id).length > 0) expandedCategories.value.add(category.id);
+    }
+  } else if (route.query.category) {
+    selectedCategoryId.value = route.query.category;
+    const category = categories.value.find((c) => c.id === route.query.category);
+    if (category) {
+      if (category.parentId) expandedCategories.value.add(category.parentId);
+      else if (getSubcategories(category.id).length > 0) expandedCategories.value.add(category.id);
     }
   } else if (categories.value.length > 0) {
-    const firstCategory = categories.value[0];
-    selectedCategoryId.value = firstCategory.id;
-    // Если у первой категории есть подкатегории, раскрываем её
-    if (getSubcategories(firstCategory.id).length > 0) {
-      expandedCategories.value.add(firstCategory.id);
-    }
+    selectedCategoryId.value = categories.value[0].id;
+    if (getSubcategories(categories.value[0].id).length > 0) expandedCategories.value.add(categories.value[0].id);
+  } else {
+    selectedCategoryId.value = null;
   }
+}
+
+onMounted(async () => {
+  await loadCategories();
+  setSelectedFromRoute();
 });
 
-// Отслеживаем изменения route для обновления активной категории
 watch(
-  () => route.query.category,
-  (newCategory) => {
-    if (newCategory) {
-      selectedCategoryId.value = newCategory;
-      
-      const category = categories.value.find(cat => cat.id === newCategory);
-      if (category) {
-        // Если выбрана подкатегория, раскрываем родительскую категорию
-        if (category.parentId) {
-          expandedCategories.value.add(category.parentId);
-        }
-        // Если выбрана основная категория с подкатегориями, раскрываем её
-        else if (getSubcategories(category.id).length > 0) {
-          expandedCategories.value.add(category.id);
-        }
-      }
-    } else {
-      selectedCategoryId.value = null;
-    }
-  },
+  () => [route.params.slug, route.params.subslug, route.params.id, route.query.category],
+  () => { setSelectedFromRoute(); },
   { immediate: true }
 );
 
 function selectCategory(id) {
   selectedCategoryId.value = id;
   emit("select", id);
-  router.push({ path: "/catalog", query: { category: id } });
+  if (!id) {
+    router.push("/catalog");
+    return;
+  }
+  const cat = categories.value.find((c) => c.id === id);
+  if (cat?.parentId) router.push(`/catalog/${cat.parentId}/${id}`);
+  else router.push(`/catalog/${id}`);
+}
+
+function selectSubcategory(parentId, subId) {
+  selectedCategoryId.value = subId;
+  emit("select", subId);
+  router.push(`/catalog/${parentId}/${subId}`);
 }
 </script>
 

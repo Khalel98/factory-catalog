@@ -25,13 +25,17 @@ export default defineNitroPlugin((nitroApp) => {
         }
         
         try {
+          if (category.parentId) {
+            ctx.routes.add(`/catalog/${category.parentId}/${category.id}`);
+          }
           const productsData = readFileSync(categoryFilePath, 'utf-8');
           const products = JSON.parse(productsData);
 
           for (const product of products) {
             if (product.id) {
-              // Добавляем маршрут для каждого товара
-              const route = `/catalog/${product.id}`;
+              const route = category.parentId
+                ? `/catalog/${category.parentId}/${category.id}/${product.id}`
+                : `/catalog/${category.id}/${product.id}`;
               ctx.routes.add(route);
               console.log(`Добавлен маршрут для генерации: ${route}`);
             }

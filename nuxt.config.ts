@@ -48,7 +48,11 @@ function generateProductRoutes() {
 
         for (const product of products) {
           if (product.id) {
-            routes.push(`/catalog/${product.id}`);
+            if (category.parentId) {
+              routes.push(`/catalog/${category.parentId}/${category.id}/${product.id}`);
+            } else {
+              routes.push(`/catalog/${category.id}/${product.id}`);
+            }
           }
         }
       } catch (error) {

@@ -84,5 +84,11 @@
     "nameRU": "Насадки для присоединения к газовой арматуре",
     "nameKK": "Насадки для присоединения к газовой арматуре",
     "parentId": "accessories"
+  },
+  {
+    "id": "another-accessories",
+    "nameRU": "Прочее",
+    "nameKK": "Прочее",
+    "parentId": "accessories"
   }
 ]
