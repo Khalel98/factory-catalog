@@ -1,0 +1,641 @@
+[
+  {
+    "id": "portativnyj-nasos-fn10",
+    "name": "Насос пробоотборный ФН10",
+    "price": "",
+    "images": [
+      "/images/service-devices/portativnyj-nasos-fn10/portativnyj-nasos-fn10_1770493085969_0_FN10_3.jpg",
+      "/images/service-devices/portativnyj-nasos-fn10/portativnyj-nasos-fn10_1770493085970_1_FN10_5.jpg",
+      "/images/service-devices/portativnyj-nasos-fn10/portativnyj-nasos-fn10_1770493085971_2_FN10_6.jpg",
+      "/images/service-devices/portativnyj-nasos-fn10/portativnyj-nasos-fn10_1770493085973_3_FN10_7-scaled.jpg",
+      "/images/service-devices/portativnyj-nasos-fn10/portativnyj-nasos-fn10_1770493085975_4_FN10_8-scaled.jpg",
+      "/images/service-devices/portativnyj-nasos-fn10/portativnyj-nasos-fn10_1770493085976_5_FN10_9-scaled.jpg",
+      "/images/service-devices/portativnyj-nasos-fn10/portativnyj-nasos-fn10_1770493085977_6_FN10_2.jpg"
+    ],
+    "generalInfoRU": [
+      "В РАЗРАБОТКЕ. Предназначен для отбора газа из контролируемой зоны и подачи ее к газоанализатору диффузионного типа.",
+      "Для газоанализатора ФП23."
+    ],
+    "generalInfoKK": [
+      "В РАЗРАБОТКЕ. Предназначен для отбора газа из контролируемой зоны и подачи ее к газоанализатору диффузионного типа.",
+      "Для газоанализатора ФП23."
+    ],
+    "descriptionRU": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">ФН10 является насосной системой, которая используется для отбора газа из контролируемой зоны и подачи к газоанализатору диффузионного типа.</span></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp23/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП23</a></li></ol><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Область применения:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">При техническом обслуживании газового оборудования (бытовых газовых плит, запорной арматуры), газопроводов и др.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Отличительные особенности:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Насос может эксплуатироваться на взрывоопасных объектах, прибор имеет маркировку взрывозащиты 1Ех ib IIВ Т4;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Наличие встроенного расходомера, который позволяет постоянно контролировать фактический расход пробы;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Широкий диапазон выбора расхода: 0,5 — 1 л/мин;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Отображение установленного и реального расхода газа, выраженного в мл/мин (характеристики не нормированы);</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Диагностика герметичности газового тракта и отображение информации о неисправности и перегрузке;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Световая и звуковая сигнализация при увеличении нагрузки в заборном тракте и неисправности прибора;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Использование длинных шлангов;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Сигнализация при возникновении засора газозаборного тракта;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">В режиме тестирования позволяет контролировать герметичность подключенных приспособлений (тракт заборной штанги, тракт насадки для подключения газоанализаторов и т.п.);</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Малое время прокачки по газозаборному тракту;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Непрерывное время работы без подзарядки более 8 часов. Питание прибора — автономное от Li-Pol аккумуляторной батареи;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Отображение уровня заряда батареи, заряд аккумуляторной батареи осуществляется через USB разъем;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Степень защиты прибора от внешних воздействий IP67.</span></li></ol><p><br></p>",
+    "descriptionKK": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">ФН10 является насосной системой, которая используется для отбора газа из контролируемой зоны и подачи к газоанализатору диффузионного типа.</span></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp23/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП23</a></li></ol><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Область применения:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">При техническом обслуживании газового оборудования (бытовых газовых плит, запорной арматуры), газопроводов и др.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Отличительные особенности:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Насос может эксплуатироваться на взрывоопасных объектах, прибор имеет маркировку взрывозащиты 1Ех ib IIВ Т4;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Наличие встроенного расходомера, который позволяет постоянно контролировать фактический расход пробы;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Широкий диапазон выбора расхода: 0,5 — 1 л/мин;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Отображение установленного и реального расхода газа, выраженного в мл/мин (характеристики не нормированы);</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Диагностика герметичности газового тракта и отображение информации о неисправности и перегрузке;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Световая и звуковая сигнализация при увеличении нагрузки в заборном тракте и неисправности прибора;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Использование длинных шлангов;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Сигнализация при возникновении засора газозаборного тракта;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">В режиме тестирования позволяет контролировать герметичность подключенных приспособлений (тракт заборной штанги, тракт насадки для подключения газоанализаторов и т.п.);</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Малое время прокачки по газозаборному тракту;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Непрерывное время работы без подзарядки более 8 часов. Питание прибора — автономное от Li-Pol аккумуляторной батареи;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Отображение уровня заряда батареи, заряд аккумуляторной батареи осуществляется через USB разъем;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Степень защиты прибора от внешних воздействий IP67.</span></li></ol><p><br></p>",
+    "kitRU": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Количество, шт</strong></td></tr><tr><td>Насос пробоотборный &nbsp;ФН10</td><td>1</td></tr><tr><td>Пробоотборная штанга</td><td>1</td></tr><tr><td>Пробоотборный щуп</td><td>1</td></tr><tr><td>Адаптер сетевой 5 В, 1 А</td><td>1</td></tr><tr><td>USB кабель</td><td>1</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Упаковка</td><td>1</td></tr></tbody></table>",
+    "kitKK": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Количество, шт</strong></td></tr><tr><td>Насос пробоотборный &nbsp;ФН10</td><td>1</td></tr><tr><td>Пробоотборная штанга</td><td>1</td></tr><tr><td>Пробоотборный щуп</td><td>1</td></tr><tr><td>Адаптер сетевой 5 В, 1 А</td><td>1</td></tr><tr><td>USB кабель</td><td>1</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Упаковка</td><td>1</td></tr></tbody></table>",
+    "documentation": {
+      "blocks": [
+        {
+          "title": {
+            "ru": "Документация:",
+            "kk": "Документация:"
+          },
+          "documents": [
+            {
+              "name": {
+                "ru": "Паспорт ФН10 (тестовый)",
+                "kk": "Паспорт ФН10 (тестовый)"
+              },
+              "url": "/documents/service-devices/portativnyj-nasos-fn10/portativnyj-nasos-fn10_1770493179184_Pasport-FN10-v1.pdf",
+              "path": "public/documents/service-devices/portativnyj-nasos-fn10/portativnyj-nasos-fn10_1770493179184_Pasport-FN10-v1.pdf",
+              "fileName": "Pasport-FN10-v1.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    "videos": null,
+    "priceComplectationRU": "<p>Прибор находится в разработке</p><h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td rowspan=\"1\">Насос пробоотборный ФН10</td><td rowspan=\"1\">для работы с газоанализатором <a href=\"https://pharmec.by/catalog/portable-devices/fp23/\">ФП23</a></td><td rowspan=\"1\"><strong>по запросу</strong></td></tr></tbody></table>",
+    "priceComplectationKK": "",
+    "priceComplectationInfo": "<p>Прибор находится в разработке</p><h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td rowspan=\"1\">Насос пробоотборный ФН10</td><td rowspan=\"1\">для работы с газоанализатором <a href=\"https://pharmec.by/catalog/portable-devices/fp23/\">ФП23</a></td><td rowspan=\"1\"><strong>по запросу</strong></td></tr></tbody></table>",
+    "specificationsRU": "<h3><strong>Технические характеристики:</strong></h3><p>Габаритные размеры, мм, не более: 180 х 48 х 28.<br>Масса, г, не более: 300;<br>Напряжение питания постоянного тока: от 3,0 до 4,2 В.<br>Устанавливаемые расходы:<br>— 500&nbsp; мл/мин;<br>— 750&nbsp; мл/мин;<br>— 1000&nbsp; мл/мин.<br>Время непрерывной работы без подзарядки аккумуляторной не менее 8 часов.<br>Приборы при эксплуатации должны быть устойчивы к воздействию следующих климатических факторов:</p><ul><li>температуре окружающей среды от минус 40 <strong>°</strong>С до плюс 50 <strong>°</strong>С,</li><li>относительной влажности 98 % при 25 <strong>°</strong>С;</li><li>атмосферного давления от 84,0 до 106,7 кПа.</li></ul><p>Средняя наработка на отказ не менее 15000 ч.<br>Средний срок службы 10 лет.</p>",
+    "specificationsKK": "",
+    "specificationsInfo": "<h3><strong>Технические характеристики:</strong></h3><p>Габаритные размеры, мм, не более: 180 х 48 х 28.<br>Масса, г, не более: 300;<br>Напряжение питания постоянного тока: от 3,0 до 4,2 В.<br>Устанавливаемые расходы:<br>— 500&nbsp; мл/мин;<br>— 750&nbsp; мл/мин;<br>— 1000&nbsp; мл/мин.<br>Время непрерывной работы без подзарядки аккумуляторной не менее 8 часов.<br>Приборы при эксплуатации должны быть устойчивы к воздействию следующих климатических факторов:</p><ul><li>температуре окружающей среды от минус 40 <strong>°</strong>С до плюс 50 <strong>°</strong>С,</li><li>относительной влажности 98 % при 25 <strong>°</strong>С;</li><li>атмосферного давления от 84,0 до 106,7 кПа.</li></ul><p>Средняя наработка на отказ не менее 15000 ч.<br>Средний срок службы 10 лет.</p>"
+  },
+  {
+    "id": "blok-relejnogo-rasshireniya-fst-03v1",
+    "name": "Блок релейного расширения ФСТ-03В1",
+    "price": "",
+    "images": [
+      "/images/service-devices/blok-relejnogo-rasshireniya-fst-03v1/blok-relejnogo-rasshireniya-fst-03v1_1770493538071_0_BRR_1.jpg",
+      "/images/service-devices/blok-relejnogo-rasshireniya-fst-03v1/blok-relejnogo-rasshireniya-fst-03v1_1770493538072_1_brr_3.jpg",
+      "/images/service-devices/blok-relejnogo-rasshireniya-fst-03v1/blok-relejnogo-rasshireniya-fst-03v1_1770493538073_2_BRR_2.jpg"
+    ],
+    "generalInfoRU": [
+      "Прибор предназначен для увеличения числа релейных выходов управления внешними исполнительными устройствами в мультиприборных системах.",
+      "Для газоанализаторов: ФСТ-03м, ФСТ-03В; БПС ФСТ-03В1."
+    ],
+    "generalInfoKK": [
+      "Прибор предназначен для увеличения числа релейных выходов управления внешними исполнительными устройствами в мультиприборных системах.",
+      "Для газоанализаторов: ФСТ-03м, ФСТ-03В; БПС ФСТ-03В1."
+    ],
+    "descriptionRU": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Цены и комплектация:</strong></h3><div class=\"quill-better-table-wrapper\"><table class=\"quill-better-table\" style=\"width: 300px;\"><colgroup><col width=\"100\"><col width=\"100\"><col width=\"100\"></colgroup><tbody><tr data-row=\"1\"><td data-row=\"1\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line\" data-row=\"1\" data-cell=\"1\" data-rowspan=\"1\" data-colspan=\"1\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(244, 244, 244);\">Наименование</span></p></td><td data-row=\"1\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line\" data-row=\"1\" data-cell=\"2\" data-rowspan=\"1\" data-colspan=\"1\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(244, 244, 244);\">Артикул</span></p></td><td data-row=\"1\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line\" data-row=\"1\" data-cell=\"3\" data-rowspan=\"1\" data-colspan=\"1\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(244, 244, 244);\">Цена с НДС</span></p></td></tr><tr data-row=\"2\"><td data-row=\"2\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line\" data-row=\"2\" data-cell=\"1\" data-rowspan=\"1\" data-colspan=\"1\"><span style=\"color: rgb(51, 51, 51); background-color: transparent;\">Блок релейного расширения (БРР) ФСТ-03В1</span></p></td><td data-row=\"2\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line ql-align-center\" data-row=\"2\" data-cell=\"2\" data-rowspan=\"1\" data-colspan=\"1\"><span style=\"color: rgb(51, 51, 51); background-color: transparent;\">АРТ234025</span></p></td><td data-row=\"2\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line ql-align-center\" data-row=\"2\" data-cell=\"3\" data-rowspan=\"1\" data-colspan=\"1\"><strong style=\"color: rgb(51, 51, 51); background-color: transparent;\">900,00</strong></p></td></tr></tbody></table></div><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Блок релейного расширения ФСТ-03В1 (БРР) — стационарный прибор, предназначен для увеличения числа релейных выходов управления внешними исполнительными устройствами в мультиприборных системах, таких как:</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">Газоанализатор ФСТ-03В</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/gazoanalizator-fst-03m/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">Газоанализатор ФСТ-03м</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">Блок питания и сигнализации ФСТ-03В1</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">.</span></p><p><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Блок релейного расширения обеспечивает: </strong></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— получение управляющих воздействий (команд) по RS232/RS485 т замыкание/размыкание реле в соответствии с полученной командой;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— индикацию состояния реле,  индикацию адреса БРР и типа RS на ЖКИ;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— возможность программирования адреса БРР на шине (1-15) и типа RS;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— получение управляющих воздействий (команд) по интерфейсу RS485 (1wOk).</span></p><p><br></p>",
+    "descriptionKK": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Цены и комплектация:</strong></h3><div class=\"quill-better-table-wrapper\"><table class=\"quill-better-table\" style=\"width: 300px;\"><colgroup><col width=\"100\"><col width=\"100\"><col width=\"100\"></colgroup><tbody><tr data-row=\"1\"><td data-row=\"1\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line\" data-row=\"1\" data-cell=\"1\" data-rowspan=\"1\" data-colspan=\"1\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(244, 244, 244);\">Наименование</span></p></td><td data-row=\"1\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line\" data-row=\"1\" data-cell=\"2\" data-rowspan=\"1\" data-colspan=\"1\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(244, 244, 244);\">Артикул</span></p></td><td data-row=\"1\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line\" data-row=\"1\" data-cell=\"3\" data-rowspan=\"1\" data-colspan=\"1\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(244, 244, 244);\">Цена с НДС</span></p></td></tr><tr data-row=\"2\"><td data-row=\"2\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line\" data-row=\"2\" data-cell=\"1\" data-rowspan=\"1\" data-colspan=\"1\"><span style=\"color: rgb(51, 51, 51); background-color: transparent;\">Блок релейного расширения (БРР) ФСТ-03В1</span></p></td><td data-row=\"2\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line ql-align-center\" data-row=\"2\" data-cell=\"2\" data-rowspan=\"1\" data-colspan=\"1\"><span style=\"color: rgb(51, 51, 51); background-color: transparent;\">АРТ234025</span></p></td><td data-row=\"2\" rowspan=\"1\" colspan=\"1\"><p class=\"qlbt-cell-line ql-align-center\" data-row=\"2\" data-cell=\"3\" data-rowspan=\"1\" data-colspan=\"1\"><strong style=\"color: rgb(51, 51, 51); background-color: transparent;\">900,00</strong></p></td></tr></tbody></table></div><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Блок релейного расширения ФСТ-03В1 (БРР) — стационарный прибор, предназначен для увеличения числа релейных выходов управления внешними исполнительными устройствами в мультиприборных системах, таких как:</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">Газоанализатор ФСТ-03В</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/gazoanalizator-fst-03m/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">Газоанализатор ФСТ-03м</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">Блок питания и сигнализации ФСТ-03В1</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">.</span></p><p><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Блок релейного расширения обеспечивает: </strong></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— получение управляющих воздействий (команд) по RS232/RS485 т замыкание/размыкание реле в соответствии с полученной командой;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— индикацию состояния реле,  индикацию адреса БРР и типа RS на ЖКИ;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— возможность программирования адреса БРР на шине (1-15) и типа RS;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">— получение управляющих воздействий (команд) по интерфейсу RS485 (1wOk).</span></p><p><br></p>",
+    "kitRU": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Кол-во, шт.</strong></td></tr><tr><td>Блок релейного расширения ФСТ-03В1 (АРТ234025)</td><td>1</td></tr><tr><td>Шнур</td><td>1</td></tr><tr><td>Шуруп</td><td>4</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Упаковка</td><td>1</td></tr><tr><td colspan=\"2\">Примечание: Соединительные кабели в комплект поставки не входят</td></tr></tbody></table>",
+    "kitKK": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Кол-во, шт.</strong></td></tr><tr><td>Блок релейного расширения ФСТ-03В1 (АРТ234025)</td><td>1</td></tr><tr><td>Шнур</td><td>1</td></tr><tr><td>Шуруп</td><td>4</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Упаковка</td><td>1</td></tr><tr><td colspan=\"2\">Примечание: Соединительные кабели в комплект поставки не входят</td></tr></tbody></table>",
+    "documentation": {
+      "blocks": [
+        {
+          "title": {
+            "ru": "Документация:",
+            "kk": "Документация:"
+          },
+          "documents": [
+            {
+              "name": {
+                "ru": "Декларация соответствия ТС БРР ФСТ-03В1",
+                "kk": "Декларация соответствия ТС БРР ФСТ-03В1"
+              },
+              "url": "/documents/service-devices/blok-relejnogo-rasshireniya-fst-03v1/blok-relejnogo-rasshireniya-fst-03v1_1770493493843_Deklaratsiya-BRR-FST-03V1-po-24.07.2030-g.pdf",
+              "path": "public/documents/service-devices/blok-relejnogo-rasshireniya-fst-03v1/blok-relejnogo-rasshireniya-fst-03v1_1770493493843_Deklaratsiya-BRR-FST-03V1-po-24.07.2030-g.pdf",
+              "fileName": "Deklaratsiya-BRR-FST-03V1-po-24.07.2030-g.pdf"
+            },
+            {
+              "name": {
+                "ru": "Паспорт для БРР ФСТ-03В1",
+                "kk": "Паспорт для БРР ФСТ-03В1"
+              },
+              "url": "/documents/service-devices/blok-relejnogo-rasshireniya-fst-03v1/blok-relejnogo-rasshireniya-fst-03v1_1770493493849_Pasport-BRR-100162047.041.2-PS.pdf",
+              "path": "public/documents/service-devices/blok-relejnogo-rasshireniya-fst-03v1/blok-relejnogo-rasshireniya-fst-03v1_1770493493849_Pasport-BRR-100162047.041.2-PS.pdf",
+              "fileName": "Pasport-BRR-100162047.041.2-PS.pdf"
+            },
+            {
+              "name": {
+                "ru": "Дополнительные функции ФСТ-03х. Руководство пользователя",
+                "kk": "Дополнительные функции ФСТ-03х. Руководство пользователя"
+              },
+              "url": "/documents/service-devices/blok-relejnogo-rasshireniya-fst-03v1/blok-relejnogo-rasshireniya-fst-03v1_1770493493854_RP_100162047-031_v200.pdf",
+              "path": "public/documents/service-devices/blok-relejnogo-rasshireniya-fst-03v1/blok-relejnogo-rasshireniya-fst-03v1_1770493493854_RP_100162047-031_v200.pdf",
+              "fileName": "RP_100162047-031_v200.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    "videos": {
+      "title": {
+        "ru": "ИНСТРУКЦИЯ | Подключение",
+        "en": "",
+        "kk": "ИНСТРУКЦИЯ | Подключение"
+      },
+      "videos": [
+        {
+          "url": "https://youtu.be/w0x8zLZ767Y"
+        },
+        {
+          "url": "https://youtu.be/hOd2wmNDUSo"
+        }
+      ]
+    },
+    "priceComplectationRU": "",
+    "priceComplectationKK": "",
+    "priceComplectationInfo": "",
+    "specificationsRU": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Габаритные размеры, мм, не более:</th><td>220х160х110</td></tr><tr><th>Масса, кг, не более:</th><td>4,0</td></tr><tr><th>Напряжение питания 1, сетевое 50 Гц, В</th><td>От 207 до 253</td></tr><tr><th rowspan=\"1\">Напряжение питания 2, постоянное, В:</th><td rowspan=\"1\">От 12 до 24</td></tr><tr><th>Потребляемая мощность, ВА, не более:</th><td>25</td></tr><tr><th>Число реле управления исполнительными устройствами, шт:</th><td>10</td></tr><tr><th>Ток коммутируемый, А, не более:</th><td>5</td></tr><tr><th>Напряжение коммутируемое реле, В:</th><td>230</td></tr></tbody></table>",
+    "specificationsKK": "",
+    "specificationsInfo": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Габаритные размеры, мм, не более:</th><td>220х160х110</td></tr><tr><th>Масса, кг, не более:</th><td>4,0</td></tr><tr><th>Напряжение питания 1, сетевое 50 Гц, В</th><td>От 207 до 253</td></tr><tr><th rowspan=\"1\">Напряжение питания 2, постоянное, В:</th><td rowspan=\"1\">От 12 до 24</td></tr><tr><th>Потребляемая мощность, ВА, не более:</th><td>25</td></tr><tr><th>Число реле управления исполнительными устройствами, шт:</th><td>10</td></tr><tr><th>Ток коммутируемый, А, не более:</th><td>5</td></tr><tr><th>Напряжение коммутируемое реле, В:</th><td>230</td></tr></tbody></table>"
+  },
+  {
+    "id": "tester-a-interfeisa",
+    "name": "Тестер А-интерфейса",
+    "price": "",
+    "images": [
+      "/images/service-devices/tester-a-interfeisa/tester-a-interfeisa_1770493790845_0_TAI_1.jpg",
+      "/images/service-devices/tester-a-interfeisa/tester-a-interfeisa_1770493790848_1_TAI-m-MK_2.jpg",
+      "/images/service-devices/tester-a-interfeisa/tester-a-interfeisa_1770493790849_2_TAI-m-MK_3.jpg"
+    ],
+    "generalInfoRU": [
+      "Предназначен для проверки работоспособности каналов А-интерфейса блока питания и сигнализации (БПС) ФСТ-03В1, настройки и проверки блоков датчиков (БД) ФСТ-03В1 и для проверки линий связи БД-БПС. ",
+      "Для БД ФСТ-03В1 и БПС ФСТ-03В1"
+    ],
+    "generalInfoKK": [
+      "Предназначен для проверки работоспособности каналов А-интерфейса блока питания и сигнализации (БПС) ФСТ-03В1, настройки и проверки блоков датчиков (БД) ФСТ-03В1 и для проверки линий связи БД-БПС. ",
+      "Для БД ФСТ-03В1 и БПС ФСТ-03В1"
+    ],
+    "descriptionRU": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Тестер А- интерфейса предназначен для проверки работоспособности каналов А-интерфейса </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/bps-fst-03v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">БПС ФСТ-03В1</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">, настройки и проверки блоков датчиков </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">(БД) ФСТ-03В1</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\"> и для проверки линий связи БД-БПС. ТАИ состоит из двух модулей – канал БПС и имитатор БД, которые объединены в общий корпус, также устройства индикации и клавиатуры и может работать как автономно, так и под управлением специального программного обеспечения для ПЭВМ.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Отличительные особенности:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  отсчетное устройство для индикации концентрации, которую измеряет БД световую, звуковую сигнализацию превышения порогов и ошибок;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  имитацию БД для проверки каналов БПС;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  тест режим для проверки целостности линий А-интерфейс;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  работу под управлением специального программного обеспечения для ПЭВМ, связь с ПЭВМ по USB;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  питание от интерфейса USB и (или) внешнего адаптера питания +5В;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  индикацию тока, выдаваемого БД по интерфейсу 4-20 мА.</span></p><p><br></p>",
+    "descriptionKK": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Тестер А- интерфейса предназначен для проверки работоспособности каналов А-интерфейса </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/bps-fst-03v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">БПС ФСТ-03В1</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">, настройки и проверки блоков датчиков </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">(БД) ФСТ-03В1</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\"> и для проверки линий связи БД-БПС. ТАИ состоит из двух модулей – канал БПС и имитатор БД, которые объединены в общий корпус, также устройства индикации и клавиатуры и может работать как автономно, так и под управлением специального программного обеспечения для ПЭВМ.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Отличительные особенности:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  отсчетное устройство для индикации концентрации, которую измеряет БД световую, звуковую сигнализацию превышения порогов и ошибок;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  имитацию БД для проверки каналов БПС;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  тест режим для проверки целостности линий А-интерфейс;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  работу под управлением специального программного обеспечения для ПЭВМ, связь с ПЭВМ по USB;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  питание от интерфейса USB и (или) внешнего адаптера питания +5В;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  индикацию тока, выдаваемого БД по интерфейсу 4-20 мА.</span></p><p><br></p>",
+    "kitRU": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Кол-во шт.</strong></td></tr><tr><td>Тестер А-интерфейса</td><td>1</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Упаковка</td><td>1</td></tr><tr><td>Насадка</td><td>1</td></tr><tr><td>USB кабель</td><td>1</td></tr><tr><td>Адаптер питания 5В</td><td>1</td></tr></tbody></table>",
+    "kitKK": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Кол-во шт.</strong></td></tr><tr><td>Тестер А-интерфейса</td><td>1</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Упаковка</td><td>1</td></tr><tr><td>Насадка</td><td>1</td></tr><tr><td>USB кабель</td><td>1</td></tr><tr><td>Адаптер питания 5В</td><td>1</td></tr></tbody></table>",
+    "documentation": {
+      "blocks": [
+        {
+          "title": {
+            "ru": "Документация и ПО:",
+            "kk": "Документация и ПО:"
+          },
+          "documents": [
+            {
+              "name": {
+                "ru": "Паспорт на Модуль калибровки и Тестер А-интерфейса (совместный)",
+                "kk": "Паспорт на Модуль калибровки и Тестер А-интерфейса (совместный)"
+              },
+              "url": "/documents/service-devices/tester-a-interfeisa/tester-a-interfeisa_1770493764125_Pasport-Tester-A-interfejsa-100162047.041.1-PS.pdf",
+              "path": "public/documents/service-devices/tester-a-interfeisa/tester-a-interfeisa_1770493764125_Pasport-Tester-A-interfejsa-100162047.041.1-PS.pdf",
+              "fileName": "Pasport-Tester-A-interfejsa-100162047.041.1-PS.pdf"
+            },
+            {
+              "name": {
+                "ru": "Декларация соответствия ТС тестера А-интерфейса",
+                "kk": "Декларация соответствия ТС тестера А-интерфейса"
+              },
+              "url": "/documents/service-devices/tester-a-interfeisa/tester-a-interfeisa_1770493764138_Deklaratsiya-TAI-MK-do-23.10.2030.pdf",
+              "path": "public/documents/service-devices/tester-a-interfeisa/tester-a-interfeisa_1770493764138_Deklaratsiya-TAI-MK-do-23.10.2030.pdf",
+              "fileName": "Deklaratsiya-TAI-MK-do-23.10.2030.pdf"
+            },
+            {
+              "name": {
+                "ru": "Программа настройки БПС и блоков датчиков ФСТ-03В1",
+                "kk": "Программа настройки БПС и блоков датчиков ФСТ-03В1"
+              },
+              "url": "/documents/service-devices/tester-a-interfeisa/tester-a-interfeisa_1770493764141_ToolFST03B1_02.24.zip",
+              "path": "public/documents/service-devices/tester-a-interfeisa/tester-a-interfeisa_1770493764141_ToolFST03B1_02.24.zip",
+              "fileName": "ToolFST03B1_02.24.zip"
+            }
+          ]
+        }
+      ]
+    },
+    "videos": null,
+    "priceComplectationRU": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Тестер А-интерфейса</td><td>АРТ234026</td><td><strong>&nbsp;600,00</strong></td></tr></tbody></table>",
+    "priceComplectationKK": "",
+    "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Тестер А-интерфейса</td><td>АРТ234026</td><td><strong>&nbsp;600,00</strong></td></tr></tbody></table>",
+    "specificationsRU": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Габаритные размеры, мм, не более:</th><td colspan=\"2\">180х60х40</td></tr><tr><th>Масса, кг, не более:</th><td colspan=\"2\">0,5</td></tr><tr><th>Напряжение питания, В:</th><td colspan=\"2\">5±5%</td></tr><tr><th>Потребляемая мощность от источника питания, В, не более:</th><td colspan=\"2\">5</td></tr><tr><th>Максимальная потребляемая мощность, ВА, не более:</th><td colspan=\"2\">3</td></tr><tr><th>Норма средней наработки на отказ с учетом технического обслуживания, ч, не менее:</th><td colspan=\"2\">10000</td></tr><tr><th>Средний срок службы, лет, не менее:</th><td colspan=\"2\">10</td></tr></tbody></table>",
+    "specificationsKK": "",
+    "specificationsInfo": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Габаритные размеры, мм, не более:</th><td colspan=\"2\">180х60х40</td></tr><tr><th>Масса, кг, не более:</th><td colspan=\"2\">0,5</td></tr><tr><th>Напряжение питания, В:</th><td colspan=\"2\">5±5%</td></tr><tr><th>Потребляемая мощность от источника питания, В, не более:</th><td colspan=\"2\">5</td></tr><tr><th>Максимальная потребляемая мощность, ВА, не более:</th><td colspan=\"2\">3</td></tr><tr><th>Норма средней наработки на отказ с учетом технического обслуживания, ч, не менее:</th><td colspan=\"2\">10000</td></tr><tr><th>Средний срок службы, лет, не менее:</th><td colspan=\"2\">10</td></tr></tbody></table>"
+  },
+  {
+    "id": "modul-kalibrovki",
+    "name": "Модуль калибровки",
+    "price": "",
+    "images": [
+      "/images/service-devices/modul-kalibrovki/modul-kalibrovki_1770494048901_0_MK_1.jpg",
+      "/images/service-devices/modul-kalibrovki/modul-kalibrovki_1770494048902_1_tai-m-mk_4.jpg",
+      "/images/service-devices/modul-kalibrovki/modul-kalibrovki_1770494048904_2_tai-m-mk_3.jpg"
+    ],
+    "generalInfoRU": [
+      "Модуль калибровки предназначен для настройки и проверки блоков датчиков (БД) ФСТ-03В1 и работает под управлением специального программного обеспечения для ПЭВМ.",
+      "Для БД ФСТ-03В1"
+    ],
+    "generalInfoKK": [
+      "Модуль калибровки предназначен для настройки и проверки блоков датчиков (БД) ФСТ-03В1 и работает под управлением специального программного обеспечения для ПЭВМ.",
+      "Для БД ФСТ-03В1"
+    ],
+    "descriptionRU": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Модуль калибровки предназначен для настройки и проверки </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">блоков датчиков ФСТ-03В1</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">  и работает под управлением специального программного обеспечения для ПЭВМ.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Отличительные особенности:</strong></h3><h4><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">МК ФСТ-03В1 обеспечивает:</span></h4><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  светодиодную индикацию режима работы;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  работу под управлением специального программного обеспечения для ПЭВМ, связь с ПЭВМ по USB;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  питание от интерфейса USB и (или) внешнего адаптера питания +5В;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  индикацию тока выдаваемого БД по интерфейсу 4-20 мА.</span></p><p><br></p>",
+    "descriptionKK": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Модуль калибровки предназначен для настройки и проверки </span><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">блоков датчиков ФСТ-03В1</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">  и работает под управлением специального программного обеспечения для ПЭВМ.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Отличительные особенности:</strong></h3><h4><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">МК ФСТ-03В1 обеспечивает:</span></h4><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  светодиодную индикацию режима работы;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  работу под управлением специального программного обеспечения для ПЭВМ, связь с ПЭВМ по USB;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  питание от интерфейса USB и (или) внешнего адаптера питания +5В;</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">•  индикацию тока выдаваемого БД по интерфейсу 4-20 мА.</span></p><p><br></p>",
+    "kitRU": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Кол-во, шт.</strong></td></tr><tr><td>Модуль калибровки</td><td>1</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Упаковка</td><td>1</td></tr><tr><td>Насадка</td><td>1</td></tr></tbody></table>",
+    "kitKK": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Кол-во, шт.</strong></td></tr><tr><td>Модуль калибровки</td><td>1</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Упаковка</td><td>1</td></tr><tr><td>Насадка</td><td>1</td></tr></tbody></table>",
+    "documentation": {
+      "blocks": [
+        {
+          "title": {
+            "ru": "Документация и ПО:",
+            "kk": "Документация и ПО:"
+          },
+          "documents": [
+            {
+              "name": {
+                "ru": "Паспорт на Модуль калибровки и Тестер А-интерфейса (совместный)",
+                "kk": "Паспорт на Модуль калибровки и Тестер А-интерфейса (совместный)"
+              },
+              "url": "/documents/service-devices/modul-kalibrovki/modul-kalibrovki_1770494012794_Pasport-Tester-A-interfejsa-100162047.041.1-PS.pdf",
+              "path": "public/documents/service-devices/modul-kalibrovki/modul-kalibrovki_1770494012794_Pasport-Tester-A-interfejsa-100162047.041.1-PS.pdf",
+              "fileName": "Pasport-Tester-A-interfejsa-100162047.041.1-PS.pdf"
+            },
+            {
+              "name": {
+                "ru": "Декларация соответствия ТС модуля калибровки",
+                "kk": "Декларация соответствия ТС модуля калибровки"
+              },
+              "url": "/documents/service-devices/modul-kalibrovki/modul-kalibrovki_1770494012807_Deklaratsiya-TAI-MK-do-23.10.2030.pdf",
+              "path": "public/documents/service-devices/modul-kalibrovki/modul-kalibrovki_1770494012807_Deklaratsiya-TAI-MK-do-23.10.2030.pdf",
+              "fileName": "Deklaratsiya-TAI-MK-do-23.10.2030.pdf"
+            },
+            {
+              "name": {
+                "ru": "Программа настройки БПС и блоков датчиков ФСТ-03В1",
+                "kk": "Программа настройки БПС и блоков датчиков ФСТ-03В1"
+              },
+              "url": "/documents/service-devices/modul-kalibrovki/modul-kalibrovki_1770494012808_ToolFST03B1_02.24__1_.zip",
+              "path": "public/documents/service-devices/modul-kalibrovki/modul-kalibrovki_1770494012808_ToolFST03B1_02.24__1_.zip",
+              "fileName": "ToolFST03B1_02.24__1_.zip"
+            }
+          ]
+        }
+      ]
+    },
+    "videos": null,
+    "priceComplectationRU": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Модуль калибровки</td><td>АРТ234027</td><td><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;480,00</strong></td></tr></tbody></table>",
+    "priceComplectationKK": "",
+    "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Модуль калибровки</td><td>АРТ234027</td><td><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;480,00</strong></td></tr></tbody></table>",
+    "specificationsRU": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Габаритные размеры, мм, не более:</th><td colspan=\"2\">130х60х40</td></tr><tr><th>Масса, кг, не более:</th><td colspan=\"2\">0,3</td></tr><tr><th>Напряжение питания, В:</th><td colspan=\"2\">5±5%</td></tr><tr><th>Потребляемая мощность от источника питания, В, не более:</th><td colspan=\"2\">5</td></tr><tr><th>Максимальная потребляемая мощность, ВА, не более:</th><td colspan=\"2\">3</td></tr><tr><th>Норма средней наработки на отказ с учетом технического обслуживания, ч, не менее:</th><td colspan=\"2\">10000</td></tr><tr><th>Средний срок службы, лет, не менее:</th><td colspan=\"2\">10</td></tr></tbody></table>",
+    "specificationsKK": "",
+    "specificationsInfo": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Габаритные размеры, мм, не более:</th><td colspan=\"2\">130х60х40</td></tr><tr><th>Масса, кг, не более:</th><td colspan=\"2\">0,3</td></tr><tr><th>Напряжение питания, В:</th><td colspan=\"2\">5±5%</td></tr><tr><th>Потребляемая мощность от источника питания, В, не более:</th><td colspan=\"2\">5</td></tr><tr><th>Максимальная потребляемая мощность, ВА, не более:</th><td colspan=\"2\">3</td></tr><tr><th>Норма средней наработки на отказ с учетом технического обслуживания, ч, не менее:</th><td colspan=\"2\">10000</td></tr><tr><th>Средний срок службы, лет, не менее:</th><td colspan=\"2\">10</td></tr></tbody></table>"
+  },
+  {
+    "id": "zaryadnaya-stantsiya-zs-20",
+    "name": "Зарядная станция ЗС-20",
+    "price": "",
+    "images": [
+      "/images/service-devices/zaryadnaya-stantsiya-zs-20/zaryadnaya-stantsiya-zs-20_1770494230241_0_ZS20_3.jpg",
+      "/images/service-devices/zaryadnaya-stantsiya-zs-20/zaryadnaya-stantsiya-zs-20_1770494230243_1_ZS20_4.jpg",
+      "/images/service-devices/zaryadnaya-stantsiya-zs-20/zaryadnaya-stantsiya-zs-20_1770494230245_2_ZS20_2.jpg",
+      "/images/service-devices/zaryadnaya-stantsiya-zs-20/zaryadnaya-stantsiya-zs-20_1770494230246_3_ZS20_1-2.jpg"
+    ],
+    "generalInfoRU": [
+      "Предназначен для периодического заряда аккумуляторных батарей портативных приборов трех типов оборудования производства ФАРМЭК.",
+      "Для приборов: ФП33, ФТ-02В1.1; ФП11.2к (д. выпуска до ноября 2025 г.); ФД-09, ФП22, ФП 12 (д. выпуска до декабря 2024 г.) ФТ-02В1 с выносным датчиком (д. выпуска до сентября 2025 г.)"
+    ],
+    "generalInfoKK": [
+      "Предназначен для периодического заряда аккумуляторных батарей портативных приборов трех типов оборудования производства ФАРМЭК.",
+      "Для приборов: ФП33, ФТ-02В1.1; ФП11.2к (д. выпуска до ноября 2025 г.); ФД-09, ФП22, ФП 12 (д. выпуска до декабря 2024 г.) ФТ-02В1 с выносным датчиком (д. выпуска до сентября 2025 г.)"
+    ],
+    "descriptionRU": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Зарядная станция ЗС-20 предназначена для периодического заряда аккумуляторных батарей портативных приборов трех типов производства НПОДО «ФАРМЭК»:</span></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">газоанализатор </span><a href=\"https://pharmec.by/catalog/portable-devices/fp33/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">ФП33</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">газоанализатор ФП11.2к</span><em style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\"> (д. выпуска до ноября 2025 г.);</em></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">индикаторы утечки газа </span><a href=\"https://pharmec.by/catalog/portable-devices/ft-02v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">ФТ-02В1.1;</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">газоанализатор ФП22 </span><em style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">(д. выпуска до декабря 2024 г.);</em></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">течеискатели-сигнализаторы ФП12 </span><em style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">(д. выпуска до декабря 2024 г.)</em><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">измеритель давления газа  ФД-09 </span><em style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">(д. выпуска до декабря 2024 г.)</em><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">индикаторы утечки газа ФТ-02В1 с выносным сенсором (дата выпуска до сентября 2025 г.)</span></li></ol><p><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Зарядная станция ЗС-20 обеспечивает:</strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">одновременный заряд аккумуляторных батарей 20 портативных приборов</span><span style=\"background-color: rgb(255, 255, 255); color: rgb(255, 102, 0);\">*</span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\"> из  вышеуказанных  групп модификаций;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">отображение информации о режимах работы каждого канала.</span></li></ol><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(255, 102, 0);\">*</span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\"> Стандартный комплект выводов питания ЗС-20 состоит из 10-ти зарядных шнуров со штекером Ø 3,5 мм и 10-ти зарядных шнуров со штекером Ø 5,5 мм (20 выводов). При заказе оборудования количество типов выводов питания можно изменить.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Условия эксплуатации:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">температура окружающей среды от 1 до плюс 40 °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">относительная влажность до 98 % при 25 °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">атмосферное давление от 84,0 до 106,7 кПа;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">питание осуществляется от сети переменного тока с номинальным напряжением; 230 В и частотой 50 Гц.</span></li></ol><p><br></p>",
+    "descriptionKK": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Зарядная станция ЗС-20 предназначена для периодического заряда аккумуляторных батарей портативных приборов трех типов производства НПОДО «ФАРМЭК»:</span></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">газоанализатор </span><a href=\"https://pharmec.by/catalog/portable-devices/fp33/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">ФП33</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">газоанализатор ФП11.2к</span><em style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\"> (д. выпуска до ноября 2025 г.);</em></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">индикаторы утечки газа </span><a href=\"https://pharmec.by/catalog/portable-devices/ft-02v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">ФТ-02В1.1;</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">газоанализатор ФП22 </span><em style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">(д. выпуска до декабря 2024 г.);</em></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">течеискатели-сигнализаторы ФП12 </span><em style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">(д. выпуска до декабря 2024 г.)</em><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">измеритель давления газа  ФД-09 </span><em style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">(д. выпуска до декабря 2024 г.)</em><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">индикаторы утечки газа ФТ-02В1 с выносным сенсором (дата выпуска до сентября 2025 г.)</span></li></ol><p><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Зарядная станция ЗС-20 обеспечивает:</strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">одновременный заряд аккумуляторных батарей 20 портативных приборов</span><span style=\"background-color: rgb(255, 255, 255); color: rgb(255, 102, 0);\">*</span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\"> из  вышеуказанных  групп модификаций;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">отображение информации о режимах работы каждого канала.</span></li></ol><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(255, 102, 0);\">*</span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\"> Стандартный комплект выводов питания ЗС-20 состоит из 10-ти зарядных шнуров со штекером Ø 3,5 мм и 10-ти зарядных шнуров со штекером Ø 5,5 мм (20 выводов). При заказе оборудования количество типов выводов питания можно изменить.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Условия эксплуатации:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">температура окружающей среды от 1 до плюс 40 °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">относительная влажность до 98 % при 25 °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">атмосферное давление от 84,0 до 106,7 кПа;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">питание осуществляется от сети переменного тока с номинальным напряжением; 230 В и частотой 50 Гц.</span></li></ol><p><br></p>",
+    "kitRU": "",
+    "kitKK": "",
+    "documentation": {
+      "blocks": [
+        {
+          "title": {
+            "ru": "Документация:",
+            "kk": "Документация:"
+          },
+          "documents": [
+            {
+              "name": {
+                "ru": "Паспорт зарядной станции (ЗС-20)",
+                "kk": "Паспорт зарядной станции (ЗС-20)"
+              },
+              "url": "/documents/service-devices/zaryadnaya-stantsiya-zs-20/zaryadnaya-stantsiya-zs-20_1770494196363_Pasport-Zaryadnaya-stantsiya-ZS-20-PR-09-10.00.000-PS.pdf",
+              "path": "public/documents/service-devices/zaryadnaya-stantsiya-zs-20/zaryadnaya-stantsiya-zs-20_1770494196363_Pasport-Zaryadnaya-stantsiya-ZS-20-PR-09-10.00.000-PS.pdf",
+              "fileName": "Pasport-Zaryadnaya-stantsiya-ZS-20-PR-09-10.00.000-PS.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    "videos": null,
+    "priceComplectationRU": "<table><thead><tr><th>Наименование</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Зарядная станция ЗС-20</td><td>АРТ23130</td><td>по умолчанию в комплект поставки входят шнур со штекером Ø 3,5 мм — 10 шт. и шнур со штекером Ø 5,5 мм — 10 шт.</td><td><strong>2 838,00</strong></td></tr></tbody></table>",
+    "priceComplectationKK": "",
+    "priceComplectationInfo": "<table><thead><tr><th>Наименование</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Зарядная станция ЗС-20</td><td>АРТ23130</td><td>по умолчанию в комплект поставки входят шнур со штекером Ø 3,5 мм — 10 шт. и шнур со штекером Ø 5,5 мм — 10 шт.</td><td><strong>2 838,00</strong></td></tr></tbody></table>",
+    "specificationsRU": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Габаритные размеры, мм, не более:</th><td colspan=\"2\">260х180х130</td></tr><tr><th>Масса, кг, не более:</th><td colspan=\"2\">4,0</td></tr><tr><th>Выходное напряжение при номинальном напряжении 230 В не должны изменяться более чем, %:</th><td colspan=\"2\">±10</td></tr><tr><th>Максимальная потребляемая мощность, ВА, не более</th><td colspan=\"2\">400</td></tr><tr><th>Число каналов:</th><td colspan=\"2\">20</td></tr></tbody></table>",
+    "specificationsKK": "",
+    "specificationsInfo": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Габаритные размеры, мм, не более:</th><td colspan=\"2\">260х180х130</td></tr><tr><th>Масса, кг, не более:</th><td colspan=\"2\">4,0</td></tr><tr><th>Выходное напряжение при номинальном напряжении 230 В не должны изменяться более чем, %:</th><td colspan=\"2\">±10</td></tr><tr><th>Максимальная потребляемая мощность, ВА, не более</th><td colspan=\"2\">400</td></tr><tr><th>Число каналов:</th><td colspan=\"2\">20</td></tr></tbody></table>"
+  },
+  {
+    "id": "zariadnaya-stanciya-zs-usb",
+    "name": "Станция зарядная «ЗС-USB-16/500»",
+    "price": "",
+    "images": [
+      "/images/service-devices/zariadnaya-stanciya-zs-usb/zariadnaya-stanciya-zs-usb_1770494363991_0_USB_11.jpg",
+      "/images/service-devices/zariadnaya-stanciya-zs-usb/zariadnaya-stanciya-zs-usb_1770494363995_1_USB_22.jpg",
+      "/images/service-devices/zariadnaya-stanciya-zs-usb/zariadnaya-stanciya-zs-usb_1770494363996_2_USB_33.jpg"
+    ],
+    "generalInfoRU": [
+      "Предназначена для периодического заряда аккумуляторных батарей портативных приборов c разъёмом для заряда USB производства ФАРМЭК.",
+      "Для приборов: ФТ04, ФП23, ФП34, ФП12, ФП22, ФП11.2к ФД-09, ФТ-02В1"
+    ],
+    "generalInfoKK": [
+      "Предназначена для периодического заряда аккумуляторных батарей портативных приборов c разъёмом для заряда USB производства ФАРМЭК.",
+      "Для приборов: ФТ04, ФП23, ФП34, ФП12, ФП22, ФП11.2к ФД-09, ФТ-02В1"
+    ],
+    "descriptionRU": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Зарядная станция ЗС-USB-16/500, предназначена для периодического заряда аккумуляторных батарей портативных приборов производства ФАРМЭК c разъёмом для заряда USB.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">ЗС-USB-16/500 заряжает следующие приборы:</span></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp23/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП23</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/techeiskateli/indikator-utechki-gaza-ft04/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Индикатор утечки газа ФТ04</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp34/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП34</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp22/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП22</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp11-2k/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП11.2к</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp12/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Течеискатель-сигнализатор ФП 12</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/izmeriteli-davlenija-gaza/izmeriteldavlenija-gaza-fd-09/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Измеритель давления газа ФД-09</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/techeiskateli/indikator-utechki-gaza-ft-02v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Индикатор утечки газа ФТ-02В1</a></li></ol><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Зарядная станция обеспечивает:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">одновременный заряд аккумуляторных батарей 16 портативных приборов;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">отображение значения зарядного тока, времени заряда.</span></li></ol><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Условия эксплуатации:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">температура окружающей среды от 1 °С до 40 °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">относительная влажность до 98 % при 25 °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">атмосферное давление от 84,0 до 106,7 кПа;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">питание осуществляется от сети переменного тока с номинальным напряжением 230 В и частотой 50 Гц.</span></li></ol><p><br></p>",
+    "descriptionKK": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Зарядная станция ЗС-USB-16/500, предназначена для периодического заряда аккумуляторных батарей портативных приборов производства ФАРМЭК c разъёмом для заряда USB.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">ЗС-USB-16/500 заряжает следующие приборы:</span></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp23/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП23</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/techeiskateli/indikator-utechki-gaza-ft04/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Индикатор утечки газа ФТ04</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp34/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП34</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp22/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП22</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp11-2k/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП11.2к</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp12/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Течеискатель-сигнализатор ФП 12</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/izmeriteli-davlenija-gaza/izmeriteldavlenija-gaza-fd-09/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Измеритель давления газа ФД-09</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/techeiskateli/indikator-utechki-gaza-ft-02v1/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Индикатор утечки газа ФТ-02В1</a></li></ol><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Зарядная станция обеспечивает:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">одновременный заряд аккумуляторных батарей 16 портативных приборов;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">отображение значения зарядного тока, времени заряда.</span></li></ol><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Условия эксплуатации:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">температура окружающей среды от 1 °С до 40 °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">относительная влажность до 98 % при 25 °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">атмосферное давление от 84,0 до 106,7 кПа;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">питание осуществляется от сети переменного тока с номинальным напряжением 230 В и частотой 50 Гц.</span></li></ol><p><br></p>",
+    "kitRU": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Количество штук</strong></td></tr><tr><td>Станция зарядная «ЗС-USB-16/500»</td><td>1</td></tr><tr><td>Кабель сетевой</td><td>1</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Упаковка</td><td>1</td></tr></tbody></table>",
+    "kitKK": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Количество штук</strong></td></tr><tr><td>Станция зарядная «ЗС-USB-16/500»</td><td>1</td></tr><tr><td>Кабель сетевой</td><td>1</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Упаковка</td><td>1</td></tr></tbody></table>",
+    "documentation": {
+      "blocks": [
+        {
+          "title": {
+            "ru": "Документация:",
+            "kk": "Документация:"
+          },
+          "documents": [
+            {
+              "name": {
+                "ru": "Паспорт ЗС-USB-16/500",
+                "kk": "Паспорт ЗС-USB-16/500"
+              },
+              "url": "/documents/service-devices/zariadnaya-stanciya-zs-usb/zariadnaya-stanciya-zs-usb_1770494346489_Pasport-ZC-USB-16-500-PREN.016.00.000-PS.pdf",
+              "path": "public/documents/service-devices/zariadnaya-stanciya-zs-usb/zariadnaya-stanciya-zs-usb_1770494346489_Pasport-ZC-USB-16-500-PREN.016.00.000-PS.pdf",
+              "fileName": "Pasport-ZC-USB-16-500-PREN.016.00.000-PS.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    "videos": null,
+    "priceComplectationRU": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Станция зарядная «ЗС-USB-16/500»</td><td>АРТ23131</td><td><strong>&nbsp;3&nbsp;066,00</strong></td></tr></tbody></table>",
+    "priceComplectationKK": "",
+    "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Станция зарядная «ЗС-USB-16/500»</td><td>АРТ23131</td><td><strong>&nbsp;3&nbsp;066,00</strong></td></tr></tbody></table>",
+    "specificationsRU": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Значение</strong></td></tr><tr><td>Габаритные размеры, мм, не более</td><td>298х141х100</td></tr><tr><td>Масса, кг, не более</td><td>1,8</td></tr><tr><td>Номинальное выходное напряжения, В</td><td>5,2</td></tr><tr><td>Максимальная потребляемая мощность, ВА, не более</td><td>100</td></tr><tr><td>Число &nbsp;каналов</td><td>16</td></tr></tbody></table>",
+    "specificationsKK": "",
+    "specificationsInfo": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Значение</strong></td></tr><tr><td>Габаритные размеры, мм, не более</td><td>298х141х100</td></tr><tr><td>Масса, кг, не более</td><td>1,8</td></tr><tr><td>Номинальное выходное напряжения, В</td><td>5,2</td></tr><tr><td>Максимальная потребляемая мощность, ВА, не более</td><td>100</td></tr><tr><td>Число &nbsp;каналов</td><td>16</td></tr></tbody></table>"
+  },
+  {
+    "id": "ustrojstvo-fkd-2",
+    "name": "Устройство коммутационно-диагностическое ФКД-2",
+    "price": "",
+    "images": [
+      "/images/service-devices/ustrojstvo-fkd-2/ustrojstvo-fkd-2_1770494748925_0_fkd-2_2.jpg",
+      "/images/service-devices/ustrojstvo-fkd-2/ustrojstvo-fkd-2_1770494748926_1_fkd-2_3.jpg",
+      "/images/service-devices/ustrojstvo-fkd-2/ustrojstvo-fkd-2_1770494748927_2_fkd-2_1.jpg"
+    ],
+    "generalInfoRU": [
+      "Предназначен для автоматической предповерочной настройки и подстройки в процессе эксплуатации газоаналитических приборов производства ФАРМЭК на рабочие газы, а также для упрощения переключения ПГС при проведении поверки и диагностики газоаналитических приборов.",
+      "Для приборов: ФСТ-03м, ФСТ-03В, БД ФСТ-03В1, ФП21, ФП22, ФП11.2К, ФП12, ФП33, ФП34, ФП23, ФТ-02В1, ФТ-02В1.1"
+    ],
+    "generalInfoKK": [
+      "Предназначен для автоматической предповерочной настройки и подстройки в процессе эксплуатации газоаналитических приборов производства ФАРМЭК на рабочие газы, а также для упрощения переключения ПГС при проведении поверки и диагностики газоаналитических приборов.",
+      "Для приборов: ФСТ-03м, ФСТ-03В, БД ФСТ-03В1, ФП21, ФП22, ФП11.2К, ФП12, ФП33, ФП34, ФП23, ФТ-02В1, ФТ-02В1.1"
+    ],
+    "descriptionRU": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">ФКД-2 предназначен для диагностики, поверки, настройки и подстройки в процессе эксплуатации газоаналитических приборов изготовляемых в НПОДО «ФАРМЭК», а также для упрощения переключения ПГС при проведении поверки и контроля функционирования газоаналитических приборов.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Основное назначение — сократить время настройки, экономия расхода и удобство подачи ПГС без необходимости механического переключения вентильных соединений баллонов. ФКД-2 позволяет минимизировать большинство механических операций, сведя их к однократной сборке газовой схемы.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Отличительные особенности:</strong></h3><h4><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Интерфейс оператора:</span></h4><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Наличие 8-ми дюймового планшета с рабочим ПО</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Интуитивно понятный и информативный интерфейс.</span></p><h4><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Автоматизация и управление:</span></h4><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Автоматическое поддержание расхода ПГС.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Экономия ПГС.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Запоминание ранее введенной конфигурации ПГС и ранее установленного расхода.</span></p><h4><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Использование для поверки:</span></h4><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Возможность подачи любой из ПГС в одно касание на определенное время таймера, либо на неограниченное время.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• 9 газовых входов высокого давления (позволяет подключать до 9 разных ПГС прямо с редуктора   баллона).</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Области применения:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Ремонтные организации, сервисные центры в которых проводится настройка и поверка газоналитических приборов.  Устройство коммутационно-диагностическое ФКД-2 — 1шт.</span></p><p><br></p>",
+    "descriptionKK": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">ФКД-2 предназначен для диагностики, поверки, настройки и подстройки в процессе эксплуатации газоаналитических приборов изготовляемых в НПОДО «ФАРМЭК», а также для упрощения переключения ПГС при проведении поверки и контроля функционирования газоаналитических приборов.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Основное назначение — сократить время настройки, экономия расхода и удобство подачи ПГС без необходимости механического переключения вентильных соединений баллонов. ФКД-2 позволяет минимизировать большинство механических операций, сведя их к однократной сборке газовой схемы.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Отличительные особенности:</strong></h3><h4><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Интерфейс оператора:</span></h4><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Наличие 8-ми дюймового планшета с рабочим ПО</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Интуитивно понятный и информативный интерфейс.</span></p><h4><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Автоматизация и управление:</span></h4><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Автоматическое поддержание расхода ПГС.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Экономия ПГС.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Запоминание ранее введенной конфигурации ПГС и ранее установленного расхода.</span></p><h4><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Использование для поверки:</span></h4><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• Возможность подачи любой из ПГС в одно касание на определенное время таймера, либо на неограниченное время.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">• 9 газовых входов высокого давления (позволяет подключать до 9 разных ПГС прямо с редуктора   баллона).</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Области применения:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Ремонтные организации, сервисные центры в которых проводится настройка и поверка газоналитических приборов.  Устройство коммутационно-диагностическое ФКД-2 — 1шт.</span></p><p><br></p>",
+    "kitRU": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Кол-во, шт.</strong></td></tr><tr><td>Устройство коммутационно-диагностическое ФКД-2</td><td>1</td></tr><tr><td>Адаптер сетевой 12В1А</td><td>1</td></tr><tr><td>Планшет на базе ОС&nbsp;Android&nbsp;с установленным ПО</td><td>1</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Редуктор УР-6-6</td><td>9</td></tr><tr><td>Компрессор</td><td>1</td></tr><tr><td>Шланг соединительный&nbsp;TU 0604</td><td>2</td></tr><tr><td>Шланг соединительный&nbsp;TU 0425</td><td>18</td></tr></tbody></table>",
+    "kitKK": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Кол-во, шт.</strong></td></tr><tr><td>Устройство коммутационно-диагностическое ФКД-2</td><td>1</td></tr><tr><td>Адаптер сетевой 12В1А</td><td>1</td></tr><tr><td>Планшет на базе ОС&nbsp;Android&nbsp;с установленным ПО</td><td>1</td></tr><tr><td>Паспорт</td><td>1</td></tr><tr><td>Редуктор УР-6-6</td><td>9</td></tr><tr><td>Компрессор</td><td>1</td></tr><tr><td>Шланг соединительный&nbsp;TU 0604</td><td>2</td></tr><tr><td>Шланг соединительный&nbsp;TU 0425</td><td>18</td></tr></tbody></table>",
+    "documentation": {
+      "blocks": [
+        {
+          "title": {
+            "ru": "Документация и ПО:",
+            "kk": "Документация и ПО:"
+          },
+          "documents": [
+            {
+              "name": {
+                "ru": "Паспорт ФКД-2",
+                "kk": "Паспорт ФКД-2"
+              },
+              "url": "/documents/service-devices/ustrojstvo-fkd-2/ustrojstvo-fkd-2_1770494653845_Pasport-Ustrojstvo-kommutatsionno-diagnosticheskoe.pdf",
+              "path": "public/documents/service-devices/ustrojstvo-fkd-2/ustrojstvo-fkd-2_1770494653845_Pasport-Ustrojstvo-kommutatsionno-diagnosticheskoe.pdf",
+              "fileName": "Pasport-Ustrojstvo-kommutatsionno-diagnosticheskoe.pdf"
+            },
+            {
+              "name": {
+                "ru": "ПО для работы с планшетом Android версии 10 и больше",
+                "kk": "ПО для работы с планшетом Android версии 10 и больше"
+              },
+              "url": "/documents/service-devices/ustrojstvo-fkd-2/ustrojstvo-fkd-2_1770494653850_PO-dlya-Android-versiya-10-i-vyshe-.zip",
+              "path": "public/documents/service-devices/ustrojstvo-fkd-2/ustrojstvo-fkd-2_1770494653850_PO-dlya-Android-versiya-10-i-vyshe-.zip",
+              "fileName": "PO-dlya-Android-versiya-10-i-vyshe-.zip"
+            },
+            {
+              "name": {
+                "ru": "ПО для работы с планшетом Android версии меньше 10",
+                "kk": "ПО для работы с планшетом Android версии меньше 10"
+              },
+              "url": "/documents/service-devices/ustrojstvo-fkd-2/ustrojstvo-fkd-2_1770494653856_FKD_v002_10.19.zip",
+              "path": "public/documents/service-devices/ustrojstvo-fkd-2/ustrojstvo-fkd-2_1770494653856_FKD_v002_10.19.zip",
+              "fileName": "FKD_v002_10.19.zip"
+            }
+          ]
+        }
+      ]
+    },
+    "videos": null,
+    "priceComplectationRU": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Устройство коммутационно-диагностическое ФКД-2</td><td>АРТ23100</td><td><strong>10 020,00</strong></td></tr></tbody></table>",
+    "priceComplectationKK": "",
+    "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Устройство коммутационно-диагностическое ФКД-2</td><td>АРТ23100</td><td><strong>10 020,00</strong></td></tr></tbody></table>",
+    "specificationsRU": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th rowspan=\"2\">Масса, габариты:</th><td>масса, г.<br>не более</td><td>&nbsp;габариты, мм.</td><td>&nbsp;</td></tr><tr><td>1400</td><td>&nbsp;&nbsp;&nbsp;&nbsp;700 x&nbsp;500 x 100</td><td>&nbsp;</td></tr><tr><th>Напряжение питания, В</th><td colspan=\"3\">12</td></tr><tr><th>Максимальный ток потребления, А</th><td colspan=\"3\">1,0</td></tr><tr><th>Регулировка расхода ПГС, см3/мин</th><td colspan=\"3\">0-1000</td></tr><tr><th>Рабочее давление подаваемого газа, МПа (кгс/см)</th><td colspan=\"3\">0,15-0,35 (1,5-3,5)</td></tr><tr><th>Давление срабатывания защиты ,МПа (кгс/м2)</th><td colspan=\"2\">0,5&nbsp;±&nbsp;0,1 (5,0&nbsp;±&nbsp;1,0)</td><td>&nbsp;</td></tr><tr><th><strong>Максимально допустимое давление на входных газовых фитингах, МПа (кгс/м2)</strong></th><td colspan=\"2\">0,8 (8,0)</td><td>&nbsp;</td></tr></tbody></table>",
+    "specificationsKK": "",
+    "specificationsInfo": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th rowspan=\"2\">Масса, габариты:</th><td>масса, г.<br>не более</td><td>&nbsp;габариты, мм.</td><td>&nbsp;</td></tr><tr><td>1400</td><td>&nbsp;&nbsp;&nbsp;&nbsp;700 x&nbsp;500 x 100</td><td>&nbsp;</td></tr><tr><th>Напряжение питания, В</th><td colspan=\"3\">12</td></tr><tr><th>Максимальный ток потребления, А</th><td colspan=\"3\">1,0</td></tr><tr><th>Регулировка расхода ПГС, см3/мин</th><td colspan=\"3\">0-1000</td></tr><tr><th>Рабочее давление подаваемого газа, МПа (кгс/см)</th><td colspan=\"3\">0,15-0,35 (1,5-3,5)</td></tr><tr><th>Давление срабатывания защиты ,МПа (кгс/м2)</th><td colspan=\"2\">0,5&nbsp;±&nbsp;0,1 (5,0&nbsp;±&nbsp;1,0)</td><td>&nbsp;</td></tr><tr><th><strong>Максимально допустимое давление на входных газовых фитингах, МПа (кгс/м2)</strong></th><td colspan=\"2\">0,8 (8,0)</td><td>&nbsp;</td></tr></tbody></table>"
+  },
+  {
+    "id": "tehnologicheskij-adapter-irtecad",
+    "name": "Технологический адаптер IrTecAd",
+    "price": "",
+    "images": [
+      "/images/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770495069237_0_ir_2.jpg",
+      "/images/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770495069239_1_ir_1.jpg",
+      "/images/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770495069240_2_ir_3.jpg"
+    ],
+    "generalInfoRU": [
+      "Предназначен для диагностики и калибровки газоанализаторов производства ФАРМЭК. Адаптер позволяет обмениваться данными с прибором по инфракрасному каналу связи без необходимости вскрытия корпуса прибора.",
+      "Для газоанализаторов: ФП33, ФП21"
+    ],
+    "generalInfoKK": [
+      "Предназначен для диагностики и калибровки газоанализаторов производства ФАРМЭК. Адаптер позволяет обмениваться данными с прибором по инфракрасному каналу связи без необходимости вскрытия корпуса прибора.",
+      "Для газоанализаторов: ФП33, ФП21"
+    ],
+    "descriptionRU": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Адаптер инфракрасной связи IrTecAd — устройство, предназначенное для диагностики и калибровки приборов, произведенных в НПОДО «ФАРМЭК».</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Адаптер позволяет обмениваться данными с прибором по инфракрасному каналу связи без необходимости вскрытия корпуса прибора.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Подключается к персональному компьютеру по шине USB и позволяет:</span></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">тестировать работоспособность насоса, датчика, звукового излучателя;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">отслеживать внутренние ошибки;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">отображать напряжение аккумуляторной батареи, датчика;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">задавать калибровочные данные и пороги отключения;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">просматривать динамику изменений характеристик в виде графиков;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">снимать данные накопления.</span></li></ol><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Рекомендован к приобретению организациям, занимающимся ремонтом и обслуживанием приборов НПОДО «ФАРМЭК».</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Поддерживаемые приборы:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Текущая версия программы управления имеет поддержку следующих приборов производства НПОДО «Фармэк», имеющих инфракрасный порт:</span></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Газоанализатор ФП11.2к (приборы до 2011 г. выпуска)</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp33/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП33</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Течеискатель-сигнализатор ФП12 (приборы до 2011 г. выпуска)</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/gazoanalizator-fp21/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП21</a></li></ol><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Условия эксплуатации:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">предназначен для эксплуатации при температуре воздуха </span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">от +10 до +35 °C</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">,</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">атмосферном давлении </span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">от 86,6 до 106,7 кПА</strong></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">относительной влажности воздуха </span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">до 80%</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\"> при температуре </span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">25 °C</strong></li></ol><p><br></p>",
+    "descriptionKK": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Адаптер инфракрасной связи IrTecAd — устройство, предназначенное для диагностики и калибровки приборов, произведенных в НПОДО «ФАРМЭК».</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Адаптер позволяет обмениваться данными с прибором по инфракрасному каналу связи без необходимости вскрытия корпуса прибора.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Подключается к персональному компьютеру по шине USB и позволяет:</span></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">тестировать работоспособность насоса, датчика, звукового излучателя;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">отслеживать внутренние ошибки;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">отображать напряжение аккумуляторной батареи, датчика;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">задавать калибровочные данные и пороги отключения;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">просматривать динамику изменений характеристик в виде графиков;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">снимать данные накопления.</span></li></ol><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Рекомендован к приобретению организациям, занимающимся ремонтом и обслуживанием приборов НПОДО «ФАРМЭК».</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Поддерживаемые приборы:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Текущая версия программы управления имеет поддержку следующих приборов производства НПОДО «Фармэк», имеющих инфракрасный порт:</span></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Газоанализатор ФП11.2к (приборы до 2011 г. выпуска)</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/fp33/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП33</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Течеискатель-сигнализатор ФП12 (приборы до 2011 г. выпуска)</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://pharmec.by/catalog/portable-devices/gazoanalizator-fp21/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 122, 183); background-color: transparent;\">Газоанализатор ФП21</a></li></ol><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Условия эксплуатации:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">предназначен для эксплуатации при температуре воздуха </span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">от +10 до +35 °C</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">,</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">атмосферном давлении </span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">от 86,6 до 106,7 кПА</strong></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">относительной влажности воздуха </span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">до 80%</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\"> при температуре </span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">25 °C</strong></li></ol><p><br></p>",
+    "kitRU": "",
+    "kitKK": "",
+    "documentation": {
+      "blocks": [
+        {
+          "title": {
+            "ru": "Документация и ПО:",
+            "kk": "Документация и ПО:"
+          },
+          "documents": [
+            {
+              "name": {
+                "ru": "Паспорт на технологический адаптер IrTecAd",
+                "kk": "Паспорт на технологический адаптер IrTecAd"
+              },
+              "url": "/documents/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770494982828_Pasport-IrTecad.pdf",
+              "path": "public/documents/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770494982828_Pasport-IrTecad.pdf",
+              "fileName": "Pasport-IrTecad.pdf"
+            },
+            {
+              "name": {
+                "ru": "Программное обеспечение IrTecAd для ФП33",
+                "kk": "Программное обеспечение IrTecAd для ФП33"
+              },
+              "url": "/documents/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770494982832_IrTecAd_FP33_.zip",
+              "path": "public/documents/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770494982832_IrTecAd_FP33_.zip",
+              "fileName": "IrTecAd_FP33_.zip"
+            },
+            {
+              "name": {
+                "ru": "Программное обеспечение для ФП21 (для адаптера IrTecAd)",
+                "kk": "Программное обеспечение для ФП21 (для адаптера IrTecAd)"
+              },
+              "url": "/documents/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770494982898_IrTecAd_FP21.zip",
+              "path": "public/documents/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770494982898_IrTecAd_FP21.zip",
+              "fileName": "IrTecAd_FP21.zip"
+            },
+            {
+              "name": {
+                "ru": "Driver FTDI",
+                "kk": "Driver FTDI"
+              },
+              "url": "/documents/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770494982901_Driver_FTDI.zip",
+              "path": "public/documents/service-devices/tehnologicheskij-adapter-irtecad/tehnologicheskij-adapter-irtecad_1770494982901_Driver_FTDI.zip",
+              "fileName": "Driver_FTDI.zip"
+            }
+          ]
+        }
+      ]
+    },
+    "videos": {
+      "title": {
+        "ru": "ГАЗОВАЯ НАСТРОЙКА",
+        "en": "",
+        "kk": "ГАЗОВАЯ НАСТРОЙКА"
+      },
+      "videos": [
+        {
+          "url": "https://youtu.be/n1-vfUV61YE"
+        },
+        {
+          "url": "https://youtu.be/WYc-ceSGvak"
+        }
+      ]
+    },
+    "priceComplectationRU": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Адаптер IrTecAd</td><td>АРТ23101</td><td><strong>150,00</strong></td></tr></tbody></table>",
+    "priceComplectationKK": "",
+    "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Адаптер IrTecAd</td><td>АРТ23101</td><td><strong>150,00</strong></td></tr></tbody></table>",
+    "specificationsRU": "",
+    "specificationsKK": "",
+    "specificationsInfo": ""
+  },
+  {
+    "id": "blok-rasshireniya-kanalov-fkd-2",
+    "name": "Блок расширения каналов ФКД-2",
+    "price": "",
+    "images": [
+      "/images/service-devices/blok-rasshireniya-kanalov-fkd-2/blok-rasshireniya-kanalov-fkd-2_1770495369687_0_fkd-2-brk_1.jpg",
+      "/images/service-devices/blok-rasshireniya-kanalov-fkd-2/blok-rasshireniya-kanalov-fkd-2_1770495369689_1_fkd-2-brk_2.jpg"
+    ],
+    "generalInfoRU": [
+      "Предназначен для совместной работы с ФКД-2. Прибор позволяет увеличить количество каналов для подключения поверочно-газовой смести (ПГС).",
+      "Для ФКД-2"
+    ],
+    "generalInfoKK": [
+      "Предназначен для совместной работы с ФКД-2. Прибор позволяет увеличить количество каналов для подключения поверочно-газовой смести (ПГС).",
+      "Для ФКД-2"
+    ],
+    "descriptionRU": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">ФКД-2 БРК предназначен для совместной работы с </span><a href=\"https://pharmec.by/catalog/service-devices/ustrojstvo-fkd-2/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">ФКД-2</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">. Прибор позволяет увеличить количество каналов для подключения поверочно-газовой смести (ПГС).</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Область применения:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Ремонтные организации, сервисные центры в которых проводится ремонт, настройка и поверка газоаналитических приборов.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Условия эксплуатации:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">температура окружающего воздуха — (20 ± 5) °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">относительная влажность воздуха — от 30 до 80 %;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">атмосферное давление — 84 — 106,7 кПа.</span></li></ol><p><br></p>",
+    "descriptionKK": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">ФКД-2 БРК предназначен для совместной работы с </span><a href=\"https://pharmec.by/catalog/service-devices/ustrojstvo-fkd-2/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">ФКД-2</a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">. Прибор позволяет увеличить количество каналов для подключения поверочно-газовой смести (ПГС).</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Область применения:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Ремонтные организации, сервисные центры в которых проводится ремонт, настройка и поверка газоаналитических приборов.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Условия эксплуатации:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">температура окружающего воздуха — (20 ± 5) °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">относительная влажность воздуха — от 30 до 80 %;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">атмосферное давление — 84 — 106,7 кПа.</span></li></ol><p><br></p>",
+    "kitRU": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Количество</strong></td></tr><tr><td>ФКД-2 БРК</td><td>1 шт.</td></tr><tr><td>Коммутационный кабель</td><td>1 шт.</td></tr><tr><td>Паспорт</td><td>1 шт.</td></tr><tr><td>Редуктор УР-6-6</td><td>16 шт.</td></tr><tr><td>Шланг соединительный&nbsp;TU 0604</td><td>0.5 м</td></tr><tr><td>Шланг соединительный&nbsp;TU 0425</td><td>32 м</td></tr></tbody></table>",
+    "kitKK": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Количество</strong></td></tr><tr><td>ФКД-2 БРК</td><td>1 шт.</td></tr><tr><td>Коммутационный кабель</td><td>1 шт.</td></tr><tr><td>Паспорт</td><td>1 шт.</td></tr><tr><td>Редуктор УР-6-6</td><td>16 шт.</td></tr><tr><td>Шланг соединительный&nbsp;TU 0604</td><td>0.5 м</td></tr><tr><td>Шланг соединительный&nbsp;TU 0425</td><td>32 м</td></tr></tbody></table>",
+    "documentation": {
+      "blocks": [
+        {
+          "title": {
+            "ru": "Документация и ПО:",
+            "kk": "Документация и ПО:"
+          },
+          "documents": [
+            {
+              "name": {
+                "ru": "Паспорт ФКД-2 БРК",
+                "kk": "Паспорт ФКД-2 БРК"
+              },
+              "url": "/documents/service-devices/blok-rasshireniya-kanalov-fkd-2/blok-rasshireniya-kanalov-fkd-2_1770495393752_Pasport-BRK-FKD-2.pdf",
+              "path": "public/documents/service-devices/blok-rasshireniya-kanalov-fkd-2/blok-rasshireniya-kanalov-fkd-2_1770495393752_Pasport-BRK-FKD-2.pdf",
+              "fileName": "Pasport-BRK-FKD-2.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    "videos": null,
+    "priceComplectationRU": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Блок расширения каналов ФКД-2</td><td>АРТ23210</td><td><strong>по запросу</strong></td></tr></tbody></table>",
+    "priceComplectationKK": "",
+    "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Блок расширения каналов ФКД-2</td><td>АРТ23210</td><td><strong>по запросу</strong></td></tr></tbody></table>",
+    "specificationsRU": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Масса, габариты:</th><td>масса, кг.<br>не более</td><td>&nbsp;габариты, мм.</td><td>&nbsp;</td></tr><tr><th>&nbsp;</th><td>14</td><td>&nbsp;&nbsp;&nbsp;&nbsp;700 x&nbsp;500 x 100</td><td>&nbsp;</td></tr><tr><th>Напряжение питания, В</th><td colspan=\"3\">12</td></tr><tr><th>Максимальный ток потребления, А</th><td colspan=\"3\">1,0</td></tr><tr><th>Регулировка расхода ПГС, см3/мин</th><td colspan=\"3\">0-1000</td></tr><tr><th>Рабочее давление подаваемого газа, МПа (кгс/см2)</th><td colspan=\"3\">0,15-0,35 (1,5-3,5)</td></tr><tr><th rowspan=\"1\">Давление срабатывания защиты, МПа (кг/см2)</th><td colspan=\"3\" rowspan=\"1\">0,5 ± 0,1 (5,0 ± 1,0)</td></tr><tr><th rowspan=\"1\"><strong>Максимально допустимое давление на входе, МПа (кгс/м2)</strong></th><td colspan=\"3\" rowspan=\"1\">0,8 (8,0</td></tr></tbody></table>",
+    "specificationsKK": "",
+    "specificationsInfo": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Масса, габариты:</th><td>масса, кг.<br>не более</td><td>&nbsp;габариты, мм.</td><td>&nbsp;</td></tr><tr><th>&nbsp;</th><td>14</td><td>&nbsp;&nbsp;&nbsp;&nbsp;700 x&nbsp;500 x 100</td><td>&nbsp;</td></tr><tr><th>Напряжение питания, В</th><td colspan=\"3\">12</td></tr><tr><th>Максимальный ток потребления, А</th><td colspan=\"3\">1,0</td></tr><tr><th>Регулировка расхода ПГС, см3/мин</th><td colspan=\"3\">0-1000</td></tr><tr><th>Рабочее давление подаваемого газа, МПа (кгс/см2)</th><td colspan=\"3\">0,15-0,35 (1,5-3,5)</td></tr><tr><th rowspan=\"1\">Давление срабатывания защиты, МПа (кг/см2)</th><td colspan=\"3\" rowspan=\"1\">0,5 ± 0,1 (5,0 ± 1,0)</td></tr><tr><th rowspan=\"1\"><strong>Максимально допустимое давление на входе, МПа (кгс/м2)</strong></th><td colspan=\"3\" rowspan=\"1\">0,8 (8,0</td></tr></tbody></table>"
+  },
+  {
+    "id": "generator-davleniya-fgd-20",
+    "name": "Генератор давления ФГД-20",
+    "price": "",
+    "images": [
+      "/images/service-devices/generator-davleniya-fgd-20/generator-davleniya-fgd-20_1770495617898_0_fgd-20_1.jpg",
+      "/images/service-devices/generator-davleniya-fgd-20/generator-davleniya-fgd-20_1770495617899_1_fgd-20_2.jpg"
+    ],
+    "generalInfoRU": [
+      "Предназначен для генерации различных величин давления воздуха по двум каналам при проведении настройки, подстройки и поверки приборов ФД-09 (и аналогичных) производства ФАРМЭК.",
+      "Для прибора ФД-09"
+    ],
+    "generalInfoKK": [
+      "Предназначен для генерации различных величин давления воздуха по двум каналам при проведении настройки, подстройки и поверки приборов ФД-09 (и аналогичных) производства ФАРМЭК.",
+      "Для прибора ФД-09"
+    ],
+    "descriptionRU": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Прибор предназначен для генерации различных величин давления воздуха по двум каналам при проведении настройки, подстройки и поверки приборов </span><a href=\"https://pharmec.by/catalog/izmeriteli-davlenija-gaza/izmeriteldavlenija-gaza-fd-09/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">ФД-09 </a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">(и аналогичных) производства НПОДО «ФАРМЭК».</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Отличительные особенности:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Прибор позволяет сократить время настройки, проверки или поверки приборов, за счет автоматизации процесса настройки.</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">ФГД-20 позволяет минимизировать большинство механических операций, сведя их к однократной сборке газовой схемы.</span></li></ol><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Области применения:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Ремонтные организации, сервисные центры в которых проводится ремонт, настройка и поверка приборов, предназначенных для измерения давления.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Условия эксплуатации:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">температура окружающего воздуха — (20 ± 5) °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">относительная влажность воздуха — от 30 до 80 %;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">атмосферное давление — 84 — 106,7 кПа.</span></li></ol><p><br></p>",
+    "descriptionKK": "<h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Назначение:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Прибор предназначен для генерации различных величин давления воздуха по двум каналам при проведении настройки, подстройки и поверки приборов </span><a href=\"https://pharmec.by/catalog/izmeriteli-davlenija-gaza/izmeriteldavlenija-gaza-fd-09/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: transparent; color: rgb(51, 122, 183);\">ФД-09 </a><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">(и аналогичных) производства НПОДО «ФАРМЭК».</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Отличительные особенности:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Прибор позволяет сократить время настройки, проверки или поверки приборов, за счет автоматизации процесса настройки.</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">ФГД-20 позволяет минимизировать большинство механических операций, сведя их к однократной сборке газовой схемы.</span></li></ol><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Области применения:</strong></h3><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">Ремонтные организации, сервисные центры в которых проводится ремонт, настройка и поверка приборов, предназначенных для измерения давления.</span></p><h3><strong style=\"background-color: rgb(255, 255, 255); color: rgb(21, 29, 47);\">Условия эксплуатации:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">температура окружающего воздуха — (20 ± 5) °С;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">относительная влажность воздуха — от 30 до 80 %;</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><span style=\"background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);\">атмосферное давление — 84 — 106,7 кПа.</span></li></ol><p><br></p>",
+    "kitRU": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Кол-во</strong></td></tr><tr><td>ФГД-20</td><td>1 шт.</td></tr><tr><td>Адаптер сетевой 12В&nbsp;x&nbsp;1.5A</td><td>1 шт.</td></tr><tr><td>USB&nbsp;кабель</td><td>1 шт.</td></tr><tr><td>Паспорт</td><td>1 шт.</td></tr><tr><td>Компрессор</td><td>1 шт.</td></tr><tr><td>Шланг соединительный&nbsp;TU 0604</td><td>4 м</td></tr></tbody></table>",
+    "kitKK": "<h3><strong>Комплект поставки:</strong></h3><table><tbody><tr><td><strong>Наименование</strong></td><td><strong>Кол-во</strong></td></tr><tr><td>ФГД-20</td><td>1 шт.</td></tr><tr><td>Адаптер сетевой 12В&nbsp;x&nbsp;1.5A</td><td>1 шт.</td></tr><tr><td>USB&nbsp;кабель</td><td>1 шт.</td></tr><tr><td>Паспорт</td><td>1 шт.</td></tr><tr><td>Компрессор</td><td>1 шт.</td></tr><tr><td>Шланг соединительный&nbsp;TU 0604</td><td>4 м</td></tr></tbody></table>",
+    "documentation": {
+      "blocks": [
+        {
+          "title": {
+            "ru": "Документация и ПО:",
+            "kk": "Документация и ПО:"
+          },
+          "documents": [
+            {
+              "name": {
+                "ru": "Паспорт ФГД-20",
+                "kk": "Паспорт ФГД-20"
+              },
+              "url": "/documents/service-devices/generator-davleniya-fgd-20/generator-davleniya-fgd-20_1770495530288_Pasport-Generator-davleniya-FGD-20.pdf",
+              "path": "public/documents/service-devices/generator-davleniya-fgd-20/generator-davleniya-fgd-20_1770495530288_Pasport-Generator-davleniya-FGD-20.pdf",
+              "fileName": "Pasport-Generator-davleniya-FGD-20.pdf"
+            },
+            {
+              "name": {
+                "ru": "Программа для работы с ФГД-20",
+                "kk": "Программа для работы с ФГД-20"
+              },
+              "url": "/documents/service-devices/generator-davleniya-fgd-20/generator-davleniya-fgd-20_1770495530295_FGD_PO.zip",
+              "path": "public/documents/service-devices/generator-davleniya-fgd-20/generator-davleniya-fgd-20_1770495530295_FGD_PO.zip",
+              "fileName": "FGD_PO.zip"
+            }
+          ]
+        }
+      ]
+    },
+    "videos": null,
+    "priceComplectationRU": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Генератор давления ФГД-20</td><td>АРТ210401</td><td><strong>по запросу</strong></td></tr></tbody></table>",
+    "priceComplectationKK": "",
+    "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Наименование</th><th>Артикул</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Генератор давления ФГД-20</td><td>АРТ210401</td><td><strong>по запросу</strong></td></tr></tbody></table>",
+    "specificationsRU": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Масса, габариты:</th><td>масса, кг.<br>не более</td><td>&nbsp;габариты, мм.</td><td>&nbsp;</td></tr><tr><th>&nbsp;</th><td>10</td><td>&nbsp;&nbsp;&nbsp;&nbsp;700 x&nbsp;500 x 100</td><td>&nbsp;</td></tr><tr><th>Напряжение питания, В</th><td colspan=\"3\">12</td></tr><tr><th>Максимальный ток потребления, А</th><td colspan=\"3\">1,0</td></tr><tr><th>Регулировка расхода ПГС, см3/мин</th><td colspan=\"3\">0-1000</td></tr><tr><th>Рабочее давление подаваемого газа, МПа (кгс/см2)</th><td colspan=\"3\">0,15-0,35 (1,5-3,5)</td></tr><tr><th rowspan=\"1\"><strong>Максимально допустимое давление на входе, МПа (кгс/м2)</strong></th><td colspan=\"3\" rowspan=\"1\">0,8 (8,0</td></tr></tbody></table>",
+    "specificationsKK": "",
+    "specificationsInfo": "<h3><strong>Технические характеристики:</strong></h3><table><tbody><tr><th>Масса, габариты:</th><td>масса, кг.<br>не более</td><td>&nbsp;габариты, мм.</td><td>&nbsp;</td></tr><tr><th>&nbsp;</th><td>10</td><td>&nbsp;&nbsp;&nbsp;&nbsp;700 x&nbsp;500 x 100</td><td>&nbsp;</td></tr><tr><th>Напряжение питания, В</th><td colspan=\"3\">12</td></tr><tr><th>Максимальный ток потребления, А</th><td colspan=\"3\">1,0</td></tr><tr><th>Регулировка расхода ПГС, см3/мин</th><td colspan=\"3\">0-1000</td></tr><tr><th>Рабочее давление подаваемого газа, МПа (кгс/см2)</th><td colspan=\"3\">0,15-0,35 (1,5-3,5)</td></tr><tr><th rowspan=\"1\"><strong>Максимально допустимое давление на входе, МПа (кгс/м2)</strong></th><td colspan=\"3\" rowspan=\"1\">0,8 (8,0</td></tr></tbody></table>"
+  }
+]

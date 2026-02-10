@@ -1,46 +1,62 @@
 [
   {
     "id": "portable",
-    "nameRU": "Портативные газоанализаторы",
-    "nameKK": "Портативті газ анализаторлары"
+    "nameRU": "Портативные газоанализаторы"
   },
   {
     "id": "accessories",
-    "nameRU": "Аксессуары",
-    "nameKK": "Аксессуары"
+    "nameRU": "Аксессуары"
   },
   {
     "id": "shtangi-gazozabornye",
-    "nameRU": "Штанги газозаборные",
-    "nameKK": "Штанги газозаборные",
-    "parentId": "accessories"
+    "nameRU": "Штанги газозаборные"
   },
   {
     "id": "filtry",
-    "nameRU": "Фильтры",
-    "nameKK": "Фильтры",
-    "parentId": "accessories"
+    "nameRU": "Фильтры"
   },
   {
     "id": "krepezhnye-komplekty-i-razemy",
-    "nameRU": "Крепежные комплекты и разъемы",
-    "nameKK": "Крепежные комплекты и разъемы",
-    "parentId": "accessories"
+    "nameRU": "Крепежные комплекты и разъемы"
   },
   {
     "id": "nasadki",
-    "nameRU": "Насадки для присоединения к газовой арматуре",
-    "nameKK": "Насадки для присоединения к газовой арматуре",
-    "parentId": "accessories"
+    "nameRU": "Насадки для присоединения к газовой арматуре"
   },
   {
     "id": "prochie-izmeritelnye-sistemy",
-    "nameRU": "Прочие измерительные системы",
-    "nameKK": "Прочие измерительные системы"
+    "nameRU": "Прочие измерительные системы"
   },
   {
     "id": "signalizatory-zagazovannosti-bytovye",
-    "nameRU": "Сигнализаторы загазованности (бытовые)",
-    "nameKK": "Сигнализаторы загазованности (бытовые)"
+    "nameRU": "Сигнализаторы загазованности (бытовые)"
+  },
+  {
+    "id": "sensors",
+    "nameRU": "Газочувствительные элементы"
+  },
+  {
+    "id": "bloki-datchikov",
+    "nameRU": "Блоки датчиков"
+  },
+  {
+    "id": "gazovye-sensory",
+    "nameRU": "Газовые сенсоры"
+  },
+  {
+    "id": "service-devices",
+    "nameRU": "Сервисное и дополнительное оборудование"
+  },
+  {
+    "id": "trassoiskateli",
+    "nameRU": "Трассоискатели"
+  },
+  {
+    "id": "izmeriteli-davlenija-gaza",
+    "nameRU": "Измерители давления газа"
+  },
+  {
+    "id": "techeiskateli",
+    "nameRU": "Течеискатели и индикаторы утечки газа"
   }
 ]
