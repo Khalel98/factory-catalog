@@ -25,6 +25,27 @@
         <div class="mobile-lang" :aria-label="t('header.selectLanguage')">
           <LanguageSwitcher />
         </div>
+        <form
+          v-if="isMobile"
+          class="mobile-search-form"
+          @submit.prevent="submitSearch"
+          role="search"
+        >
+          <input
+            v-model="searchQuery"
+            type="search"
+            class="mobile-search-input"
+            :placeholder="t('nav.searchPlaceholder')"
+            :aria-label="t('nav.searchPlaceholder')"
+            autocomplete="off"
+          />
+          <button type="submit" class="mobile-search-btn" :aria-label="t('search.button')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
         <ul>
           <li>
             <NuxtLink to="/" @click="closeMobileMenu">{{ t('nav.home') }}</NuxtLink>
@@ -165,6 +186,22 @@
         </ul>
       </nav>
       <div class="nav-actions">
+        <form class="header-search-form" @submit.prevent="submitSearch" role="search">
+          <input
+            v-model="searchQuery"
+            type="search"
+            class="header-search-input"
+            :placeholder="t('nav.searchPlaceholder')"
+            :aria-label="t('nav.searchPlaceholder')"
+            autocomplete="off"
+          />
+          <button type="submit" class="header-search-btn" aria-label="Искать">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
         <LanguageSwitcher />
       </div>
       <button
@@ -187,7 +224,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from "vue";
+import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 import logoImage from '@/assets/company/logo.svg';
 import logoIcon from '@/assets/company/logo-icon.svg';
 
@@ -211,6 +248,24 @@ const isAdmin = computed(() => {
   }
   return false;
 });
+
+const searchQuery = ref('');
+
+// Синхронизация с URL при переходе на /search?q=...
+watch(
+  () => route.path === '/search' && route.query.q,
+  (q) => {
+    if (typeof q === 'string') searchQuery.value = q;
+  },
+  { immediate: true }
+);
+
+const submitSearch = () => {
+  const q = searchQuery.value?.trim();
+  if (!q) return;
+  closeMobileMenu();
+  navigateTo({ path: '/search', query: { q } });
+};
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;

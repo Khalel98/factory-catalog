@@ -110,6 +110,12 @@ defineProps({
   }
 }
 
+@media (max-width: 767.98px) {
+  .preloader-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Detail */
 .preloader-detail {
   display: grid;

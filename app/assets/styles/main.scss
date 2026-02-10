@@ -99,6 +99,13 @@
     padding: 14px;
   }
 }
+
+@media (max-width: 767.98px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 // Переменные для блока
@@ -409,8 +416,62 @@ table {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-left: 24px;
+}
+
+.header-search-form {
+  display: flex;
+  align-items: center;
+  border: 1px solid $border;
+  border-radius: 10px;
+  overflow: hidden;
+  background: $surface;
+  max-width: 220px;
+}
+
+.header-search-input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  background: transparent;
+  color: $text;
+  outline: none;
+
+  &::placeholder {
+    color: $muted;
+  }
+}
+
+.header-search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border: none;
+  background: $primary-light;
+  color: $primary;
+  cursor: pointer;
+  @include transition(background 0.2s, color 0.2s);
+
+  &:hover {
+    background: $primary;
+    color: $white;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .header-search-form {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .header-search-form {
+    display: none;
+  }
 }
 
 .mobile-menu-toggle {
@@ -1147,6 +1208,49 @@ table {
       padding-bottom: 16px;
       margin-bottom: 16px;
       border-bottom: 1px solid $border;
+    }
+
+    .mobile-search-form {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid $border;
+      border-radius: 10px;
+      overflow: hidden;
+      background: $surface;
+      margin-bottom: 20px;
+    }
+
+    .mobile-search-input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px 14px;
+      font-size: 16px;
+      border: none;
+      background: transparent;
+      color: $text;
+      outline: none;
+
+      &::placeholder {
+        color: $muted;
+      }
+    }
+
+    .mobile-search-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 14px;
+      border: none;
+      background: $primary-light;
+      color: $primary;
+      cursor: pointer;
+      @include transition(background 0.2s, color 0.2s);
+
+      &:hover {
+        background: $primary;
+        color: $white;
+      }
     }
 
     ul {

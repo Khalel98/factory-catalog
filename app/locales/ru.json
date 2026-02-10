@@ -2,6 +2,7 @@
   "nav": {
     "home": "Главная",
     "catalog": "Каталог",
+    "searchPlaceholder": "Поиск по каталогу...",
     "information": "Информация",
     "videos": "Видео материалы",
     "catalogs": "Каталоги",
@@ -76,6 +77,13 @@
     "more": "Подробнее",
     "priceFrom": "от {price} тенге",
     "categories": "Категории"
+  },
+  "search": {
+    "title": "Результаты поиска",
+    "button": "Искать",
+    "noQuery": "Введите запрос в поле поиска в меню",
+    "noResults": "По запросу «{query}» ничего не найдено",
+    "resultsCount": "Найдено: {count}"
   },
   "product": {
     "generalInfo": "Общая информация",

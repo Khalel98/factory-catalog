@@ -2,6 +2,7 @@
   "nav": {
     "home": "Басты",
     "catalog": "Каталог",
+    "searchPlaceholder": "Каталог бойынша іздеу...",
     "information": "Ақпарат",
     "videos": "Бейне материалдар",
     "catalogs": "Каталогтар",
@@ -76,6 +77,13 @@
     "more": "Толығырақ",
     "priceFrom": "{price} теңгеден бастап",
     "categories": "Санаттар"
+  },
+  "search": {
+    "title": "Іздеу нәтижелері",
+    "button": "Іздеу",
+    "noQuery": "Мәзірдегі іздеу өрісіне сұраныс енгізіңіз",
+    "noResults": "«{query}» сұранысы бойынша ештеңе табылмады",
+    "resultsCount": "Табылды: {count}"
   },
   "product": {
     "generalInfo": "Жалпы ақпарат",
