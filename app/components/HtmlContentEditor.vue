@@ -228,18 +228,20 @@ const hasContent = computed(() => {
 
 // Функция для получения текущего контента в зависимости от языка интерфейса
 const getCurrentContent = () => {
+  let raw = "";
   // Если есть savedHtml (после редактирования), используем его
   if (savedHtml.value) {
-    return savedHtml.value;
+    raw = savedHtml.value;
+  } else {
+    // Иначе используем контент в зависимости от текущего языка интерфейса
+    const currentLang = locale.value;
+    if (currentLang === "kk" && props.contentKK) {
+      raw = props.contentKK;
+    } else {
+      raw = props.contentRU || props.content || "";
+    }
   }
-
-  // Иначе используем контент в зависимости от текущего языка интерфейса
-  const currentLang = locale.value;
-  if (currentLang === "kk" && props.contentKK) {
-    return props.contentKK;
-  }
-  // По умолчанию русское
-  return props.contentRU || props.content || "";
+  return replaceContentRootUrl(raw);
 };
 
 // Функция для обновления контента из пропсов
@@ -293,6 +295,15 @@ watch(
     savedHtml.value = contents.value[locale.value] || "";
   }
 );
+
+// Замена корневого адреса ссылок: pharmec.by → gazservice7.kz
+const CONTENT_ROOT_URL_OLD = "https://pharmec.by";
+const CONTENT_ROOT_URL_NEW = "https://gazservice7.kz";
+
+const replaceContentRootUrl = (html) => {
+  if (!html || typeof html !== "string") return html;
+  return html.split(CONTENT_ROOT_URL_OLD).join(CONTENT_ROOT_URL_NEW);
+};
 
 // Функция для очистки HTML от оберток figure вокруг таблиц
 const cleanHtmlFromFigureWrappers = (html) => {
@@ -440,7 +451,8 @@ const insertHtmlToLanguage = async () => {
     return;
   }
 
-  const htmlContent = htmlToInsert.value.trim();
+  // Заменяем корневой адрес ссылок на актуальный перед сохранением
+  let htmlContent = replaceContentRootUrl(htmlToInsert.value.trim());
 
   // Сохраняем напрямую в Google Sheets
   try {
@@ -595,6 +607,8 @@ const loadContentForLanguage = (lang) => {
   
   // Очищаем от оберток figure вокруг таблиц при загрузке (если они есть)
   contentString = cleanHtmlFromFigureWrappers(contentString);
+  // Заменяем корневой адрес ссылок на актуальный
+  contentString = replaceContentRootUrl(contentString);
 
   if (!contentString || contentString.trim() === "") {
     console.log(`loadContentForLanguage(${lang}): контент пустой`);
@@ -742,7 +756,9 @@ const saveContent = async () => {
     
     // Очищаем от оберток figure вокруг таблиц
     htmlContentString = cleanHtmlFromFigureWrappers(htmlContentString);
-    
+    // Заменяем корневой адрес ссылок на актуальный
+    htmlContentString = replaceContentRootUrl(htmlContentString);
+
     const currentLang = String(selectedLanguage.value);
     contents.value[currentLang] = htmlContentString;
     savedHtml.value = htmlContentString;

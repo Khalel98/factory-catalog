@@ -196,20 +196,31 @@ const hasDescription = computed(() => {
   );
 });
 
+// Замена корневого адреса ссылок: pharmec.by → gazservice7.kz
+const CONTENT_ROOT_URL_OLD = "https://pharmec.by";
+const CONTENT_ROOT_URL_NEW = "https://gazservice7.kz";
+
+const replaceContentRootUrl = (html) => {
+  if (!html || typeof html !== "string") return html;
+  return html.split(CONTENT_ROOT_URL_OLD).join(CONTENT_ROOT_URL_NEW);
+};
+
 // Функция для получения текущего описания в зависимости от языка интерфейса
 const getCurrentDescription = () => {
+  let raw = "";
   // Если есть savedHtml (после редактирования), используем его
   if (savedHtml.value) {
-    return savedHtml.value;
+    raw = savedHtml.value;
+  } else {
+    // Иначе используем описание в зависимости от текущего языка интерфейса
+    const currentLang = locale.value;
+    if (currentLang === "kk" && props.descriptionKK) {
+      raw = props.descriptionKK;
+    } else {
+      raw = props.descriptionRU || props.description || "";
+    }
   }
-
-  // Иначе используем описание в зависимости от текущего языка интерфейса
-  const currentLang = locale.value;
-  if (currentLang === "kk" && props.descriptionKK) {
-    return props.descriptionKK;
-  }
-  // По умолчанию русское
-  return props.descriptionRU || props.description || "";
+  return replaceContentRootUrl(raw);
 };
 
 // Функция для обновления описаний из пропсов
@@ -384,6 +395,9 @@ const loadContentForLanguage = (lang) => {
     return;
   }
 
+  // Заменяем корневой адрес ссылок на актуальный
+  content = replaceContentRootUrl(content);
+
   try {
     // Самый надёжный способ - используем innerHTML напрямую
     quillEditor.value.setText("");
@@ -476,7 +490,9 @@ const saveContent = async () => {
   if (!quillEditor.value) return;
 
   // Сохраняем контент для текущего выбранного языка перед сохранением
-  const htmlContent = quillEditor.value.root.innerHTML;
+  let htmlContent = quillEditor.value.root.innerHTML;
+  // Заменяем корневой адрес ссылок на актуальный
+  htmlContent = replaceContentRootUrl(htmlContent);
   descriptions.value[selectedLanguage.value] = htmlContent;
   savedHtml.value = htmlContent;
 
@@ -600,7 +616,8 @@ const insertHtmlToLanguage = async () => {
     return;
   }
 
-  const htmlContent = htmlToInsert.value.trim();
+  // Заменяем корневой адрес ссылок на актуальный перед сохранением
+  const htmlContent = replaceContentRootUrl(htmlToInsert.value.trim());
 
   // Сохраняем напрямую в Google Sheets
   try {
