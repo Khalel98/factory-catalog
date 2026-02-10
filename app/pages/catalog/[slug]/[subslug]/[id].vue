@@ -5,8 +5,11 @@
       <div class="catalog-content-wrapper">
         <Breadcrumbs v-if="product" :items="breadcrumbItems" />
         <div class="catalog-content">
+          <div v-if="pageLoading" class="catalog-content-loading">
+            <CatalogPreloader type="detail" />
+          </div>
           <ProductDetailView
-            v-if="product"
+            v-else-if="product"
             :product="product"
             :category-id="categorySlug"
             @images-updated="(newImages) => { if (product) product.images = newImages; }"
@@ -28,6 +31,7 @@ const parentSlug = computed(() => route.params.slug);
 const categorySlug = computed(() => route.params.subslug);
 const product = ref(null);
 const categories = ref([]);
+const pageLoading = ref(true);
 
 const { t, locale } = useI18n();
 
@@ -77,8 +81,10 @@ async function loadProduct() {
 }
 
 async function loadProductForRoute() {
+  pageLoading.value = true;
   await loadCategories();
   product.value = await loadProduct();
+  pageLoading.value = false;
 }
 
 onMounted(() => {
@@ -86,6 +92,7 @@ onMounted(() => {
 });
 
 watch([() => route.params.slug, () => route.params.subslug, () => route.params.id], () => {
+  product.value = null;
   loadProductForRoute();
 }, { immediate: false });
 </script>
@@ -94,4 +101,5 @@ watch([() => route.params.slug, () => route.params.subslug, () => route.params.i
 .catalog-content-wrapper { display: flex; flex-direction: column; width: 100%; min-width: 0; }
 .product-not-found { text-align: center; padding: 60px 20px; }
 .product-not-found h1 { font-size: 2rem; font-weight: 700; margin: 0 0 16px 0; color: #1f2933; }
+.catalog-content-loading { width: 100%; }
 </style>

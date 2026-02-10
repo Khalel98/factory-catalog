@@ -5,8 +5,11 @@
       <div class="catalog-content-wrapper">
         <Breadcrumbs :items="breadcrumbItems" />
         <div class="catalog-content">
+          <div v-if="pageLoading" class="catalog-content-loading">
+            <CatalogPreloader :type="loadingType" />
+          </div>
           <!-- Список товаров подкатегории: /catalog/parent/sub -->
-          <template v-if="isSubcategoryList">
+          <template v-else-if="isSubcategoryList">
             <h2 v-if="subcategoryMeta">{{ getCategoryName(subcategoryMeta) }}</h2>
             <div class="products-grid">
               <div v-for="item in subcategoryProducts" :key="item.id" class="product-card">
@@ -25,12 +28,12 @@
             </div>
           </template>
           <ProductDetailView
-            v-else-if="product"
+            v-else-if="product && !pageLoading"
             :product="product"
             :category-id="categorySlug"
             @images-updated="(newImages) => { if (product) product.images = newImages; }"
           />
-          <div v-else-if="!isSubcategoryList" class="product-not-found">
+          <div v-else-if="!pageLoading && !isSubcategoryList" class="product-not-found">
             <h1>{{ t('product.notFound') }}</h1>
             <p class="muted">{{ t('product.tryAnother') }}</p>
           </div>
@@ -49,6 +52,9 @@ const categories = ref([]);
 const isSubcategoryList = ref(false);
 const subcategoryProducts = ref([]);
 const subcategoryMeta = ref(null);
+const pageLoading = ref(true);
+
+const loadingType = computed(() => (isSubcategoryList.value ? 'grid' : 'detail'));
 
 const { t, locale } = useI18n();
 
@@ -115,6 +121,7 @@ async function loadProduct() {
 }
 
 async function loadProductForRoute() {
+  pageLoading.value = true;
   await loadCategories();
   const slugVal = categorySlug.value;
   const idVal = productId.value;
@@ -122,6 +129,7 @@ async function loadProductForRoute() {
   const cat = categories.value.find((c) => c.id === slugVal);
   if (cat?.parentId) {
     await navigateTo(`/catalog/${cat.parentId}/${slugVal}/${idVal}`, { replace: true });
+    pageLoading.value = false;
     return;
   }
 
@@ -135,6 +143,7 @@ async function loadProductForRoute() {
     } catch {
       subcategoryProducts.value = [];
     }
+    pageLoading.value = false;
     return;
   }
 
@@ -142,6 +151,7 @@ async function loadProductForRoute() {
   subcategoryProducts.value = [];
   subcategoryMeta.value = null;
   product.value = await loadProduct();
+  pageLoading.value = false;
 }
 
 onMounted(() => {
@@ -152,6 +162,7 @@ watch([() => route.params.slug, () => route.params.id], () => {
   isSubcategoryList.value = false;
   subcategoryProducts.value = [];
   subcategoryMeta.value = null;
+  product.value = null;
   loadProductForRoute();
 }, { immediate: false });
 </script>
@@ -206,4 +217,5 @@ watch([() => route.params.slug, () => route.params.id], () => {
 }
 .product-not-found { text-align: center; padding: 60px 20px; }
 .product-not-found h1 { font-size: 2rem; font-weight: 700; margin: 0 0 16px 0; color: #1f2933; }
+.catalog-content-loading { width: 100%; }
 </style>

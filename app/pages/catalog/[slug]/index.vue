@@ -9,6 +9,9 @@
             <p class="muted">{{ t('catalog.categoryNotFound') || 'Категория не найдена' }}</p>
             <NuxtLink to="/catalog" class="btn primary">{{ t('catalog.backToCatalog') || 'В каталог' }}</NuxtLink>
           </div>
+          <div v-else-if="productsLoading" class="catalog-content-loading">
+            <CatalogPreloader type="grid" />
+          </div>
           <div v-else-if="selectedCategory">
             <h2>{{ getCategoryName(selectedCategory) }}</h2>
             <div class="products-grid">
@@ -69,6 +72,7 @@ const slug = computed(() => route.params.slug);
 const categories = ref([]);
 const products = ref([]);
 const notFound = ref(false);
+const productsLoading = ref(false);
 
 const selectedCategory = computed(() => {
   if (!slug.value) return null;
@@ -131,6 +135,7 @@ const loadCategories = async () => {
 };
 
 const loadProducts = async (categoryId) => {
+  productsLoading.value = true;
   try {
     const category = categories.value.find((cat) => cat.id === categoryId);
     if (!category) {
@@ -155,6 +160,8 @@ const loadProducts = async (categoryId) => {
   } catch (error) {
     console.error('Error loading products:', error);
     products.value = [];
+  } finally {
+    productsLoading.value = false;
   }
 };
 
@@ -210,6 +217,8 @@ watch(slug, async (newSlug) => {
   notFound.value = !category;
   if (category && !category.parentId) {
     await loadProducts(newSlug);
+  } else if (!category) {
+    productsLoading.value = false;
   }
 });
 </script>
@@ -268,5 +277,9 @@ watch(slug, async (newSlug) => {
   font-size: 1rem;
   line-height: 1;
   font-weight: 700;
+}
+
+.catalog-content-loading {
+  width: 100%;
 }
 </style>
