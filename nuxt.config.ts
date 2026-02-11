@@ -72,6 +72,13 @@ function generatePrerenderRoutes() {
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
+    },
+  },
   experimental: {
     // Отключает запрос /_nuxt/builds/meta/dev.json, который даёт 404 в dev/static
     appManifest: false,
