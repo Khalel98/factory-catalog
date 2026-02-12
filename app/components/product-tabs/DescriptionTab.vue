@@ -770,16 +770,19 @@ const closeEditor = () => {
 .description-content :deep(h3) {
   margin: 16px 0 8px 0;
   font-weight: 700;
+  font-size: 16px;
 }
 
 .description-content :deep(p) {
   margin: 8px 0;
+  font-size: 12px;
 }
 
 .description-content :deep(ul),
 .description-content :deep(ol) {
   margin: 8px 0;
   padding-left: 24px;
+  font-size: 12px;
 }
 
 .description-content :deep(a) {

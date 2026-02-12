@@ -859,6 +859,9 @@ const closeEditor = async () => {
 </script>
 
 <style scoped>
+td{
+  font-size: 12px !important;
+}
 .html-content-editor {
   font-size: 1rem;
   line-height: 1.8;
@@ -950,6 +953,7 @@ const closeEditor = async () => {
 .content :deep(h3) {
   margin: 16px 0 8px 0;
   font-weight: 700;
+  font-size: 16px;
 }
 
 .content :deep(p) {
@@ -960,6 +964,7 @@ const closeEditor = async () => {
 .content :deep(ol) {
   margin: 8px 0;
   padding-left: 24px;
+  font-size: 12px;
 }
 
 .content :deep(a) {
@@ -1023,6 +1028,14 @@ const closeEditor = async () => {
   border: 1px solid #e5e7eb;
   padding: 12px;
   color: #52606d;
+  font-size: 12px;
+}
+
+.content :deep(table tr:hover) {
+  background: #f9fafb;
+}
+.content :deep(p) {
+   font-size: 12px;
 }
 
 .content :deep(table tr:hover) {
