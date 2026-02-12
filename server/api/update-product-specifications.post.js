@@ -348,6 +348,20 @@ export default defineEventHandler(async (event) => {
       const videosIndex = headers.findIndex(
         (h) => h?.toLowerCase() === "videos"
       );
+      
+      // compatibility (JSON массив ID) - совместимое оборудование
+      const compatibilityIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "compatibility" ||
+            lower === "compatibleproducts" ||
+            lower === "compatible_products" ||
+            lower === "compatibleproductids" ||
+            lower === "compatible_product_ids"
+          );
+        }
+      );
 
       for (let i = 1; i < productRows.length; i++) {
         const row = productRows[i];
@@ -372,6 +386,7 @@ export default defineEventHandler(async (event) => {
           specificationsRU: "",
           specificationsKK: "",
           specificationsInfo: "",
+          compatibility: [],
         };
 
         if (row[imagesIdx]) {
@@ -457,6 +472,25 @@ export default defineEventHandler(async (event) => {
         product.specificationsRU = specificationsRU;
         product.specificationsKK = specificationsKK;
         product.specificationsInfo = specificationsRU || specificationsKK || "";
+
+        // Парсим compatibility (JSON массив ID)
+        if (compatibilityIndex !== -1 && row[compatibilityIndex]) {
+          try {
+            const compatibilityData = JSON.parse(row[compatibilityIndex]);
+            product.compatibility = Array.isArray(compatibilityData) 
+              ? compatibilityData.map(id => String(id).trim()).filter(id => id)
+              : [];
+          } catch (e) {
+            // Если не JSON, пытаемся парсить как строку с разделителями
+            const compatibilityStr = row[compatibilityIndex].trim();
+            if (compatibilityStr) {
+              product.compatibility = compatibilityStr
+                .split(/[,\s]+/)
+                .map(id => id.trim())
+                .filter(id => id);
+            }
+          }
+        }
 
         if (product.id && product.name) {
           products.push(product);

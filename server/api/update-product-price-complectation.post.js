@@ -332,6 +332,42 @@ export default defineEventHandler(async (event) => {
       const videosIndex = headers.findIndex(
         (h) => h?.toLowerCase() === "videos"
       );
+      
+      // specifications (текст/HTML) - технические характеристики
+      const specificationsRUIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "specificationsru" ||
+            lower === "specifications_ru" ||
+            lower === "specifications" ||
+            lower === "specification"
+          );
+        }
+      );
+      const specificationsKKIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "specificationskk" ||
+            lower === "specifications_kk"
+          );
+        }
+      );
+      
+      // compatibility (JSON массив ID) - совместимое оборудование
+      const compatibilityIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "compatibility" ||
+            lower === "compatibleproducts" ||
+            lower === "compatible_products" ||
+            lower === "compatibleproductids" ||
+            lower === "compatible_product_ids"
+          );
+        }
+      );
 
       for (let i = 1; i < productRows.length; i++) {
         const row = productRows[i];
@@ -350,7 +386,13 @@ export default defineEventHandler(async (event) => {
           kitKK: "",
           documentation: null,
           videos: null,
+          priceComplectationRU: "",
+          priceComplectationKK: "",
           priceComplectationInfo: "",
+          specificationsRU: "",
+          specificationsKK: "",
+          specificationsInfo: "",
+          compatibility: [],
         };
 
         if (row[imagesIdx]) {
@@ -419,12 +461,46 @@ export default defineEventHandler(async (event) => {
           }
         }
 
-        // PriceComplectation (текст/HTML) - используем RU или KK в зависимости от наличия
-        const priceComplectationRU = row[priceComplectationRUIdx]?.trim() || "";
-        const priceComplectationKK = row[priceComplectationKKIdx]?.trim() || "";
+        // PriceComplectation (текст/HTML) - локализованные поля
+        if (priceComplectationRUIndex !== -1 && row[priceComplectationRUIndex]) {
+          product.priceComplectationRU = row[priceComplectationRUIndex]?.trim() || "";
+        }
+        if (priceComplectationKKIndex !== -1 && row[priceComplectationKKIndex]) {
+          product.priceComplectationKK = row[priceComplectationKKIndex]?.trim() || "";
+        }
         
-        // Используем RU по умолчанию, если KK нет
-        product.priceComplectationInfo = priceComplectationRU || priceComplectationKK || "";
+        // Используем RU по умолчанию для обратной совместимости
+        product.priceComplectationInfo = product.priceComplectationRU || product.priceComplectationKK || "";
+
+        // Specifications (текст/HTML) - локализованные поля
+        if (specificationsRUIndex !== -1 && row[specificationsRUIndex]) {
+          product.specificationsRU = row[specificationsRUIndex]?.trim() || "";
+        }
+        if (specificationsKKIndex !== -1 && row[specificationsKKIndex]) {
+          product.specificationsKK = row[specificationsKKIndex]?.trim() || "";
+        }
+        
+        // Используем RU по умолчанию для обратной совместимости
+        product.specificationsInfo = product.specificationsRU || product.specificationsKK || "";
+
+        // Парсим compatibility (JSON массив ID)
+        if (compatibilityIndex !== -1 && row[compatibilityIndex]) {
+          try {
+            const compatibilityData = JSON.parse(row[compatibilityIndex]);
+            product.compatibility = Array.isArray(compatibilityData) 
+              ? compatibilityData.map(id => String(id).trim()).filter(id => id)
+              : [];
+          } catch (e) {
+            // Если не JSON, пытаемся парсить как строку с разделителями
+            const compatibilityStr = row[compatibilityIndex].trim();
+            if (compatibilityStr) {
+              product.compatibility = compatibilityStr
+                .split(/[,\s]+/)
+                .map(id => id.trim())
+                .filter(id => id);
+            }
+          }
+        }
 
         if (product.id && product.name) {
           products.push(product);
