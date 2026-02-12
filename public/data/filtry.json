@@ -55,7 +55,8 @@
     "priceComplectationInfo": "",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "filtr-art12143",
@@ -102,6 +103,7 @@
     "priceComplectationInfo": "",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   }
 ]

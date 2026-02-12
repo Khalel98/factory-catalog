@@ -47,7 +47,8 @@
     "priceComplectationInfo": "",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "nasadka-rezba-vnutrennyaya-1-2-art13113",
@@ -97,7 +98,8 @@
     "priceComplectationInfo": "",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "nasadka-l-190-mm-art13115",
@@ -146,7 +148,8 @@
     "priceComplectationInfo": "",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "nasadka-l-65-mm-art13112",
@@ -195,6 +198,7 @@
     "priceComplectationInfo": "",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   }
 ]

@@ -27,7 +27,8 @@
     "priceComplectationInfo": "",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "chehly-sumki-i-remni",
@@ -57,6 +58,7 @@
     "priceComplectationInfo": "",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   }
 ]

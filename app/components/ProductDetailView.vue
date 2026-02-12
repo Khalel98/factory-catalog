@@ -90,7 +90,11 @@
             :product-id="product?.id || ''"
             :category-id="categoryId || ''"
           />
-          <CompatibilityTab v-if="activeTab === 'compatibility'" />
+          <CompatibilityTab
+            v-if="activeTab === 'compatibility'"
+            :product-id="product?.id || ''"
+            :category-id="categoryId || ''"
+          />
         </div>
       </div>
     </div>
@@ -172,7 +176,12 @@ const isTabFilled = (tabId) => {
       return !!(documentationData.value?.blocks && Array.isArray(documentationData.value.blocks) && documentationData.value.blocks.length > 0);
     case "video":
       return !!(videosData.value?.videos && Array.isArray(videosData.value.videos) && videosData.value.videos.length > 0);
-    case "compatibility": return false;
+    case "compatibility":
+      // Проверяем наличие совместимых товаров
+      // Таб показывается всегда для админа, для пользователей - только если есть совместимые товары
+      if (!props.product) return false;
+      const compatibility = props.product.compatibility;
+      return !!(compatibility && Array.isArray(compatibility) && compatibility.length > 0);
     default: return false;
   }
 };

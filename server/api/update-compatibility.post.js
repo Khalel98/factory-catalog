@@ -5,6 +5,16 @@ import { existsSync } from "fs";
 
 export default defineEventHandler(async (event) => {
   try {
+    const body = await readBody(event);
+    const { productId, categoryId, compatibleProductIds } = body;
+
+    if (!productId || !categoryId) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: "Необходимы productId и categoryId",
+      });
+    }
+
     // Получаем credentials из JSON файла
     const credentialsPath = join(
       process.cwd(),
@@ -45,22 +55,11 @@ export default defineEventHandler(async (event) => {
     privateKey = privateKey.trim();
     
     // Обрабатываем различные форматы экранирования
-    // Если ключ содержит буквальные \n (не настоящие переносы строк)
     if (privateKey.includes("\\n") && !privateKey.includes("\n")) {
       privateKey = privateKey.replace(/\\n/g, "\n");
     }
-    
-    // Если ключ содержит двойные экранированные \\n
     if (privateKey.includes("\\\\n")) {
       privateKey = privateKey.replace(/\\\\n/g, "\n");
-    }
-
-    // Проверяем формат ключа
-    if (!privateKey.includes("BEGIN PRIVATE KEY") && !privateKey.includes("BEGIN RSA PRIVATE KEY")) {
-      throw new Error("Private key format error: missing BEGIN PRIVATE KEY or BEGIN RSA PRIVATE KEY");
-    }
-    if (!privateKey.includes("END PRIVATE KEY") && !privateKey.includes("END RSA PRIVATE KEY")) {
-      throw new Error("Private key format error: missing END PRIVATE KEY or END RSA PRIVATE KEY");
     }
 
     // Настраиваем аутентификацию
@@ -70,7 +69,6 @@ export default defineEventHandler(async (event) => {
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 
-    // Проверяем аутентификацию с улучшенной обработкой ошибок
     try {
       await auth.getAccessToken();
     } catch (authError) {
@@ -87,7 +85,6 @@ export default defineEventHandler(async (event) => {
       }
       throw authError;
     }
-
     const sheets = google.sheets({ version: "v4", auth });
 
     // Получаем информацию о таблице
@@ -96,93 +93,151 @@ export default defineEventHandler(async (event) => {
     });
 
     const sheetsList = spreadsheetInfo.data.sheets || [];
-    const result = {
-      categories: [],
-      products: {},
-    };
 
-    // Ищем лист с категориями
+    // Находим лист категории
+    const categorySheet = sheetsList.find(
+      (s) => s.properties?.title?.toLowerCase() === categoryId.toLowerCase()
+    );
+
+    if (!categorySheet) {
+      throw new Error(`Лист категории "${categoryId}" не найден`);
+    }
+
+    // Получаем данные листа
+    const productsRange = `${categorySheet.properties.title}!A:Z`;
+    const productsData = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: productsRange,
+    });
+
+    const rows = productsData.data.values || [];
+    if (rows.length < 2) {
+      throw new Error("Нет данных в листе");
+    }
+
+    // Находим индексы колонок
+    const headers = rows[0] || [];
+    const idIndex = headers.findIndex((h) => h?.toLowerCase() === "id");
+    
+    // Ищем колонку для совместимого оборудования
+    let compatibilityIndex = headers.findIndex(
+      (h) =>
+        h?.toLowerCase() === "compatibility" ||
+        h?.toLowerCase() === "compatibleproducts" ||
+        h?.toLowerCase() === "compatible_products" ||
+        h?.toLowerCase() === "compatibleproductids" ||
+        h?.toLowerCase() === "compatible_product_ids"
+    );
+
+    // Если колонка не найдена, создаем её
+    if (compatibilityIndex === -1) {
+      // Находим последнюю колонку
+      compatibilityIndex = headers.length;
+      const columnLetter = String.fromCharCode(65 + compatibilityIndex);
+      
+      // Добавляем заголовок
+      await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range: `${categorySheet.properties.title}!${columnLetter}1`,
+        valueInputOption: "RAW",
+        resource: {
+          values: [["Compatibility"]],
+        },
+      });
+    }
+
+    if (idIndex === -1) {
+      throw new Error("Колонка 'ID' не найдена");
+    }
+
+    // Находим строку с товаром
+    let productRowIndex = -1;
+    for (let i = 1; i < rows.length; i++) {
+      if (rows[i][idIndex]?.trim() === String(productId)) {
+        productRowIndex = i + 1; // +1 потому что в Sheets строки начинаются с 1
+        break;
+      }
+    }
+
+    if (productRowIndex === -1) {
+      throw new Error(`Товар с ID "${productId}" не найден`);
+    }
+
+    // Формируем значение для сохранения (JSON массив ID)
+    let compatibilityValue = "";
+    if (compatibleProductIds && Array.isArray(compatibleProductIds) && compatibleProductIds.length > 0) {
+      // Сохраняем как JSON массив
+      compatibilityValue = JSON.stringify(compatibleProductIds);
+    }
+
+    // Обновляем совместимое оборудование в Google Sheets
+    const columnLetter = String.fromCharCode(65 + compatibilityIndex);
+    const compatibilityRange = `${categorySheet.properties.title}!${columnLetter}${productRowIndex}`;
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: compatibilityRange,
+      valueInputOption: "RAW",
+      resource: {
+        values: [[compatibilityValue]],
+      },
+    });
+
+    // Теперь обновляем весь каталог (регенерируем JSON)
+    // Загружаем все категории
     const categoriesSheet = sheetsList.find(
       (s) => s.properties?.title?.toLowerCase() === "categories"
     );
 
     if (!categoriesSheet) {
-      throw new Error("Лист 'Categories' не найден в таблице");
+      throw new Error("Лист 'Categories' не найден");
     }
 
-    // Читаем колонки для локализации
-    const categoriesRange = `${categoriesSheet.properties.title}!A:Z`;
+    const categoriesRange = `${categoriesSheet.properties.title}!A:D`;
     const categoriesData = await sheets.spreadsheets.values.get({
       spreadsheetId,
       range: categoriesRange,
     });
 
-    const rows = categoriesData.data.values || [];
-    const headers = rows[0] || [];
+    const categoryRows = categoriesData.data.values || [];
+    const categoryHeaders = categoryRows[0] || [];
+    const idIdx = categoryHeaders.findIndex((h) => h?.toLowerCase() === "id" || h === "");
+    const nameRUIdx = categoryHeaders.findIndex((h) => 
+      h?.toLowerCase() === "name" || 
+      h?.toLowerCase() === "nameru" || 
+      h?.toLowerCase() === "name_ru"
+    );
     
-    // Определяем индексы колонок
-    // Сначала ищем точные совпадения (nameru, nameen, namekk), потом fallback на name
-    const idIndex = headers.findIndex((h) => h?.toLowerCase() === "id" || h === "");
-    
-    // Ищем NameRU - сначала точное совпадение, потом fallback на Name
-    let nameRUIndex = headers.findIndex((h) => {
-      const lower = h?.toLowerCase();
-      return lower === "nameru" || lower === "name_ru";
-    });
-    if (nameRUIndex === -1) {
-      nameRUIndex = headers.findIndex((h) => h?.toLowerCase() === "name");
-    }
-    
-    // Ищем NameKK
-    const nameKKIndex = headers.findIndex((h) => {
-      const lower = h?.toLowerCase();
-      return lower === "namekk" || lower === "name_kk";
-    });
-    
-    // Ищем ParentID для поддержки подкатегорий
-    const parentIdIndex = headers.findIndex((h) => {
-      const lower = h?.toLowerCase();
-      return lower === "parentid" || lower === "parent_id" || lower === "parentcategory" || lower === "parent_category";
-    });
-    
-    // Пропускаем заголовок
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i];
-      const id = row[idIndex]?.trim();
-      const nameRU = row[nameRUIndex]?.trim() || row[1]?.trim();
-      const nameKK = row[nameKKIndex]?.trim() || "";
-      const parentId = parentIdIndex !== -1 ? (row[parentIdIndex]?.trim() || null) : null;
-      
+    const categories = [];
+    for (let i = 1; i < categoryRows.length; i++) {
+      const row = categoryRows[i];
+      const id = row[idIdx]?.trim();
+      const nameRU = row[nameRUIdx]?.trim() || row[1]?.trim();
       if (id && nameRU) {
-        const category = {
+        categories.push({
           id: id,
           nameRU: nameRU,
-          nameKK: nameKK || nameRU, // Если нет перевода, используем русское
-        };
-        
-        // Добавляем parentId только если он указан (не пустая строка)
-        if (parentId) {
-          category.parentId = parentId;
-        }
-        
-        result.categories.push(category);
+        });
       }
     }
 
+    const result = {
+      categories: [],
+      products: {},
+    };
+
     // Загружаем товары из каждого листа категории
-    for (const category of result.categories) {
-      const categorySheet = sheetsList.find(
+    for (const category of categories) {
+      const catSheet = sheetsList.find(
         (s) =>
           s.properties?.title?.toLowerCase() === category.id.toLowerCase()
       );
 
-      if (!categorySheet) {
+      if (!catSheet) {
         result.products[category.id] = [];
         continue;
       }
 
-      // Читаем все колонки до Z (можно расширить до AA, AB и т.д. если нужно)
-      const productsRange = `${categorySheet.properties.title}!A:Z`;
+      const productsRange = `${catSheet.properties.title}!A:Z`;
       const productsData = await sheets.spreadsheets.values.get({
         spreadsheetId,
         range: productsRange,
@@ -196,77 +251,56 @@ export default defineEventHandler(async (event) => {
 
       const products = [];
       const headers = productRows[0] || [];
+      const idIdx = headers.findIndex((h) => h?.toLowerCase() === "id");
+      const nameIdx = headers.findIndex((h) => h?.toLowerCase() === "name");
+      const priceIdx = headers.findIndex((h) => h?.toLowerCase() === "price");
+      const imagesIdx = headers.findIndex((h) => h?.toLowerCase() === "images");
       
-      // ==========================================
-      // ОБЯЗАТЕЛЬНЫЕ ПОЛЯ
-      // ==========================================
-      const idIndex = headers.findIndex((h) => h?.toLowerCase() === "id");
-      const nameIndex = headers.findIndex((h) => h?.toLowerCase() === "name");
-      const priceIndex = headers.findIndex(
-        (h) => h?.toLowerCase() === "price"
-      );
-      const imagesIndex = headers.findIndex(
-        (h) => h?.toLowerCase() === "images"
+      // Колонка compatibility
+      const compatibilityIdx = headers.findIndex(
+        (h) =>
+          h?.toLowerCase() === "compatibility" ||
+          h?.toLowerCase() === "compatibleproducts" ||
+          h?.toLowerCase() === "compatible_products" ||
+          h?.toLowerCase() === "compatibleproductids" ||
+          h?.toLowerCase() === "compatible_product_ids"
       );
       
-      // ==========================================
-      // ЛОКАЛИЗОВАННЫЕ ПОЛЯ: GeneralInfo
-      // Поддерживаемые названия колонок:
-      // - GeneralInfoRU, GeneralInfoEN, GeneralInfoKK
-      // - GeneralInfo, General_Info, GeneralInfoRU, GeneralInfoEN, GeneralInfoKK
-      // ==========================================
+      // Колонка documentation (JSON)
+      const documentationIndex = headers.findIndex(
+        (h) => h?.toLowerCase() === "documentation"
+      );
       
       // Локализованные поля GeneralInfo
-      const generalInfoRUIndex = headers.findIndex(
+      const generalInfoRUIdx = headers.findIndex(
         (h) =>
           h?.toLowerCase() === "generalinfo" ||
           h?.toLowerCase() === "general_info" ||
           h?.toLowerCase() === "generalinforu" ||
           h?.toLowerCase() === "general_info_ru"
       );
-      const generalInfoKKIndex = headers.findIndex(
+      const generalInfoKKIdx = headers.findIndex(
         (h) =>
           h?.toLowerCase() === "generalinfokk" ||
           h?.toLowerCase() === "general_info_kk"
       );
       
-      // ==========================================
-      // ЛОКАЛИЗОВАННЫЕ ПОЛЯ: DescriptionHTML
-      // Поддерживаемые названия колонок:
-      // - DescriptionHTMLRU, DescriptionHTMLEN, DescriptionHTMLKK (приоритет)
-      // - DescriptionHTML, Description_HTML (fallback для RU)
-      // ==========================================
-      let descriptionRUIndex = headers.findIndex(
-        (h) => {
-          const lower = h?.toLowerCase() || "";
-          return lower === "descriptionhtmlru" || lower === "description_html_ru";
-        }
+      // Локализованные поля DescriptionHTML
+      const descRUIdx = headers.findIndex(
+        (h) =>
+          h?.toLowerCase() === "descriptionhtml" ||
+          h?.toLowerCase() === "description_html" ||
+          h?.toLowerCase() === "descriptionhtmlru" ||
+          h?.toLowerCase() === "description_html_ru"
       );
-      // Если не нашли специфичную, ищем общую
-      if (descriptionRUIndex === -1) {
-        descriptionRUIndex = headers.findIndex(
-          (h) => {
-            const lower = h?.toLowerCase() || "";
-            return lower === "descriptionhtml" || lower === "description_html";
-          }
-        );
-      }
-      
-      const descriptionKKIndex = headers.findIndex(
-        (h) => {
-          const lower = h?.toLowerCase() || "";
-          return lower === "descriptionhtmlkk" || lower === "description_html_kk";
-        }
+      const descKKIdx = headers.findIndex(
+        (h) =>
+          h?.toLowerCase() === "descriptionhtmlkk" ||
+          h?.toLowerCase() === "description_html_kk"
       );
       
-      // ==========================================
-      // ЛОКАЛИЗОВАННЫЕ ПОЛЯ: KitHTML
-      // Поддерживаемые названия колонок:
-      // - KitRU, KitEN, KitKK (приоритет)
-      // - KitHTMLRU, KitHTMLEN, KitHTMLKK
-      // - KitHTML, Kit_HTML (fallback для RU)
-      // ==========================================
-      const kitRUIndex = headers.findIndex(
+      // Локализованные поля KitHTML
+      const kitRUIdx = headers.findIndex(
         (h) => {
           const lower = h?.toLowerCase() || "";
           return (
@@ -278,29 +312,19 @@ export default defineEventHandler(async (event) => {
           );
         }
       );
-      const kitKKIndex = headers.findIndex(
+      const kitKKIdx = headers.findIndex(
         (h) => {
           const lower = h?.toLowerCase() || "";
           return lower === "kitkk" || lower === "kithtmlkk" || lower === "kit_html_kk";
         }
       );
       
-      // ==========================================
-      // JSON ПОЛЯ
-      // ==========================================
-      // documentation (JSON) - структура с блоками документов
-      const documentationIndex = headers.findIndex(
-        (h) => h?.toLowerCase() === "documentation"
-      );
-      
-      // videos (JSON) - структура с заголовком и списком видео
+      // JSON поля
       const videosIndex = headers.findIndex(
         (h) => h?.toLowerCase() === "videos"
       );
       
-      // ==========================================
-      // ДОПОЛНИТЕЛЬНЫЕ ПОЛЯ
-      // ==========================================
+      // Дополнительные поля
       // priceComplectation (текст/HTML) - информация о ценах и комплектации
       const priceComplectationRUIndex = headers.findIndex(
         (h) => {
@@ -332,7 +356,6 @@ export default defineEventHandler(async (event) => {
           return (
             lower === "specificationsru" ||
             lower === "specifications_ru" ||
-            lower === "specifications_ru" ||
             lower === "specifications" ||
             lower === "specification"
           );
@@ -343,58 +366,28 @@ export default defineEventHandler(async (event) => {
           const lower = h?.toLowerCase() || "";
           return (
             lower === "specificationskk" ||
-            lower === "specifications_kk" ||
             lower === "specifications_kk"
-          );
-        }
-      );
-      
-      // compatibility (JSON массив ID) - совместимое оборудование
-      const compatibilityIndex = headers.findIndex(
-        (h) => {
-          const lower = h?.toLowerCase() || "";
-          return (
-            lower === "compatibility" ||
-            lower === "compatibleproducts" ||
-            lower === "compatible_products" ||
-            lower === "compatibleproductids" ||
-            lower === "compatible_product_ids"
           );
         }
       );
 
       for (let i = 1; i < productRows.length; i++) {
         const row = productRows[i];
-        if (!row[idIndex]) continue; // Пропускаем пустые строки
+        if (!row[idIdx]) continue;
 
-        // ==========================================
-        // СОЗДАНИЕ ОБЪЕКТА ПРОДУКТА СО ВСЕМИ ПОЛЯМИ
-        // Все поля из Google Sheets синхронизируются здесь
-        // ==========================================
         const product = {
-          // Обязательные поля
-          id: row[idIndex]?.trim() || "",
-          name: row[nameIndex]?.trim() || "",
-          price: row[priceIndex]?.trim() || "",
+          id: row[idIdx]?.trim() || "",
+          name: row[nameIdx]?.trim() || "",
+          price: row[priceIdx]?.trim() || "",
           images: [],
-          
-          // Локализованные поля: GeneralInfo
           generalInfoRU: [],
           generalInfoKK: [],
-          
-          // Локализованные поля: DescriptionHTML
           descriptionRU: "",
           descriptionKK: "",
-          
-          // Локализованные поля: KitHTML
           kitRU: "",
           kitKK: "",
-          
-          // JSON поля
           documentation: null,
           videos: null,
-          
-          // Дополнительные поля
           priceComplectationRU: "",
           priceComplectationKK: "",
           priceComplectationInfo: "",
@@ -404,13 +397,11 @@ export default defineEventHandler(async (event) => {
           compatibility: [],
         };
 
-        // Парсим images (JSON массив)
-        if (row[imagesIndex]) {
+        if (row[imagesIdx]) {
           try {
-            product.images = JSON.parse(row[imagesIndex]);
+            product.images = JSON.parse(row[imagesIdx]);
           } catch (e) {
-            // Если не JSON, пробуем как строку с запятыми
-            product.images = row[imagesIndex]
+            product.images = row[imagesIdx]
               .split(",")
               .map((img) => img.trim())
               .filter((img) => img);
@@ -423,7 +414,6 @@ export default defineEventHandler(async (event) => {
           try {
             return JSON.parse(row[index]);
           } catch (e) {
-            // Если не JSON, пробуем как строку с переносами
             return row[index]
               .split("\n")
               .map((item) => item.trim())
@@ -431,28 +421,24 @@ export default defineEventHandler(async (event) => {
           }
         };
 
-        product.generalInfoRU = parseGeneralInfo(generalInfoRUIndex);
-        product.generalInfoKK = parseGeneralInfo(generalInfoKKIndex);
+        product.generalInfoRU = parseGeneralInfo(generalInfoRUIdx);
+        product.generalInfoKK = parseGeneralInfo(generalInfoKKIdx);
         
-        // Если нет локализованных полей, используем русские для всех
         if (product.generalInfoKK.length === 0) {
           product.generalInfoKK = product.generalInfoRU;
         }
 
-        // Описания для каждого языка
-        product.descriptionRU = row[descriptionRUIndex]?.trim() || "";
-        product.descriptionKK = row[descriptionKKIndex]?.trim() || "";
+        product.descriptionRU = row[descRUIdx]?.trim() || "";
+        product.descriptionKK = row[descKKIdx]?.trim() || "";
         
-        // Если нет локализованных полей, используем русские для всех
         if (!product.descriptionKK) {
           product.descriptionKK = product.descriptionRU;
         }
 
         // Kit для каждого языка
-        product.kitRU = row[kitRUIndex]?.trim() || "";
-        product.kitKK = row[kitKKIndex]?.trim() || "";
+        product.kitRU = row[kitRUIdx]?.trim() || "";
+        product.kitKK = row[kitKKIdx]?.trim() || "";
         
-        // Если нет локализованных полей kit, используем русские для всех
         if (!product.kitKK && product.kitRU) {
           product.kitKK = product.kitRU;
         }
@@ -500,15 +486,15 @@ export default defineEventHandler(async (event) => {
         product.specificationsInfo = product.specificationsRU || product.specificationsKK || "";
 
         // Парсим compatibility (JSON массив ID)
-        if (compatibilityIndex !== -1 && row[compatibilityIndex]) {
+        if (compatibilityIdx !== -1 && row[compatibilityIdx]) {
           try {
-            const compatibilityData = JSON.parse(row[compatibilityIndex]);
+            const compatibilityData = JSON.parse(row[compatibilityIdx]);
             product.compatibility = Array.isArray(compatibilityData) 
               ? compatibilityData.map(id => String(id).trim()).filter(id => id)
               : [];
           } catch (e) {
             // Если не JSON, пытаемся парсить как строку с разделителями
-            const compatibilityStr = row[compatibilityIndex].trim();
+            const compatibilityStr = row[compatibilityIdx].trim();
             if (compatibilityStr) {
               product.compatibility = compatibilityStr
                 .split(/[,\s]+/)
@@ -526,14 +512,14 @@ export default defineEventHandler(async (event) => {
       result.products[category.id] = products;
     }
 
-    // Сохраняем categories.json в public/data
+    result.categories = categories;
+
+    // Сохраняем обновленные JSON файлы
     const publicDataDir = join(process.cwd(), "public/data");
-    
-    // Создаем папку, если её нет
     if (!existsSync(publicDataDir)) {
       await mkdir(publicDataDir, { recursive: true });
     }
-    
+
     const categoriesPath = join(publicDataDir, "categories.json");
     await writeFile(
       categoriesPath,
@@ -541,9 +527,8 @@ export default defineEventHandler(async (event) => {
       "utf-8"
     );
 
-    // Сохраняем файлы для каждой категории в public/data
-    // Имя файла генерируется автоматически: {id}.json
     for (const category of result.categories) {
+      // Имя файла генерируется автоматически: {id}.json
       const fileName = `${category.id}.json`;
       const categoryFilePath = join(publicDataDir, fileName);
       const products = result.products[category.id] || [];
@@ -554,29 +539,15 @@ export default defineEventHandler(async (event) => {
       );
     }
 
-    const totalProducts = Object.values(result.products).reduce(
-      (sum, products) => sum + products.length,
-      0
-    );
-
     return {
       success: true,
-      message: "Каталог успешно обновлен",
-      stats: {
-        categories: result.categories.length,
-        products: totalProducts,
-      },
-      categories: result.categories.map((cat) => ({
-        id: cat.id,
-        name: cat.name,
-        productsCount: result.products[cat.id]?.length || 0,
-      })),
+      message: "Совместимое оборудование успешно обновлено и каталог регенерирован",
     };
   } catch (error) {
-    console.error("Error updating catalog:", error);
+    console.error("Error updating compatibility:", error);
     throw createError({
       statusCode: 500,
-      statusMessage: error.message || "Ошибка при обновлении каталога",
+      statusMessage: error.message || "Ошибка при обновлении совместимого оборудования",
     });
   }
 });

@@ -23,7 +23,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор TGS2611-C00</td><td>—</td><td><p>для <a href=\"https://pharmec.by/catalog/techeiskateli/indikator-utechki-gaza-ft04/\">ФТ04</a></p><p>&nbsp;</p><p>для <a href=\"https://pharmec.by/catalog/techeiskateli/indikator-utechki-gaza-ft-02v1/\">ФТ-02В1</a> (модернизированный)</p></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-mipex-02-1-ii-1-1a-21-0-100-ob-ch4",
@@ -51,7 +52,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор MIPEX-02-1-II-1.1A (21) (0-100%Об.CH4)</td><td>—</td><td><p>д. измерения 0-100% об. д.</p><p>&nbsp;</p><p>для <a href=\"https://pharmec.by/catalog/portable-devices/fp11-2k/\">ФП11.2К</a></p><p>для <a href=\"https://pharmec.by/catalog/portable-devices/fp34/\">ФП34</a></p></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-mipex-02-1-ii-1-1a-11-0-5-ob-ch4",
@@ -78,7 +80,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор MIPEX-02-1-II-1.1A (11) (0-5%Об.CH4)</td><td>—</td><td><p>д. измерения 0-5% об. д.</p><p>&nbsp;</p><p>д. показания 0-100% об.д.</p><p>&nbsp;</p><p>для <a href=\"https://pharmec.by/catalog/portable-devices/fp11-2k/\">ФП11.2К</a></p><p>для <a href=\"https://pharmec.by/catalog/portable-devices/fp34/\">ФП34</a>,</p><p>для <a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/bd-fst-03v1-o/\">БД ФСТ-03В1 Оптические</a></p></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-oksik-3",
@@ -107,7 +110,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор ОКСИК-3</td><td>—</td><td>для <a href=\"https://pharmec.by/catalog/portable-devices/fp33/\">ФП33</a></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-co-eco-sure-2e",
@@ -136,7 +140,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор CO ECO-Sure (2e)</td><td>—</td><td>для <a href=\"https://pharmec.by/catalog/portable-devices/fp33/\">ФП33</a>, <a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v/\">БД ФСТ-03В СО</a>, <a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/gazoanalizator-fst-03m/\">БД ФСТ-03м СО</a>, <a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/bd-fst-03v1-e/\">БД ФСТ-03В1 Э</a></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-o2-a3",
@@ -165,7 +170,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор О2-А3</td><td>—</td><td>для <a href=\"https://pharmec.by/catalog/portable-devices/fp34/\">ФП34</a>,<a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/bd-fst-03v1-e/\"> БД ФСТ-03В1 Э</a>, <a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v/\">БД ФСТ-03В</a></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-pgs-1eh-sn4-s3n8-zhestkie-vyvody-art23118",
@@ -192,7 +198,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор ПГС-1Ех СН4/С3Н8 (жесткие выводы)</td><td>АРТ23118</td><td>для <a href=\"https://pharmec.by/catalog/portable-devices/fp22/\">ФП22</a>, <a href=\"https://pharmec.by/catalog/techeiskateli/fp12/\">ФП 12</a></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-pgs-1eh-sn4-s3n8-myagkie-vyvody-fp-art231070",
@@ -220,7 +227,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор ПГС-1Ех СН4/С3Н8 (мягкие выводы) ФП</td><td>АРТ231070</td><td>для ФП12 до 2011 г. выпуска</td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-pgs-1eh-sn4-s3n8-myagkie-vyvody-ft-art23107",
@@ -248,7 +256,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор ПГС-1Ех СН4/С3Н8 (мягкие выводы) ФТ</td><td>АРТ23107</td><td><p>для <a href=\"https://pharmec.by/catalog/techeiskateli/ft-02v1-1/\">ФТ-02В1.1</a>, ФТ-02В1 (дата выпуска до сентября 2025 г.),</p><p>СУМ-94 (снят с производства),</p><p>СУМ-01 (снят с производства),</p><p>ТС-92 (снят с производства),</p><p>ТПГ-94 (снят с производства)</p></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-pgs-1eh-n2-zhestkie-vyvody-art23218",
@@ -275,7 +284,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор ПГС-1Ех Н2 (жесткие выводы)</td><td>АРТ23218</td><td>для <a href=\"https://pharmec.by/catalog/portable-devices/fp22/\">ФП22</a>, <a href=\"https://pharmec.by/catalog/techeiskateli/fp12/\">ФП 12</a></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-pgs-1eh-n2-myagkie-vyvody-art23207",
@@ -303,7 +313,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор ПГС-1Ех Н2 (мягкие выводы)</td><td>АРТ23207</td><td>ФП12 до 2011 г. выпуска</td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-gs-1eh-sn4-s3n8-myagkie-vyvody-art23119",
@@ -331,7 +342,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор ГС-1Ех СН4/С3Н8 (мягкие выводы)</td><td>АРТ23119</td><td><p>для <a href=\"https://pharmec.by/catalog/portable-devices/gazoanalizator-fp21/\">ФП21</a>, <a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/fst-03v/\">БД ФСТ-03В</a>,</p><p>БД ФСТ-03м (квадратные),</p><p>ФП11.2К до 2011 г. выпуска</p></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-gs-1eh-sn4-s3n8-zhestkie-vyvody-art23120",
@@ -358,7 +370,8 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор ГС-1Ех СН4/С3Н8 (жесткие выводы)</td><td>АРТ23120</td><td>для <a href=\"https://pharmec.by/catalog/portable-devices/fp22/\">ФП22</a>, <a href=\"https://pharmec.by/catalog/portable-devices/fp11-2k/\">ФП11.2К</a>, <a href=\"https://pharmec.by/catalog/portable-devices/fp33/\">ФП33</a>, БД ФСТ-03м (круглые), ФСТ-05КБ (снят с производства), <a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/bd-fst-03v1-t/\">БД ФСТ-03В1 Т</a></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   },
   {
     "id": "sensor-gs-1eh-n2-zhestkie-vyvody-art23220",
@@ -385,6 +398,7 @@
     "priceComplectationInfo": "<h3><strong>Цены и комплектация:</strong></h3><table><thead><tr><th>Комплектация</th><th>Артикул</th><th>Примечание</th><th>Цена с НДС</th></tr></thead><tbody><tr><td>Сенсор ГС-1Ех Н2 (жесткие выводы)</td><td>АРТ23220</td><td><p>для <a href=\"https://pharmec.by/catalog/portable-devices/fp22/\">ФП22</a>,</p><p><a href=\"https://pharmec.by/catalog/gazoanalizatory-stacionarnye/bd-fst-03v1-t/\">БД ФСТ-03В1 Термокаталитические</a></p></td><td><strong>по запросу</strong></td></tr></tbody></table>",
     "specificationsRU": "",
     "specificationsKK": "",
-    "specificationsInfo": ""
+    "specificationsInfo": "",
+    "compatibility": []
   }
 ]
