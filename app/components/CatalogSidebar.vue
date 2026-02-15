@@ -136,10 +136,8 @@ function setSelectedFromRoute() {
       if (category.parentId) expandedCategories.value.add(category.parentId);
       else if (getSubcategories(category.id).length > 0) expandedCategories.value.add(category.id);
     }
-  } else if (categories.value.length > 0) {
-    selectedCategoryId.value = categories.value[0].id;
-    if (getSubcategories(categories.value[0].id).length > 0) expandedCategories.value.add(categories.value[0].id);
   } else {
+    // На странице /catalog (индекс) ни одна категория не активна
     selectedCategoryId.value = null;
   }
 }

@@ -163,28 +163,6 @@
       </div>
     </section>
 
-    <!-- Catalog Section -->
-    <section class="section catalog-section">
-      <h2 class="catalog-section-title">{{ t('home.catalogCategories') }}</h2>
-      <p class="catalog-section-desc muted">{{ t('home.catalogDesc') }}</p>
-      <div class="catalog-grid">
-        <NuxtLink
-          v-for="cat in catalogCategories"
-          :key="cat.slug"
-          :to="`/catalog/${cat.slug}`"
-          class="catalog-card card"
-        >
-          <div class="catalog-card-image-wrap">
-            <img :src="cat.image" :alt="cat.title" class="catalog-card-image" />
-          </div>
-          <h3 class="catalog-card-title">{{ cat.title }}</h3>
-        </NuxtLink>
-      </div>
-      <div class="catalog-cta">
-        <NuxtLink to="/catalog" class="btn primary">{{ t('home.viewCatalog') }}</NuxtLink>
-      </div>
-    </section>
-
     <!-- Features Section -->
     <section class="section features-section">
       <div class="split">
@@ -289,31 +267,8 @@
 import { useI18n } from '@/composables/useI18n';
 import productionImage from '@/assets/company/production.jpg';
 import mainBgImage from '@/assets/company/main-bg.jpg';
-import catalogImg1 from '@/assets/catalog-img/1.jpg';
-import catalogImg2 from '@/assets/catalog-img/2.jpg';
-import catalogImg3 from '@/assets/catalog-img/3.jpg';
-import catalogImg4 from '@/assets/catalog-img/4.jpg';
-import catalogImg5 from '@/assets/catalog-img/5.jpg';
-import catalogImg6 from '@/assets/catalog-img/6.jpg';
-import catalogImg7 from '@/assets/catalog-img/7.jpg';
-import catalogImg8 from '@/assets/catalog-img/8.jpg';
-import catalogImg9 from '@/assets/catalog-img/9.jpg';
-import catalogImg10 from '@/assets/catalog-img/10.jpg';
 
 const { t } = useI18n();
-
-const catalogCategories = [
-  { title: 'Трассоискатели', slug: 'trassoiskateli', image: catalogImg1 },
-  { title: 'Стационарные приборы', slug: 'gazoanalizatory-stacionarnye', image: catalogImg2 },
-  { title: 'Портативные газоанализаторы', slug: 'portable-devices', image: catalogImg3 },
-  { title: 'Течеискатели и индикаторы утечки газа', slug: 'techeiskateli', image: catalogImg4 },
-  { title: 'Измерители давления газа', slug: 'izmeriteli-davlenija-gaza', image: catalogImg5 },
-  { title: 'Сигнализаторы загазованности (бытовые)', slug: 'signalizatory-zagazovannosti-bytovye', image: catalogImg6 },
-  { title: 'Прочие измерительные системы', slug: 'prochie-izmeritelnye-sistemy', image: catalogImg7 },
-  { title: 'Сервисное и дополнительное оборудование', slug: 'service-devices', image: catalogImg8 },
-  { title: 'Газочувствительные сенсоры', slug: 'sensors/gazovye-sensory', image: catalogImg9 },
-  { title: 'Аксессуары', slug: 'accessories', image: catalogImg10 },
-];
 
 const categories = [
   {
@@ -746,83 +701,6 @@ const categories = [
     }
   }
 
-  .catalog-section {
-    .catalog-section-title {
-      font-size: 28px;
-      font-weight: 700;
-      color: #1f2933;
-      margin-bottom: 12px;
-      text-align: center;
-    }
-
-    .catalog-section-desc {
-      text-align: center;
-      margin-bottom: 32px;
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-      margin-bottom: 32px;
-    }
-
-    .catalog-card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      padding: 0;
-      border-radius: 14px;
-
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 32px rgba(17, 24, 39, 0.15);
-      }
-    }
-
-    .catalog-card-image-wrap {
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      background: #f1f5f9;
-    }
-
-    .catalog-card-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .catalog-card:hover .catalog-card-image {
-      transform: scale(1.05);
-    }
-
-    .catalog-card-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: #1f2933;
-      padding: 16px;
-      margin: 0;
-      line-height: 1.35;
-    }
-
-    .catalog-cta {
-      text-align: center;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .catalog-section .catalog-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
   .features-section {
     .feature-card {
       position: relative;
@@ -899,23 +777,6 @@ const categories = [
 
 @media (max-width: 767.98px) {
   .home-page {
-    .catalog-section {
-      .catalog-section-title {
-        font-size: 22px;
-      }
-
-      .catalog-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        margin-bottom: 24px;
-      }
-
-      .catalog-card-title {
-        font-size: 13px;
-        padding: 12px;
-      }
-    }
-
     .hero {
       .stats-grid {
         grid-template-columns: 1fr;

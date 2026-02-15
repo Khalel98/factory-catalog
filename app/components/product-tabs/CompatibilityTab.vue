@@ -42,7 +42,7 @@
 
       <div v-if="compatibleProducts.length > 0" class="preview-section">
         <h4>Предпросмотр совместимых товаров:</h4>
-        <div class="products-grid">
+        <div class="products-grid compatibility-grid">
           <div
             v-for="product in compatibleProducts"
             :key="product.id"
@@ -51,8 +51,15 @@
             <div class="product-image-wrapper" v-if="product.images && product.images.length > 0">
               <img :src="product.images[0]" :alt="product.name" class="product-image" />
             </div>
-            <h5>{{ product.name }}</h5>
-            <p class="product-id">ID: {{ product.id }}</p>
+            <h3>{{ product.name }}</h3>
+            <ul class="product-general-info" v-if="getProductGeneralInfo(product).length > 0">
+              <li v-for="(info, idx) in getProductGeneralInfo(product).slice(0, 3)" :key="idx">{{ info }}</li>
+            </ul>
+            <div class="product-info">
+              <span class="product-price" v-if="product.price">{{ t('catalog.priceFrom', { price: product.price }) }}</span>
+              <span class="product-id">ID: {{ product.id }}</span>
+              <button type="button" class="btn primary" style="margin-top: 8px; padding: 8px 12px; font-size: 14px;">{{ t('catalog.more') }}</button>
+            </div>
           </div>
         </div>
       </div>
@@ -68,7 +75,7 @@
       </div>
       <div v-else class="compatible-products">
         <h3 class="section-title">Совместимое оборудование</h3>
-        <div class="products-grid">
+        <div class="products-grid compatibility-grid">
           <div
             v-for="product in compatibleProducts"
             :key="product.id"
@@ -78,15 +85,13 @@
             <div class="product-image-wrapper" v-if="product.images && product.images.length > 0">
               <img :src="product.images[0]" :alt="product.name" class="product-image" />
             </div>
+            <h3>{{ product.name }}</h3>
+            <ul class="product-general-info" v-if="getProductGeneralInfo(product).length > 0">
+              <li v-for="(info, idx) in getProductGeneralInfo(product).slice(0, 3)" :key="idx">{{ info }}</li>
+            </ul>
             <div class="product-info">
-              <h5 class="product-name">{{ product.name }}</h5>
-              <ul class="product-general-info" v-if="getProductGeneralInfo(product).length > 0">
-                <li v-for="(info, idx) in getProductGeneralInfo(product).slice(0, 3)" :key="idx">{{ info }}</li>
-              </ul>
-              <div class="product-price" v-if="product.price">
-                {{ t('catalog.priceFrom', { price: product.price }) }}
-              </div>
-              <button class="btn-more">{{ t('catalog.more') }}</button>
+              <span class="product-price" v-if="product.price">{{ t('catalog.priceFrom', { price: product.price }) }}</span>
+              <button type="button" class="btn primary" style="margin-top: 8px; padding: 8px 12px; font-size: 14px;">{{ t('catalog.more') }}</button>
             </div>
           </div>
         </div>
@@ -509,79 +514,50 @@ onMounted(async () => {
   margin: 0 0 24px 0;
 }
 
-.products-grid {
+/* Сетка как в каталоге, карточки используют глобальные .product-card из main.scss */
+.compatibility-grid.products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   margin-top: 24px;
-}
-
-.product-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 16px;
-  transition: all 0.2s;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.product-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
+  align-items: stretch;
 }
 
 .product-image-wrapper {
   width: 100%;
-  height: 200px;
+  height: 150px;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 8px;
+  margin-bottom: 12px;
   background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .product-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.product-info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.product-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1f2933;
-  margin: 0;
-}
-
-.product-id {
-  font-size: 0.85rem;
-  color: #64748b;
-  margin: 0;
+.product-card:hover .product-image {
+  transform: scale(1.05);
 }
 
 .product-general-info {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 12px 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .product-general-info li {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
   color: #52606d;
-  padding-left: 16px;
+  padding-left: 14px;
   position: relative;
 }
 
@@ -590,37 +566,30 @@ onMounted(async () => {
   position: absolute;
   left: 0;
   color: #1e88e5;
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.product-price {
   font-size: 1rem;
-  font-weight: 600;
-  color: #1e88e5;
-  margin-top: 8px;
+  line-height: 1;
+  font-weight: 700;
 }
 
-.btn-more {
-  margin-top: 8px;
-  padding: 8px 16px;
-  background: #1e88e5;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
+.product-info .product-id {
+  font-size: 0.85rem;
+  color: #64748b;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.compatibility-grid .product-card {
   cursor: pointer;
-  transition: all 0.2s;
-  width: 100%;
 }
 
-.btn-more:hover {
-  background: #1565c0;
+@media (max-width: 991.98px) {
+  .compatibility-grid.products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media (max-width: 768px) {
-  .products-grid {
+@media (max-width: 767.98px) {
+  .compatibility-grid.products-grid {
     grid-template-columns: 1fr;
   }
 

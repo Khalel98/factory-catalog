@@ -5,268 +5,162 @@
       <div class="catalog-content-wrapper">
         <Breadcrumbs :items="breadcrumbItems" />
         <div class="catalog-content">
-          <div v-if="selectedCategory">
-            <h2>{{ getCategoryName(selectedCategory) }}</h2>
-            <div class="products-grid">
-              <div
-                v-for="product in products"
-                :key="product.id"
-                class="product-card"
+          <section class="section catalog-section">
+            <h2 class="catalog-section-title">{{ t('home.catalogCategories') }}</h2>
+            <p class="catalog-section-desc muted">{{ t('home.catalogDesc') }}</p>
+            <div class="catalog-grid">
+              <NuxtLink
+                v-for="cat in catalogCategories"
+                :key="cat.slug"
+                :to="`/catalog/${cat.slug}`"
+                class="catalog-card card"
               >
-                <div
-                  class="product-image-wrapper"
-                  v-if="product.images && product.images.length > 0"
-                >
-                  <img
-                    :src="product.images[0]"
-                    :alt="product.name"
-                    class="product-image"
-                  />
+                <div class="catalog-card-image-wrap">
+                  <img :src="cat.image" :alt="cat.title" class="catalog-card-image" />
                 </div>
-                <h3>{{ product.name }}</h3>
-                <ul
-                  class="product-general-info"
-                  v-if="getProductGeneralInfo(product).length > 0"
-                >
-                  <li
-                    v-for="(item, index) in getProductGeneralInfo(product).slice(0, 3)"
-                    :key="index"
-                  >
-                    {{ item }}
-                  </li>
-                </ul>
-                <div class="product-info">
-                  <span class="product-price" v-if="product.price"
-                    >{{ t('catalog.priceFrom', { price: product.price }) }}</span
-                  >
-                  <NuxtLink
-                    :to="`/catalog/${selectedCategoryId}/${product.id}`"
-                    class="btn primary"
-                    style="margin-top: 8px; padding: 8px 12px; font-size: 14px;"
-                    >{{ t('catalog.more') }}</NuxtLink
-                  >
-                </div>
-              </div>
+                <h3 class="catalog-card-title">{{ cat.title }}</h3>
+              </NuxtLink>
             </div>
-          </div>
-          <div v-else class="empty-state">
-            <p class="muted">{{ t('catalog.selectCategory') }}</p>
-          </div>
+          </section>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .catalog-content-wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.product-image-wrapper {
-  width: 100%;
-  height: 150px;
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  background: #f5f5f5;
+.catalog-section {
+  :deep(.catalog-section-title) {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2933;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  :deep(.catalog-section-desc) {
+    text-align: center;
+    margin-bottom: 32px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :deep(.catalog-grid) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  :deep(.catalog-card) {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 0;
+    border-radius: 14px;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(17, 24, 39, 0.15);
+    }
+  }
+
+  :deep(.catalog-card-image-wrap) {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f1f5f9;
+  }
+
+  :deep(.catalog-card-image) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  :deep(.catalog-card:hover .catalog-card-image) {
+    transform: scale(1.05);
+  }
+
+  :deep(.catalog-card-title) {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2933;
+    padding: 16px;
+    margin: 0;
+    line-height: 1.35;
+  }
 }
 
-.product-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
+@media (max-width: 1024px) {
+  .catalog-section :deep(.catalog-grid) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.product-card:hover .product-image {
-  transform: scale(1.05);
-}
+@media (max-width: 767.98px) {
+  .catalog-section {
+    :deep(.catalog-section-title) {
+      font-size: 22px;
+    }
 
-.product-general-info {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 12px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+    :deep(.catalog-grid) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
 
-.product-general-info li {
-  font-size: 0.8rem;
-  line-height: 1.4;
-  color: #52606d;
-  padding-left: 14px;
-  position: relative;
-}
-
-.product-general-info li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #1e88e5;
-  font-size: 1rem;
-  line-height: 1;
-  font-weight: 700;
+    :deep(.catalog-card-title) {
+      font-size: 13px;
+      padding: 12px;
+    }
+  }
 }
 </style>
 
 <script setup>
-const { t, locale } = useI18n();
+const { t } = useI18n();
 
-const categories = ref([]);
-const products = ref([]);
-const selectedCategoryId = ref(null);
-const selectedCategory = computed(() => {
-  if (!selectedCategoryId.value) return null;
-  return (
-    categories.value.find((cat) => cat.id === selectedCategoryId.value) || null
-  );
-});
+import catalogImg1 from '@/assets/catalog-img/1.jpg';
+import catalogImg2 from '@/assets/catalog-img/2.jpg';
+import catalogImg3 from '@/assets/catalog-img/3.jpg';
+import catalogImg4 from '@/assets/catalog-img/4.jpg';
+import catalogImg5 from '@/assets/catalog-img/5.jpg';
+import catalogImg6 from '@/assets/catalog-img/6.jpg';
+import catalogImg7 from '@/assets/catalog-img/7.jpg';
+import catalogImg8 from '@/assets/catalog-img/8.jpg';
+import catalogImg9 from '@/assets/catalog-img/9.jpg';
+import catalogImg10 from '@/assets/catalog-img/10.jpg';
 
-// Функция для получения локализованного названия категории
-const getCategoryName = (category) => {
-  if (!category) return '';
-  const currentLang = locale.value;
-  if (currentLang === 'kk' && category.nameKK) {
-    return category.nameKK;
-  }
-  // По умолчанию русское название
-  return category.nameRU || '';
+const catalogCategories = [
+  { title: 'Трассоискатели', slug: 'trassoiskateli', image: catalogImg1 },
+  { title: 'Стационарные приборы', slug: 'gazoanalizatory-stacionarnye', image: catalogImg2 },
+  { title: 'Портативные газоанализаторы', slug: 'portable-devices', image: catalogImg3 },
+  { title: 'Течеискатели и индикаторы утечки газа', slug: 'techeiskateli', image: catalogImg4 },
+  { title: 'Измерители давления газа', slug: 'izmeriteli-davlenija-gaza', image: catalogImg5 },
+  { title: 'Сигнализаторы загазованности (бытовые)', slug: 'signalizatory-zagazovannosti-bytovye', image: catalogImg6 },
+  { title: 'Прочие измерительные системы', slug: 'prochie-izmeritelnye-sistemy', image: catalogImg7 },
+  { title: 'Сервисное и дополнительное оборудование', slug: 'service-devices', image: catalogImg8 },
+  { title: 'Газочувствительные сенсоры', slug: 'sensors/gazovye-sensory', image: catalogImg9 },
+  { title: 'Аксессуары', slug: 'accessories', image: catalogImg10 },
+];
+
+const breadcrumbItems = computed(() => [
+  { label: t('breadcrumbs.home'), to: '/' },
+  { label: t('breadcrumbs.catalog'), to: '/catalog' },
+]);
+
+const selectCategory = (categoryId) => {
+  navigateTo(`/catalog/${categoryId}`);
 };
-
-// Функция для получения локализованного generalInfo товара
-const getProductGeneralInfo = (product) => {
-  if (!product) return [];
-  const currentLang = locale.value;
-  if (currentLang === 'kk' && product.generalInfoKK?.length > 0) {
-    return product.generalInfoKK;
-  }
-  // По умолчанию русское
-  return product.generalInfoRU || [];
-};
-
-const breadcrumbItems = computed(() => {
-  const items = [
-    { label: t('breadcrumbs.home'), to: "/" },
-    { label: t('breadcrumbs.catalog'), to: "/catalog" },
-  ];
-
-  if (selectedCategory.value) {
-    // Если это подкатегория, добавляем родительскую категорию
-    if (selectedCategory.value.parentId) {
-      const parentCategory = categories.value.find(
-        (cat) => cat.id === selectedCategory.value.parentId
-      );
-      if (parentCategory) {
-        items.push({
-          label: getCategoryName(parentCategory),
-          to: `/catalog/${parentCategory.id}`,
-        });
-      }
-    }
-    
-    items.push({
-      label: getCategoryName(selectedCategory.value),
-      to: `/catalog/${selectedCategory.value.id}`,
-    });
-  }
-
-  return items;
-});
-
-const loadCategories = async () => {
-  try {
-    const data = await $fetch("/data/categories.json");
-    categories.value = Array.isArray(data) ? data : [];
-  } catch (error) {
-    console.error("Error loading categories:", error);
-    categories.value = [];
-  }
-};
-
-
-const loadProducts = async (categoryId) => {
-  try {
-    const category = categories.value.find((cat) => cat.id === categoryId);
-    if (!category) {
-      products.value = [];
-      return;
-    }
-    
-    // Если это подкатегория, загружаем только её товары
-    if (category.parentId) {
-      const fileName = `${categoryId}.json`;
-      try {
-        const data = await $fetch(`/data/${fileName}`);
-        products.value = Array.isArray(data) ? data : [];
-      } catch (error) {
-        // Если файла нет, возвращаем пустой массив
-        products.value = [];
-      }
-      return;
-    }
-    
-    // Если это основная категория
-    // Проверяем, выбрана ли подкатегория, и относится ли она к этой категории
-    const selectedCategory = categories.value.find(cat => cat.id === selectedCategoryId.value);
-    
-    // Если выбрана подкатегория, которая относится к этой основной категории
-    if (selectedCategory && selectedCategory.parentId === categoryId) {
-      // Показываем только товары выбранной подкатегории
-      const fileName = `${selectedCategory.id}.json`;
-      try {
-        const data = await $fetch(`/data/${fileName}`);
-        products.value = Array.isArray(data) ? data : [];
-      } catch (error) {
-        products.value = [];
-      }
-      return;
-    }
-    
-    // Если основная категория выбрана, но подкатегория не выбрана (или выбрана подкатегория другой категории)
-    // Показываем только товары основной категории (без товаров подкатегорий)
-    const mainFileName = `${categoryId}.json`;
-    try {
-      const mainData = await $fetch(`/data/${mainFileName}`);
-      products.value = Array.isArray(mainData) ? mainData : [];
-    } catch (error) {
-      // Файл может не существовать, это нормально
-      products.value = [];
-    }
-  } catch (error) {
-    console.error("Error loading products:", error);
-    products.value = [];
-  }
-};
-
-const selectCategory = async (categoryId) => {
-  selectedCategoryId.value = categoryId;
-  await loadProducts(categoryId);
-};
-
-const route = useRoute();
-
-onMounted(async () => {
-  await loadCategories();
-  if (route.query.category) {
-    await navigateTo(`/catalog/${route.query.category}`, { replace: true });
-    return;
-  }
-  if (categories.value.length > 0) {
-    await navigateTo(`/catalog/${categories.value[0].id}`, { replace: true });
-  }
-});
-
-watch(
-  () => route.query.category,
-  (newCategoryId) => {
-    if (newCategoryId) {
-      navigateTo(`/catalog/${newCategoryId}`, { replace: true });
-    }
-  }
-);
 </script>

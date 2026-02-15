@@ -130,9 +130,6 @@
         <div v-if="loading" class="loading-state">
           <p>Загрузка...</p>
         </div>
-        <div v-else-if="categoriesWithProducts.length === 0" class="empty-state">
-          <p class="empty-message">Категории товаров не добавлены</p>
-        </div>
         <div v-else class="accordion">
           <div
             v-for="(cat, catIndex) in categoriesWithProducts"
