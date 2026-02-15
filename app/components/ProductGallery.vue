@@ -583,7 +583,7 @@ const handleImagesSaved = (newImages) => {
 .fullscreen-swiper {
   width: 100%;
   height: 100%;
-  max-width: 100vw;
+  max-width: 100%;
   max-height: 100vh;
 }
 

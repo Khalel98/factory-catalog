@@ -484,8 +484,9 @@ watch([() => props.productId, () => props.categoryId], () => {
 </script>
 
 <style lang="scss" scoped>
+/* Desktop (1024px+) */
 .documentation-tab {
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.8;
   color: #52606d;
 }
@@ -501,7 +502,7 @@ watch([() => props.productId, () => props.categoryId], () => {
 
   .block-title {
     margin: 0 0 16px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: #1f2933;
   }
@@ -515,8 +516,8 @@ watch([() => props.productId, () => props.categoryId], () => {
   .document-link {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
+    gap: 10px;
+    padding: 10px 14px;
     background: #f8fafc;
     border-radius: 8px;
     color: #1e88e5;
@@ -542,6 +543,10 @@ watch([() => props.productId, () => props.categoryId], () => {
 }
 
 .documentation-editor {
+  .editor-header-section h3 {
+    font-size: 18px;
+  }
+
   .editor-block {
     margin-bottom: 32px;
     padding: 24px;
@@ -565,7 +570,7 @@ watch([() => props.productId, () => props.categoryId], () => {
 
     h4 {
       margin: 0 0 12px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       color: #1f2933;
     }
@@ -579,10 +584,10 @@ watch([() => props.productId, () => props.categoryId], () => {
 
   .input {
     width: 100%;
-    padding: 10px 12px;
+    padding: 8px 10px;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 13px;
     transition: border-color 0.2s ease;
 
     &:focus {
@@ -610,7 +615,7 @@ watch([() => props.productId, () => props.categoryId], () => {
 
     h5 {
       margin: 0 0 12px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       color: #52606d;
     }
@@ -623,15 +628,15 @@ watch([() => props.productId, () => props.categoryId], () => {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      font-size: 14px;
+      font-size: 13px;
       color: #52606d;
     }
 
     .file-input {
-      padding: 8px;
+      padding: 6px 8px;
       border: 1px solid #e5e7eb;
       border-radius: 6px;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .file-name {
@@ -641,13 +646,13 @@ watch([() => props.productId, () => props.categoryId], () => {
   }
 
   .btn-remove {
-    padding: 8px 16px;
+    padding: 6px 12px;
     background: #ef4444;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     transition: background 0.2s ease;
 
@@ -657,7 +662,7 @@ watch([() => props.productId, () => props.categoryId], () => {
   }
 
   .btn-remove-small {
-    padding: 6px 12px;
+    padding: 5px 10px;
     background: #ef4444;
     color: white;
     border: none;
@@ -702,7 +707,65 @@ watch([() => props.productId, () => props.categoryId], () => {
   }
 }
 
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
+  .documentation-tab {
+    font-size: 13px;
+  }
+
+  .documentation-view .block-title {
+    font-size: 16px;
+  }
+
+  .documentation-editor {
+    .editor-header-section h3 {
+      font-size: 16px;
+    }
+    .block-title-inputs h4 {
+      font-size: 14px;
+    }
+    .input,
+    .document-name-inputs h5,
+    .document-file-input label,
+    .document-file-input .file-input,
+    .btn-remove {
+      font-size: 12px;
+    }
+    .btn-remove-small {
+      font-size: 11px;
+    }
+  }
+}
+
+/* Mobile (до 767px) */
 @media (max-width: 767.98px) {
+  .documentation-tab {
+    font-size: 12px;
+  }
+
+  .documentation-view .block-title {
+    font-size: 15px;
+  }
+
+  .documentation-editor {
+    .editor-header-section h3 {
+      font-size: 15px;
+    }
+    .block-title-inputs h4 {
+      font-size: 13px;
+    }
+    .input,
+    .document-name-inputs h5,
+    .document-file-input label,
+    .document-file-input .file-input,
+    .btn-remove {
+      font-size: 11px;
+    }
+    .btn-remove-small {
+      font-size: 10px;
+    }
+  }
+
   .block-header {
     flex-direction: column;
     gap: 16px;
