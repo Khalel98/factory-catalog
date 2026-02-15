@@ -99,61 +99,61 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
-            Пропан (C3H8), % об. доли
+            {{ t('home.selectionPropane') }}
           </span>
           <span class="badge">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
-            Метан (CH4), % об. доли
+            {{ t('home.selectionMethane') }}
           </span>
           <span class="badge">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
-            Водород (H2), % об. доли
+            {{ t('home.selectionHydrogen') }}
           </span>
           <span class="badge">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
-            Монооксид углерода (CO), масс. конц. мг/м³
+            {{ t('home.selectionCO') }}
           </span>
           <span class="badge">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
-            Кислород (O2), % об. доли
+            {{ t('home.selectionO2') }}
           </span>
           <span class="badge">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
             </svg>
-            Давление, кПа
+            {{ t('home.selectionPressure') }}
           </span>
           <span class="badge">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
-            Сероводород (H2S), масс. конц. мг/м³
+            {{ t('home.selectionH2S') }}
           </span>
           <span class="badge">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
-            Аммиак (NH3), масс. конц. мг/м³
+            {{ t('home.selectionNH3') }}
           </span>
           <span class="badge">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
             </svg>
-            Пары бензина и нефтепродуктов (Ex), % НКПР
+            {{ t('home.selectionGasoline') }}
           </span>
           <span class="badge">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
-            Углекислый газ (CO2), % об. доли
+            {{ t('home.selectionCO2') }}
           </span>
         </div>
       </div>
@@ -229,7 +229,7 @@
                 </svg>
               </div>
               <div>
-                <strong>ФП23</strong> — 1–5 компонентов, выносные датчики
+                {{ t('home.newsFP23') }}
               </div>
             </li>
             <li>
@@ -239,7 +239,7 @@
                 </svg>
               </div>
               <div>
-                <strong>ФП34</strong> — проверенная классика
+                {{ t('home.newsFP34') }}
               </div>
             </li>
             <li>
@@ -249,7 +249,7 @@
                 </svg>
               </div>
               <div>
-                <strong>ФТ04</strong> — быстрая смена сенсора без калибровки
+                {{ t('home.newsFT04') }}
               </div>
             </li>
           </div>
