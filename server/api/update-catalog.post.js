@@ -181,8 +181,8 @@ export default defineEventHandler(async (event) => {
         continue;
       }
 
-      // Читаем все колонки до Z (можно расширить до AA, AB и т.д. если нужно)
-      const productsRange = `${categorySheet.properties.title}!A:Z`;
+      // Читаем все колонки до AZ (включая PriceComplectationCategories и др.)
+      const productsRange = `${categorySheet.properties.title}!A:AZ`;
       const productsData = await sheets.spreadsheets.values.get({
         spreadsheetId,
         range: productsRange,
@@ -363,6 +363,17 @@ export default defineEventHandler(async (event) => {
         }
       );
 
+      // priceComplectationCategories (JSON) - категории с ID товаров для вкладки «Цены и комплектация»
+      const priceComplectationCategoriesIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "pricecomplectationcategories" ||
+            lower === "price_complectation_categories"
+          );
+        }
+      );
+
       for (let i = 1; i < productRows.length; i++) {
         const row = productRows[i];
         if (!row[idIndex]) continue; // Пропускаем пустые строки
@@ -402,6 +413,7 @@ export default defineEventHandler(async (event) => {
           specificationsKK: "",
           specificationsInfo: "",
           compatibility: [],
+          priceComplectationCategories: [],
         };
 
         // Парсим images (JSON массив)
@@ -515,6 +527,23 @@ export default defineEventHandler(async (event) => {
                 .map(id => id.trim())
                 .filter(id => id);
             }
+          }
+        }
+
+        // Парсим priceComplectationCategories (JSON: массив { name, productIds })
+        if (priceComplectationCategoriesIndex !== -1 && row[priceComplectationCategoriesIndex]) {
+          try {
+            const data = JSON.parse(row[priceComplectationCategoriesIndex]);
+            product.priceComplectationCategories = Array.isArray(data)
+              ? data.map((cat) => ({
+                  name: String(cat?.name ?? "").trim(),
+                  productIds: Array.isArray(cat?.productIds)
+                    ? cat.productIds.map((id) => String(id).trim()).filter(Boolean)
+                    : [],
+                })).filter((cat) => cat.name || cat.productIds.length > 0)
+              : [];
+          } catch (e) {
+            product.priceComplectationCategories = [];
           }
         }
 

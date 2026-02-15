@@ -373,6 +373,17 @@ export default defineEventHandler(async (event) => {
         }
       );
 
+      // priceComplectationCategories (JSON)
+      const priceComplectationCategoriesIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "pricecomplectationcategories" ||
+            lower === "price_complectation_categories"
+          );
+        }
+      );
+
       for (let i = 1; i < productRows.length; i++) {
         const row = productRows[i];
         if (!row[idIdx]) continue;
@@ -397,6 +408,7 @@ export default defineEventHandler(async (event) => {
           specificationsKK: "",
           specificationsInfo: "",
           compatibility: [],
+          priceComplectationCategories: [],
         };
 
         if (row[imagesIdx]) {
@@ -503,6 +515,23 @@ export default defineEventHandler(async (event) => {
                 .map(id => id.trim())
                 .filter(id => id);
             }
+          }
+        }
+
+        // Парсим priceComplectationCategories (JSON)
+        if (priceComplectationCategoriesIndex !== -1 && row[priceComplectationCategoriesIndex]) {
+          try {
+            const data = JSON.parse(row[priceComplectationCategoriesIndex]);
+            product.priceComplectationCategories = Array.isArray(data)
+              ? data.map((cat) => ({
+                  name: String(cat?.name ?? "").trim(),
+                  productIds: Array.isArray(cat?.productIds)
+                    ? cat.productIds.map((id) => String(id).trim()).filter(Boolean)
+                    : [],
+                })).filter((cat) => cat.name || cat.productIds.length > 0)
+              : [];
+          } catch (e) {
+            product.priceComplectationCategories = [];
           }
         }
 

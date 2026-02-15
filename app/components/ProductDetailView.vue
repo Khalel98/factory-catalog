@@ -81,6 +81,7 @@
             :content-k-k="product?.priceComplectationKK || ''"
             :product-id="product?.id || ''"
             :category-id="categoryId || ''"
+            :price-complectation-categories="product?.priceComplectationCategories || []"
           />
           <SpecificationsTab
             v-if="activeTab === 'specifications'"
@@ -170,7 +171,8 @@ const isTabFilled = (tabId) => {
   switch (tabId) {
     case "description": return !!getDescription().trim();
     case "kit": return !!getKit().trim();
-    case "price-complectation": return !!getPriceComplectation().trim();
+    case "price-complectation":
+      return !!getPriceComplectation().trim() || (Array.isArray(props.product?.priceComplectationCategories) && props.product.priceComplectationCategories.length > 0);
     case "specifications": return !!getSpecifications().trim();
     case "documentation":
       return !!(documentationData.value?.blocks && Array.isArray(documentationData.value.blocks) && documentationData.value.blocks.length > 0);

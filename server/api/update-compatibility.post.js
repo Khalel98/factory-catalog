@@ -3,6 +3,17 @@ import { readFile, writeFile, mkdir } from "fs/promises";
 import { join } from "path";
 import { existsSync } from "fs";
 
+/** Буква колонки по 0-based индексу (0=A, 25=Z, 26=AA) */
+function getColumnLetter(index) {
+  let s = "";
+  let n = index;
+  while (n >= 0) {
+    s = String.fromCharCode(65 + (n % 26)) + s;
+    n = Math.floor(n / 26) - 1;
+  }
+  return s;
+}
+
 export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
@@ -103,8 +114,8 @@ export default defineEventHandler(async (event) => {
       throw new Error(`Лист категории "${categoryId}" не найден`);
     }
 
-    // Получаем данные листа
-    const productsRange = `${categorySheet.properties.title}!A:Z`;
+    // Получаем данные листа (A:AZ чтобы учесть колонки после Z)
+    const productsRange = `${categorySheet.properties.title}!A:AZ`;
     const productsData = await sheets.spreadsheets.values.get({
       spreadsheetId,
       range: productsRange,
@@ -131,10 +142,8 @@ export default defineEventHandler(async (event) => {
 
     // Если колонка не найдена, создаем её
     if (compatibilityIndex === -1) {
-      // Находим последнюю колонку
       compatibilityIndex = headers.length;
-      const columnLetter = String.fromCharCode(65 + compatibilityIndex);
-      
+      const columnLetter = getColumnLetter(compatibilityIndex);
       // Добавляем заголовок
       await sheets.spreadsheets.values.update({
         spreadsheetId,
@@ -171,7 +180,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Обновляем совместимое оборудование в Google Sheets
-    const columnLetter = String.fromCharCode(65 + compatibilityIndex);
+    const columnLetter = getColumnLetter(compatibilityIndex);
     const compatibilityRange = `${categorySheet.properties.title}!${columnLetter}${productRowIndex}`;
     await sheets.spreadsheets.values.update({
       spreadsheetId,
@@ -237,7 +246,7 @@ export default defineEventHandler(async (event) => {
         continue;
       }
 
-      const productsRange = `${catSheet.properties.title}!A:Z`;
+      const productsRange = `${catSheet.properties.title}!A:AZ`;
       const productsData = await sheets.spreadsheets.values.get({
         spreadsheetId,
         range: productsRange,
@@ -371,6 +380,17 @@ export default defineEventHandler(async (event) => {
         }
       );
 
+      // priceComplectationCategories (JSON)
+      const priceComplectationCategoriesIndex = headers.findIndex(
+        (h) => {
+          const lower = h?.toLowerCase() || "";
+          return (
+            lower === "pricecomplectationcategories" ||
+            lower === "price_complectation_categories"
+          );
+        }
+      );
+
       for (let i = 1; i < productRows.length; i++) {
         const row = productRows[i];
         if (!row[idIdx]) continue;
@@ -395,6 +415,7 @@ export default defineEventHandler(async (event) => {
           specificationsKK: "",
           specificationsInfo: "",
           compatibility: [],
+          priceComplectationCategories: [],
         };
 
         if (row[imagesIdx]) {
@@ -501,6 +522,23 @@ export default defineEventHandler(async (event) => {
                 .map(id => id.trim())
                 .filter(id => id);
             }
+          }
+        }
+
+        // Парсим priceComplectationCategories (JSON)
+        if (priceComplectationCategoriesIndex !== -1 && row[priceComplectationCategoriesIndex]) {
+          try {
+            const data = JSON.parse(row[priceComplectationCategoriesIndex]);
+            product.priceComplectationCategories = Array.isArray(data)
+              ? data.map((cat) => ({
+                  name: String(cat?.name ?? "").trim(),
+                  productIds: Array.isArray(cat?.productIds)
+                    ? cat.productIds.map((id) => String(id).trim()).filter(Boolean)
+                    : [],
+                })).filter((cat) => cat.name || cat.productIds.length > 0)
+              : [];
+          } catch (e) {
+            product.priceComplectationCategories = [];
           }
         }
 
