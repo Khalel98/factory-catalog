@@ -408,7 +408,7 @@ onMounted(() => {
 
 .btn-open-modal {
   padding: 10px 18px;
-  background: #1e88e5;
+  background: #16396C;
   color: white;
   border: none;
   border-radius: 6px;
@@ -534,7 +534,7 @@ onMounted(() => {
 
 .text-input:focus {
   outline: none;
-  border-color: #1e88e5;
+  border-color: #16396C;
   box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.15);
 }
 
@@ -565,7 +565,7 @@ onMounted(() => {
 }
 
 .btn-save {
-  background: #1e88e5;
+  background: #16396C;
   color: white;
 }
 
@@ -740,20 +740,20 @@ onMounted(() => {
   content: "•";
   position: absolute;
   left: 0;
-  color: #1e88e5;
+  color: #16396C;
 }
 
 .product-price {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #1e88e5;
+  color: #16396C;
   margin-top: 4px;
 }
 
 .btn-more {
   margin-top: 6px;
   padding: 8px 14px;
-  background: #1e88e5;
+  background: #16396C;
   color: white;
   border: none;
   border-radius: 6px;

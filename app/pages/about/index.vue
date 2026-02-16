@@ -304,7 +304,7 @@ const advantages = computed(() => [
 
 .partner-badge:hover {
   background: rgba(30, 136, 229, 0.08);
-  border-color: #1e88e5;
+  border-color: #16396C;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(30, 136, 229, 0.15);
 }
@@ -332,14 +332,14 @@ const advantages = computed(() => [
 .activity-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(17, 24, 39, 0.15);
-  border-color: #1e88e5;
+  border-color: #16396C;
 }
 
 .activity-icon {
   flex-shrink: 0;
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #1e88e5, #1565c0);
+  background: #16396C;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -373,7 +373,7 @@ const advantages = computed(() => [
 .advantage-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(17, 24, 39, 0.15);
-  border-color: #1e88e5;
+  border-color: #16396C;
 }
 
 .advantage-header {
@@ -391,7 +391,7 @@ const advantages = computed(() => [
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1e88e5;
+  color: #16396C;
   flex-shrink: 0;
 }
 

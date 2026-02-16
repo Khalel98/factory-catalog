@@ -383,7 +383,7 @@ onMounted(async () => {
 
 .product-id-input:focus {
   outline: none;
-  border-color: #1e88e5;
+  border-color: #16396C;
   box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
 }
 
@@ -414,7 +414,7 @@ onMounted(async () => {
 }
 
 .btn-save {
-  background: #1e88e5;
+  background: #16396C;
   color: white;
 }
 
@@ -565,7 +565,7 @@ onMounted(async () => {
   content: "•";
   position: absolute;
   left: 0;
-  color: #1e88e5;
+  color: #16396C;
   font-size: 1rem;
   line-height: 1;
   font-weight: 700;

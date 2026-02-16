@@ -140,7 +140,7 @@ h4 {
 }
 
 .btn.primary {
-  background: #1e88e5;
+  background: #16396C;
   color: #ffffff;
 }
 
@@ -245,7 +245,7 @@ code {
   border-radius: 4px;
   font-family: "Courier New", monospace;
   font-size: 0.9em;
-  color: #1e88e5;
+  color: #16396C;
 }
 
 @media (max-width: 768px) {

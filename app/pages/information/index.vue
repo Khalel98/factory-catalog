@@ -120,7 +120,7 @@ const infoCards = [
   width: 48px;
   height: 48px;
   margin-bottom: 1rem;
-  color: var(--color-primary, #2563eb);
+  color: var(--color-primary, #16396C);
 }
 
 .info-card-icon svg {

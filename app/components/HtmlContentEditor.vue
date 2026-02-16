@@ -919,7 +919,7 @@ td{
 
 .edit-button {
   padding: 8px 16px;
-  background: #1e88e5;
+  background: #16396C;
   color: #ffffff;
   border: none;
   border-radius: 6px;
@@ -968,7 +968,7 @@ td{
 }
 
 .content :deep(a) {
-  color: #1e88e5;
+  color: #16396C;
   text-decoration: none;
 }
 
@@ -1324,7 +1324,7 @@ td{
 }
 
 .btn-save {
-  background: #1e88e5;
+  background: #16396C;
   color: #ffffff;
 }
 
@@ -1399,7 +1399,7 @@ td{
 
 .html-textarea:focus {
   outline: none;
-  border-color: #1e88e5;
+  border-color: #16396C;
   box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
 }
 

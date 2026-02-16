@@ -256,6 +256,25 @@
         </div>
       </div>
     </section>
+
+    <!-- Catalog Categories Section -->
+    <section class="section catalog-section">
+      <h2 class="catalog-section-title">{{ t('home.catalogCategories') }}</h2>
+      <p class="catalog-section-desc muted">{{ t('home.catalogDesc') }}</p>
+      <div class="catalog-grid">
+        <NuxtLink
+          v-for="cat in catalogCategories"
+          :key="cat.slug"
+          :to="`/catalog/${cat.slug}`"
+          class="catalog-card card"
+        >
+          <div class="catalog-card-image-wrap">
+            <img :src="cat.image" :alt="cat.title" class="catalog-card-image" />
+          </div>
+          <h3 class="catalog-card-title">{{ cat.title }}</h3>
+        </NuxtLink>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -263,8 +282,31 @@
 import { useI18n } from '@/composables/useI18n';
 import productionImage from '@/assets/company/production.jpg';
 import mainBgImage from '@/assets/company/main-bg.jpg';
+import catalogImg1 from '@/assets/catalog-img/1.jpg';
+import catalogImg2 from '@/assets/catalog-img/2.jpg';
+import catalogImg3 from '@/assets/catalog-img/3.jpg';
+import catalogImg4 from '@/assets/catalog-img/4.jpg';
+import catalogImg5 from '@/assets/catalog-img/5.jpg';
+import catalogImg6 from '@/assets/catalog-img/6.jpg';
+import catalogImg7 from '@/assets/catalog-img/7.jpg';
+import catalogImg8 from '@/assets/catalog-img/8.jpg';
+import catalogImg9 from '@/assets/catalog-img/9.jpg';
+import catalogImg10 from '@/assets/catalog-img/10.jpg';
 
 const { t } = useI18n();
+
+const catalogCategories = [
+  { title: 'Трассоискатели', slug: 'trassoiskateli', image: catalogImg1 },
+  { title: 'Стационарные приборы', slug: 'gazoanalizatory-stacionarnye', image: catalogImg2 },
+  { title: 'Портативные газоанализаторы', slug: 'portable-devices', image: catalogImg3 },
+  { title: 'Течеискатели и индикаторы утечки газа', slug: 'techeiskateli', image: catalogImg4 },
+  { title: 'Измерители давления газа', slug: 'izmeriteli-davlenija-gaza', image: catalogImg5 },
+  { title: 'Сигнализаторы загазованности (бытовые)', slug: 'signalizatory-zagazovannosti-bytovye', image: catalogImg6 },
+  { title: 'Прочие измерительные системы', slug: 'prochie-izmeritelnye-sistemy', image: catalogImg7 },
+  { title: 'Сервисное и дополнительное оборудование', slug: 'service-devices', image: catalogImg8 },
+  { title: 'Газочувствительные сенсоры', slug: 'sensors/gazovye-sensory', image: catalogImg9 },
+  { title: 'Аксессуары', slug: 'accessories', image: catalogImg10 },
+];
 
 const categories = [
   {
@@ -389,7 +431,7 @@ const categories = [
       padding: 14px 32px;
       font-size: 16px;
       font-weight: 600;
-      background: linear-gradient(135deg, #1e88e5, #1565c0);
+      background: #16396C;
       color: white;
       border: none;
       border-radius: 8px;
@@ -471,7 +513,7 @@ const categories = [
       padding: 12px 28px;
       font-size: 14px;
       font-weight: 600;
-      background: linear-gradient(135deg, #1e88e5, #1565c0);
+      background: #16396C;
       color: white;
       border: none;
       border-radius: 8px;
@@ -613,7 +655,7 @@ const categories = [
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #1e88e5, #1565c0);
+      background: #16396C;
       border-radius: 10px;
       color: white;
       flex-shrink: 0;
@@ -659,7 +701,7 @@ const categories = [
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #1e88e5, #1565c0);
+        background: #16396C;
         border-radius: 12px;
         color: white;
 
@@ -685,14 +727,106 @@ const categories = [
 
       svg {
         flex-shrink: 0;
-        color: #1e88e5;
+        color: #16396C;
       }
 
       &:hover {
         background: rgba(255, 255, 255, 0.9);
-        border-color: #1e88e5;
+        border-color: #16396C;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(30, 136, 229, 0.2);
+      }
+    }
+  }
+
+  .catalog-section {
+    .catalog-section-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1f2933;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .catalog-section-desc {
+      text-align: center;
+      margin-bottom: 32px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .catalog-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 0;
+      border-radius: 14px;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(17, 24, 39, 0.15);
+      }
+    }
+
+    .catalog-card-image-wrap {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #f1f5f9;
+    }
+
+    .catalog-card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .catalog-card:hover .catalog-card-image {
+      transform: scale(1.05);
+    }
+
+    .catalog-card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1f2933;
+      padding: 16px;
+      margin: 0;
+      line-height: 1.35;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .catalog-section .catalog-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .catalog-section {
+      .catalog-section-title {
+        font-size: 22px;
+      }
+
+      .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .catalog-card-title {
+        font-size: 13px;
+        padding: 12px;
       }
     }
   }
@@ -717,7 +851,7 @@ const categories = [
       background: linear-gradient(135deg, rgba(30, 136, 229, 0.1), rgba(30, 136, 229, 0.05));
       border-radius: 14px;
       margin-bottom: 20px;
-      color: #1e88e5;
+      color: #16396C;
 
       svg {
         width: 28px;
@@ -746,7 +880,7 @@ const categories = [
         justify-content: center;
         background: rgba(30, 136, 229, 0.1);
         border-radius: 6px;
-        color: #1e88e5;
+        color: #16396C;
         flex-shrink: 0;
         margin-top: 2px;
 

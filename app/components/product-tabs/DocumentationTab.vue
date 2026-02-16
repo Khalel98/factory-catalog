@@ -520,7 +520,7 @@ watch([() => props.productId, () => props.categoryId], () => {
     padding: 10px 14px;
     background: #f8fafc;
     border-radius: 8px;
-    color: #1e88e5;
+    color: #16396C;
     text-decoration: none;
     transition: all 0.2s ease;
 
@@ -531,7 +531,7 @@ watch([() => props.productId, () => props.categoryId], () => {
 
     svg {
       flex-shrink: 0;
-      color: #1e88e5;
+      color: #16396C;
     }
   }
 
@@ -592,7 +592,7 @@ watch([() => props.productId, () => props.categoryId], () => {
 
     &:focus {
       outline: none;
-      border-color: #1e88e5;
+      border-color: #16396C;
       box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
     }
   }
@@ -640,7 +640,7 @@ watch([() => props.productId, () => props.categoryId], () => {
     }
 
     .file-name {
-      color: #1e88e5;
+      color: #16396C;
       font-weight: 500;
     }
   }

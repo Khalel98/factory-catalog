@@ -264,7 +264,7 @@ const handleImagesSaved = (newImages) => {
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  color: #1e88e5;
+  color: #16396C;
 
   &:hover {
     background: rgba(255, 255, 255, 1);
@@ -291,7 +291,7 @@ const handleImagesSaved = (newImages) => {
 
 .btn-add-images {
   padding: 16px 32px;
-  background: #1e88e5;
+  background: #16396C;
   color: white;
   border: none;
   border-radius: 8px;
@@ -358,7 +358,7 @@ const handleImagesSaved = (newImages) => {
 }
 
 .thumb-image-wrapper:hover {
-  border-color: #3b82f6;
+  border-color: #16396C;
 }
 
 .thumb-image-wrapper img {
@@ -430,15 +430,15 @@ const handleImagesSaved = (newImages) => {
   width: 12px;
   height: 12px;
   background: rgba(255, 255, 255, 0.7);
-  border: 2px solid #1e88e5;
+  border: 2px solid #16396C;
   opacity: 1;
   margin: 0 6px;
   transition: all 0.3s ease;
 }
 
 :deep(.swiper-pagination-bullet-active) {
-  background: #1e88e5;
-  border: 2px solid #1e88e5;
+  background: #16396C;
+  border: 2px solid #16396C;
   width: 32px;
   height: 12px;
   border-radius: 6px;
@@ -449,7 +449,7 @@ const handleImagesSaved = (newImages) => {
 }
 
 :deep(.swiper-slide-thumb-active .thumb-image-wrapper) {
-  border-color: #3b82f6;
+  border-color: #16396C;
 }
 
 .product-gallery-loading {
@@ -609,7 +609,7 @@ const handleImagesSaved = (newImages) => {
   width: 48px;
   height: 48px;
   background: rgba(30, 136, 229, 0.9);
-  border: 2px solid #1e88e5;
+  border: 2px solid #16396C;
   border-radius: 50%;
   color: white;
   transition: all 0.3s ease;
