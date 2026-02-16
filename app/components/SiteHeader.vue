@@ -318,3 +318,16 @@ onMounted(() => {
   });
 });
 </script>
+
+<style scoped>
+.top-bar .cta-block :deep(.btn.ghost) {
+  background: #fff;
+  color: #16396C;
+  border-color: #fff;
+}
+.top-bar .cta-block :deep(.btn.ghost:hover) {
+  background: rgba(255, 255, 255, 0.9);
+  color: #16396C;
+  border-color: rgba(255, 255, 255, 0.9);
+}
+</style>

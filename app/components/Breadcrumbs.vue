@@ -34,13 +34,13 @@ defineProps({
 }
 
 .breadcrumb-link {
-  color: #3b82f6;
+  color: #16396C;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .breadcrumb-link:hover {
-  color: #2563eb;
+  color: #16396C;
   text-decoration: underline;
 }
 

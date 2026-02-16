@@ -746,7 +746,7 @@ const closeEditor = () => {
 
 .edit-button {
   padding: 8px 16px;
-  background: #1e88e5;
+  background: #16396C;
   color: #ffffff;
   border: none;
   border-radius: 6px;
@@ -786,7 +786,7 @@ const closeEditor = () => {
 }
 
 .description-content :deep(a) {
-  color: #1e88e5;
+  color: #16396C;
   text-decoration: none;
 }
 
@@ -938,12 +938,12 @@ const closeEditor = () => {
   transition: all 0.2s ease;
 
   /* &:hover {
-    border-color: #1e88e5;
+    border-color: #16396C;
   }
 
   &:focus {
     outline: none;
-    border-color: #1e88e5;
+    border-color: #16396C;
     box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
   }
 } */
@@ -1129,7 +1129,7 @@ const closeEditor = () => {
 }
 
 .btn-save {
-  background: #1e88e5;
+  background: #16396C;
   color: #ffffff;
 }
 
@@ -1204,7 +1204,7 @@ const closeEditor = () => {
 
 .html-textarea:focus {
   outline: none;
-  border-color: #1e88e5;
+  border-color: #16396C;
   box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
 }
 

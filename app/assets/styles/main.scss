@@ -35,7 +35,7 @@
 }
 .category-tabs li.active,
 .category-tabs li:hover {
-  background: #1e88e5;
+  background: #16396C;
   color: #fff;
 }
 .catalog-content {
@@ -65,7 +65,7 @@
 .product-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(17, 24, 39, 0.15);
-  border-color: #1e88e5;
+  border-color: #16396C;
 }
 .product-card h3 {
   margin: 0 0 10px;
@@ -83,7 +83,7 @@
   display: block;
   font-size: 15px;
   font-weight: 600;
-  color: #1e88e5;
+  color: #16396C;
   margin-bottom: 10px;
 }
 .empty-state {
@@ -127,7 +127,7 @@ $bg: #f8fafc;
 $surface: $white;
 $text: #1f2933;
 $muted: #52606d;
-$primary: #1e88e5;
+$primary: #16396C;
 $primary-dark: #1565c0;
 $accent: #f6ad55;
 $accent-dark: #a16207;
@@ -136,7 +136,7 @@ $shadow: 0 8px 28px rgba(17, 24, 39, 0.08);
 $radius: 14px;
 
 // Цвета для футера
-$footer-bg: #0f172a;
+$footer-bg: #777484;
 $footer-text: #e5e7eb;
 $footer-link: #cbd5e1;
 
@@ -372,6 +372,18 @@ table {
     align-items: center;
     gap: 12px;
     flex-wrap: wrap;
+
+    .btn.ghost {
+      background: #fff;
+      color: #16396C;
+      border-color: #fff;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #16396C;
+        border-color: rgba(255, 255, 255, 0.9);
+      }
+    }
   }
 }
 
@@ -744,7 +756,7 @@ table {
   );
 
   &.primary {
-    background: linear-gradient(135deg, $primary, $primary-dark);
+    background: #16396C;
     color: $white;
     box-shadow: 0 10px 30px $primary-shadow;
   }
@@ -841,11 +853,22 @@ table {
 // Футер
 .footer {
   background: $footer-bg;
-  color: $footer-text;
+  color: #fff;
   padding: 32px 0;
 
   a {
-    color: $footer-link;
+    color: #fff;
+  }
+
+  h4,
+  p,
+  span,
+  .muted {
+    color: #fff;
+  }
+
+  .stat strong {
+    color: #fff;
   }
 
   h4 {
@@ -861,6 +884,14 @@ table {
       width: auto;
       object-fit: contain;
     }
+  }
+
+  .contact-card a {
+    color: #fff;
+  }
+
+  .contact-card a:hover {
+    color: rgba(255, 255, 255, 0.9);
   }
 }
 

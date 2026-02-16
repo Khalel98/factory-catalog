@@ -273,7 +273,7 @@ watch(slug, async (newSlug) => {
   content: "•";
   position: absolute;
   left: 0;
-  color: #1e88e5;
+  color: #16396C;
   font-size: 1rem;
   line-height: 1;
   font-weight: 700;

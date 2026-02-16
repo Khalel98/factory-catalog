@@ -349,7 +349,7 @@ const videoSections = ref([
   padding: 4px 10px;
   border-radius: 20px;
   background: rgba(30, 136, 229, 0.12);
-  color: var(--color-primary, #1e88e5);
+  color: var(--color-primary, #16396C);
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -463,7 +463,7 @@ const videoSections = ref([
 
 .video-link-label {
   font-size: 0.8rem;
-  color: var(--color-primary, #1e88e5);
+  color: var(--color-primary, #16396C);
   font-weight: 500;
 }
 

@@ -205,7 +205,7 @@ watch([searchQueryTrimmed], () => {
 }
 
 .search-page-input:focus {
-  border-color: #1e88e5;
+  border-color: #16396C;
   box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
 }
 
@@ -260,7 +260,7 @@ watch([searchQueryTrimmed], () => {
   content: "•";
   position: absolute;
   left: 0;
-  color: #1e88e5;
+  color: #16396C;
   font-size: 1rem;
   line-height: 1;
   font-weight: 700;

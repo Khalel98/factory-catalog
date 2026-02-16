@@ -384,7 +384,7 @@ watch(() => props.isOpen, (isOpen) => {
 }
 
 .product-name-display strong {
-  color: #1e88e5;
+  color: #16396C;
   font-weight: 600;
 }
 
@@ -437,7 +437,7 @@ watch(() => props.isOpen, (isOpen) => {
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #1e88e5;
+  border-color: #16396C;
   box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
 }
 
@@ -464,7 +464,7 @@ watch(() => props.isOpen, (isOpen) => {
 }
 
 .switch-label.active {
-  color: #1e88e5;
+  color: #16396C;
   font-weight: 600;
 }
 
@@ -506,7 +506,7 @@ watch(() => props.isOpen, (isOpen) => {
 }
 
 input:checked + .slider {
-  background-color: #1e88e5;
+  background-color: #16396C;
 }
 
 input:checked + .slider:before {
@@ -562,7 +562,7 @@ input:checked + .slider:before {
 }
 
 .btn-primary {
-  background: #1e88e5;
+  background: #16396C;
   color: #ffffff;
 }
 

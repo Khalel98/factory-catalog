@@ -394,7 +394,7 @@ const saveImages = async () => {
 .file-input-text {
   display: block;
   padding: 8px 12px;
-  background: #1e88e5;
+  background: #16396C;
   color: white;
   border-radius: 6px;
   text-align: center;
@@ -446,7 +446,7 @@ const saveImages = async () => {
 }
 
 .btn.primary {
-  background: #1e88e5;
+  background: #16396C;
   color: white;
 
   &:hover:not(:disabled) {

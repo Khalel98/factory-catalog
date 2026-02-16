@@ -162,7 +162,7 @@ const handleSubmit = async () => {
   gap: 12px;
   
   .contact-phone {
-    color: #1e88e5;
+    color: #16396C;
     font-size: 20px;
     font-weight: 600;
     text-decoration: none;
@@ -180,7 +180,7 @@ const handleSubmit = async () => {
     transition: color 0.2s ease;
     
     &:hover {
-      color: #1e88e5;
+      color: #16396C;
       text-decoration: underline;
     }
   }
@@ -221,7 +221,7 @@ const handleSubmit = async () => {
   
   &:focus {
     outline: none;
-    border-color: #1e88e5;
+    border-color: #16396C;
     box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
   }
 }
@@ -258,7 +258,7 @@ const handleSubmit = async () => {
   transition: all 0.2s ease;
   
   &.primary {
-    background: #1e88e5;
+    background: #16396C;
     color: #ffffff;
     
     &:hover:not(:disabled) {

@@ -65,12 +65,12 @@ onMounted(() => {
 
 .language-select:hover {
   background-color: #f5f5f5;
-  border-color: #1e88e5;
+  border-color: #16396C;
 }
 
 .language-select:focus {
   outline: none;
-  border-color: #1e88e5;
+  border-color: #16396C;
   box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
 }
 </style>
