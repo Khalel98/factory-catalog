@@ -1,70 +1,94 @@
 [
   {
     "id": "gazoanalizatory-stacionarnye",
-    "nameRU": "Стационарные газоанализаторы"
+    "nameRU": "Стационарные газоанализаторы",
+    "nameKK": "Стационарлық газ талдағыштар"
   },
   {
     "id": "portable-devices",
-    "nameRU": "Портативные газоанализаторы"
+    "nameRU": "Портативные газоанализаторы",
+    "nameKK": "Портативті газ талдағыштар"
   },
   {
     "id": "techeiskateli",
-    "nameRU": "Течеискатели и индикаторы утечки газа"
+    "nameRU": "Течеискатели и индикаторы утечки газа",
+    "nameKK": "Газ ағып кетуін анықтағыштар және индикаторлар"
   },
   {
     "id": "signalizatory-zagazovannosti-bytovye",
-    "nameRU": "Сигнализаторы загазованности (бытовые)"
+    "nameRU": "Сигнализаторы загазованности (бытовые)",
+    "nameKK": "Газдану сигнализаторлары (тұрмыстық)"
   },
   {
     "id": "izmeriteli-davlenija-gaza",
-    "nameRU": "Измерители давления газа"
+    "nameRU": "Измерители давления газа",
+    "nameKK": "Газ қысымын өлшегіштер"
   },
   {
     "id": "trassoiskateli",
-    "nameRU": "Трассоискатели"
+    "nameRU": "Трассоискатели",
+    "nameKK": "Трасса іздегіштер"
   },
   {
     "id": "service-devices",
-    "nameRU": "Сервисное и дополнительное оборудование"
+    "nameRU": "Сервисное и дополнительное оборудование",
+    "nameKK": "Сервистік және қосымша жабдықтар"
   },
   {
     "id": "prochie-izmeritelnye-sistemy",
-    "nameRU": "Прочие измерительные системы"
+    "nameRU": "Прочие измерительные системы",
+    "nameKK": "Басқа өлшеу жүйелері"
   },
   {
     "id": "sensors",
-    "nameRU": "Газочувствительные элементы"
+    "nameRU": "Газочувствительные элементы",
+    "nameKK": "Газға сезімтал элементтер"
   },
   {
     "id": "gazovye-sensory",
-    "nameRU": "Газовые сенсоры"
+    "nameRU": "Газовые сенсоры",
+    "nameKK": "Газ сенсорлары",
+    "parentId": "sensors"
   },
   {
     "id": "bloki-datchikov",
-    "nameRU": "Блоки датчиков"
+    "nameRU": "Блоки датчиков",
+    "nameKK": "Датчик блоктары",
+    "parentId": "sensors"
   },
   {
     "id": "accessories",
-    "nameRU": "Аксессуары"
+    "nameRU": "Аксессуары",
+    "nameKK": "Аксессуарлар"
   },
   {
     "id": "shtangi-gazozabornye",
-    "nameRU": "Штанги газозаборные"
+    "nameRU": "Штанги газозаборные",
+    "nameKK": "Газ алу штангалары",
+    "parentId": "accessories"
   },
   {
     "id": "filtry",
-    "nameRU": "Фильтры"
+    "nameRU": "Фильтры",
+    "nameKK": "Сүзгілер",
+    "parentId": "accessories"
   },
   {
     "id": "krepezhnye-komplekty-i-razemy",
-    "nameRU": "Крепежные комплекты и разъемы"
+    "nameRU": "Крепежные комплекты и разъемы",
+    "nameKK": "Бекіту жинақтары және қосқыштар",
+    "parentId": "accessories"
   },
   {
     "id": "nasadki",
-    "nameRU": "Насадки для присоединения к газовой арматуре"
+    "nameRU": "Насадки для присоединения к газовой арматуре",
+    "nameKK": "Газ арматурасына қосуға арналған саптамалар",
+    "parentId": "accessories"
   },
   {
     "id": "another-accessories",
-    "nameRU": "Прочее"
+    "nameRU": "Прочее",
+    "nameKK": "Басқалары",
+    "parentId": "accessories"
   }
 ]
