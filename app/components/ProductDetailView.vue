@@ -120,7 +120,7 @@ const emit = defineEmits(["images-updated"]);
 
 const { t, locale } = useI18n();
 const isOrderModalOpen = ref(false);
-const activeTab = ref("documentation");
+const activeTab = ref("price-complectation");
 const showAllTabs = ref(false);
 const documentationData = ref(null);
 const videosData = ref(null);
