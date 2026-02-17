@@ -1,0 +1,168 @@
+[
+  {
+    "id": "propan",
+    "name": "Пропан (C3H8), % об. доли",
+    "nameKz": "Пропан (C3H8), % көлемдік үлесі",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp34",
+      "fp23",
+      "ft35",
+      "indikator-utechki-gaza-ft04",
+      "indikator-utechki-gaza-ft-02v1",
+      "ft-02v1-1",
+      "fp33",
+      "fp11-2k",
+      "fp22",
+      "fp12",
+      "gazoanalizator-fp21",
+      "fst-03v1",
+      "bd-fst-03v1-t",
+      "gazoanalizator-fst-03m",
+      "blok-c3h8-dlya-fst-03m",
+      "fst-03v",
+      "blok-c3h8-dlya-fst-03v",
+      "signalizator-zagazovannosti-fst-06kb",
+      "signalizator-zagazovannosti-fst-06-i"
+    ]
+  },
+  {
+    "id": "metan",
+    "name": "Метан (CH4), % об. доли",
+    "nameKz": "Метан (CH4), % көлемдік үлесі",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp34",
+      "fp23",
+      "ft35",
+      "indikator-utechki-gaza-ft04",
+      "indikator-utechki-gaza-ft-02v1",
+      "fp33",
+      "fp22",
+      "fp11-2k",
+      "gazoanalizator-fp21",
+      "fp12",
+      "ft-02v1-1",
+      "bd-fst-03v1-t",
+      "bd-fst-03v1-o",
+      "fst-03v",
+      "blok-ch4-dlya-fst-03v",
+      "gazoanalizator-fst-03m",
+      "blok-ch4-dlya-fst-03m",
+      "signalizator-zagazovannosti-fst-06kb",
+      "signalizator-zagazovannosti-fst-06-i"
+    ]
+  },
+  {
+    "id": "vodorod",
+    "name": "Водород (H2), % об. доли",
+    "nameKz": "Сутек (H2), % көлемдік үлесі",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp22",
+      "fp12",
+      "bd-fst-03v1-t"
+    ]
+  },
+  {
+    "id": "monooksid-ugleroda",
+    "name": "Монооксид углерода (CO), масс. конц. мг/м³",
+    "nameKz": "Көміртек оксиді (CO), массалық концентрациясы мг/м³",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp34",
+      "fp23",
+      "fp33",
+      "bd-fst-03v1-e",
+      "fst-03v",
+      "blok-co-dlya-fst-03v",
+      "gazoanalizator-fst-03m",
+      "blok-co-dlya-fst-03m",
+      "signalizator-zagazovannosti-fst-06kb",
+      "signalizator-zagazovannosti-fst-06-i",
+      "detektor-co-dlya-teplits-fst-07"
+    ]
+  },
+  {
+    "id": "kislorod",
+    "name": "Кислород (O2), % об. доли",
+    "nameKz": "Оттек (O2), % көлемдік үлесі",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp34",
+      "fp23",
+      "fp33",
+      "bd-fst-03v1-e",
+      "blok-o2-dlya-fst-03v"
+    ]
+  },
+  {
+    "id": "davlenie",
+    "name": "Давление, кПа",
+    "nameKz": "Қысым, кПа",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "izmeriteldavlenija-gaza-fd-09",
+      "fd35",
+      "fp34"
+    ]
+  },
+  {
+    "id": "serovodorod",
+    "name": "Сероводород (H2S), масс. конц. мг/м³",
+    "nameKz": "Сірководород (H2S), массалық концентрациясы мг/м³",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp34",
+      "fp23",
+      "bd-fst-03v1-e"
+    ]
+  },
+  {
+    "id": "ammoniak",
+    "name": "Аммиак (NH3), масс. конц. мг/м³",
+    "nameKz": "Аммиак (NH3), массалық концентрациясы мг/м³",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp23",
+      "bd-fst-03v1-e",
+      "blok-nh3-dlya-fst-03v"
+    ]
+  },
+  {
+    "id": "pary-benzina",
+    "name": "Пары бензина и нефтепродуктов (Ex), % НКПР",
+    "nameKz": "Бензин және мұнай өнімдерінің буы (Ex), % НММӨ",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "bd-fst-03v1-t",
+      "bd-fst-03v1-o",
+      "gazoanalizator-fst-03m",
+      "datchik-nefteproduktov-ex",
+      "blok-ex-dlya-fst-03v"
+    ]
+  },
+  {
+    "id": "uglekislyj-gaz",
+    "name": "Углекислый газ (CO2), % об. доли",
+    "nameKz": "Көмірқышқыл газы (CO2), % көлемдік үлесі",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp34",
+      "fp23",
+      "bd-fst-03v1-o",
+      "signalizator-zagazovannosti-fst-06kb",
+      "signalizator-zagazovannosti-fst-06-i"
+    ]
+  }
+]

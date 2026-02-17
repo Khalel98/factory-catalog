@@ -3,6 +3,44 @@ import { readFile, writeFile, mkdir } from "fs/promises";
 import { join } from "path";
 import { existsSync } from "fs";
 
+const DEFAULT_SUBSTANCES = [
+  { id: "propan", name: "Пропан (C3H8), % об. доли", description: "", productIds: [] },
+  { id: "metan", name: "Метан (CH4), % об. доли", description: "", productIds: [] },
+  { id: "vodorod", name: "Водород (H2), % об. доли", description: "", productIds: [] },
+  { id: "monooksid-ugleroda", name: "Монооксид углерода (CO), масс. конц. мг/м³", description: "", productIds: [] },
+  { id: "kislorod", name: "Кислород (O2), % об. доли", description: "", productIds: [] },
+  { id: "davlenie", name: "Давление, кПа", description: "", productIds: [] },
+  { id: "serovodorod", name: "Сероводород (H2S), масс. конц. мг/м³", description: "", productIds: [] },
+  { id: "ammoniak", name: "Аммиак (NH3), масс. конц. мг/м³", description: "", productIds: [] },
+  { id: "pary-benzina", name: "Пары бензина и нефтепродуктов (Ex), % НКПР", description: "", productIds: [] },
+  { id: "uglekislyj-gaz", name: "Углекислый газ (CO2), % об. доли", description: "", productIds: [] },
+];
+
+function getDefaultSubstances() {
+  return [...DEFAULT_SUBSTANCES];
+}
+
+const DEFAULT_APPLICATIONS = [
+  { id: "kotelnye-i-topochnye", name: "Котельные и топочные", description: "", productIds: [] },
+  { id: "parkovki-garazhi-avtostoyanki", name: "Парковки, гаражи и автостоянки", description: "", productIds: [] },
+  { id: "kommunalno-bytovoe-hozyajstvo", name: "Коммунально-бытовое хозяйство", description: "", productIds: [] },
+  { id: "obekty-vodosnabzheniya", name: "Объекты водоснабжения", description: "", productIds: [] },
+  { id: "teplichnye-kompleksy", name: "Тепличные комплексы", description: "", productIds: [] },
+  { id: "stroitelnyj-kompleks", name: "Строительный комплекс", description: "", productIds: [] },
+  { id: "teploenergeticheskij-kompleks", name: "Теплоэнергетический комплекс", description: "", productIds: [] },
+  { id: "gazovye-hozyajstva", name: "Газовые хозяйства", description: "", productIds: [] },
+  { id: "stancii-tehobsluzhivaniya", name: "Станции техобслуживания", description: "", productIds: [] },
+  { id: "avtozapravki", name: "Автозаправки", description: "", productIds: [] },
+  { id: "selskohozyajstvennye-obekty", name: "Сельскохозяйственные объекты", description: "", productIds: [] },
+  { id: "predpriyatiya-neftegazovogo-kompleksa", name: "Предприятия нефтегазового комплекса", description: "", productIds: [] },
+  { id: "akkumulyatornye-pomeshcheniya", name: "Аккумуляторные помещения", description: "", productIds: [] },
+  { id: "holodilnye-kamery", name: "Холодильные камеры", description: "", productIds: [] },
+];
+
+function getDefaultApplications() {
+  return [...DEFAULT_APPLICATIONS];
+}
+
 export default defineEventHandler(async (event) => {
   try {
     // Получаем credentials из JSON файла
@@ -583,6 +621,104 @@ export default defineEventHandler(async (event) => {
       );
     }
 
+    // Загружаем вещества из листа Substances (подбор по веществу)
+    const substancesSheet = sheetsList.find(
+      (s) => s.properties?.title?.toLowerCase() === "substances"
+    );
+    const substances = [];
+    if (substancesSheet) {
+      const substancesRange = `${substancesSheet.properties.title}!A:F`;
+      const substancesData = await sheets.spreadsheets.values.get({
+        spreadsheetId,
+        range: substancesRange,
+      });
+      const substanceRows = substancesData.data.values || [];
+      const subHeaders = substanceRows[0] || [];
+      const subIdIdx = subHeaders.findIndex((h) => h?.toLowerCase() === "id");
+      const subNameIdx = subHeaders.findIndex((h) => h?.toLowerCase() === "name");
+      const subNameKzIdx = subHeaders.findIndex((h) => h?.toLowerCase() === "namekz");
+      const subDescIdx = subHeaders.findIndex((h) => h?.toLowerCase() === "description");
+      const subDescKzIdx = subHeaders.findIndex((h) => h?.toLowerCase() === "descriptionkz");
+      const subProductIdsIdx = subHeaders.findIndex(
+        (h) => h?.toLowerCase() === "productids" || h?.toLowerCase() === "product_ids"
+      );
+      for (let i = 1; i < substanceRows.length; i++) {
+        const row = substanceRows[i];
+        const id = row[subIdIdx]?.trim();
+        const name = row[subNameIdx]?.trim() || row[1]?.trim();
+        if (!id || !name) continue;
+        let productIds = [];
+        if (subProductIdsIdx !== -1 && row[subProductIdsIdx]) {
+          const raw = String(row[subProductIdsIdx]).trim();
+          productIds = raw ? raw.split(/[,;\s]+/).map((s) => s.trim()).filter(Boolean) : [];
+        }
+        substances.push({
+          id,
+          name,
+          nameKz: subNameKzIdx !== -1 ? (row[subNameKzIdx]?.trim() || "") : "",
+          description: subDescIdx !== -1 ? (row[subDescIdx]?.trim() || "") : "",
+          descriptionKz: subDescKzIdx !== -1 ? (row[subDescKzIdx]?.trim() || "") : "",
+          productIds,
+        });
+      }
+    }
+    const finalSubstances = substances.length > 0 ? substances : getDefaultSubstances();
+    const substancesPath = join(publicDataDir, "substances.json");
+    await writeFile(
+      substancesPath,
+      JSON.stringify(finalSubstances, null, 2),
+      "utf-8"
+    );
+
+    // Загружаем сферы применения из листа Applications (подбор по сфере применения)
+    const applicationsSheet = sheetsList.find(
+      (s) => s.properties?.title?.toLowerCase() === "applications"
+    );
+    const applications = [];
+    if (applicationsSheet) {
+      const appRange = `${applicationsSheet.properties.title}!A:F`;
+      const appData = await sheets.spreadsheets.values.get({
+        spreadsheetId,
+        range: appRange,
+      });
+      const appRows = appData.data.values || [];
+      const appHeaders = appRows[0] || [];
+      const appIdIdx = appHeaders.findIndex((h) => h?.toLowerCase() === "id");
+      const appNameIdx = appHeaders.findIndex((h) => h?.toLowerCase() === "name");
+      const appNameKzIdx = appHeaders.findIndex((h) => h?.toLowerCase() === "namekz");
+      const appDescIdx = appHeaders.findIndex((h) => h?.toLowerCase() === "description");
+      const appDescKzIdx = appHeaders.findIndex((h) => h?.toLowerCase() === "descriptionkz");
+      const appProductIdsIdx = appHeaders.findIndex(
+        (h) => h?.toLowerCase() === "productids" || h?.toLowerCase() === "product_ids"
+      );
+      for (let i = 1; i < appRows.length; i++) {
+        const row = appRows[i];
+        const id = row[appIdIdx]?.trim();
+        const name = row[appNameIdx]?.trim() || row[1]?.trim();
+        if (!id || !name) continue;
+        let productIds = [];
+        if (appProductIdsIdx !== -1 && row[appProductIdsIdx]) {
+          const raw = String(row[appProductIdsIdx]).trim();
+          productIds = raw ? raw.split(/[,;\s]+/).map((s) => s.trim()).filter(Boolean) : [];
+        }
+        applications.push({
+          id,
+          name,
+          nameKz: appNameKzIdx !== -1 ? (row[appNameKzIdx]?.trim() || "") : "",
+          description: appDescIdx !== -1 ? (row[appDescIdx]?.trim() || "") : "",
+          descriptionKz: appDescKzIdx !== -1 ? (row[appDescKzIdx]?.trim() || "") : "",
+          productIds,
+        });
+      }
+    }
+    const finalApplications = applications.length > 0 ? applications : getDefaultApplications();
+    const applicationsPath = join(publicDataDir, "applications.json");
+    await writeFile(
+      applicationsPath,
+      JSON.stringify(finalApplications, null, 2),
+      "utf-8"
+    );
+
     const totalProducts = Object.values(result.products).reduce(
       (sum, products) => sum + products.length,
       0
@@ -594,6 +730,8 @@ export default defineEventHandler(async (event) => {
       stats: {
         categories: result.categories.length,
         products: totalProducts,
+        substances: finalSubstances.length,
+        applications: finalApplications.length,
       },
       categories: result.categories.map((cat) => ({
         id: cat.id,

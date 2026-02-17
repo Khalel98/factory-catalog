@@ -62,6 +62,36 @@ function generatePrerenderRoutes() {
         console.warn(`Не удалось загрузить товары для категории ${category.id}:`, error);
       }
     }
+
+    // Маршруты подбора веществ
+    routes.push('/catalog/substances');
+    const substancesPath = join(publicDataDir, 'substances.json');
+    if (existsSync(substancesPath)) {
+      try {
+        const substancesData = readFileSync(substancesPath, 'utf-8');
+        const substances = JSON.parse(substancesData);
+        for (const sub of substances) {
+          if (sub.id) routes.push(`/catalog/substances/${sub.id}`);
+        }
+      } catch (e) {
+        console.warn('Не удалось загрузить substances.json для пререндера');
+      }
+    }
+
+    // Маршруты подбора по сфере применения
+    routes.push('/catalog/applications');
+    const applicationsPath = join(publicDataDir, 'applications.json');
+    if (existsSync(applicationsPath)) {
+      try {
+        const applicationsData = readFileSync(applicationsPath, 'utf-8');
+        const applications = JSON.parse(applicationsData);
+        for (const app of applications) {
+          if (app.id) routes.push(`/catalog/applications/${app.id}`);
+        }
+      } catch (e) {
+        console.warn('Не удалось загрузить applications.json для пререндера');
+      }
+    }
   } catch (error) {
     console.warn('Ошибка при генерации маршрутов для пререндера:', error);
   }

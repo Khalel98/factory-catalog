@@ -80,81 +80,56 @@
         </div>
       </div>
 
-      <div class="hero-selection card highlight">
-        <div class="selection-header">
-          <div class="selection-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="8" x2="12" y2="12"></line>
-              <line x1="12" y1="16" x2="12.01" y2="16"></line>
-            </svg>
+      <div class="hero-selection-row">
+        <div class="hero-selection card highlight">
+          <div class="selection-header">
+            <div class="selection-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <h3>{{ t('home.selection') }}</h3>
           </div>
-          <h3>{{ t('home.selection') }}</h3>
+          <p class="muted">
+            {{ t('home.selectionDesc') }}
+          </p>
+          <div class="badge-grid">
+            <NuxtLink
+              v-for="item in selectionItems"
+              :key="item.slug"
+              :to="`/catalog/substances/${item.slug}`"
+              class="badge"
+            >
+              {{ t(item.label) }}
+            </NuxtLink>
+          </div>
         </div>
-        <p class="muted">
-          {{ t('home.selectionDesc') }}
-        </p>
-        <div class="badge-grid">
-          <span class="badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            {{ t('home.selectionPropane') }}
-          </span>
-          <span class="badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            {{ t('home.selectionMethane') }}
-          </span>
-          <span class="badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            {{ t('home.selectionHydrogen') }}
-          </span>
-          <span class="badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            {{ t('home.selectionCO') }}
-          </span>
-          <span class="badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            {{ t('home.selectionO2') }}
-          </span>
-          <span class="badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-            </svg>
-            {{ t('home.selectionPressure') }}
-          </span>
-          <span class="badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            {{ t('home.selectionH2S') }}
-          </span>
-          <span class="badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            {{ t('home.selectionNH3') }}
-          </span>
-          <span class="badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-            </svg>
-            {{ t('home.selectionGasoline') }}
-          </span>
-          <span class="badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            {{ t('home.selectionCO2') }}
-          </span>
+
+        <div class="hero-selection card highlight">
+          <div class="selection-header">
+            <div class="selection-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <h3>{{ t('home.selectionByApplication') }}</h3>
+          </div>
+          <p class="muted">
+            {{ t('home.selectionByApplicationDesc') }}
+          </p>
+          <div class="badge-grid">
+            <NuxtLink
+              v-for="app in applications"
+              :key="app.id"
+              :to="`/catalog/applications/${app.id}`"
+              class="badge"
+            >
+              {{ (locale === 'kk' && app.nameKz) ? app.nameKz : (t('home.applications.' + app.id) || app.name) }}
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </section>
@@ -269,9 +244,9 @@
           class="catalog-card card"
         >
           <div class="catalog-card-image-wrap">
-            <img :src="cat.image" :alt="cat.title" class="catalog-card-image" />
+            <img :src="cat.image" :alt="t('home.catalogCategoryTitles.' + cat.titleKey)" class="catalog-card-image" />
           </div>
-          <h3 class="catalog-card-title">{{ cat.title }}</h3>
+          <h3 class="catalog-card-title">{{ t('home.catalogCategoryTitles.' + cat.titleKey) }}</h3>
         </NuxtLink>
       </div>
     </section>
@@ -293,20 +268,46 @@ import catalogImg8 from '@/assets/catalog-img/8.jpg';
 import catalogImg9 from '@/assets/catalog-img/9.jpg';
 import catalogImg10 from '@/assets/catalog-img/10.jpg';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 const catalogCategories = [
-  { title: 'Трассоискатели', slug: 'trassoiskateli', image: catalogImg1 },
-  { title: 'Стационарные приборы', slug: 'gazoanalizatory-stacionarnye', image: catalogImg2 },
-  { title: 'Портативные газоанализаторы', slug: 'portable-devices', image: catalogImg3 },
-  { title: 'Течеискатели и индикаторы утечки газа', slug: 'techeiskateli', image: catalogImg4 },
-  { title: 'Измерители давления газа', slug: 'izmeriteli-davlenija-gaza', image: catalogImg5 },
-  { title: 'Сигнализаторы загазованности (бытовые)', slug: 'signalizatory-zagazovannosti-bytovye', image: catalogImg6 },
-  { title: 'Прочие измерительные системы', slug: 'prochie-izmeritelnye-sistemy', image: catalogImg7 },
-  { title: 'Сервисное и дополнительное оборудование', slug: 'service-devices', image: catalogImg8 },
-  { title: 'Газочувствительные сенсоры', slug: 'sensors/gazovye-sensory', image: catalogImg9 },
-  { title: 'Аксессуары', slug: 'accessories', image: catalogImg10 },
+  { slug: 'trassoiskateli', titleKey: 'trassoiskateli', image: catalogImg1 },
+  { slug: 'gazoanalizatory-stacionarnye', titleKey: 'gazoanalizatory-stacionarnye', image: catalogImg2 },
+  { slug: 'portable-devices', titleKey: 'portable-devices', image: catalogImg3 },
+  { slug: 'techeiskateli', titleKey: 'techeiskateli', image: catalogImg4 },
+  { slug: 'izmeriteli-davlenija-gaza', titleKey: 'izmeriteli-davlenija-gaza', image: catalogImg5 },
+  { slug: 'signalizatory-zagazovannosti-bytovye', titleKey: 'signalizatory-zagazovannosti-bytovye', image: catalogImg6 },
+  { slug: 'prochie-izmeritelnye-sistemy', titleKey: 'prochie-izmeritelnye-sistemy', image: catalogImg7 },
+  { slug: 'service-devices', titleKey: 'service-devices', image: catalogImg8 },
+  { slug: 'sensors/gazovye-sensory', titleKey: 'gazovye-sensory', image: catalogImg9 },
+  { slug: 'accessories', titleKey: 'accessories', image: catalogImg10 },
 ];
+
+const selectionItems = [
+  { slug: 'propan', label: 'home.selectionPropane' },
+  { slug: 'metan', label: 'home.selectionMethane' },
+  { slug: 'vodorod', label: 'home.selectionHydrogen' },
+  { slug: 'monooksid-ugleroda', label: 'home.selectionCO' },
+  { slug: 'kislorod', label: 'home.selectionO2' },
+  { slug: 'davlenie', label: 'home.selectionPressure' },
+  { slug: 'serovodorod', label: 'home.selectionH2S' },
+  { slug: 'ammoniak', label: 'home.selectionNH3' },
+  { slug: 'pary-benzina', label: 'home.selectionGasoline' },
+  { slug: 'uglekislyj-gaz', label: 'home.selectionCO2' },
+];
+
+const applications = ref<{ id: string; name: string; description?: string }[]>([]);
+
+const loadApplications = async () => {
+  try {
+    const data = await $fetch<{ id: string; name: string; description?: string }[]>('/data/applications.json');
+    applications.value = Array.isArray(data) ? data : [];
+  } catch {
+    applications.value = [];
+  }
+};
+
+onMounted(loadApplications);
 
 const categories = [
   {
@@ -601,7 +602,14 @@ const categories = [
   }
 
   .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+
     .hero-main {
+      width: 100%;
+      min-width: 0;
       position: relative;
       overflow: hidden;
       
@@ -724,6 +732,7 @@ const categories = [
       color: #1f2933;
       transition: all 0.2s ease;
       font-size: 14px;
+      text-decoration: none;
 
       svg {
         flex-shrink: 0;
@@ -736,6 +745,13 @@ const categories = [
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(30, 136, 229, 0.2);
       }
+    }
+
+    .hero-selection-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
     }
   }
 
@@ -927,6 +943,10 @@ const categories = [
         .muted {
           font-size: 12px;
         }
+      }
+
+      .hero-selection-row {
+        grid-template-columns: 1fr;
       }
     }
 

@@ -1,0 +1,231 @@
+[
+  {
+    "id": "kotelnye-i-topochnye",
+    "name": "Котельные и топочные",
+    "nameKz": "Қазандықтар мен пеш бөлмелері",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "gazoanalizator-fst-03m",
+      "fst-03v",
+      "fst-03v1",
+      "gazoanalizator-fp21",
+      "fp23",
+      "fp34",
+      "fp22",
+      "fp11-2k"
+    ]
+  },
+  {
+    "id": "parkovki-garazhi-avtostoyanki",
+    "name": "Парковки, гаражи и автостоянки",
+    "nameKz": "Паркингтер, гараждар және автотұрақтар",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fst-03v",
+      "gazoanalizator-fst-03m",
+      "fst-03v1",
+      "bd-fst-03v1-o",
+      "bd-fst-03v1-t",
+      "bd-fst-03v1-e"
+    ]
+  },
+  {
+    "id": "kommunalno-bytovoe-hozyajstvo",
+    "name": "Коммунально-бытовое хозяйство",
+    "nameKz": "Коммуналды тұрмыстық шаруашылық",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "signalizator-zagazovannosti-fst-06kb",
+      "signalizator-zagazovannosti-fst-06-i"
+    ]
+  },
+  {
+    "id": "obekty-vodosnabzheniya",
+    "name": "Объекты водоснабжения",
+    "nameKz": "Су жабдықтау объектілері",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fst-03v1",
+      "bps-fst-03v1",
+      "bd-fst-03v1-o",
+      "bd-fst-03v1-t",
+      "bd-fst-03v1-e",
+      "krepezhnyj-komplekt-2",
+      "krepezhnye-komplekty"
+    ]
+  },
+  {
+    "id": "teplichnye-kompleksy",
+    "name": "Тепличные комплексы",
+    "nameKz": "Теплицалық кешендер",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "detektor-co-dlya-teplits-fst-07"
+    ]
+  },
+  {
+    "id": "stroitelnyj-kompleks",
+    "name": "Строительный комплекс",
+    "nameKz": "Құрылыс кешені",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "progress-k3",
+      "fp33",
+      "shtanga-art23113",
+      "shtanga-teleskopicheskaya-art23111",
+      "fp34",
+      "shtanga-art23341",
+      "shtanga-teleskopicheskaya-art23342",
+      "fp23"
+    ]
+  },
+  {
+    "id": "teploenergeticheskij-kompleks",
+    "name": "Теплоэнергетический комплекс",
+    "nameKz": "Жылу энергетикалық кешен",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp22",
+      "fp11-2k",
+      "fp33",
+      "fp34",
+      "fst-03v1",
+      "bd-fst-03v1-o",
+      "bd-fst-03v1-t",
+      "bd-fst-03v1-e",
+      "fp23",
+      "ft35",
+      "fd35"
+    ]
+  },
+  {
+    "id": "gazovye-hozyajstva",
+    "name": "Газовые хозяйства",
+    "nameKz": "Газ шаруашылықтары",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "indikator-utechki-gaza-ft04",
+      "indikator-utechki-gaza-ft-02v1",
+      "ft35",
+      "ft-02v1-1",
+      "fp22",
+      "fp12",
+      "fp23",
+      "fp34",
+      "fp22",
+      "fp11-2k",
+      "gazoanalizator-fp21",
+      "fp33",
+      "fst-03v1",
+      "bd-fst-03v1-o",
+      "bd-fst-03v1-t",
+      "bd-fst-03v1-e",
+      "fst-03v",
+      "fd35",
+      "izmeriteldavlenija-gaza-fd-09"
+    ]
+  },
+  {
+    "id": "stancii-tehobsluzhivaniya",
+    "name": "Станции техобслуживания",
+    "nameKz": "Техникалық қызмет көрсету станциялары",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fst-03v",
+      "gazoanalizator-fst-03m",
+      "fst-03v1",
+      "fst-03v1",
+      "bd-fst-03v1-o",
+      "bd-fst-03v1-t",
+      "bd-fst-03v1-e"
+    ]
+  },
+  {
+    "id": "avtozapravki",
+    "name": "Автозаправки",
+    "nameKz": "Автокөлік жанармай құю станциялары",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fst-03v",
+      "gazoanalizator-fst-03m",
+      "fp22",
+      "fst-03v1",
+      "bd-fst-03v1-o",
+      "bd-fst-03v1-t",
+      "bd-fst-03v1-e"
+    ]
+  },
+  {
+    "id": "selskohozyajstvennye-obekty",
+    "name": "Сельскохозяйственные объекты",
+    "nameKz": "Ауыл шаруашылық объектілері",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fst-03v",
+      "gazoanalizator-fst-03m",
+      "fst-03v1",
+      "bd-fst-03v1-o",
+      "bd-fst-03v1-t",
+      "bd-fst-03v1-e",
+      "fp23",
+      "ft35",
+      "fd35"
+    ]
+  },
+  {
+    "id": "predpriyatiya-neftegazovogo-kompleksa",
+    "name": "Предприятия нефтегазового комплекса",
+    "nameKz": "Мұнай-газ кешені кәсіпорындары",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp34",
+      "fst-03v1",
+      "bd-fst-03v1-o",
+      "bd-fst-03v1-t",
+      "bd-fst-03v1-e",
+      "fp23",
+      "ft35",
+      "fd35"
+    ]
+  },
+  {
+    "id": "akkumulyatornye-pomeshcheniya",
+    "name": "Аккумуляторные помещения",
+    "nameKz": "Аккумулятор бөлмелері",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "fp12",
+      "fp22",
+      "bd-fst-03v1-t"
+    ]
+  },
+  {
+    "id": "holodilnye-kamery",
+    "name": "Холодильные камеры",
+    "nameKz": "Салқындатқыш камералар",
+    "description": "",
+    "descriptionKz": "",
+    "productIds": [
+      "bd-fst-03v1-o",
+      "bd-fst-03v1-t",
+      "fst-03v1",
+      "bd-fst-03v1-e",
+      "fp23",
+      "ft35",
+      "fd35"
+    ]
+  }
+]

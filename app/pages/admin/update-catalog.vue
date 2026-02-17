@@ -29,6 +29,12 @@
             <div class="stat-item">
               <strong>{{ t('admin.products') }}</strong> {{ result.stats.products }}
             </div>
+            <div v-if="result.stats.substances != null" class="stat-item">
+              <strong>Вещества</strong> {{ result.stats.substances }}
+            </div>
+            <div v-if="result.stats.applications != null" class="stat-item">
+              <strong>Сферы применения</strong> {{ result.stats.applications }}
+            </div>
           </div>
 
           <div v-if="result.success && result.categories" class="categories-list">

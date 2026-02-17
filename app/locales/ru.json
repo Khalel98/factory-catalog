@@ -67,6 +67,24 @@
     "selectionNH3": "Аммиак (NH3), масс. конц. мг/м³",
     "selectionGasoline": "Пары бензина и нефтепродуктов (Ex), % НКПР",
     "selectionCO2": "Углекислый газ (CO2), % об. доли",
+    "selectionByApplication": "Подбор по сфере применения",
+    "selectionByApplicationDesc": "Выберите сферу применения для просмотра подходящего оборудования.",
+    "applications": {
+      "kotelnye-i-topochnye": "Котельные и топочные",
+      "parkovki-garazhi-avtostoyanki": "Парковки, гаражи и автостоянки",
+      "kommunalno-bytovoe-hozyajstvo": "Коммунально-бытовое хозяйство",
+      "obekty-vodosnabzheniya": "Объекты водоснабжения",
+      "teplichnye-kompleksy": "Тепличные комплексы",
+      "stroitelnyj-kompleks": "Строительный комплекс",
+      "teploenergeticheskij-kompleks": "Теплоэнергетический комплекс",
+      "gazovye-hozyajstva": "Газовые хозяйства",
+      "stancii-tehobsluzhivaniya": "Станции техобслуживания",
+      "avtozapravki": "Автозаправки",
+      "selskohozyajstvennye-obekty": "Сельскохозяйственные объекты",
+      "predpriyatiya-neftegazovogo-kompleksa": "Предприятия нефтегазового комплекса",
+      "akkumulyatornye-pomeshcheniya": "Аккумуляторные помещения",
+      "holodilnye-kamery": "Холодильные камеры"
+    },
     "goToSelection": "Перейти к подбору",
     "monitoringKit": "Комплект оперативного мониторинга",
     "monitoringDesc": "Программно-аппаратный комплекс для передачи данных при контроле воздушной среды и предотвращения аварийных ситуаций.",
@@ -82,7 +100,19 @@
     "newsFP34": "ФП34 — проверенная классика",
     "newsFT04": "ФТ04 — быстрая смена сенсора без калибровки",
     "catalogCategories": "Категории каталога",
-    "catalogDesc": "Оборудование для мониторинга загазованности и безопасности."
+    "catalogDesc": "Оборудование для мониторинга загазованности и безопасности.",
+    "catalogCategoryTitles": {
+      "trassoiskateli": "Трассоискатели",
+      "gazoanalizatory-stacionarnye": "Стационарные приборы",
+      "portable-devices": "Портативные газоанализаторы",
+      "techeiskateli": "Течеискатели и индикаторы утечки газа",
+      "izmeriteli-davlenija-gaza": "Измерители давления газа",
+      "signalizatory-zagazovannosti-bytovye": "Сигнализаторы загазованности (бытовые)",
+      "prochie-izmeritelnye-sistemy": "Прочие измерительные системы",
+      "service-devices": "Сервисное и дополнительное оборудование",
+      "gazovye-sensory": "Газочувствительные сенсоры",
+      "accessories": "Аксессуары"
+    }
   },
   "catalog": {
     "title": "Каталог товаров",
@@ -545,6 +575,8 @@
   "breadcrumbs": {
     "home": "Главная",
     "catalog": "Каталог",
+    "substances": "Подбор веществ",
+    "applications": "Подбор по сфере применения",
     "information": "Информация",
     "videos": "Видеоматериалы",
     "documentation": "Документация и ПО"

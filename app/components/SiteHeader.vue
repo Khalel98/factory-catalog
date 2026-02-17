@@ -183,6 +183,16 @@
               >{{ t('nav.updateCatalog') }}</NuxtLink
             >
           </li>
+          <li v-if="isAdmin">
+            <NuxtLink to="/admin/substances" @click="closeMobileMenu"
+              >Подбор веществ</NuxtLink
+            >
+          </li>
+          <li v-if="isAdmin">
+            <NuxtLink to="/admin/applications" @click="closeMobileMenu"
+              >Подбор по сфере</NuxtLink
+            >
+          </li>
         </ul>
       </nav>
       <div class="nav-actions">

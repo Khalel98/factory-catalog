@@ -40,6 +40,48 @@
         </ul>
       </li>
     </ul>
+
+    <div class="substances-block">
+      <div
+        class="substances-header"
+        :class="{ expanded: substancesExpanded }"
+        @click="substancesExpanded = !substancesExpanded"
+      >
+        <span>{{ t('home.selection') || 'Подбор веществ' }}</span>
+        <span class="substances-expand-icon">{{ substancesExpanded ? '▲' : '▼' }}</span>
+      </div>
+      <ul v-show="substancesExpanded" class="substances-list">
+        <li
+          v-for="sub in substances"
+          :key="sub.id"
+          :class="{ active: selectedSubstanceId === sub.id }"
+          @click.stop="selectSubstance(sub.id)"
+        >
+          {{ locale === 'kk' && sub.nameKz ? sub.nameKz : sub.name }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="substances-block">
+      <div
+        class="substances-header"
+        :class="{ expanded: applicationsExpanded }"
+        @click="applicationsExpanded = !applicationsExpanded"
+      >
+        <span>{{ t('home.selectionByApplication') }}</span>
+        <span class="substances-expand-icon">{{ applicationsExpanded ? '▲' : '▼' }}</span>
+      </div>
+      <ul v-show="applicationsExpanded" class="substances-list">
+        <li
+          v-for="app in applications"
+          :key="app.id"
+          :class="{ active: selectedApplicationId === app.id }"
+          @click.stop="selectApplication(app.id)"
+        >
+          {{ locale === 'kk' && app.nameKz ? app.nameKz : app.name }}
+        </li>
+      </ul>
+    </div>
   </aside>
 </template>
 
@@ -50,7 +92,13 @@ const router = useRouter();
 const route = useRoute();
 
 const categories = ref([]);
+const substances = ref([]);
+const applications = ref([]);
 const selectedCategoryId = ref(null);
+const selectedSubstanceId = ref(null);
+const selectedApplicationId = ref(null);
+const substancesExpanded = ref(false);
+const applicationsExpanded = ref(false);
 const expandedCategories = ref(new Set());
 
 // Функция для получения локализованного названия категории
@@ -105,10 +153,69 @@ const loadCategories = async () => {
   }
 };
 
+const loadSubstances = async () => {
+  try {
+    const data = await $fetch("/data/substances.json");
+    substances.value = Array.isArray(data) ? data : [];
+  } catch (error) {
+    console.error("Error loading substances:", error);
+    substances.value = [];
+  }
+};
+
+const loadApplications = async () => {
+  try {
+    const data = await $fetch("/data/applications.json");
+    applications.value = Array.isArray(data) ? data : [];
+  } catch (error) {
+    console.error("Error loading applications:", error);
+    applications.value = [];
+  }
+};
+
+function selectSubstance(id) {
+  selectedSubstanceId.value = id;
+  selectedApplicationId.value = null;
+  router.push(`/catalog/substances/${id}`);
+}
+
+function selectApplication(id) {
+  selectedApplicationId.value = id;
+  selectedSubstanceId.value = null;
+  router.push(`/catalog/applications/${id}`);
+}
+
 function setSelectedFromRoute() {
   const slug = route.params.slug;
   const subslug = route.params.subslug;
+  const substanceId = route.params.substanceId;
   const id = route.params.id;
+
+  const isSubstancesRoute = slug === "substances" || route.path.startsWith("/catalog/substances/");
+  const sid = substanceId || (isSubstancesRoute && id ? id : null);
+  if (isSubstancesRoute && sid) {
+    selectedCategoryId.value = null;
+    selectedSubstanceId.value = sid;
+    selectedApplicationId.value = null;
+    substancesExpanded.value = true;
+    applicationsExpanded.value = false;
+    return;
+  }
+
+  const isApplicationsRoute = slug === "applications" || route.path.startsWith("/catalog/applications/");
+  const appId = route.params.applicationId || (isApplicationsRoute && id ? id : null);
+  if (isApplicationsRoute && appId) {
+    selectedCategoryId.value = null;
+    selectedSubstanceId.value = null;
+    selectedApplicationId.value = appId;
+    substancesExpanded.value = false;
+    applicationsExpanded.value = true;
+    return;
+  }
+
+  selectedSubstanceId.value = null;
+  selectedApplicationId.value = null;
+
   if (subslug) {
     selectedCategoryId.value = subslug;
     const sub = categories.value.find((c) => c.id === subslug);
@@ -143,12 +250,12 @@ function setSelectedFromRoute() {
 }
 
 onMounted(async () => {
-  await loadCategories();
+  await Promise.all([loadCategories(), loadSubstances(), loadApplications()]);
   setSelectedFromRoute();
 });
 
 watch(
-  () => [route.params.slug, route.params.subslug, route.params.id, route.query.category],
+  () => [route.params.slug, route.params.subslug, route.params.substanceId, route.params.applicationId, route.params.id, route.query.category],
   () => { setSelectedFromRoute(); },
   { immediate: true }
 );
@@ -249,5 +356,50 @@ function selectSubcategory(parentId, subId) {
 .subcategory-list li:hover,
 .subcategory-list li.active {
   background: #d1d5db;
+}
+
+.substances-block {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+.substances-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #16396C;
+  user-select: none;
+}
+.substances-header:hover {
+  color: #0f2a52;
+}
+.substances-expand-icon {
+  font-size: 0.65rem;
+  color: #52606d;
+}
+.substances-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  display: grid;
+  gap: 4px;
+  animation: slideDown 0.2s ease;
+}
+.substances-list li {
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.15s;
+  font-size: 13px;
+  color: #52606d;
+}
+.substances-list li:hover,
+.substances-list li.active {
+  background: #e0e7ff;
+  color: #16396C;
 }
 </style>

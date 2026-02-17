@@ -67,6 +67,24 @@
     "selectionNH3": "Аммиак (NH3), масс. конц. мг/м³",
     "selectionGasoline": "Бензин және мұнай өнімдерінің булары (Ex), % НКПР",
     "selectionCO2": "Көмірқышқыл газы (CO2), % көлемдік үлес",
+    "selectionByApplication": "Қолдану саласы бойынша таңдау",
+    "selectionByApplicationDesc": "Сәйкес жабдықты көру үшін қолдану саласын таңдаңыз.",
+    "applications": {
+      "kotelnye-i-topochnye": "Қазандықтар және ошақтар",
+      "parkovki-garazhi-avtostoyanki": "Тоқтау алаңдары, гараждар және автотұрақтар",
+      "kommunalno-bytovoe-hozyajstvo": "Коммуналдық-тұрмыстық шаруашылық",
+      "obekty-vodosnabzheniya": "Сумен жабдықтау объектілері",
+      "teplichnye-kompleksy": "Жылыжайдағы кешендер",
+      "stroitelnyj-kompleks": "Құрылыс кешені",
+      "teploenergeticheskij-kompleks": "Жылу-энергетикалық кешен",
+      "gazovye-hozyajstva": "Газ шаруашылықтары",
+      "stancii-tehobsluzhivaniya": "Техникалық қызмет көрсету станциялары",
+      "avtozapravki": "Автожанармай құю станциялары",
+      "selskohozyajstvennye-obekty": "Ауыл шаруашылығы объектілері",
+      "predpriyatiya-neftegazovogo-kompleksa": "Мұнай-газ кешені кәсіпорындары",
+      "akkumulyatornye-pomeshcheniya": "Аккумуляторлық бөлмелер",
+      "holodilnye-kamery": "Суық камералар"
+    },
     "goToSelection": "Таңдауға өту",
     "monitoringKit": "Оперативтік мониторинг жинағы",
     "monitoringDesc": "Ауа ортасын бақылау және төтенке жағдайларды болдырмау кезінде деректерді беруге арналған бағдарламалық-аппараттық кешен.",
@@ -82,7 +100,19 @@
     "newsFP34": "ФП34 — қолданыстағы классика",
     "newsFT04": "ФТ04 — калибровкасыз сенсорды жылдам ауыстыру",
     "catalogCategories": "Каталог санаттары",
-    "catalogDesc": "Газдануды және қауіпсіздікті бақылауға арналған жабдық."
+    "catalogDesc": "Газдануды және қауіпсіздікті бақылауға арналған жабдық.",
+    "catalogCategoryTitles": {
+      "trassoiskateli": "Трассаны іздегіштер",
+      "gazoanalizatory-stacionarnye": "Стационарлық құралдар",
+      "portable-devices": "Портативті газ анализаторлары",
+      "techeiskateli": "Ағынды іздегіштер және газ ағындысы индикаторлары",
+      "izmeriteli-davlenija-gaza": "Газ қысымын өлшегіштер",
+      "signalizatory-zagazovannosti-bytovye": "Газдану сигналдағыштары (тұрмыстық)",
+      "prochie-izmeritelnye-sistemy": "Басқа өлшеу жүйелері",
+      "service-devices": "Қызмет және қосымша жабдық",
+      "gazovye-sensory": "Газға сезімтал сенсорлар",
+      "accessories": "Аксессуарлар"
+    }
   },
   "catalog": {
     "title": "Өнімдер каталогы",
@@ -545,6 +575,8 @@
   "breadcrumbs": {
     "home": "Басты",
     "catalog": "Каталог",
+    "substances": "Зат бойынша таңдау",
+    "applications": "Қолдану саласы бойынша таңдау",
     "information": "Ақпарат",
     "videos": "Бейне материалдар",
     "documentation": "Құжаттама және БА"
