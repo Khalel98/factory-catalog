@@ -6,9 +6,22 @@ const translations = {
   kk
 };
 
+let _clientLocaleInitialized = false;
+
 export const useI18n = () => {
   const locale = useState('locale', () => 'ru');
-  
+
+  // Синхронизируем с localStorage при первом вызове на клиенте (payload мог перезаписать)
+  if (import.meta.client && !_clientLocaleInitialized) {
+    _clientLocaleInitialized = true;
+    try {
+      const saved = localStorage.getItem('locale');
+      if (saved === 'kk' || saved === 'ru') {
+        locale.value = saved;
+      }
+    } catch (_) {}
+  }
+
   const t = (key, params = {}) => {
     const keys = key.split('.');
     let value = translations[locale.value];

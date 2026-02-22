@@ -38,46 +38,8 @@
       <div class="hero-main card">
         <span class="pill">{{ t('home.pill') }}</span>
         <h1>{{ t('home.title') }}</h1>
-        <p class="muted hero-subtitle">
-          {{ t('home.subtitle') }}
-        </p>
-        <div class="cta-block">
-          <NuxtLink to="/catalog" class="btn primary"
-            >{{ t('home.viewCatalog') }}</NuxtLink
-          >
-          <NuxtLink to="/contacts" class="btn ghost"
-            >{{ t('home.getConsultation') }}</NuxtLink
-          >
-        </div>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
-            </div>
-            <div class="stat-content">
-              <strong>{{ t('home.years30') }}</strong>
-              <span class="muted">{{ t('home.experienceDev') }}</span>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="7" height="7"></rect>
-                <rect x="14" y="3" width="7" height="7"></rect>
-                <rect x="14" y="14" width="7" height="7"></rect>
-                <rect x="3" y="14" width="7" height="7"></rect>
-              </svg>
-            </div>
-            <div class="stat-content">
-              <strong>{{ t('home.categories12') }}</strong>
-              <span class="muted">{{ t('home.equipment') }}</span>
-            </div>
-          </div>
-
-        </div>
+        <p class="muted hero-text">{{ t('home.heroText1') }}</p>
+        <p class="muted hero-text">{{ t('home.heroText2') }}</p>
       </div>
 
       <div class="hero-selection-row">

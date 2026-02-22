@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :data-locale="locale">
     <SiteHeader />
 
     <main class="container">
@@ -45,5 +45,5 @@
 <script setup lang="ts">
 import logoImage from '@/assets/company/logo.svg';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 </script>

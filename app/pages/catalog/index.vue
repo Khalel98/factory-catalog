@@ -142,18 +142,25 @@ import catalogImg8 from '@/assets/catalog-img/8.jpg';
 import catalogImg9 from '@/assets/catalog-img/9.jpg';
 import catalogImg10 from '@/assets/catalog-img/10.jpg';
 
-const catalogCategories = [
-  { title: 'Трассоискатели', slug: 'trassoiskateli', image: catalogImg1 },
-  { title: 'Стационарные приборы', slug: 'gazoanalizatory-stacionarnye', image: catalogImg2 },
-  { title: 'Портативные газоанализаторы', slug: 'portable-devices', image: catalogImg3 },
-  { title: 'Течеискатели и индикаторы утечки газа', slug: 'techeiskateli', image: catalogImg4 },
-  { title: 'Измерители давления газа', slug: 'izmeriteli-davlenija-gaza', image: catalogImg5 },
-  { title: 'Сигнализаторы загазованности (бытовые)', slug: 'signalizatory-zagazovannosti-bytovye', image: catalogImg6 },
-  { title: 'Прочие измерительные системы', slug: 'prochie-izmeritelnye-sistemy', image: catalogImg7 },
-  { title: 'Сервисное и дополнительное оборудование', slug: 'service-devices', image: catalogImg8 },
-  { title: 'Газочувствительные сенсоры', slug: 'sensors/gazovye-sensory', image: catalogImg9 },
-  { title: 'Аксессуары', slug: 'accessories', image: catalogImg10 },
+const catalogCategoriesBase = [
+  { slug: 'trassoiskateli', image: catalogImg1 },
+  { slug: 'gazoanalizatory-stacionarnye', image: catalogImg2 },
+  { slug: 'portable-devices', image: catalogImg3 },
+  { slug: 'techeiskateli', image: catalogImg4 },
+  { slug: 'izmeriteli-davlenija-gaza', image: catalogImg5 },
+  { slug: 'signalizatory-zagazovannosti-bytovye', image: catalogImg6 },
+  { slug: 'prochie-izmeritelnye-sistemy', image: catalogImg7 },
+  { slug: 'service-devices', image: catalogImg8 },
+  { slug: 'sensors/gazovye-sensory', image: catalogImg9 },
+  { slug: 'accessories', image: catalogImg10 },
 ];
+
+const catalogCategories = computed(() =>
+  catalogCategoriesBase.map((cat) => ({
+    ...cat,
+    title: t('home.catalogCategoryTitles.' + cat.slug) || cat.slug,
+  }))
+);
 
 const breadcrumbItems = computed(() => [
   { label: t('breadcrumbs.home'), to: '/' },

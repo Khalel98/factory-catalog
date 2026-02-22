@@ -324,97 +324,25 @@ table {
   z-index: 20;
 }
 
-.top-bar {
-  background: $footer-bg;
-  color: $footer-text;
-  font-size: 14px;
-  padding: 10px 0;
-
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-
-    @media (max-width: $md2) {
-      justify-content: center;
-    }
-  }
-
-  .logo {
-    color: $white;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    
-    .logo-img {
-      height: 40px;
-      width: auto;
-      object-fit: contain;
-    }
-  }
-
-  .top-phone {
-    color: $white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-    
-    &:hover {
-      color: $primary;
-      text-decoration: underline;
-    }
-  }
-
-  .cta-block {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-
-    .btn.ghost {
-      background: #fff;
-      color: #16396C;
-      border-color: #fff;
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.9);
-        color: #16396C;
-        border-color: rgba(255, 255, 255, 0.9);
-      }
-    }
-  }
-}
-
 .nav-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 24px;
   padding: 18px;
   position: relative;
 }
 
 .nav-logo {
-  display: none;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.4px;
-  color: $primary;
-  text-decoration: none;
-  flex-shrink: 0;
+  display: flex;
   align-items: center;
+  flex-shrink: 0;
+  margin-right: auto;
+  text-decoration: none;
   
   .nav-logo-img {
-    height: 50px;
+    height: 70px;
     width: auto;
     object-fit: contain;
-  }
-
-  
-  @media (max-width: $md3) {
-    display: flex;
   }
 }
 
@@ -877,10 +805,9 @@ table {
 
   .footer-logo {
     display: inline-block;
-    margin-bottom: 16px;
-    
+  
     .footer-logo-img {
-      height: 50px;
+      height: 80px;
       width: auto;
       object-fit: contain;
     }
@@ -1174,20 +1101,6 @@ table {
     flex-shrink: 0;
     position: relative;
     z-index: 101;
-  }
-
-  .top-bar {
-    display: none;
-
-    .container {
-      justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .logo {
-      order: -1;
-    }
   }
 
   .mobile-menu-overlay {

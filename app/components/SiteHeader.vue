@@ -1,21 +1,8 @@
 <template>
-  <header class="site-header">
-    <div class="top-bar">
-      <div class="container">
-        <NuxtLink to="/" class="logo">
-          <img :src="logoImage" alt="Газсервис-7" class="logo-img" />
-        </NuxtLink>
-        <span>Мангистауская область, г.Актау, мкр.5а, зд.9, 7</span>
-        <div class="cta-block">
-          <a :href="`tel:${t('footer.phoneLink')}`" class="top-phone">{{ t('footer.phone') }}</a>
-          <NuxtLink to="/contacts" class="btn ghost">{{ t('header.callback') }}</NuxtLink>
-        </div>
-      </div>
-    </div>
-
+  <header class="site-header" :data-locale="locale">
     <div class="container nav-bar">
       <NuxtLink to="/" class="nav-logo">
-        <img :src="logoIcon" alt="Газсервис-7" class="nav-logo-img" :style="{ fill: 'red' }"/>
+        <img :src="logoImage" alt="Газсервис-7" class="nav-logo-img" />
       </NuxtLink>
       <nav
         class="main-nav"
@@ -35,8 +22,8 @@
             v-model="searchQuery"
             type="search"
             class="mobile-search-input"
-            :placeholder="t('nav.searchPlaceholder')"
-            :aria-label="t('nav.searchPlaceholder')"
+            :placeholder="searchPlaceholder"
+            :aria-label="searchPlaceholder"
             autocomplete="off"
           />
           <button type="submit" class="mobile-search-btn" :aria-label="t('search.button')">
@@ -201,8 +188,8 @@
             v-model="searchQuery"
             type="search"
             class="header-search-input"
-            :placeholder="t('nav.searchPlaceholder')"
-            :aria-label="t('nav.searchPlaceholder')"
+            :placeholder="searchPlaceholder"
+            :aria-label="searchPlaceholder"
             autocomplete="off"
           />
           <button type="submit" class="header-search-btn" aria-label="Искать">
@@ -236,10 +223,17 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 import logoImage from '@/assets/company/logo.svg';
-import logoIcon from '@/assets/company/logo-icon.svg';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const route = useRoute();
+
+// Placeholder из localStorage + реакция на смену языка
+const searchPlaceholder = ref('Поиск');
+const updateSearchPlaceholder = () => {
+  if (typeof window === 'undefined') return;
+  const loc = localStorage.getItem('locale') || locale.value;
+  searchPlaceholder.value = loc === 'kk' ? 'Іздеу' : 'Поиск';
+};
 
 const isMobileMenuOpen = ref(false);
 const isMobile = ref(false);
@@ -312,7 +306,10 @@ const checkMobile = () => {
   }
 };
 
+watch(locale, updateSearchPlaceholder);
+
 onMounted(() => {
+  updateSearchPlaceholder();
   checkMobile();
   const handleResize = () => {
     checkMobile();
@@ -329,15 +326,3 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
-.top-bar .cta-block :deep(.btn.ghost) {
-  background: #fff;
-  color: #16396C;
-  border-color: #fff;
-}
-.top-bar .cta-block :deep(.btn.ghost:hover) {
-  background: rgba(255, 255, 255, 0.9);
-  color: #16396C;
-  border-color: rgba(255, 255, 255, 0.9);
-}
-</style>
